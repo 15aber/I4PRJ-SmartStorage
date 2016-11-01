@@ -58,7 +58,7 @@ namespace I4PRJ_SmartStorage.Controllers
       var fromStockInDb =
           db.Stocks.Include(s => s.Inventory)
               .Include(s => s.Product)
-              .Where(s => s.InventoryId == transaction.ToInventoryId)
+              .Where(s => s.InventoryId == transaction.FromInventoryId)
               .SingleOrDefault(s => s.ProductId == transaction.ProductId);
 
       if (fromStockInDb == null)
@@ -83,7 +83,7 @@ namespace I4PRJ_SmartStorage.Controllers
       var toStockInDb =
           db.Stocks.Include(s => s.Inventory)
               .Include(s => s.Product)
-              .Where(s => s.InventoryId == transaction.FromInventoryId)
+              .Where(s => s.InventoryId == transaction.ToInventoryId)
               .SingleOrDefault(s => s.ProductId == transaction.ProductId);
 
       if (toStockInDb == null)
@@ -109,7 +109,7 @@ namespace I4PRJ_SmartStorage.Controllers
 
       db.SaveChanges();
 
-      return RedirectToAction("List", "Transactions");
+      return RedirectToAction("Index", "Transactions");
     }
 
     protected override void Dispose(bool disposing)
