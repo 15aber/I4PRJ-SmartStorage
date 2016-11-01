@@ -1,21 +1,25 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace I4PRJ_SmartStorage.Models.Domain
 {
     public class Stock
     {
         [Key]
+        [DisplayName("#")]
         public int StockId { get; set; }
 
         [Required]
+        [ForeignKey("Inventory")]
         [DisplayName("Inventory")]
         public int InventoryId { get; set; }
 
         public Inventory Inventory { get; set; }
 
         [Required]
+        [ForeignKey("Product")]
         [DisplayName("Product")]
         public int ProductId { get; set; }
 

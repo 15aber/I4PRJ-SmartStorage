@@ -7,6 +7,7 @@ namespace I4PRJ_SmartStorage.Models.Domain
     public class Category
     {
         [Key]
+        [DisplayName("#")]
         public int CategoryId { get; set; }
 
         [Required]

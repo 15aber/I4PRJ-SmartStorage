@@ -1,12 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace I4PRJ_SmartStorage.Models.Domain
 {
     public class Product
     {
         [Key]
+        [DisplayName("#")]
         public int ProductId { get; set; }
 
         [Required]
@@ -24,6 +26,8 @@ namespace I4PRJ_SmartStorage.Models.Domain
         public double CostPrice { get; set; }
 
         [Required]
+        [ForeignKey("Category")]
+        [DisplayName("Category")]
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }

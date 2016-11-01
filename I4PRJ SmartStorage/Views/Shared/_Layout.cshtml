@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -11,7 +11,9 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
     <!-- Add local styles, mostly for plugins css file -->
     @if (IsSectionDefined("Styles"))
-    {@RenderSection("Styles", required: false)}
+    {
+        @RenderSection("Styles", required: false)
+    }
 
     <!-- Primary Inspinia style -->
     @Styles.Render("~/Content/css")
@@ -19,31 +21,31 @@
 </head>
 <body>
 
-    <!-- Wrapper-->
-    <div id="wrapper">
+<!-- Wrapper-->
+<div id="wrapper">
 
-        <!-- Navigation -->
-        @Html.Partial("_Navigation")
+    <!-- Navigation -->
+    @Html.Partial("_Navigation")
 
-        <!-- Page wraper -->
-        <div id="page-wrapper" class="gray-bg">
+    <!-- Page wraper -->
+    <div id="page-wrapper" class="gray-bg">
 
-            <!-- Top Navbar -->
-            @Html.Partial("_TopNavbar")
+        <!-- Top Navbar -->
+        @Html.Partial("_TopNavbar")
 
-            <!-- Main view  -->
-            @RenderBody()
+        <!-- Main view -->
+        @RenderBody()
 
-            <!-- Footer -->
-            @Html.Partial("_Footer")
-
-        </div>
-        <!-- End page wrapper-->
+        <!-- Footer -->
+        @Html.Partial("_Footer")
 
     </div>
-    <!-- End wrapper-->
+    <!-- End page wrapper-->
 
-    @Scripts.Render("~/bundles/script")
-    @RenderSection("scripts", required: false)
+</div>
+<!-- End wrapper-->
+
+@Scripts.Render("~/bundles/script")
+@RenderSection("scripts", required: false)
 </body>
 </html>
