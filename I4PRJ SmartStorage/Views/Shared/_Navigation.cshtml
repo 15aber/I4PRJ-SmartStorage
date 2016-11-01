@@ -43,21 +43,6 @@
                     }
                 </div>
             </li>
-            <li class="@Html.IsSelected(controller: "Products")">
-                <a href="@Url.Action("Index", "Products")"><i class="fa fa-barcode"></i> <span class="nav-label">Product</span></a>
-            </li>
-            <li class="@Html.IsSelected(controller: "Categories")">
-                <a href="@Url.Action("Index", "Categories")"><i class="fa fa-tag"></i> <span class="nav-label">Category</span></a>
-            </li>
-            <li class="@Html.IsSelected(controller: "Inventories")">
-                <a href="@Url.Action("Index", "Inventories")"><i class="fa fa-database"></i> <span class="nav-label">Inventory</span></a>
-            </li>
-            <li class="@Html.IsSelected(controller: "Stocks")">
-                <a href="@Url.Action("Index", "Stocks")"><i class="fa fa-table"></i> <span class="nav-label">Stock</span></a>
-            </li>
-            <li class="@Html.IsSelected(controller: "Transaction")">
-                <a href="@Url.Action("Index", "Transactions")"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Transaction</span></a>
-            </li>
         </ul>
     </div>
 </nav>
