@@ -1,0 +1,23 @@
+﻿@model I4PRJ_SmartStorage.Models.ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (loginProviders.Count() == 0) {
+
+    }
+    else {
+        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl })) {
+            @Html.AntiForgeryToken()
+            <div id="socialLoginList">
+                <p>
+                    @foreach (AuthenticationDescription p in loginProviders) {
+                        <button type="submit" class="btn btn-block btn-social btn-@p.AuthenticationType.ToLower()" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType">
+                        <span class="fa fa-@p.AuthenticationType.ToLower()"></span> Log in with @p.AuthenticationType.ToLower()
+                    </button>
+                    }
+                </p>
+            </div>
+        }
+    }
+}

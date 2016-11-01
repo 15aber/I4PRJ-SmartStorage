@@ -1,0 +1,63 @@
+﻿@using I4PRJ_SmartStorage.Helpers
+@using I4PRJ_SmartStorage.Models
+@using Microsoft.AspNet.Identity
+
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="nav-header">
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="dropdown profile-element">
+                        <span>
+                        <img alt="image" class="img-circle" width="50px" src="@Html.Action("GetProfilePicture", "Account", new {userId = User.Identity.GetUserId()})" />
+                    </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold">Hey, @Html.Action("GetFirstName", "Account", new {userId = User.Identity.GetUserId()})</strong>
+                            </span> <span class="text-muted text-xs block">Profil menu <b class="caret"></b></span>
+                        </span>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="@Url.Action("Index", "Manage")"><i class="fa fa-cog"></i> Manage</a></li>
+                            <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i>Log off</a></li>
+                        </ul>
+                    </div>
+                }
+                else
+                {<div class="dropdown profile-element">
+                <strong class="font-bold">SmartStorage</strong>
+                </div>
+                }
+                <div class="logo-element">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <img alt="image" class="img-circle" width="50px" src="@Html.Action("GetProfilePicture", "Account", new {userId = User.Identity.GetUserId()})" />
+
+                    }
+                    else
+                    {
+                        <i class="fa fa-list-alt"></i>
+
+                    }
+                </div>
+            </li>
+            <li class="@Html.IsSelected(controller: "Products")">
+                <a href="@Url.Action("Index", "Products")"><i class="fa fa-barcode"></i> <span class="nav-label">Product</span></a>
+            </li>
+            <li class="@Html.IsSelected(controller: "Categories")">
+                <a href="@Url.Action("Index", "Categories")"><i class="fa fa-tag"></i> <span class="nav-label">Category</span></a>
+            </li>
+            <li class="@Html.IsSelected(controller: "Inventories")">
+                <a href="@Url.Action("Index", "Inventories")"><i class="fa fa-database"></i> <span class="nav-label">Inventory</span></a>
+            </li>
+            <li class="@Html.IsSelected(controller: "Stocks")">
+                <a href="@Url.Action("Index", "Stocks")"><i class="fa fa-table"></i> <span class="nav-label">Stock</span></a>
+            </li>
+            <li class="@Html.IsSelected(controller: "Transaction")">
+                <a href="@Url.Action("Index", "Transactions")"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Transaction</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
