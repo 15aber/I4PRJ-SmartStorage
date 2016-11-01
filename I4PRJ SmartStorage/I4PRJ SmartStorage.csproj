@@ -198,29 +198,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201610311451241_Init.cs" />
-    <Compile Include="Migrations\201610311451241_Init.Designer.cs">
-      <DependentUpon>201610311451241_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610311711410_AddTransaction.cs" />
-    <Compile Include="Migrations\201610311711410_AddTransaction.Designer.cs">
-      <DependentUpon>201610311711410_AddTransaction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610311735155_RemoveUpdatetimeUserVersion.cs" />
-    <Compile Include="Migrations\201610311735155_RemoveUpdatetimeUserVersion.Designer.cs">
-      <DependentUpon>201610311735155_RemoveUpdatetimeUserVersion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610311823042_ForeingKeysIntransactionUpdate.cs" />
-    <Compile Include="Migrations\201610311823042_ForeingKeysIntransactionUpdate.Designer.cs">
-      <DependentUpon>201610311823042_ForeingKeysIntransactionUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610311856371_AddTimeAndUserToTransaction.cs" />
-    <Compile Include="Migrations\201610311856371_AddTimeAndUserToTransaction.Designer.cs">
-      <DependentUpon>201610311856371_AddTimeAndUserToTransaction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610311904099_AddTimeAndUserToCategoritsInventoriesProducts.cs" />
-    <Compile Include="Migrations\201610311904099_AddTimeAndUserToCategoritsInventoriesProducts.Designer.cs">
-      <DependentUpon>201610311904099_AddTimeAndUserToCategoritsInventoriesProducts.cs</DependentUpon>
+    <Compile Include="Migrations\201611011018267_InitDb.cs" />
+    <Compile Include="Migrations\201611011018267_InitDb.Designer.cs">
+      <DependentUpon>201611011018267_InitDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -777,23 +757,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610311451241_Init.resx">
-      <DependentUpon>201610311451241_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610311711410_AddTransaction.resx">
-      <DependentUpon>201610311711410_AddTransaction.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610311735155_RemoveUpdatetimeUserVersion.resx">
-      <DependentUpon>201610311735155_RemoveUpdatetimeUserVersion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610311823042_ForeingKeysIntransactionUpdate.resx">
-      <DependentUpon>201610311823042_ForeingKeysIntransactionUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610311856371_AddTimeAndUserToTransaction.resx">
-      <DependentUpon>201610311856371_AddTimeAndUserToTransaction.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610311904099_AddTimeAndUserToCategoritsInventoriesProducts.resx">
-      <DependentUpon>201610311904099_AddTimeAndUserToCategoritsInventoriesProducts.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611011018267_InitDb.resx">
+      <DependentUpon>201611011018267_InitDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
