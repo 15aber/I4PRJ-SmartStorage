@@ -2,14 +2,14 @@ namespace I4PRJ_SmartStorage.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class AddTransaction : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Transactions",
-                c => new
+                    "dbo.Transactions",
+                    c => new
                     {
                         TransactionId = c.Int(nullable: false, identity: true),
                         FromInventoryId = c.Int(nullable: false),
@@ -29,17 +29,16 @@ namespace I4PRJ_SmartStorage.Migrations
                 .Index(t => t.ProductId)
                 .Index(t => t.FromInventory_InventoryId)
                 .Index(t => t.ToInventory_InventoryId);
-            
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.Transactions", "ToInventory_InventoryId", "dbo.Inventories");
             DropForeignKey("dbo.Transactions", "ProductId", "dbo.Products");
             DropForeignKey("dbo.Transactions", "FromInventory_InventoryId", "dbo.Inventories");
-            DropIndex("dbo.Transactions", new[] { "ToInventory_InventoryId" });
-            DropIndex("dbo.Transactions", new[] { "FromInventory_InventoryId" });
-            DropIndex("dbo.Transactions", new[] { "ProductId" });
+            DropIndex("dbo.Transactions", new[] {"ToInventory_InventoryId"});
+            DropIndex("dbo.Transactions", new[] {"FromInventory_InventoryId"});
+            DropIndex("dbo.Transactions", new[] {"ProductId"});
             DropTable("dbo.Transactions");
         }
     }

@@ -8,8 +8,8 @@ namespace I4PRJ_SmartStorage.Migrations
         {
             DropForeignKey("dbo.Transactions", "FromInventory_InventoryId", "dbo.Inventories");
             DropForeignKey("dbo.Transactions", "ToInventory_InventoryId", "dbo.Inventories");
-            DropIndex("dbo.Transactions", new[] { "FromInventory_InventoryId" });
-            DropIndex("dbo.Transactions", new[] { "ToInventory_InventoryId" });
+            DropIndex("dbo.Transactions", new[] {"FromInventory_InventoryId"});
+            DropIndex("dbo.Transactions", new[] {"ToInventory_InventoryId"});
             DropColumn("dbo.Transactions", "FromInventoryId");
             DropColumn("dbo.Transactions", "ToInventoryId");
             RenameColumn(table: "dbo.Transactions", name: "FromInventory_InventoryId", newName: "FromInventoryId");
@@ -26,8 +26,8 @@ namespace I4PRJ_SmartStorage.Migrations
         {
             DropForeignKey("dbo.Transactions", "ToInventoryId", "dbo.Inventories");
             DropForeignKey("dbo.Transactions", "FromInventoryId", "dbo.Inventories");
-            DropIndex("dbo.Transactions", new[] { "ToInventoryId" });
-            DropIndex("dbo.Transactions", new[] { "FromInventoryId" });
+            DropIndex("dbo.Transactions", new[] {"ToInventoryId"});
+            DropIndex("dbo.Transactions", new[] {"FromInventoryId"});
             AlterColumn("dbo.Transactions", "ToInventoryId", c => c.Int());
             AlterColumn("dbo.Transactions", "FromInventoryId", c => c.Int());
             RenameColumn(table: "dbo.Transactions", name: "ToInventoryId", newName: "ToInventory_InventoryId");

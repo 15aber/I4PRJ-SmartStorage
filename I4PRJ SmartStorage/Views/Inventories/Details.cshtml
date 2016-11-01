@@ -20,8 +20,6 @@
 </div>
 
 
-
-
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-lg-12">
@@ -32,36 +30,23 @@
                 <div class="ibox-content">
 
 
-				    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
 
-    </dl>
+                    </dl>
 
 
-	    @Html.ActionLink("Edit", "Edit", new { id = Model.InventoryId }, new { @class = "btn btn-primary"})
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-white"})
+                    @Html.ActionLink("Edit", "Edit", new {id = Model.InventoryId}, new {@class = "btn btn-primary"})
+                    @Html.ActionLink("Back to List", "Index", null, new {@class = "btn btn-white"})
 
                 </div>
             </div>
         </div>
     </div>
- </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>

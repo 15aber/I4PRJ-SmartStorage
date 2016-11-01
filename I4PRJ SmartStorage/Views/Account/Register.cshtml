@@ -7,9 +7,9 @@
 <div class="middle-box text-center loginscreen  animated fadeInDown">
     <div>
         <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel {ReturnUrl = ViewBag.ReturnUrl})
         </section>
-        <hr />
+        <hr/>
         @using (Html.BeginForm("Register", "Account", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
         {
             @Html.AntiForgeryToken()

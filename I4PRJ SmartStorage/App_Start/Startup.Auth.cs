@@ -32,9 +32,10 @@ namespace I4PRJ_SmartStorage
                 {
                     // Enables the application to validate the security stamp when the user logs in.
                     // This is a security feature which is used when you change a password or add an external login to your account.  
-                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
-                        validateInterval: TimeSpan.FromMinutes(30),
-                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
+                    OnValidateIdentity =
+                        SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
+                            validateInterval: TimeSpan.FromMinutes(30),
+                            regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
             });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
@@ -60,12 +61,13 @@ namespace I4PRJ_SmartStorage
             {
                 AppId = ConfigurationManager.AppSettings["FacebookAppId"],
                 AppSecret = ConfigurationManager.AppSettings["FacebookAppSecret"],
-                Scope = { "email" },
+                Scope = {"email"},
                 Provider = new FacebookAuthenticationProvider
                 {
                     OnAuthenticated = context =>
                     {
-                        context.Identity.AddClaim(new System.Security.Claims.Claim("FacebookAccessToken", context.AccessToken));
+                        context.Identity.AddClaim(new System.Security.Claims.Claim("FacebookAccessToken",
+                            context.AccessToken));
                         return Task.FromResult(true);
                     }
                 }

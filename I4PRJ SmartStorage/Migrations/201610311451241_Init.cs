@@ -2,14 +2,14 @@ namespace I4PRJ_SmartStorage.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class Init : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Categories",
-                c => new
+                    "dbo.Categories",
+                    c => new
                     {
                         CategoryId = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false),
@@ -18,10 +18,10 @@ namespace I4PRJ_SmartStorage.Migrations
                         Version = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                     })
                 .PrimaryKey(t => t.CategoryId);
-            
+
             CreateTable(
-                "dbo.Inventories",
-                c => new
+                    "dbo.Inventories",
+                    c => new
                     {
                         InventoryId = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false),
@@ -30,10 +30,10 @@ namespace I4PRJ_SmartStorage.Migrations
                         Version = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                     })
                 .PrimaryKey(t => t.InventoryId);
-            
+
             CreateTable(
-                "dbo.Products",
-                c => new
+                    "dbo.Products",
+                    c => new
                     {
                         ProductId = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false),
@@ -47,33 +47,33 @@ namespace I4PRJ_SmartStorage.Migrations
                 .PrimaryKey(t => t.ProductId)
                 .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
                 .Index(t => t.CategoryId);
-            
+
             CreateTable(
-                "dbo.AspNetRoles",
-                c => new
+                    "dbo.AspNetRoles",
+                    c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         Name = c.String(nullable: false, maxLength: 256),
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
+
             CreateTable(
-                "dbo.AspNetUserRoles",
-                c => new
+                    "dbo.AspNetUserRoles",
+                    c => new
                     {
                         UserId = c.String(nullable: false, maxLength: 128),
                         RoleId = c.String(nullable: false, maxLength: 128),
                     })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .PrimaryKey(t => new {t.UserId, t.RoleId})
                 .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
-            
+
             CreateTable(
-                "dbo.Stocks",
-                c => new
+                    "dbo.Stocks",
+                    c => new
                     {
                         StockId = c.Int(nullable: false, identity: true),
                         InventoryId = c.Int(nullable: false),
@@ -88,10 +88,10 @@ namespace I4PRJ_SmartStorage.Migrations
                 .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
                 .Index(t => t.InventoryId)
                 .Index(t => t.ProductId);
-            
+
             CreateTable(
-                "dbo.AspNetUsers",
-                c => new
+                    "dbo.AspNetUsers",
+                    c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         Fullname = c.String(),
@@ -113,10 +113,10 @@ namespace I4PRJ_SmartStorage.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
-            
+
             CreateTable(
-                "dbo.AspNetUserClaims",
-                c => new
+                    "dbo.AspNetUserClaims",
+                    c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         UserId = c.String(nullable: false, maxLength: 128),
@@ -126,21 +126,20 @@ namespace I4PRJ_SmartStorage.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
-            
+
             CreateTable(
-                "dbo.AspNetUserLogins",
-                c => new
+                    "dbo.AspNetUserLogins",
+                    c => new
                     {
                         LoginProvider = c.String(nullable: false, maxLength: 128),
                         ProviderKey = c.String(nullable: false, maxLength: 128),
                         UserId = c.String(nullable: false, maxLength: 128),
                     })
-                .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
+                .PrimaryKey(t => new {t.LoginProvider, t.ProviderKey, t.UserId})
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
-            
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
@@ -150,15 +149,15 @@ namespace I4PRJ_SmartStorage.Migrations
             DropForeignKey("dbo.Stocks", "InventoryId", "dbo.Inventories");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Products", "CategoryId", "dbo.Categories");
-            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
-            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
+            DropIndex("dbo.AspNetUserLogins", new[] {"UserId"});
+            DropIndex("dbo.AspNetUserClaims", new[] {"UserId"});
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.Stocks", new[] { "ProductId" });
-            DropIndex("dbo.Stocks", new[] { "InventoryId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
+            DropIndex("dbo.Stocks", new[] {"ProductId"});
+            DropIndex("dbo.Stocks", new[] {"InventoryId"});
+            DropIndex("dbo.AspNetUserRoles", new[] {"RoleId"});
+            DropIndex("dbo.AspNetUserRoles", new[] {"UserId"});
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Products", new[] { "CategoryId" });
+            DropIndex("dbo.Products", new[] {"CategoryId"});
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
