@@ -16,5 +16,7 @@ namespace I4PRJ_SmartStorage.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<I4PRJ_SmartStorage.Models.Storage> Storages { get; set; }
     }
 }
