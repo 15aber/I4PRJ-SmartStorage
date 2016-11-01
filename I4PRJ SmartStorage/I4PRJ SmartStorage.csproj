@@ -189,15 +189,16 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611011228450_InitialModel.cs" />
-    <Compile Include="Migrations\201611011228450_InitialModel.Designer.cs">
-      <DependentUpon>201611011228450_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\201611012019390_AddedCategory.cs" />
+    <Compile Include="Migrations\201611012019390_AddedCategory.Designer.cs">
+      <DependentUpon>201611012019390_AddedCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -716,6 +717,11 @@
     <Content Include="Views\Shared\_TopNavBar.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Scripts\pace.min.js.map" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -724,8 +730,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611011228450_InitialModel.resx">
-      <DependentUpon>201611011228450_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611012019390_AddedCategory.resx">
+      <DependentUpon>201611012019390_AddedCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
