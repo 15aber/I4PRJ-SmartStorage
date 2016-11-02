@@ -46,7 +46,7 @@
                 @Html.LabelFor(model => model.Transaction.ToInventoryId, new { @class = "control-label col-md-2" })
                 <div class="col-md-4">
                   @Html.DropDownListFor(model => model.Transaction.ToInventoryId, new SelectList(Model.ToInventory, "InventoryId", "Name"), "", new { @class = "form-control" })
-                  @Html.ValidationMessageFor(model => model.Transaction.ToInventory)
+                  @Html.ValidationMessageFor(model => model.Transaction.ToInventoryId)
                 </div>
               </div>
 
@@ -54,7 +54,7 @@
                 @Html.LabelFor(model => model.Transaction.ProductId, new { @class = "control-label col-md-2" })
                 <div class="col-md-4">
                   @Html.DropDownListFor(model => model.Transaction.ProductId, new SelectList(Model.Product, "ProductId", "Name"), "", new { @class = "form-control" })
-                  @Html.ValidationMessageFor(model => model.Transaction.Product)
+                  @Html.ValidationMessageFor(model => model.Transaction.ProductId)
                 </div>
               </div>
 

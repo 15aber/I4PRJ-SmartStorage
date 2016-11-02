@@ -5,6 +5,7 @@ using System.Net;
 using System.Web.Mvc;
 using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
+using I4PRJ_SmartStorage.ViewModel;
 
 namespace I4PRJ_SmartStorage.Controllers
 {
@@ -37,8 +38,15 @@ namespace I4PRJ_SmartStorage.Controllers
     // GET: /Products/Create
     public ActionResult Create()
     {
-      ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name");
-      return View();
+      var ActivCategoriesInDb = db.Categories.Where(c => c.IsActiv == true).ToList();
+
+      var viewModel = new ProductViewModel
+      {
+        Product = new Product(),
+        Categories = ActivCategoriesInDb
+      };
+
+      return View("Create", viewModel);
     }
 
     // POST: /Products/Create
