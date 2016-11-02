@@ -90,7 +90,7 @@ namespace I4PRJ_SmartStorage.Controllers
 
                 return View("TransactionForm", viewModel);
             }
-
+            /*
             var fromStockInDb =
                 db.Stocks.Include(s => s.Inventory).Include(s => s.Product).Where(s => s.InventoryId == transaction.ToInventoryId)
                     .SingleOrDefault(s => s.ProductId == transaction.ProductId);
@@ -100,6 +100,7 @@ namespace I4PRJ_SmartStorage.Controllers
                 db.Stocks.Include(s => s.Inventory).Include(s => s.Product).Where(s => s.InventoryId == transaction.FromInventoryId)
                     .SingleOrDefault(s => s.ProductId == transaction.ProductId);
             toStockInDb.Quantity += transaction.Quantity;
+            ¨*/
 
             transaction.DateTime = DateTime.Now;
             transaction.ByUser = User.Identity.Name;
