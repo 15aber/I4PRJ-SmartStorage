@@ -7,13 +7,13 @@ namespace I4PRJ_SmartStorage.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class PropUpdate : IMigrationMetadata
+    public sealed partial class CategoryIsActivAdded : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PropUpdate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CategoryIsActivAdded));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611011357409_PropUpdate"; }
+            get { return "201611020728143_CategoryIsActivAdded"; }
         }
         
         string IMigrationMetadata.Source

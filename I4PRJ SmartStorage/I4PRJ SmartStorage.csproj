@@ -195,7 +195,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoriesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Static\Navigation.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
@@ -207,13 +206,9 @@
     <Compile Include="Migrations\201611011018267_InitDb.Designer.cs">
       <DependentUpon>201611011018267_InitDb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611011338397_NewInit.cs" />
-    <Compile Include="Migrations\201611011338397_NewInit.Designer.cs">
-      <DependentUpon>201611011338397_NewInit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611011357409_PropUpdate.cs" />
-    <Compile Include="Migrations\201611011357409_PropUpdate.Designer.cs">
-      <DependentUpon>201611011357409_PropUpdate.cs</DependentUpon>
+    <Compile Include="Migrations\201611020728143_CategoryIsActivAdded.cs" />
+    <Compile Include="Migrations\201611020728143_CategoryIsActivAdded.Designer.cs">
+      <DependentUpon>201611020728143_CategoryIsActivAdded.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -226,6 +221,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Domain\Transaction.cs" />
     <Compile Include="ViewModel\NavigationViewModel.cs" />
+    <Compile Include="ViewModel\ProductViewModel.cs" />
     <Compile Include="ViewModel\TransactionViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -402,11 +398,8 @@
     <EmbeddedResource Include="Migrations\201611011018267_InitDb.resx">
       <DependentUpon>201611011018267_InitDb.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611011338397_NewInit.resx">
-      <DependentUpon>201611011338397_NewInit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611011357409_PropUpdate.resx">
-      <DependentUpon>201611011357409_PropUpdate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611020728143_CategoryIsActivAdded.resx">
+      <DependentUpon>201611020728143_CategoryIsActivAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,94 +1,95 @@
-﻿@model I4PRJ_SmartStorage.Models.Domain.Product
+﻿@model I4PRJ_SmartStorage.ViewModel.ProductViewModel
 
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+  ViewBag.Title = "Create";
+  Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-sm-4">
-        <h2>Create</h2>
-        <ol class="breadcrumb">
-            <li>
-                @Html.ActionLink("List", "Index")
-            </li>
-            <li class="active">
-                <strong>Create</strong>
-            </li>
-        </ol>
+  <div class="col-sm-4">
+    <h2>Create</h2>
+    <ol class="breadcrumb">
+      <li>
+        @Html.ActionLink("List", "Index")
+      </li>
+      <li class="active">
+        <strong>Create</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-sm-8">
+    <div class="title-action">
+      @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
     </div>
-    <div class="col-sm-8">
-        <div class="title-action">
-            @Html.ActionLink("Back to List", "Index", null, new {@class = "btn btn-primary"})
-        </div>
-    </div>
+  </div>
 </div>
 
 
 <div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Create Product</h5>
-                </div>
-                <div class="ibox-content">
-
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-
-                        <div class="form-horizontal">
-                            @Html.ValidationSummary(true)
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Name, new {@class = "control-label col-md-2"})
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Name)
-                                    @Html.ValidationMessageFor(model => model.Name)
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Size, new {@class = "control-label col-md-2"})
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Size)
-                                    @Html.ValidationMessageFor(model => model.Size)
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.CostPrice, new {@class = "control-label col-md-2"})
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.CostPrice)
-                                    @Html.ValidationMessageFor(model => model.CostPrice)
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.CategoryId, "CategoryId", new {@class = "control-label col-md-2"})
-                                <div class="col-md-10">
-                                    @Html.DropDownList("CategoryId", null, String.Empty, new {@class = "form-control"})
-                                    @Html.ValidationMessageFor(model => model.CategoryId)
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Create" class="btn btn-primary"/>
-                                    @Html.ActionLink("Cancel", "Index", null, new {@class = "btn btn-white"})
-                                </div>
-                            </div>
-                        </div>
-                    }
-
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Create Product</h5>
         </div>
+        <div class="ibox-content">
+
+          @using (Html.BeginForm())
+          {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+              @Html.ValidationSummary(true)
+
+              <div class="form-group">
+                @Html.LabelFor(model => model.Product.Name, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                  @Html.EditorFor(model => model.Product.Name)
+                  @Html.ValidationMessageFor(model => model.Product.Name)
+                </div>
+              </div>
+
+              <div class="form-group">
+                @Html.LabelFor(model => model.Product.Size, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                  @Html.EditorFor(model => model.Product.Size)
+                  @Html.ValidationMessageFor(model => model.Product.Size)
+                </div>
+              </div>
+
+              <div class="form-group">
+                @Html.LabelFor(model => model.Product.CostPrice, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                  @Html.EditorFor(model => model.Product.CostPrice)
+                  @Html.ValidationMessageFor(model => model.Product.CostPrice)
+                </div>
+              </div>
+
+              <div class="form-group">
+                @Html.LabelFor(model => model.Product.CategoryId, "CategoryId", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                  @Html.DropDownListFor(model => model.Product.CategoryId, new SelectList(Model.Categories, "CategoryId", "Name"), "", new { @class = "form-control" })
+
+                  @Html.ValidationMessageFor(model => model.Product.CategoryId)
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                  <input type="submit" value="Create" class="btn btn-primary" />
+                  @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-white" })
+                </div>
+              </div>
+            </div>
+          }
+
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
 
 @section Scripts {
-    @Scripts.Render("~/bundles/validate")
+  @Scripts.Render("~/bundles/validate")
 }

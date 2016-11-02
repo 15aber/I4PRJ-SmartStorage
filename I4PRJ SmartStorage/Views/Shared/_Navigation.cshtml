@@ -53,7 +53,7 @@
         <a href="@Url.Action("Index", "Products")"><i class="fa fa-barcode"></i> <span class="nav-label">Products</span> <span class="fa arrow"></span></a>
         <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Products", cssClass: "in")">
           @{
-            List<Category> categories = I4PRJ_SmartStorage.Static.Navigation.GetCategories();
+            List<Category> categories = I4PRJ_SmartStorage.Helpers.HMTLHelperExtensions.GetCategories();
 
             foreach (var item in categories)
             {
@@ -83,7 +83,7 @@
         <a href="@Url.Action("Index", "Stocks")"><i class="fa fa-table"></i> <span class="nav-label">Stocks</span> <span class="fa arrow"></span></a>
         <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Stocks", cssClass: "in")">
           @{
-            List<Inventory> inventories = I4PRJ_SmartStorage.Static.Navigation.GetInventories();
+            List<Inventory> inventories = I4PRJ_SmartStorage.Helpers.HMTLHelperExtensions.GetInventories();
 
             foreach (var item in inventories)
             {
