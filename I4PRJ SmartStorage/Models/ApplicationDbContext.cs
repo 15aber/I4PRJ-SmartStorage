@@ -18,5 +18,11 @@ namespace I4PRJ_SmartStorage.Models
         }
 
         public System.Data.Entity.DbSet<I4PRJ_SmartStorage.Models.Domain.Category> Categories { get; set; }
+
+        public System.Data.Entity.DbSet<I4PRJ_SmartStorage.Models.Domain.Product> Products { get; set; }
+
+        public System.Data.Entity.DbSet<I4PRJ_SmartStorage.Models.Domain.Inventory> Inventories { get; set; }
+
+        public System.Data.Entity.DbSet<I4PRJ_SmartStorage.Models.Domain.Transaction> Transactions { get; set; }
     }
 }

@@ -7,13 +7,13 @@ using System.Web;
 
 namespace I4PRJ_SmartStorage.Models.Domain
 {
-    public class Category
+    public class Inventory
     {
         [Key]
-        public int CategoryId { get; set; }
+        public int InventoryId { get; set; }
 
         [Required]
-        [DisplayName("Category")]
+        [DisplayName("Inventory")]
         public string Name { get; set; }
 
         [DisplayName("Updated")]
@@ -27,5 +27,9 @@ namespace I4PRJ_SmartStorage.Models.Domain
         public string ByUser { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        //[Timestamp]
+        //[HiddenInput(DisplayValue = false)]
+        //public byte[] Version { get; set; }
     }
 }

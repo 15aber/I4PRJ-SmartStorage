@@ -1,4 +1,4 @@
-﻿@model I4PRJ_SmartStorage.Models.Domain.Category
+﻿@model I4PRJ_SmartStorage.Models.Domain.Transaction
 
 @{
     ViewBag.Title = "Details";
@@ -26,26 +26,50 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Details Category</h5>
+                    <h5>Details Transaction</h5>
                 </div>
                 <div class="ibox-content">
 
 
 				    <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.FromInventory.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.FromInventory.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Updated)
+            @Html.DisplayNameFor(model => model.Product.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Updated)
+            @Html.DisplayFor(model => model.Product.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ToInventory.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToInventory.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTime)
         </dd>
 
         <dt>
@@ -59,7 +83,7 @@
     </dl>
 
 
-	    @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryId }, new { @class = "btn btn-primary"})
+	    @Html.ActionLink("Edit", "Edit", new { id = Model.TransactionId }, new { @class = "btn btn-primary"})
     @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-white"})
 
                 </div>

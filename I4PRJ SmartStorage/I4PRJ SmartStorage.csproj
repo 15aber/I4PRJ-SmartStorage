@@ -52,6 +52,14 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework.DynamicFilters, Version=2.4.0.0, Culture=neutral, PublicKeyToken=146423a1b8d60775, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.DynamicFilters.2.4.0\lib\net40\EntityFramework.DynamicFilters.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.Filters, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Filters.0.3.0.0\lib\net40\EntityFramework.Filters.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
@@ -191,7 +199,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventoriesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -200,14 +211,55 @@
     <Compile Include="Migrations\201611012019390_AddedCategory.Designer.cs">
       <DependentUpon>201611012019390_AddedCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611012029515_UpdatedCategory.cs" />
+    <Compile Include="Migrations\201611012029515_UpdatedCategory.Designer.cs">
+      <DependentUpon>201611012029515_UpdatedCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611012138217_AddedIsActiveDefaultValue.cs" />
+    <Compile Include="Migrations\201611012138217_AddedIsActiveDefaultValue.Designer.cs">
+      <DependentUpon>201611012138217_AddedIsActiveDefaultValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611012148274_AddedIsDeactivated.cs" />
+    <Compile Include="Migrations\201611012148274_AddedIsDeactivated.Designer.cs">
+      <DependentUpon>201611012148274_AddedIsDeactivated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611012153159_AddedProduct.cs" />
+    <Compile Include="Migrations\201611012153159_AddedProduct.Designer.cs">
+      <DependentUpon>201611012153159_AddedProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611012158246_UpdateProduct.cs" />
+    <Compile Include="Migrations\201611012158246_UpdateProduct.Designer.cs">
+      <DependentUpon>201611012158246_UpdateProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611012325582_AddedIsDeleted.cs" />
+    <Compile Include="Migrations\201611012325582_AddedIsDeleted.Designer.cs">
+      <DependentUpon>201611012325582_AddedIsDeleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611012354096_AddedInventory.cs" />
+    <Compile Include="Migrations\201611012354096_AddedInventory.Designer.cs">
+      <DependentUpon>201611012354096_AddedInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611012358299_UpdatedInventory.cs" />
+    <Compile Include="Migrations\201611012358299_UpdatedInventory.Designer.cs">
+      <DependentUpon>201611012358299_UpdatedInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611020007246_AddedTransaction.cs" />
+    <Compile Include="Migrations\201611020007246_AddedTransaction.Designer.cs">
+      <DependentUpon>201611020007246_AddedTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Domain\Category.cs" />
+    <Compile Include="Models\Domain\Inventory.cs" />
+    <Compile Include="Models\Domain\Product.cs" />
+    <Compile Include="Models\Domain\Stock.cs" />
+    <Compile Include="Models\Domain\Transaction.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\TransactionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.css" />
@@ -722,6 +774,22 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Inventories\Create.cshtml" />
+    <Content Include="Views\Inventories\Delete.cshtml" />
+    <Content Include="Views\Inventories\Details.cshtml" />
+    <Content Include="Views\Inventories\Edit.cshtml" />
+    <Content Include="Views\Inventories\Index.cshtml" />
+    <Content Include="Views\Transactions\Create.cshtml" />
+    <Content Include="Views\Transactions\Delete.cshtml" />
+    <Content Include="Views\Transactions\Details.cshtml" />
+    <Content Include="Views\Transactions\Edit.cshtml" />
+    <Content Include="Views\Transactions\Index.cshtml" />
+    <Content Include="Views\Transactions\TransactionForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -732,6 +800,33 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611012019390_AddedCategory.resx">
       <DependentUpon>201611012019390_AddedCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611012029515_UpdatedCategory.resx">
+      <DependentUpon>201611012029515_UpdatedCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611012138217_AddedIsActiveDefaultValue.resx">
+      <DependentUpon>201611012138217_AddedIsActiveDefaultValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611012148274_AddedIsDeactivated.resx">
+      <DependentUpon>201611012148274_AddedIsDeactivated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611012153159_AddedProduct.resx">
+      <DependentUpon>201611012153159_AddedProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611012158246_UpdateProduct.resx">
+      <DependentUpon>201611012158246_UpdateProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611012325582_AddedIsDeleted.resx">
+      <DependentUpon>201611012325582_AddedIsDeleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611012354096_AddedInventory.resx">
+      <DependentUpon>201611012354096_AddedInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611012358299_UpdatedInventory.resx">
+      <DependentUpon>201611012358299_UpdatedInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611020007246_AddedTransaction.resx">
+      <DependentUpon>201611020007246_AddedTransaction.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

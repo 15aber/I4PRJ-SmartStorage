@@ -11,115 +11,114 @@ using I4PRJ_SmartStorage.Models.Domain;
 
 namespace I4PRJ_SmartStorage.Controllers
 {
-    public class CategoriesController : Controller
+    public class InventoriesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: /Categories/
+        // GET: /Inventories/
         public ActionResult Index()
         {
-            //return View(db.Categories.ToList());
-            return View(db.Categories.Where(c => !c.IsDeleted).ToList());
+            return View(db.Inventories.ToList());
         }
 
-        // GET: /Categories/Details/5
+        // GET: /Inventories/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Inventory inventory = db.Inventories.Find(id);
+            if (inventory == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(inventory);
         }
 
-        // GET: /Categories/Create
+        // GET: /Inventories/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: /Categories/Create
+        // POST: /Inventories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="CategoryId,Name,Updated,ByUser")] Category category)
+        public ActionResult Create([Bind(Include = "InventoryId,Name,LastUpdated,ByUser,Version")] Inventory inventory)
         {
             if (ModelState.IsValid)
             {
-                category.Updated = DateTime.Now;
-                category.ByUser = User.Identity.Name;
-                
-                db.Categories.Add(category);
+                inventory.Updated = DateTime.Now;
+                inventory.ByUser = User.Identity.Name;
+
+                db.Inventories.Add(inventory);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(category);
+            return View(inventory);
         }
 
-        // GET: /Categories/Edit/5
+        // GET: /Inventories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Inventory inventory = db.Inventories.Find(id);
+            if (inventory == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(inventory);
         }
 
-        // POST: /Categories/Edit/5
+        // POST: /Inventories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="CategoryId,Name,Updated,ByUser")] Category category)
+        public ActionResult Edit([Bind(Include = "InventoryId,Name,LastUpdated,ByUser,Version")] Inventory inventory)
         {
             if (ModelState.IsValid)
             {
-                category.Updated = DateTime.Now;
-                category.ByUser = User.Identity.Name;
+                inventory.Updated = DateTime.Now;
+                inventory.ByUser = User.Identity.Name;
 
-                db.Entry(category).State = EntityState.Modified;
+                db.Entry(inventory).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(category);
+            return View(inventory);
         }
 
-        // GET: /Categories/Delete/5
+        // GET: /Inventories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Inventory inventory = db.Inventories.Find(id);
+            if (inventory == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(inventory);
         }
 
-        // POST: /Categories/Delete/5
+        // POST: /Inventories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categories.Find(id);
-            category.IsDeleted = true;
-            //db.Categories.Remove(category);
+            Inventory inventory = db.Inventories.Find(id);
+            inventory.IsDeleted = true;
+            //db.Inventories.Remove(inventory);
 
             db.SaveChanges();
             return RedirectToAction("Index");

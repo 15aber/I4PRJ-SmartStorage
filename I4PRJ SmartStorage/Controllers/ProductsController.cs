@@ -11,115 +11,118 @@ using I4PRJ_SmartStorage.Models.Domain;
 
 namespace I4PRJ_SmartStorage.Controllers
 {
-    public class CategoriesController : Controller
+    public class ProductsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: /Categories/
+        // GET: /Products/
         public ActionResult Index()
         {
-            //return View(db.Categories.ToList());
-            return View(db.Categories.Where(c => !c.IsDeleted).ToList());
+            return View(db.Products.Where(p => !p.IsDeleted).Include(p => p.Category).ToList());
         }
 
-        // GET: /Categories/Details/5
+        // GET: /Products/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(product);
         }
 
-        // GET: /Categories/Create
+        // GET: /Products/Create
         public ActionResult Create()
         {
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name");
             return View();
         }
 
-        // POST: /Categories/Create
+        // POST: /Products/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="CategoryId,Name,Updated,ByUser")] Category category)
+        public ActionResult Create([Bind(Include = "ProductId,Name,Size,PurchasePrice,CategoryId,LastUpdated,ByUser")] Product product)
         {
             if (ModelState.IsValid)
             {
-                category.Updated = DateTime.Now;
-                category.ByUser = User.Identity.Name;
-                
-                db.Categories.Add(category);
+                product.Updated = DateTime.Now;
+                product.ByUser = User.Identity.Name;
+
+                db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(category);
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", product.CategoryId);
+            return View(product);
         }
 
-        // GET: /Categories/Edit/5
+        // GET: /Products/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", product.CategoryId);
+            return View(product);
         }
 
-        // POST: /Categories/Edit/5
+        // POST: /Products/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="CategoryId,Name,Updated,ByUser")] Category category)
+        public ActionResult Edit([Bind(Include = "ProductId,Name,Size,PurchasePrice,CategoryId,LastUpdated,ByUser")] Product product)
         {
             if (ModelState.IsValid)
             {
-                category.Updated = DateTime.Now;
-                category.ByUser = User.Identity.Name;
+                product.Updated = DateTime.Now;
+                product.ByUser = User.Identity.Name;
 
-                db.Entry(category).State = EntityState.Modified;
+                db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(category);
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", product.CategoryId);
+            return View(product);
         }
 
-        // GET: /Categories/Delete/5
+        // GET: /Products/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(product);
         }
 
-        // POST: /Categories/Delete/5
+        // POST: /Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categories.Find(id);
-            category.IsDeleted = true;
-            //db.Categories.Remove(category);
+            Product product = db.Products.Find(id);
+            product.IsDeleted = true;
+            //db.Products.Remove(product);
 
             db.SaveChanges();
             return RedirectToAction("Index");
