@@ -10,107 +10,107 @@ using I4PRJ_SmartStorage.Models;
 
 namespace I4PRJ_SmartStorage.Controllers
 {
-    public class StoragesController : Controller
+    public class InventoriesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: /Storages/
+        // GET: /Inventories/
         public ActionResult Index()
         {
-            return View(db.Storages.ToList());
+            return View(db.Inventories.ToList());
         }
 
-        // GET: /Storages/Details/5
+        // GET: /Inventories/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Storage storage = db.Storages.Find(id);
-            if (storage == null)
+            Inventory inventory = db.Inventories.Find(id);
+            if (inventory == null)
             {
                 return HttpNotFound();
             }
-            return View(storage);
+            return View(inventory);
         }
 
-        // GET: /Storages/Create
+        // GET: /Inventories/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: /Storages/Create
+        // POST: /Inventories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="StorageId,Name")] Storage storage)
+        public ActionResult Create([Bind(Include="InventoryId,Name")] Inventory inventory)
         {
             if (ModelState.IsValid)
             {
-                db.Storages.Add(storage);
+                db.Inventories.Add(inventory);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(storage);
+            return View(inventory);
         }
 
-        // GET: /Storages/Edit/5
+        // GET: /Inventories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Storage storage = db.Storages.Find(id);
-            if (storage == null)
+            Inventory inventory = db.Inventories.Find(id);
+            if (inventory == null)
             {
                 return HttpNotFound();
             }
-            return View(storage);
+            return View(inventory);
         }
 
-        // POST: /Storages/Edit/5
+        // POST: /Inventories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="StorageId,Name")] Storage storage)
+        public ActionResult Edit([Bind(Include="InventoryId,Name")] Inventory inventory)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(storage).State = EntityState.Modified;
+                db.Entry(inventory).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(storage);
+            return View(inventory);
         }
 
-        // GET: /Storages/Delete/5
+        // GET: /Inventories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Storage storage = db.Storages.Find(id);
-            if (storage == null)
+            Inventory inventory = db.Inventories.Find(id);
+            if (inventory == null)
             {
                 return HttpNotFound();
             }
-            return View(storage);
+            return View(inventory);
         }
 
-        // POST: /Storages/Delete/5
+        // POST: /Inventories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Storage storage = db.Storages.Find(id);
-            db.Storages.Remove(storage);
+            Inventory inventory = db.Inventories.Find(id);
+            db.Inventories.Remove(inventory);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

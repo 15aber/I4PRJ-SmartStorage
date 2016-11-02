@@ -5,10 +5,9 @@ using System.Web;
 
 namespace I4PRJ_SmartStorage.Models
 {
-    public class Storage
+    public class Inventory
     {
-        public int StorageId { get; set; }
+        public int InventoryId { get; set; }
         public string Name { get; set; }
-          
     }
 }
