@@ -11,119 +11,116 @@ using I4PRJ_SmartStorage.Models.Domain;
 
 namespace I4PRJ_SmartStorage.Controllers
 {
-    public class ProductsController : Controller
+    public class StocksController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: /Products/
+        // GET: /Stocks/
         public ActionResult Index()
         {
-            return View(db.Products.Where(p => !p.IsDeleted).Include(p => p.Category).ToList());
+            var stocks = db.Stocks.Include(s => s.Inventory).Include(s => s.Product);
+            return View(stocks.ToList());
         }
 
-        // GET: /Products/Details/5
+        // GET: /Stocks/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            Stock stock = db.Stocks.Find(id);
+            if (stock == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(stock);
         }
 
-        // GET: /Products/Create
+        // GET: /Stocks/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name");
+            ViewBag.InventoryId = new SelectList(db.Inventories, "InventoryId", "Name");
+            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name");
             return View();
         }
 
-        // POST: /Products/Create
+        // POST: /Stocks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,Name,PurchasePrice,CategoryId,LastUpdated,ByUser")] Product product)
+        public ActionResult Create([Bind(Include="StockId,InventoryId,ProductId,Quantity")] Stock stock)
         {
             if (ModelState.IsValid)
             {
-                product.Updated = DateTime.Now;
-                product.ByUser = User.Identity.Name;
-
-                db.Products.Add(product);
+                db.Stocks.Add(stock);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", product.CategoryId);
-            return View(product);
+            ViewBag.InventoryId = new SelectList(db.Inventories, "InventoryId", "Name", stock.InventoryId);
+            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name", stock.ProductId);
+            return View(stock);
         }
 
-        // GET: /Products/Edit/5
+        // GET: /Stocks/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            Stock stock = db.Stocks.Find(id);
+            if (stock == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", product.CategoryId);
-            return View(product);
+            ViewBag.InventoryId = new SelectList(db.Inventories, "InventoryId", "Name", stock.InventoryId);
+            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name", stock.ProductId);
+            return View(stock);
         }
 
-        // POST: /Products/Edit/5
+        // POST: /Stocks/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,Name,PurchasePrice,CategoryId,LastUpdated,ByUser")] Product product)
+        public ActionResult Edit([Bind(Include="StockId,InventoryId,ProductId,Quantity")] Stock stock)
         {
             if (ModelState.IsValid)
             {
-                product.Updated = DateTime.Now;
-                product.ByUser = User.Identity.Name;
-
-                db.Entry(product).State = EntityState.Modified;
+                db.Entry(stock).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", product.CategoryId);
-            return View(product);
+            ViewBag.InventoryId = new SelectList(db.Inventories, "InventoryId", "Name", stock.InventoryId);
+            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name", stock.ProductId);
+            return View(stock);
         }
 
-        // GET: /Products/Delete/5
+        // GET: /Stocks/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            Stock stock = db.Stocks.Find(id);
+            if (stock == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(stock);
         }
 
-        // POST: /Products/Delete/5
+        // POST: /Stocks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Products.Find(id);
-            product.IsDeleted = true;
-            //db.Products.Remove(product);
-
+            Stock stock = db.Stocks.Find(id);
+            db.Stocks.Remove(stock);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

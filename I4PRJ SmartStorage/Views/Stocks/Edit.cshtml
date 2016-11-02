@@ -1,4 +1,4 @@
-﻿@model I4PRJ_SmartStorage.Models.Domain.Product
+﻿@model I4PRJ_SmartStorage.Models.Domain.Stock
 
 @{
     ViewBag.Title = "Edit";
@@ -31,7 +31,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Edit Product</h5>
+                    <h5>Edit Stock</h5>
                 </div>
                 <div class="ibox-content">
 
@@ -42,29 +42,29 @@
     <div class="form-horizontal">
 
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.ProductId)
+        @Html.HiddenFor(model => model.StockId)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.InventoryId, "InventoryId", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name)
-                @Html.ValidationMessageFor(model => model.Name)
+                @Html.DropDownList("InventoryId", String.Empty)
+                @Html.ValidationMessageFor(model => model.InventoryId)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PurchasePrice, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ProductId, "ProductId", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PurchasePrice)
-                @Html.ValidationMessageFor(model => model.PurchasePrice)
+                @Html.DropDownList("ProductId", String.Empty)
+                @Html.ValidationMessageFor(model => model.ProductId)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CategoryId, "CategoryId", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Quantity, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("CategoryId", String.Empty)
-                @Html.ValidationMessageFor(model => model.CategoryId)
+                @Html.EditorFor(model => model.Quantity)
+                @Html.ValidationMessageFor(model => model.Quantity)
             </div>
         </div>
 

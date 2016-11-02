@@ -15,12 +15,12 @@ namespace I4PRJ_SmartStorage.Models.Domain
         [Required]
         [DisplayName("Product")]
         public string Name { get; set; }
-
+        /*
         [Required]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         [Range(0, Double.MaxValue)]
         public double Size { get; set; }
-
+        */
         [DisplayName("Purchase Price")]
         [DataType(DataType.Currency)]
         [Range(0, Double.MaxValue)]

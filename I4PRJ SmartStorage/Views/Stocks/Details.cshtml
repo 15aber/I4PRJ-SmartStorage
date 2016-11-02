@@ -1,4 +1,4 @@
-﻿@model I4PRJ_SmartStorage.Models.Domain.Product
+﻿@model I4PRJ_SmartStorage.Models.Domain.Stock
 
 @{
     ViewBag.Title = "Details";
@@ -26,55 +26,40 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Details Product</h5>
+                    <h5>Details Stock</h5>
                 </div>
                 <div class="ibox-content">
 
 
 				    <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Category.Name)
+            @Html.DisplayNameFor(model => model.Inventory.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Category.Name)
+            @Html.DisplayFor(model => model.Inventory.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Product.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Product.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PurchasePrice)
+            @Html.DisplayNameFor(model => model.Quantity)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PurchasePrice)
+            @Html.DisplayFor(model => model.Quantity)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Updated)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Updated)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ByUser)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ByUser)
-        </dd>
     </dl>
 
 
-	    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }, new { @class = "btn btn-primary"})
+	    @Html.ActionLink("Edit", "Edit", new { id = Model.StockId }, new { @class = "btn btn-primary"})
     @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-white"})
 
                 </div>

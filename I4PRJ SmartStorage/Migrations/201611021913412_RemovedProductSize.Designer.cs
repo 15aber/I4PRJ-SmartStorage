@@ -7,13 +7,13 @@ namespace I4PRJ_SmartStorage.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddedIsDeactivated : IMigrationMetadata
+    public sealed partial class RemovedProductSize : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedIsDeactivated));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RemovedProductSize));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611012148274_AddedIsDeactivated"; }
+            get { return "201611021913412_RemovedProductSize"; }
         }
         
         string IMigrationMetadata.Source

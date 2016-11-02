@@ -1,4 +1,4 @@
-﻿@model I4PRJ_SmartStorage.Models.Domain.Product
+﻿@model I4PRJ_SmartStorage.Models.Domain.Stock
 
 @{
     ViewBag.Title = "Delete";
@@ -29,50 +29,35 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Product</h5>
+                    <h5>Stock</h5>
                 </div>
                 <div class="ibox-content">
 				<h4 class="text-danger">Are you sure you want to delete this?</h4>
 				 <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Category.Name)
+            @Html.DisplayNameFor(model => model.Inventory.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Category.Name)
+            @Html.DisplayFor(model => model.Inventory.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Product.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Product.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PurchasePrice)
+            @Html.DisplayNameFor(model => model.Quantity)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PurchasePrice)
+            @Html.DisplayFor(model => model.Quantity)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Updated)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Updated)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ByUser)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ByUser)
-        </dd>
     </dl>
 
     @using (Html.BeginForm()) {
