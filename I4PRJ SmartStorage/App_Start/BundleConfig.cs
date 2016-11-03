@@ -7,12 +7,14 @@ namespace I4PRJ_SmartStorage
     public static void RegisterBundles(BundleCollection bundles)
     {
       bundles.Add(new StyleBundle("~/Content/css").Include(
-          "~/Content/bootstrap.min.css",
+
           "~/Content/animate.min.css",
-          "~/Content/style.css",
           "~/Content/font-awesome.min.css",
           "~/Content/bootstrap-social.css",
-          "~/Content/iCheck/iCheck.css"
+          "~/Content/iCheck/iCheck.css",
+          "~/Content/bootstrap.min.css",
+          "~/Content/style.css"
+
       ));
 
       bundles.Add(new ScriptBundle("~/bundles/script").Include(
@@ -54,7 +56,7 @@ namespace I4PRJ_SmartStorage
       ));
 
       bundles.Add(new StyleBundle("~/Content/wizardSteps").Include(
-          "~/Content/wizardSteps/jquery.steps.css"
+           "~/Content/wizardSteps/jquery.steps.css"
       ));
 
       bundles.Add(new ScriptBundle("~/bundles/wizardSteps").Include(
