@@ -208,13 +208,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611021905201_InitialModel.cs" />
-    <Compile Include="Migrations\201611021905201_InitialModel.Designer.cs">
-      <DependentUpon>201611021905201_InitialModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611021913412_RemovedProductSize.cs" />
-    <Compile Include="Migrations\201611021913412_RemovedProductSize.Designer.cs">
-      <DependentUpon>201611021913412_RemovedProductSize.cs</DependentUpon>
+    <Compile Include="Migrations\201611030852153_InitialModel.cs" />
+    <Compile Include="Migrations\201611030852153_InitialModel.Designer.cs">
+      <DependentUpon>201611030852153_InitialModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -772,11 +768,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611021905201_InitialModel.resx">
-      <DependentUpon>201611021905201_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611021913412_RemovedProductSize.resx">
-      <DependentUpon>201611021913412_RemovedProductSize.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611030852153_InitialModel.resx">
+      <DependentUpon>201611030852153_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
