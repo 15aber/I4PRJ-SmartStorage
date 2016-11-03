@@ -48,7 +48,7 @@ namespace I4PRJ_SmartStorage.Helpers
     {
       using (ApplicationDbContext db = new ApplicationDbContext())
       {
-        return db.Categories.ToList();
+        return db.Categories.Where(i => i.IsActiv == true).ToList();
       }
     }
   }

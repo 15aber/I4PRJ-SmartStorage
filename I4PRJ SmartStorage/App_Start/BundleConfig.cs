@@ -11,7 +11,8 @@ namespace I4PRJ_SmartStorage
           "~/Content/animate.min.css",
           "~/Content/style.css",
           "~/Content/font-awesome.min.css",
-          "~/Content/bootstrap-social.css"
+          "~/Content/bootstrap-social.css",
+          "~/Content/iCheck/iCheck.css"
       ));
 
       bundles.Add(new ScriptBundle("~/bundles/script").Include(
@@ -20,7 +21,8 @@ namespace I4PRJ_SmartStorage
           "~/Scripts/modernizr-2.9.3.js",
           "~/Scripts/jquery.slimscroll.min.js",
           "~/Scripts/metisMenu.min.js",
-          "~/Scripts/inspinia.js"
+          "~/Scripts/inspinia.js",
+          "~/Scripts/iCheck.min.js"
       ));
 
       bundles.Add(new ScriptBundle("~/bundles/validate").Include(
