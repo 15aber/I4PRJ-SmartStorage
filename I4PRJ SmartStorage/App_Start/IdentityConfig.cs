@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
 using System.Net.Mail;
@@ -10,6 +11,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
+using Sms.ApiClient.V2;
+using Sms.ApiClient.V2.SendMessages;
 
 namespace I4PRJ_SmartStorage
 {
@@ -45,10 +48,30 @@ namespace I4PRJ_SmartStorage
 
   public class SmsService : IIdentityMessageService
   {
-    public Task SendAsync(IdentityMessage message)
+    public async Task SendAsync(IdentityMessage message)
     {
-      // Plug in your SMS service here to send a text message.
-      return Task.FromResult(0);
+      await SendViaInMobile(message);
+    }
+
+    private Task SendViaInMobile(IdentityMessage message)
+    {
+      var smsClient = new FacadeSmsClient(
+            hostRootUrl: ConfigurationManager.AppSettings["SmsHost"],
+            apiKey: ConfigurationManager.AppSettings["SmsApi"]);
+
+      var smsMessagesToSend = new List<ISmsMessage>();
+      var smsMessage = new SmsMessage(
+                  msisdn: "45" + message.Destination,
+                  text: message.Body,
+                  senderName: ConfigurationManager.AppSettings["SmsFrom"],
+                  encoding: SmsEncoding.Gsm7);
+      smsMessagesToSend.Add(smsMessage);
+
+      smsClient.SendMessages(
+                        messages: smsMessagesToSend,
+                        messageStatusCallbackUrl: "http://mywebsite.com/example/messagestatus");
+
+      return Task.CompletedTask;
     }
   }
 

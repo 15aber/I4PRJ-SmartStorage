@@ -40,7 +40,7 @@
                         @Model.Logins.Count [
                         @Html.ActionLink("Manage", "ManageLogins") ]
                     </section>
-                    @*
+                    
                         <dt>Phone Number:</dt>
                         <dd>
                             @(Model.PhoneNumber ?? "None")
@@ -56,10 +56,10 @@
                             }
                             else
                             {
-                                <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
-                            }
+                                <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")</text>
+}
                         </dd>
-                    *@
+                    
                     @*
                                                                     <dt>Two-Factor Authentication:</dt>
                                                 <dd>
