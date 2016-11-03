@@ -38,12 +38,11 @@ namespace I4PRJ_SmartStorage.Controllers
     // GET: /Products/Create
     public ActionResult Create()
     {
-      var ActivCategoriesInDb = db.Categories.Where(c => c.IsActiv == true).ToList();
 
       var viewModel = new ProductViewModel
       {
         Product = new Product(),
-        Categories = ActivCategoriesInDb
+        Categories = db.Categories.Where(c => c.IsActiv == true).ToList()
       };
 
       return View("Create", viewModel);

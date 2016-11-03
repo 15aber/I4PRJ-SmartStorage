@@ -65,6 +65,9 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Sms.ApiClient">
+      <HintPath>..\..\Libarys\Sms.ApiClient.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -230,6 +233,10 @@
     <Compile Include="Migrations\201611020728143_CategoryIsActivAdded.Designer.cs">
       <DependentUpon>201611020728143_CategoryIsActivAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611030956413_UserUpdate.cs" />
+    <Compile Include="Migrations\201611030956413_UserUpdate.Designer.cs">
+      <DependentUpon>201611030956413_UserUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -254,6 +261,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\iCheck\green%402x.png" />
+    <Content Include="Content\iCheck\green.png" />
+    <Content Include="Content\iCheck\iCheck.css" />
     <Content Include="Content\dataTables\autoFill.dataTables.css" />
     <Content Include="Content\dataTables\autoFill.dataTables.min.css" />
     <Content Include="Content\dataTables\buttons.dataTables.css" />
@@ -335,6 +345,7 @@
     <Content Include="Scripts\dataTables\pdfmake.js" />
     <Content Include="Scripts\dataTables\pdfmake.min.js" />
     <Content Include="Scripts\dataTables\vfs_fonts.js" />
+    <Content Include="Scripts\iCheck\icheck.min.js" />
     <Content Include="Scripts\inspinia.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -406,10 +417,10 @@
     <Content Include="Views\Stocks\Index.cshtml" />
     <Content Include="Views\Transactions\TransactionsForm.cshtml" />
     <Content Include="Views\Transactions\Index.cshtml" />
+    <Content Include="Views\Categories\CategoriesForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Navigation\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -435,6 +446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611020728143_CategoryIsActivAdded.resx">
       <DependentUpon>201611020728143_CategoryIsActivAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611030956413_UserUpdate.resx">
+      <DependentUpon>201611030956413_UserUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

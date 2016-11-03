@@ -34,7 +34,7 @@
         else
         {
           <div class="dropdown profile-element">
-            <strong class="font-bold">SmartStorage</strong>
+            <i class="fa fa-cubes" aria-hidden="true"></i>
           </div>
         }
         <div class="logo-element">
@@ -53,13 +53,13 @@
         <a href="@Url.Action("Index", "Products")"><i class="fa fa-barcode"></i> <span class="nav-label">Products</span> <span class="fa arrow"></span></a>
         <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Products", cssClass: "in")">
           @{
-            List<Category> categories = I4PRJ_SmartStorage.Helpers.HMTLHelperExtensions.GetCategories();
+            IEnumerable<Category> categories = HMTLHelperExtensions.GetCategories();
 
             foreach (var item in categories)
             {
               <li class="@( Convert.ToInt32(Url.RequestContext.RouteData.Values["id"]) == item.CategoryId && Url.RequestContext.RouteData.Values["controller"].ToString() == "Products" ? "active" : "" )">
                 <a href="@Url.Action("Categories", "Products", new {id = item.CategoryId})">
-                  <i class="fa fa-barcode"></i> <span class="nav-label">@item.Name</span>
+                  <span class="nav-label">@item.Name</span>
                 </a>
               </li>
             }
@@ -83,13 +83,13 @@
         <a href="@Url.Action("Index", "Stocks")"><i class="fa fa-table"></i> <span class="nav-label">Stocks</span> <span class="fa arrow"></span></a>
         <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Stocks", cssClass: "in")">
           @{
-            List<Inventory> inventories = I4PRJ_SmartStorage.Helpers.HMTLHelperExtensions.GetInventories();
+            IEnumerable<Inventory> inventories = HMTLHelperExtensions.GetInventories();
 
             foreach (var item in inventories)
             {
               <li class="@( Convert.ToInt32(Url.RequestContext.RouteData.Values["id"]) == item.InventoryId && Url.RequestContext.RouteData.Values["controller"].ToString() == "Stocks" ? "active" : "" )">
                 <a href="@Url.Action("Inventories", "Stocks", new {id = item.InventoryId})">
-                  <i class="fa fa-table"></i> <span class="nav-label">@item.Name</span>
+                  <span class="nav-label">@item.Name</span>
                 </a>
               </li>
             }
