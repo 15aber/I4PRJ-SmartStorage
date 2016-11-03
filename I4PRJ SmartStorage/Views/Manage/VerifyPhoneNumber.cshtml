@@ -1,31 +1,99 @@
 ﻿@model I4PRJ_SmartStorage.Models.VerifyPhoneNumberViewModel
 @{
-    ViewBag.Title = "Verify Phone Number";
+  ViewBag.Title = "Verify Phone Number";
+  Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="ibox">
+        <div class="ibox-title">
+          <h5>Verify Phone Number</h5>
+        </div>
+        <div class="ibox-content">
 
-@using (Html.BeginForm("VerifyPhoneNumber", "Manage", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
-{
-    @Html.AntiForgeryToken()
-    @Html.Hidden("phoneNumber", @Model.PhoneNumber)
-    <h4>Enter verification code</h4>
-    <h5>@ViewBag.Status</h5>
-    <hr/>
-    @Html.ValidationSummary("", new {@class = "text-danger"})
-    <div class="form-group">
-        @Html.LabelFor(m => m.Code, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Code, new {@class = "form-control"})
-        </div>
+          @using (Html.BeginForm("VerifyPhoneNumber", "Manage", FormMethod.Post, new { @class = "wizard-big", role = "form", id = "form", action = "#" }))
+          {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            @Html.Hidden("phoneNumber", @Model.PhoneNumber)
+
+            <h3>Account</h3>
+            <fieldset></fieldset>
+            <h3>Profile</h3>
+            <fieldset></fieldset>
+            <h3>Contact</h3>
+            <fieldset></fieldset>
+              <h3>Verify</h3>
+              <fieldset>
+                <h2>Verify Information</h2>
+                <div class="row">
+                  <div class="col-lg-8">
+                    <div class="form-group">
+                      @Html.LabelFor(m => m.Code, new { @class = "control-label" })
+                      @Html.TextBoxFor(m => m.Code, new { @class = "form-control" })
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="text-center">
+                      <div style="margin-top: 20px">
+                        <i class="fa fa-mobile" style="font-size: 180px; color: #e5e5e5"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              }
+</div>
+      </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Submit"/>
-        </div>
-    </div>
+  </div>
+</div>
+
+@section Styles {
+  @Styles.Render("~/Content/wizardSteps")
 }
 
 @section Scripts {
-    @Scripts.Render("~/bundles/validate")
+  @Scripts.Render("~/bundles/validate")
+  @Scripts.Render("~/bundles/wizardSteps")
+
+
+  <script type="text/javascript">
+    $("#form")
+          .steps({
+            headerTag: "h3",
+            bodyTag: "fieldset",
+            autoFocus: true,
+            startIndex: 3,
+            enablePagination: false,
+            onStepChanging: function (event, currentIndex, newIndex) {
+              if (currentIndex > newIndex) {
+                return true;
+              }
+
+              var form = $(this);
+
+              if (currentIndex < newIndex) {
+                $(".body:eq(" + newIndex + ") label.error", form).remove();
+                $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
+              }
+
+              return form.valid();
+
+            },
+            onFinishing: function (event, currentIndex) {
+              var form = $(this);
+
+              return form.valid();
+            },
+            onFinished: function (event, currentIndex) {
+              var form = $(this);
+
+              form.submit();
+            }
+          });
+
+  </script>
 }
