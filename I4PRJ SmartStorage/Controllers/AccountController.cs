@@ -164,7 +164,7 @@ namespace I4PRJ_SmartStorage.Controllers
           var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
           await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-          return RedirectToAction("Index", "Home");
+          return RedirectToAction("VerifyPhoneNumber", "Manage", new { PhoneNumber = model.PhoneNumber });
         }
         AddErrors(result);
       }
@@ -172,6 +172,8 @@ namespace I4PRJ_SmartStorage.Controllers
       // If we got this far, something failed, redisplay form
       return View(model);
     }
+
+
 
     //
     // GET: /Account/ConfirmEmail
@@ -414,7 +416,8 @@ namespace I4PRJ_SmartStorage.Controllers
           if (result.Succeeded)
           {
             await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-            return RedirectToLocal(returnUrl);
+            return RedirectToAction("VerifyPhoneNumber", "Manage", new { PhoneNumber = model.PhoneNumber });
+            //return RedirectToLocal(returnUrl);
           }
         }
         AddErrors(result);
