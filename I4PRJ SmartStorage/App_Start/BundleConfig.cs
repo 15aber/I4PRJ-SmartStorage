@@ -52,6 +52,14 @@ namespace I4PRJ_SmartStorage
           "~/Scripts/dataTables/vfs_fonts.js",
           "~/Scripts/datatables.script.js"
       ));
+
+      bundles.Add(new StyleBundle("~/Content/wizardSteps").Include(
+          "~/Content/wizardSteps/jquery.steps.css"
+      ));
+
+      bundles.Add(new ScriptBundle("~/bundles/wizardSteps").Include(
+          "~/Scripts/wizardSteps/jquery.steps.min.js"
+      ));
     }
   }
 }

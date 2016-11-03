@@ -1,78 +1,135 @@
 ﻿@using I4PRJ_SmartStorage.Models
 @model I4PRJ_SmartStorage.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Register";
+  ViewBag.Title = "RegisterWizard";
+  Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="middle-box text-center loginscreen  animated fadeInDown">
-    <div>
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel {ReturnUrl = ViewBag.ReturnUrl})
-        </section>
-        <hr/>
-        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
-        {
-            @Html.AntiForgeryToken()
-            <h4>Create a new account.</h4>
-            <hr/>
-            @Html.ValidationSummary("", new {@class = "text-danger"})
-          <div class="form-group">
-            @Html.LabelFor(m => m.Username, new {@class = "col-md-3 control-label"})
-            <div class="col-md-9">
-              @Html.TextBoxFor(m => m.Username, new {@class = "form-control"})
-            </div>
-          </div>
-          <div class="form-group">
-            @Html.LabelFor(m => m.Email, new { @class = "col-md-3 control-label" })
-            <div class="col-md-9">
-              @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-            </div>
-          </div>
-          <div class="form-group">
-            @Html.LabelFor(m => m.Firstname, new { @class = "col-md-3 control-label" })
-            <div class="col-md-9">
-              @Html.TextBoxFor(m => m.Firstname, new { @class = "form-control" })
-            </div>
-          </div>
-          <div class="form-group">
-            @Html.LabelFor(m => m.Middlename, new { @class = "col-md-3 control-label" })
-            <div class="col-md-9">
-              @Html.TextBoxFor(m => m.Middlename, new { @class = "form-control" })
-            </div>
-          </div>
-          <div class="form-group">
-            @Html.LabelFor(m => m.Lastname, new { @class = "col-md-3 control-label" })
-            <div class="col-md-9">
-              @Html.TextBoxFor(m => m.Lastname, new { @class = "form-control" })
-            </div>
-          </div>
-          <div class="form-group">
-            @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-3 control-label" })
-            <div class="col-md-9">
-              @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
-            </div>
-          </div>
+<h2>RegisterWizard</h2>
 
-            <div class="form-group">
-                @Html.LabelFor(m => m.Password, new {@class = "col-md-3 control-label"})
-                <div class="col-md-9">
-                    @Html.PasswordFor(m => m.Password, new {@class = "form-control"})
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox">
+        <div class="ibox-title">
+          <h5>Create a new account</h5>
+        </div>
+        <div class="ibox-content">
+          <div id="wizard">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "wizard-big", role = "form", id = "form", action = "#" }))
+            {
+              @Html.ValidationSummary("", new { @class = "text-danger" })
+              @Html.AntiForgeryToken()
+              
+              <h2>Account</h2>
+              <fieldset>
+                <h4>Account Information</h4>
+                <div class="form-group">
+                  @Html.LabelFor(m => m.Username, new { @class = "col-md-3 control-label" })
+                  @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                  @Html.ValidationMessageFor(model => model.Username)
                 </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.ConfirmPassword, new {@class = "col-md-3 control-label"})
-                <div class="col-md-9">
-                    @Html.PasswordFor(m => m.ConfirmPassword, new {@class = "form-control"})
+                <div class="form-group">
+                  @Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label" })
+                  @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                  @Html.ValidationMessageFor(model => model.Password)
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-8">
-                    <input type="submit" class="btn btn-primary" value="Register"/>
+                <div class="form-group">
+                  @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-3 control-label" })
+                  @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                  @Html.ValidationMessageFor(model => model.ConfirmPassword)
                 </div>
-            </div>
-        }
+              </fieldset>
+
+              <h2>Profile</h2>
+                <fieldset>
+                  <h4>Profile Information</h4>
+                  <div class="form-group">
+                    @Html.LabelFor(m => m.Firstname, new { @class = "col-md-3 control-label" })
+                    @Html.TextBoxFor(m => m.Firstname, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Firstname)
+                  </div>
+                  <div class="form-group">
+                    @Html.LabelFor(m => m.Middlename, new { @class = "col-md-3 control-label" })
+                    @Html.TextBoxFor(m => m.Middlename, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Middlename)
+                  </div>
+                  <div class="form-group">
+                    @Html.LabelFor(m => m.Lastname, new { @class = "col-md-3 control-label" })
+                    @Html.TextBoxFor(m => m.Lastname, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Lastname)
+                  </div>
+                </fieldset>
+
+                <h2>Contact</h2>
+                <fieldset>
+                  <h4>Contact Information</h4>
+                  <div class="form-group">
+                    @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-3 control-label" })
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber)
+                  </div>
+                  <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-3 control-label" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Email)
+                  </div>
+                </fieldset>
+
+                <h2>Finish</h2>
+                <fieldset>
+                  <h4>ToDo</h4>
+
+                </fieldset>
+            }
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
+
+@section Styles {
+  @Styles.Render("~/Content/wizardSteps")
+}
+
 @section Scripts {
-    @Scripts.Render("~/bundles/validate")
+  @Scripts.Render("~/bundles/validate")
+  @Scripts.Render("~/bundles/wizardSteps")
+
+
+  <script type="text/javascript">
+    $("#form")
+          .steps({
+            headerTag: "h2",
+            bodyTag: "fieldset",
+            autoFocus: true,
+            onStepChanging: function (event, currentIndex, newIndex) {
+              if (currentIndex > newIndex) {
+                return true;
+              }
+
+              var form = $(this);
+
+              if (currentIndex < newIndex) {
+                $(".body:eq(" + newIndex + ") label.error", form).remove();
+                $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
+              }
+
+              return form.valid();
+
+            },
+            onFinishing: function (event, currentIndex) {
+              var form = $(this);
+
+              return form.valid();
+            },
+            onFinished: function (event, currentIndex) {
+              var form = $(this);
+
+              form.submit();
+            }
+          });
+
+  </script>
 }
