@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
@@ -14,35 +15,31 @@ namespace I4PRJ_SmartStorage
 {
   public class EmailService : IIdentityMessageService
   {
-    public Task SendAsync(IdentityMessage message)
+    public async Task SendAsync(IdentityMessage message)
+    {
+      await SendViaSmtp(message);
+    }
+
+    private async Task SendViaSmtp(IdentityMessage message)
     {
       var emailMessage = new MailMessage();
-      emailMessage.To.Add(message.Destination);
-      emailMessage.From = new MailAddress("no-reply@smartstorage.dk", "SmartStorage");
+      emailMessage.To.Add(new MailAddress(message.Destination));
+      emailMessage.From = new MailAddress(ConfigurationManager.AppSettings["SmtpFrom"]);
       emailMessage.Subject = message.Subject;
       emailMessage.Body = message.Body;
-      //emailMessage.BodyEncoding = Encoding.UTF8;
-      //emailMessage.SubjectEncoding = Encoding.UTF8;
-      //emailMessage.HeadersEncoding = Encoding.UTF8;
-      //emailMessage.IsBodyHtml = true;
+      emailMessage.IsBodyHtml = true;
 
-      using (var smtp = new SmtpClient())
+      using (var smtpClient = new SmtpClient())
       {
-        var credential = new NetworkCredential
-        {
-          UserName = "no-reply@smartstorage.dk",
-          Password = @"q.ybh625JWf1"
-        };
+        smtpClient.UseDefaultCredentials = false;
+        smtpClient.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["SmtpUserName"],
+        ConfigurationManager.AppSettings["SmtpPassword"]);
+        smtpClient.Host = ConfigurationManager.AppSettings["SmtpHost"];
+        smtpClient.Port = Convert.ToInt32(ConfigurationManager.AppSettings["SmtpPort"]);
+        smtpClient.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["SmtpEnableSsl"]);
 
-        smtp.Credentials = credential;
-        smtp.Host = "server6.chosting.dk";
-        smtp.Port = 465;
-        smtp.EnableSsl = true;
-
-        smtp.Send(emailMessage);
-
+        await smtpClient.SendMailAsync(emailMessage);
       }
-      return Task.FromResult(0);
     }
   }
 
