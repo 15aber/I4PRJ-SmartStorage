@@ -8,8 +8,6 @@ $.validator.methods.number = function (value, element) {
 }
 
 $.validator.setDefaults({
-  errorClass: "has-error",
-  validClass: "has-success",
   highlight: function (element) {
     jQuery(element).closest('.form-group').addClass('has-error').removeClass('has-success');
   },

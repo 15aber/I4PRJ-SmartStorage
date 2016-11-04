@@ -7,30 +7,28 @@ namespace I4PRJ_SmartStorage
     public static void RegisterBundles(BundleCollection bundles)
     {
       bundles.Add(new StyleBundle("~/Content/css").Include(
-
-          "~/Content/animate.min.css",
+          "~/Content/bootstrap.min.css",
           "~/Content/font-awesome.min.css",
           "~/Content/bootstrap-social.css",
-          "~/Content/iCheck/iCheck.css",
-          "~/Content/bootstrap.min.css",
+          "~/Content/animate.min.css",
           "~/Content/style.css"
 
       ));
 
       bundles.Add(new ScriptBundle("~/bundles/script").Include(
-          "~/Scripts/jquery-3.1.1.min.js",
-          "~/Scripts/bootstrap.min.js",
-          "~/Scripts/modernizr-2.9.3.js",
-          "~/Scripts/jquery.slimscroll.min.js",
-          "~/Scripts/metisMenu.min.js",
-          "~/Scripts/inspinia.js",
-          "~/Scripts/iCheck.min.js"
+          "~/Scripts/modernizr/modernizr-2.9.3.js",
+          "~/Scripts/jquery/jquery-3.1.1.min.js",
+          "~/Scripts/bootstrap/bootstrap.min.js",
+          "~/Scripts/respond/respond.min.js",
+          "~/Scripts/slimScroll/jquery.slimscroll.min.js",
+          "~/Scripts/mentisMenu/metisMenu.min.js",
+          "~/Scripts/inspinia/inspinia.js"
       ));
 
       bundles.Add(new ScriptBundle("~/bundles/validate").Include(
-          "~/Scripts/jquery.validate.min.js",
-          "~/Scripts/jquery.validate.unobtrusive.min.js",
-          "~/Scripts/jquery.validate.fix.js"
+          "~/Scripts/jqValidate/jquery.validate.min.js",
+          "~/Scripts/jqValidate/jquery.validate.unobtrusive.min.js",
+          "~/Scripts/site/jquery.validate.fix.js"
           ));
 
       bundles.Add(new StyleBundle("~/Content/datatables").Include(
@@ -49,10 +47,10 @@ namespace I4PRJ_SmartStorage
           "~/Scripts/dataTables/dataTables.reponsice.min.js",
           "~/Scripts/dataTables/dataTables.select.min.js",
           "~/Scripts/dataTables/datatables.min.js",
-          "~/Scripts/dataTables/jszip.min.js",
-          "~/Scripts/dataTables/pdfmake.min.js",
-          "~/Scripts/dataTables/vfs_fonts.js",
-          "~/Scripts/datatables.script.js"
+          "~/Scripts/jszip/jszip.min.js",
+          "~/Scripts/pdfmake/pdfmake.min.js",
+          "~/Scripts/pdfmake/vfs_fonts.js",
+          "~/Scripts/site/datatables.init.js"
       ));
 
       bundles.Add(new StyleBundle("~/Content/wizardSteps").Include(
