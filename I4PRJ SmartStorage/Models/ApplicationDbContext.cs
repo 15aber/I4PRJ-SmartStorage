@@ -18,5 +18,7 @@ namespace I4PRJ_SmartStorage.Models
         }
 
         public System.Data.Entity.DbSet<I4PRJ_SmartStorage.Models.Inventory> Inventories { get; set; }
+
+        public System.Data.Entity.DbSet<I4PRJ_SmartStorage.Models.Supplier> Suppliers { get; set; }
     }
 }
