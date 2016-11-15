@@ -26,5 +26,7 @@ namespace I4PRJ_SmartStorage.Models
         public System.Data.Entity.DbSet<I4PRJ_SmartStorage.Models.Domain.Transaction> Transactions { get; set; }
 
         public System.Data.Entity.DbSet<I4PRJ_SmartStorage.Models.Domain.Stock> Stocks { get; set; }
+
+        public System.Data.Entity.DbSet<I4PRJ_SmartStorage.Models.Domain.Status> Status { get; set; }
     }
 }
