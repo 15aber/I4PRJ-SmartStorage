@@ -15,25 +15,37 @@ namespace I4PRJ_SmartStorage.Controllers
 
         public ActionResult Index()
         {
-            var transactions =
-                db.Transactions.Include(t => t.Product).Include(t => t.FromInventory).Include(t => t.ToInventory);
-            return View(transactions.ToList());
-        }
-
-        public ActionResult New()
-        {
-            var inventoriesInDb = db.Inventories.ToList();
-            var productsInDb = db.Products.ToList();
-
             var viewModel = new TransactionViewModel
             {
-                Transaction = new Transaction(),
-                FromInventory = inventoriesInDb,
-                ToInventory = inventoriesInDb,
-                Product = productsInDb
+                TransactionList =
+                    db.Transactions.Include(t => t.Product)
+                        .Include(t => t.FromInventory)
+                        .Include(t => t.ToInventory)
+                        .ToList()
             };
 
-            return View("TransactionForm", viewModel);
+            return View(viewModel);
+        }
+
+
+        public ActionResult New(TransactionViewModel viewModel)
+        {
+            if (viewModel.IsChecked)
+            {
+                viewModel.Transaction = new Transaction();
+                viewModel.ToInventory = db.Inventories.ToList();
+                viewModel.Product = db.Products.ToList();
+                return View("TransactionForm", viewModel);
+            }
+            else
+            {
+                viewModel.Transaction = new Transaction();
+                viewModel.FromInventory = db.Inventories.ToList();
+                viewModel.ToInventory = db.Inventories.ToList();
+                viewModel.Product = db.Products.ToList();
+
+                return View("TransactionForm", viewModel);
+            }
         }
 
         [HttpPost]

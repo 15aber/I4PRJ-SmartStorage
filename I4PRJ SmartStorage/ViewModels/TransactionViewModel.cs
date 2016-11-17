@@ -17,5 +17,10 @@ namespace I4PRJ_SmartStorage.ViewModels
         public List<Product> Product { get; set; }
 
         public Transaction Transaction { get; set; }
+
+        [Range(typeof(bool), "true", "true", ErrorMessage = "You gotta tick the box!")]
+        public bool IsChecked { get; set; }
+
+        public List<Transaction> TransactionList { get; set; }
     }
 }

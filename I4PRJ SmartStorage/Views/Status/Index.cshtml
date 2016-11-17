@@ -1,4 +1,5 @@
-﻿@model I4PRJ_SmartStorage.ViewModels.StatusViewModel
+﻿@using System.Web.UI.WebControls
+@model I4PRJ_SmartStorage.ViewModels.StatusViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -39,7 +40,7 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Begin", "BeginStatus", new { id = item.InventoryId }, new { @class = "btn btn-primary btn" })
+            @Html.ActionLink("Begin", "BeginStatus", new {id = item.InventoryId}, new {@class = "btn btn-primary pull-right"})
         </td>
     </tr>
 }

@@ -16,6 +16,12 @@ namespace I4PRJ_SmartStorage.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        public ActionResult Index()
+        {
+            var products = db.Products.Include(p => p.Category);
+            return View(products.ToList());
+        }
+
         // GET: /Products/
         public ActionResult Categories(int? id)
         {

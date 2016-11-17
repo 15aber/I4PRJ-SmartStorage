@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
+using I4PRJ_SmartStorage.ViewModels;
 
 namespace I4PRJ_SmartStorage.Controllers
 {
@@ -29,6 +30,31 @@ namespace I4PRJ_SmartStorage.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Inventories(int id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var stocks = db.Stocks.Include(s => s.Inventory).Include(s => s.Product).Where(s => s.InventoryId == id);
+
+            if (stocks == null)
+                return HttpNotFound();
+
+            return View("Index", stocks.ToList());
+        }
+
+        // GET: /Stocks/Restock
+        public ActionResult Restock()
+        {
+            var viewModel = new ProductViewModel
+            {
+                Product = new Product(),
+                Categories = db.Categories.Where(c => c.IsDeleted == false).ToList(),
+            };
+
+            return View("Restock", viewModel);
         }
     }
 }

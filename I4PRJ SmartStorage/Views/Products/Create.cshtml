@@ -58,13 +58,14 @@
 		</div>
 
 		<div class="form-group">
-			@Html.LabelFor(model => model.Product.CategoryId, "Category", new { @class = "control-label col-md-2" })
+			@Html.LabelFor(model => model.Product.CategoryId, "CategoryId", new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.DropDownList("CategoryId", String.Empty)
+				@Html.DropDownListFor(model => model.Product.CategoryId, new SelectList(Model.Categories, "CategoryId", "Name"), "", new { @class = "form-control" })
+
 				@Html.ValidationMessageFor(model => model.Product.CategoryId)
 			</div>
 		</div>
-
+		
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">
 				<input type="submit" value="Create" class="btn btn-primary" />
