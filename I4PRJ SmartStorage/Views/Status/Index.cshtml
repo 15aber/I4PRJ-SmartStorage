@@ -40,7 +40,8 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Begin", "BeginStatus", new {id = item.InventoryId}, new {@class = "btn btn-primary pull-right"})
+            @Html.ActionLink("Start", "StartStatus", new {id = item.InventoryId}, new {@class = "btn btn-primary pull-right"})
+            @Html.ActionLink("Finish", "FinishStatus", new { id = item.InventoryId }, new { @class = "btn btn-primary pull-right" })
         </td>
     </tr>
 }

@@ -33,6 +33,6 @@ namespace I4PRJ_SmartStorage.Models.Domain
         [Editable(false)]
         public DateTime DateTime { get; set; }
 
-        public bool IsFinished { get; set; }
+        public bool IsStarted { get; set; }
     }
 }

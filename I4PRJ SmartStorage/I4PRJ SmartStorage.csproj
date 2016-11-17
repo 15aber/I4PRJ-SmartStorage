@@ -209,13 +209,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611030852153_InitialModel.cs" />
-    <Compile Include="Migrations\201611030852153_InitialModel.Designer.cs">
-      <DependentUpon>201611030852153_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\201611172145321_InitialModel.cs" />
+    <Compile Include="Migrations\201611172145321_InitialModel.Designer.cs">
+      <DependentUpon>201611172145321_InitialModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611151241569_AddedStatus.cs" />
-    <Compile Include="Migrations\201611151241569_AddedStatus.Designer.cs">
-      <DependentUpon>201611151241569_AddedStatus.cs</DependentUpon>
+    <Compile Include="Migrations\201611172218577_AddIsStarted.cs" />
+    <Compile Include="Migrations\201611172218577_AddIsStarted.Designer.cs">
+      <DependentUpon>201611172218577_AddIsStarted.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -781,11 +781,11 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611030852153_InitialModel.resx">
-      <DependentUpon>201611030852153_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611172145321_InitialModel.resx">
+      <DependentUpon>201611172145321_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611151241569_AddedStatus.resx">
-      <DependentUpon>201611151241569_AddedStatus.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611172218577_AddIsStarted.resx">
+      <DependentUpon>201611172218577_AddIsStarted.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

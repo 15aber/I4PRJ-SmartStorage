@@ -27,7 +27,7 @@ namespace I4PRJ_SmartStorage.Controllers
             return View(statusViewModel);
         }
 
-        public ActionResult BeginStatus(int? id)
+        public ActionResult StartStatus(int? id)
         {
             if (id == null)
             {
@@ -40,8 +40,23 @@ namespace I4PRJ_SmartStorage.Controllers
                 return HttpNotFound();
             }
 
+            return View("StatusForm");
+        }
 
-            return View();
+        public ActionResult FinishStatus(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Inventory inventory = db.Inventories.Find(id);
+            if (inventory == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View("StatusForm");
         }
 
         // GET: /Status/Details/5

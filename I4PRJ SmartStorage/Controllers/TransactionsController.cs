@@ -27,7 +27,6 @@ namespace I4PRJ_SmartStorage.Controllers
             return View(viewModel);
         }
 
-
         public ActionResult New(TransactionViewModel viewModel)
         {
             if (viewModel.IsChecked)
@@ -35,7 +34,8 @@ namespace I4PRJ_SmartStorage.Controllers
                 viewModel.Transaction = new Transaction();
                 viewModel.ToInventory = db.Inventories.ToList();
                 viewModel.Product = db.Products.ToList();
-                return View("TransactionForm", viewModel);
+
+                return View("RestockForm", viewModel);
             }
             else
             {
@@ -46,6 +46,52 @@ namespace I4PRJ_SmartStorage.Controllers
 
                 return View("TransactionForm", viewModel);
             }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SaveRestock(Transaction transaction)
+        {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new TransactionViewModel
+                {
+                    ToInventory = db.Inventories.ToList(),
+                    Product = db.Products.ToList()
+                };
+
+                return View("RestockForm", viewModel);
+            }
+
+            var toStockInDb =
+                db.Stocks.Include(s => s.Inventory)
+                    .Include(s => s.Product)
+                    .Where(s => s.InventoryId == transaction.ToInventoryId)
+                    .SingleOrDefault(s => s.ProductId == transaction.ProductId);
+
+            if (toStockInDb == null)
+            {
+                var toStock = new Stock
+                {
+                    InventoryId = transaction.ToInventoryId,
+                    ProductId = transaction.ProductId,
+                    Quantity = transaction.Quantity
+                };
+                db.Stocks.Add(toStock);
+            }
+            else
+            {
+                toStockInDb.Quantity += transaction.Quantity;
+            }
+
+            transaction.DateTime = DateTime.Now;
+            transaction.ByUser = User.Identity.Name;
+
+            db.Transactions.Add(transaction);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Transactions");
         }
 
         [HttpPost]

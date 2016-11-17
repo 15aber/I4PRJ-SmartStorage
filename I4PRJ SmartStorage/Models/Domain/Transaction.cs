@@ -14,19 +14,22 @@ namespace I4PRJ_SmartStorage.Models.Domain
         public int TransactionId { get; set; }
 
         [ForeignKey("FromInventory")]
-        public int FromInventoryId { get; set; }
+        [DisplayName("From")]
+        public int? FromInventoryId { get; set; }
 
         [DisplayName("From")]
         public Inventory FromInventory { get; set; }
 
         [Required]
         [ForeignKey("ToInventory")]
+        [DisplayName("To")]
         public int ToInventoryId { get; set; }
 
         [DisplayName("To")]
         public Inventory ToInventory { get; set; }
 
         [Required]
+        [DisplayName("Product")]
         public int ProductId { get; set; }
 
         public Product Product { get; set; }

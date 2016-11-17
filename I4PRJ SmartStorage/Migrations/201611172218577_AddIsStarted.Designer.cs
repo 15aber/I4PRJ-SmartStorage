@@ -7,13 +7,13 @@ namespace I4PRJ_SmartStorage.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialModel : IMigrationMetadata
+    public sealed partial class AddIsStarted : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddIsStarted));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611030852153_InitialModel"; }
+            get { return "201611172218577_AddIsStarted"; }
         }
         
         string IMigrationMetadata.Source
