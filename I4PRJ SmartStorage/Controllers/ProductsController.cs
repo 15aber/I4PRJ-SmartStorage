@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
+using I4PRJ_SmartStorage.ViewModels;
 
 namespace I4PRJ_SmartStorage.Controllers
 {
@@ -16,9 +17,17 @@ namespace I4PRJ_SmartStorage.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: /Products/
-        public ActionResult Index()
+        public ActionResult Categories(int? id)
         {
-            return View(db.Products.Where(p => !p.IsDeleted).Include(p => p.Category).ToList());
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var products = db.Products.Include(s => s.Category).Where(s => s.CategoryId == id);
+
+            if (products == null)
+                return HttpNotFound();
+
+            return View("Index", products.ToList());
         }
 
         // GET: /Products/Details/5
@@ -39,8 +48,13 @@ namespace I4PRJ_SmartStorage.Controllers
         // GET: /Products/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name");
-            return View();
+            var viewModel = new ProductViewModel
+            {
+                Product = new Product(),
+                Categories = db.Categories.Where(c => c.IsDeleted == false).ToList()
+            };
+
+            return View("Create", viewModel);
         }
 
         // POST: /Products/Create

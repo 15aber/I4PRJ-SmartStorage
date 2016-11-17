@@ -18,7 +18,6 @@ namespace I4PRJ_SmartStorage.Controllers
         // GET: /Categories/
         public ActionResult Index()
         {
-            //return View(db.Categories.ToList());
             return View(db.Categories.Where(c => !c.IsDeleted).ToList());
         }
 

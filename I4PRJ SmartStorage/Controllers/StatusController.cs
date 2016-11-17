@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
+using I4PRJ_SmartStorage.ViewModels;
 
 namespace I4PRJ_SmartStorage.Controllers
 {
@@ -18,8 +19,29 @@ namespace I4PRJ_SmartStorage.Controllers
         // GET: /Status/
         public ActionResult Index()
         {
-            var status = db.Status.Include(s => s.Inventory);
-            return View(status.ToList());
+            var statusViewModel = new StatusViewModel
+            {
+                Inventories = db.Inventories.Where(i => !i.IsDeleted).ToList()
+            };
+
+            return View(statusViewModel);
+        }
+
+        public ActionResult BeginStatus(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Inventory inventory = db.Inventories.Find(id);
+            if (inventory == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            return View();
         }
 
         // GET: /Status/Details/5
