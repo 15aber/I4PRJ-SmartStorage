@@ -10,6 +10,6 @@ namespace I4PRJ_SmartStorage.ViewModels
     {
         public List<Inventory> Inventories { get; set; }
 
-        public Status Status { get; set; }
+        public List<int> InventoryIdsInStartedStatuses { get; set; }
     }
 }

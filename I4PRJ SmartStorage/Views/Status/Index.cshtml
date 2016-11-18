@@ -26,33 +26,41 @@
                 </div>
                 <div class="ibox-content">
 
-<table class="table table-striped">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Inventories)
-        </th>
-        <th></th>
-    </tr>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Inventories)
+                            </th>
+                            <th></th>
+                        </tr>
 
-@foreach (var item in Model.Inventories) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Start", "StartStatus", new {id = item.InventoryId}, new {@class = "btn btn-primary pull-right"})
-            @Html.ActionLink("Finish", "FinishStatus", new { id = item.InventoryId }, new { @class = "btn btn-primary pull-right" })
-        </td>
-    </tr>
-}
+                        @foreach (var item in Model.Inventories)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @*Is inventory found in a Status where IsStarted == true?*@
+                                    @if (Model.InventoryIdsInStartedStatuses.FindIndex(x => x == item.InventoryId) == -1)
+                                    {
+                                        @Html.ActionLink("Start", "StartStatus", new { id = item.InventoryId }, new { @class = "btn btn-primary pull-right" });
+                                    }
 
-</table>
+                                    @*Inventory is not found in a Status where IsStarted == false or not in a Status at all*@
+                                    else
+                                    {
+                                        @Html.ActionLink("Finish", "FinishStatus", new { id = item.InventoryId }, new { @class = "btn btn-primary pull-right" });
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
 
                 </div>
             </div>
         </div>
     </div>
- </div>
-
-
-
+</div>

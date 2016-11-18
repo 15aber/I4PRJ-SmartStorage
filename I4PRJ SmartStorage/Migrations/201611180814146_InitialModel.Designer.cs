@@ -13,7 +13,7 @@ namespace I4PRJ_SmartStorage.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201611172145321_InitialModel"; }
+            get { return "201611180814146_InitialModel"; }
         }
         
         string IMigrationMetadata.Source
