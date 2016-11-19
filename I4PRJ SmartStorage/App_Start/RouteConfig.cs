@@ -11,7 +11,7 @@ namespace I4PRJ_SmartStorage
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("{page}.aspx/{*webmethod}");
 
             routes.MapRoute(
                 name: "Default",
