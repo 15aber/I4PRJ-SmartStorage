@@ -5,3 +5,54 @@
 
 <h2>StatusForm</h2>
 
+
+
+
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script src="C:\Users\leutzig\Source\Repos\I4PRJ-SmartStorage\I4PRJ SmartStorage\Scripts\jquery-3.1.1.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js">
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                url: 'Services/StatusService.asmx/GetProducts',
+                method: 'post',
+                dataType: 'json',
+                success: function (data) {
+                    $('#datatable').dataTable({
+                        paging: true,
+                        sort: true,
+                        searching: true,
+                        scrollY: 200,
+                        data: data,
+                        columns: [
+                            { 'data': 'ProductId' },
+                            { 'data': 'Name' }]
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+<body style="font-family: Arial">
+    <form id="form1" runat="server">
+        <div style="width: 900px; border: 1px solid black; padding: 3px">
+            <table id="datatable">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

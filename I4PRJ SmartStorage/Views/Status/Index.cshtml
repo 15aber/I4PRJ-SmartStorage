@@ -16,7 +16,6 @@
     </div>
 </div>
 
-
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-lg-12">
@@ -42,23 +41,19 @@
                                 </td>
                                 <td>
                                     @*Is inventory found in a Status where IsStarted == true?*@
-                                    @if (Model.InventoryIdsInStartedStatuses.FindIndex(x => x == item.InventoryId) == -1)
+                                    @if (Model.StatusStartedInventories.FindIndex(x => x == item.InventoryId) == -1)
                                     {
                                         @Html.ActionLink("Start", "StartStatus", new { id = item.InventoryId }, new { @class = "btn btn-primary pull-right" });
                                     }
 
-                                    @*Inventory is not found in a Status where IsStarted == false or not in a Status at all*@
                                     else
                                     {
                                         @Html.ActionLink("Finish", "FinishStatus", new { id = item.InventoryId }, new { @class = "btn btn-primary pull-right" });
                                     }
-
                                 </td>
                             </tr>
                         }
-
                     </table>
-
                 </div>
             </div>
         </div>

@@ -226,6 +226,10 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Services\StatusService.asmx.cs">
+      <DependentUpon>StatusService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\StatusViewModel.cs" />
     <Compile Include="ViewModels\StockViewModel.cs" />
@@ -701,6 +705,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\pace.js" />
     <Content Include="Scripts\pace.min.js" />
+    <Content Include="Services\StatusService.asmx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
