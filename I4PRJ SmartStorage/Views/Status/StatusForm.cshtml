@@ -22,7 +22,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $.ajax({
-                url: 'Services/StatusService.asmx/GetProducts',
+                url: "/WebAPI/ProductsController/",
                 method: 'post',
                 dataType: 'json',
                 success: function (data) {

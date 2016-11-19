@@ -12,8 +12,10 @@ namespace I4PRJ_SmartStorage.App_Start
     {
         public MappingProfile()
         {
-            Mapper.CreateMap<Product, ProductDto>();
-            Mapper.CreateMap<ProductDto, Product>();
+            var config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Product, ProductDto>();
+                cfg.CreateMap<ProductDto, Product>();
+            });
         }
     }
 }

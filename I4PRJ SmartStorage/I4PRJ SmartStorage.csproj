@@ -48,8 +48,8 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -210,15 +210,19 @@
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
-    <Compile Include="Controllers\WebAPI\ProductsController.cs" />
+    <Compile Include="Controllers\ApiI\ProductsController.cs" />
     <Compile Include="Dtos\ProductDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611180814146_InitialModel.cs" />
-    <Compile Include="Migrations\201611180814146_InitialModel.Designer.cs">
-      <DependentUpon>201611180814146_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\201611011915170_InitialCreate.cs" />
+    <Compile Include="Migrations\201611011915170_InitialCreate.Designer.cs">
+      <DependentUpon>201611011915170_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611192057519_hej.cs" />
+    <Compile Include="Migrations\201611192057519_hej.Designer.cs">
+      <DependentUpon>201611192057519_hej.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -784,8 +788,11 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611180814146_InitialModel.resx">
-      <DependentUpon>201611180814146_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611011915170_InitialCreate.resx">
+      <DependentUpon>201611011915170_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611192057519_hej.resx">
+      <DependentUpon>201611192057519_hej.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
