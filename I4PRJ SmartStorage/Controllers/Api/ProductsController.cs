@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -9,7 +10,7 @@ using I4PRJ_SmartStorage.Dtos;
 using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
 
-namespace I4PRJ_SmartStorage.Controllers.Web_API
+namespace I4PRJ_SmartStorage.Controllers.Api
 {
     public class ProductsController : ApiController
     {
@@ -23,7 +24,7 @@ namespace I4PRJ_SmartStorage.Controllers.Web_API
         // GET /WebAPI/products
         public IHttpActionResult GetProducts()
         {
-            var productDtos = _context.Products.ToList().Select(Mapper.Map<Product, ProductDto>);
+            var productDtos = _context.Products.Include(p => p.Category).ToList().Select(Mapper.Map<Product, ProductDto>);
 
             return Ok(productDtos);
         }

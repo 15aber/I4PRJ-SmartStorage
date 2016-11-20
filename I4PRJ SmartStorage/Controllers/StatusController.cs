@@ -35,9 +35,6 @@ namespace I4PRJ_SmartStorage.Controllers
             }
 
             return View(statusViewModel);
-
-            // if a status is created containing inventory id && status.IsStarted = true: hide begin button
-            // else hide finish button
         }
 
         public ActionResult StartStatus(int? id)

@@ -6,16 +6,19 @@ using AutoMapper;
 using I4PRJ_SmartStorage.Dtos;
 using I4PRJ_SmartStorage.Models.Domain;
 
-namespace I4PRJ_SmartStorage.App_Start
+namespace I4PRJ_SmartStorage
 {
     public class MappingProfile : Profile
     {
         public MappingProfile()
         {
-            var config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Product, ProductDto>();
-                cfg.CreateMap<ProductDto, Product>();
-            });
+            // Domain to Dto
+            CreateMap<Product, ProductDto>();
+            CreateMap<Category, CategoryDto>();
+
+            // Dto to Domain
+            CreateMap<ProductDto, Product>();
+            CreateMap<CategoryDto, Category>();
         }
     }
 }

@@ -4,26 +4,16 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using I4PRJ_SmartStorage.Models.Domain;
 
 namespace I4PRJ_SmartStorage.Dtos
 {
-    public class ProductDto
+    public class CategoryDto
     {
         [Key]
-        public int ProductId { get; set; }
+        public int CategoryId { get; set; }
 
         [Required]
         public string Name { get; set; }
-
-        [DataType(DataType.Currency)]
-        [Range(0, Double.MaxValue)]
-        public double PurchasePrice { get; set; }
-
-        [Required]
-        public int CategoryId { get; set; }
-
-        public Category Category { get; set; }
 
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:G}")]

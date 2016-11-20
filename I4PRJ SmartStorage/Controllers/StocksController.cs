@@ -32,7 +32,7 @@ namespace I4PRJ_SmartStorage.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult Inventories(int id)
+        public ActionResult Inventories(int? id)
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -43,18 +43,6 @@ namespace I4PRJ_SmartStorage.Controllers
                 return HttpNotFound();
 
             return View("Index", stocks.ToList());
-        }
-
-        // GET: /Stocks/Restock
-        public ActionResult Restock()
-        {
-            var viewModel = new ProductViewModel
-            {
-                Product = new Product(),
-                Categories = db.Categories.Where(c => c.IsDeleted == false).ToList(),
-            };
-
-            return View("Restock", viewModel);
         }
     }
 }
