@@ -37,6 +37,26 @@ namespace I4PRJ_SmartStorage.Controllers
             return View(statusViewModel);
         }
 
+        public ActionResult Save()
+        {
+            var statusViewModel = new StatusViewModel
+            {
+                Inventories = db.Inventories.Where(i => !i.IsDeleted).ToList(),
+                StatusStartedInventories = new List<int>()
+            };
+
+            var statuses = db.Status.ToList();
+            foreach (var status in statuses)
+            {
+                var id = db.Inventories.Find(status.InventoryId);
+
+                if (id != null && status.IsStarted)
+                    statusViewModel.StatusStartedInventories.Add(id.InventoryId);
+            }
+
+            return View(statusViewModel);
+        }
+
         public ActionResult StartStatus(int? id)
         {
             if (id == null)
