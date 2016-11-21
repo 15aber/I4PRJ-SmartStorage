@@ -42,12 +42,13 @@
             .ready(function () {
                 var table = $("#products")
                     .DataTable({
+                        "autoWidth": false,
                         ajax: {
                             url: "/api/products",
                             dataSrc: ""
                         },
                         "columnDefs": [
-                        { "width": "33%", "targets": 2 }
+                        { "width": "33%", "targets": 0 }, { "width": "33%", "targets": 1 }, { "width": "33%", "targets": 2 }
                         ],
                         columns: [
                             {
@@ -59,7 +60,7 @@
                             {
                                 data: "updated",
                                 render: function (data) {
-                                    return "<input type='text' class='form-control' id='quantity' value=" +
+                                    return "<input type='text' size='50' class='form-control' id='quantity' value=" +
                                         data +
                                         " data-customer-id=" +
                                         data +
