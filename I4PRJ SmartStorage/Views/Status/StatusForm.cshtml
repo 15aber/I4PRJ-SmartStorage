@@ -46,7 +46,7 @@
                             dataSrc: ""
                         },
                         "columnDefs": [
-                        { "width": "33%", "targets": 2 }
+                        { "width": "33%", "targets": 0 }, { "width": "33%", "targets": 1 }, { "width": "33%", "targets": 2 }
                         ],
                         columns: [
                             {
@@ -58,7 +58,7 @@
                             {
                                 data: "stock.quantity",
                                 render: function (data) {
-                                    return "<input type='text' class='form-control' id='quantity' value=" +
+                                    return "<input type='text' size='50' class='form-control' id='quantity' value=" +
                                         data +
                                         " data-customer-id=" +
                                         data +
