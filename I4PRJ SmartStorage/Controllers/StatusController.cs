@@ -54,23 +54,32 @@ namespace I4PRJ_SmartStorage.Controllers
                     statusViewModel.StatusStartedInventories.Add(id.InventoryId);
             }
 
-            return View(statusViewModel);
+            return View("Index");
         }
 
-        public ActionResult StartStatus(int? id)
+        public ActionResult StartStatus(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             Inventory inventory = db.Inventories.Find(id);
+
             if (inventory == null)
             {
                 return HttpNotFound();
             }
 
-            return View("StatusForm");
+            var viewModel = new StatusViewModel
+            {
+                Products = db.Products.Include(p => p.Category).Where(p => p.IsDeleted != true).ToList(),
+                Stocks = db.Stocks.Where(s => s.InventoryId == id).ToList()
+            };
+
+            /*
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            */
+
+            return View("StatusForm", viewModel);
         }
 
         public ActionResult FinishStatus(int? id)

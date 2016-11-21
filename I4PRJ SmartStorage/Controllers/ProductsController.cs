@@ -18,7 +18,7 @@ namespace I4PRJ_SmartStorage.Controllers
 
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.Category);
+            var products = db.Products.Include(p => p.Category).Where(p => p.IsDeleted != true);
             return View(products.ToList());
         }
 

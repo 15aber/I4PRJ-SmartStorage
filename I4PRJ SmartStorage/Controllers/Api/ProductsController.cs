@@ -21,7 +21,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
-        // GET /WebAPI/products
+        // GET /api/products
         public IHttpActionResult GetProducts()
         {
             var productDtos = _context.Products.Include(p => p.Category).ToList().Select(Mapper.Map<Product, ProductDto>);
@@ -29,7 +29,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
             return Ok(productDtos);
         }
 
-        // GET /WebAPI/products/1
+        // GET /api/products/1
         public IHttpActionResult GetProduct(int id)
         {
             var product = _context.Products.SingleOrDefault(p => p.ProductId == id);
@@ -40,7 +40,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
             return Ok(Mapper.Map<Product, ProductDto>(product));
         }
 
-        // POST /WebAPI/products
+        // POST /api/products
         [HttpPost]
         public IHttpActionResult CreateProduct(ProductDto productDto)
         {
@@ -74,7 +74,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
             return Ok();
         }
 
-        // DELETE /WebAPI/products/1
+        // DELETE /api/products/1
         [HttpDelete]
         public IHttpActionResult DeleteProduct(int id)
         {
