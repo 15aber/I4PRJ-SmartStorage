@@ -22,7 +22,7 @@ namespace I4PRJ_SmartStorage.Controllers
             var stocks = db.Stocks.Include(s => s.Inventory).Include(s => s.Product);
             return View(stocks.ToList());
         }
-        
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -37,12 +37,16 @@ namespace I4PRJ_SmartStorage.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var stocks = db.Stocks.Include(s => s.Inventory).Include(s => s.Product).Where(s => s.InventoryId == id);
-
-            if (stocks == null)
+            var viewModel = new StockViewModel
+            {
+                Stocks = db.Stocks.Include(s => s.Inventory).Include(s => s.Product).Where(s => s.InventoryId == id).ToList(),
+                Inventory = db.Inventories.Single(i => i.InventoryId == id)
+            };
+            
+            if (viewModel.Stocks == null)
                 return HttpNotFound();
 
-            return View("Index", stocks.ToList());
+            return View("Index", viewModel);
         }
     }
 }

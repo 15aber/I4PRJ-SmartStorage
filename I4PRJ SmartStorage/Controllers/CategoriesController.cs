@@ -47,13 +47,13 @@ namespace I4PRJ_SmartStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="CategoryId,Name,Updated,ByUser")] Category category)
+        public ActionResult Create([Bind(Include = "CategoryId,Name,Updated,ByUser")] Category category)
         {
             if (ModelState.IsValid)
             {
                 category.Updated = DateTime.Now;
                 category.ByUser = User.Identity.Name;
-                
+
                 db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,7 +82,7 @@ namespace I4PRJ_SmartStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="CategoryId,Name,Updated,ByUser")] Category category)
+        public ActionResult Edit([Bind(Include = "CategoryId,Name,Updated,ByUser")] Category category)
         {
             if (ModelState.IsValid)
             {

@@ -10,7 +10,6 @@ namespace I4PRJ_SmartStorage.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "I4PRJ_SmartStorage.Models.ApplicationDbContext";
         }
 
         protected override void Seed(I4PRJ_SmartStorage.Models.ApplicationDbContext context)

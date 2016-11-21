@@ -8,8 +8,8 @@ namespace I4PRJ_SmartStorage.ViewModels
 {
     public class StockViewModel
     {
-        public List<Inventory> Inventory { get; set; }
+        public List<Stock> Stocks { get; set; }
 
-        public List<Product> Product { get; set; }
+        public Inventory Inventory { get; set; }
     }
 }

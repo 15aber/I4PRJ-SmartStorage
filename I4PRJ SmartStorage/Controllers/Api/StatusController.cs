@@ -24,29 +24,38 @@ namespace I4PRJ_SmartStorage.Controllers.Api
 
         public IHttpActionResult GetStatus(int id)
         {
-            //var product = _context.Products.SingleOrDefault(p => p.ProductId == id);
+            /*
+            if (product == null)
+               return NotFound();
 
-            //if (product == null)
-            //   return NotFound();
-
-
-
-            var query = db.Products.Join(db.Categories, p => p.ProductId, c => c.CategoryId, 
-                (p, c) => new { Product = p, Category = c }).Select(x => x.Category);
-
-
-
-            
-
-
-
-            var viewModel = new StatusViewModel
+            var result = db.Stocks.Join(db.Products.Include(p => p.Category),
+                s => s.ProductId,
+                p => p.ProductId,
+                (stock, product) => new
+                {
+                    Product = product,
+                    Stock = stock
+                }).Where(s => s.Stock.InventoryId == id);
+          
+            var result = db.Products.Include(s => s.Stocks).Include(c => c.Category)
+                (product, stock) => new
             {
-                Products = db.Products.Include(p => p.Category).Where(p => p.IsDeleted != true).ToList(),
-                Stocks = db.Stocks.Where(s => s.InventoryId == id).ToList(),
-            };
+                Product = product,
+                Stock = stock
+            }).
+            */
 
-            return Ok(viewModel);
+            var result = db.Products.Join(db.Stocks,
+                p => p.ProductId,
+                s => s.ProductId,
+                (product, stock) => new
+                {
+                    Product = product,
+                    Stock = stock
+                }).Where(s => s.Stock.InventoryId == id);
+
+            return Ok(result);
+            //return Ok();
         }
 
         [HttpPost]

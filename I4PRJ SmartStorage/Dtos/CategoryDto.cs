@@ -9,7 +9,6 @@ namespace I4PRJ_SmartStorage.Dtos
 {
     public class CategoryDto
     {
-        [Key]
         public int CategoryId { get; set; }
 
         [Required]

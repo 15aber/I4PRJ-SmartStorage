@@ -10,7 +10,6 @@ namespace I4PRJ_SmartStorage.Dtos
 {
     public class ProductDto
     {
-        [Key]
         public int ProductId { get; set; }
 
         [Required]
@@ -24,6 +23,8 @@ namespace I4PRJ_SmartStorage.Dtos
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }
+
+        public List<Stock> Stock { get; set; }
 
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:G}")]

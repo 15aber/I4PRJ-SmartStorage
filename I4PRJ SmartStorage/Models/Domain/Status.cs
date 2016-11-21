@@ -9,7 +9,6 @@ namespace I4PRJ_SmartStorage.Models.Domain
 {
     public class Status
     {
-        [Key]
         public int StatusId { get; set; }
 
         [Required]

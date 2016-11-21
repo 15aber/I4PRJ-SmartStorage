@@ -10,7 +10,6 @@ namespace I4PRJ_SmartStorage.Dtos
 {
     public class StockDto
     {
-        [Key]
         public int StockId { get; set; }
 
         [Required]
@@ -21,7 +20,7 @@ namespace I4PRJ_SmartStorage.Dtos
         [Required]
         public int ProductId { get; set; }
 
-        public Product Product { get; set; }
+        public List<Product> Product { get; set; }
 
         [Required]
         [DisplayFormat(DataFormatString = "{0:F2}")]

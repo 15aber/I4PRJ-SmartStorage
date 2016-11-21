@@ -9,7 +9,6 @@ namespace I4PRJ_SmartStorage.Models.Domain
 {
     public class Inventory
     {
-        [Key]
         public int InventoryId { get; set; }
 
         [Required]
@@ -27,6 +26,8 @@ namespace I4PRJ_SmartStorage.Models.Domain
         public string ByUser { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public List<Stock> Stocks { get; set; }
 
         //[Timestamp]
         //[HiddenInput(DisplayValue = false)]

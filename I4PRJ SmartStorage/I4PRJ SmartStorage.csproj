@@ -204,7 +204,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\ProductsController.cs" />
     <Compile Include="Controllers\Api\StatusController.cs" />
-    <Compile Include="Controllers\Api\StocksController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoriesController.cs" />
@@ -221,13 +220,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611011915170_InitialCreate.cs" />
-    <Compile Include="Migrations\201611011915170_InitialCreate.Designer.cs">
-      <DependentUpon>201611011915170_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201611211729398_InitialModel.cs" />
+    <Compile Include="Migrations\201611211729398_InitialModel.Designer.cs">
+      <DependentUpon>201611211729398_InitialModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611192057519_hej.cs" />
-    <Compile Include="Migrations\201611192057519_hej.Designer.cs">
-      <DependentUpon>201611192057519_hej.cs</DependentUpon>
+    <Compile Include="Migrations\201611211817327_MinorModelChanges.cs" />
+    <Compile Include="Migrations\201611211817327_MinorModelChanges.Designer.cs">
+      <DependentUpon>201611211817327_MinorModelChanges.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -834,11 +833,11 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611011915170_InitialCreate.resx">
-      <DependentUpon>201611011915170_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611211729398_InitialModel.resx">
+      <DependentUpon>201611211729398_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611192057519_hej.resx">
-      <DependentUpon>201611192057519_hej.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611211817327_MinorModelChanges.resx">
+      <DependentUpon>201611211817327_MinorModelChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

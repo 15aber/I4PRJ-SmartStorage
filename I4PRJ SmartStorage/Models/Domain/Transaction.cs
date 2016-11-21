@@ -10,7 +10,6 @@ namespace I4PRJ_SmartStorage.Models.Domain
 {
     public class Transaction
     {
-        [Key]
         public int TransactionId { get; set; }
 
         [ForeignKey("FromInventory")]

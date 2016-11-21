@@ -9,6 +9,7 @@ namespace I4PRJ_SmartStorage.ViewModels
     public class ProductViewModel
     {
         public List<Category> Categories { get; set; }
+
         public Product Product { get; set; }
     }
 }

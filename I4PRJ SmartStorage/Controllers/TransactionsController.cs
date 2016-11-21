@@ -17,7 +17,7 @@ namespace I4PRJ_SmartStorage.Controllers
         {
             var viewModel = new TransactionViewModel
             {
-                TransactionList =
+                Transactions =
                     db.Transactions.Include(t => t.Product)
                         .Include(t => t.FromInventory)
                         .Include(t => t.ToInventory)
@@ -33,7 +33,7 @@ namespace I4PRJ_SmartStorage.Controllers
             {
                 viewModel.Transaction = new Transaction();
                 viewModel.ToInventory = db.Inventories.ToList();
-                viewModel.Product = db.Products.ToList();
+                viewModel.Products = db.Products.ToList();
 
                 return View("RestockForm", viewModel);
             }
@@ -42,7 +42,7 @@ namespace I4PRJ_SmartStorage.Controllers
                 viewModel.Transaction = new Transaction();
                 viewModel.FromInventory = db.Inventories.ToList();
                 viewModel.ToInventory = db.Inventories.ToList();
-                viewModel.Product = db.Products.ToList();
+                viewModel.Products = db.Products.ToList();
 
                 return View("TransactionForm", viewModel);
             }
@@ -57,7 +57,7 @@ namespace I4PRJ_SmartStorage.Controllers
                 var viewModel = new TransactionViewModel
                 {
                     ToInventory = db.Inventories.ToList(),
-                    Product = db.Products.ToList()
+                    Products = db.Products.ToList()
                 };
 
                 return View("RestockForm", viewModel);
@@ -77,6 +77,13 @@ namespace I4PRJ_SmartStorage.Controllers
                     ProductId = transaction.ProductId,
                     Quantity = transaction.Quantity
                 };
+
+                var product = db.Products.Single(p => p.ProductId == transaction.ProductId);
+                product.Stocks.Add(toStock);
+
+                var inventory = db.Inventories.Single(p => p.InventoryId == transaction.ToInventoryId);
+                inventory.Stocks.Add(toStock);
+
                 db.Stocks.Add(toStock);
             }
             else
@@ -107,7 +114,7 @@ namespace I4PRJ_SmartStorage.Controllers
                 {
                     FromInventory = inventoriesInDb,
                     ToInventory = inventoriesInDb,
-                    Product = productsInDb
+                    Products = productsInDb
                 };
 
                 return View("TransactionForm", viewModel);
@@ -128,7 +135,7 @@ namespace I4PRJ_SmartStorage.Controllers
                 {
                     FromInventory = inventoriesInDb,
                     ToInventory = inventoriesInDb,
-                    Product = productsInDb
+                    Products = productsInDb
                 };
 
                 return View("TransactionForm", viewModel);
@@ -152,6 +159,13 @@ namespace I4PRJ_SmartStorage.Controllers
                     ProductId = transaction.ProductId,
                     Quantity = transaction.Quantity
                 };
+
+                var product = db.Products.Single(p => p.ProductId == transaction.ProductId);
+                product.Stocks.Add(toStock);
+
+                var inventory = db.Inventories.Single(p => p.InventoryId == transaction.ToInventoryId);
+                inventory.Stocks.Add(toStock);
+
                 db.Stocks.Add(toStock);
             }
             else
@@ -161,7 +175,6 @@ namespace I4PRJ_SmartStorage.Controllers
 
             transaction.DateTime = DateTime.Now;
             transaction.ByUser = User.Identity.Name;
-
 
             db.Transactions.Add(transaction);
 

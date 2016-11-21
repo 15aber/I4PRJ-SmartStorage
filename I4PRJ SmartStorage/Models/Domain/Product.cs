@@ -9,7 +9,6 @@ namespace I4PRJ_SmartStorage.Models.Domain
 {
     public class Product
     {
-        [Key]
         public int ProductId { get; set; }
 
         [Required]
@@ -29,6 +28,8 @@ namespace I4PRJ_SmartStorage.Models.Domain
         [Required]
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+
+        public List<Stock> Stocks { get; set; }
 
         [DisplayName("Updated")]
         [DataType(DataType.DateTime)]

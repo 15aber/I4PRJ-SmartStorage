@@ -28,10 +28,10 @@ namespace I4PRJ_SmartStorage.Controllers
             var statuses = db.Status.ToList();
             foreach (var status in statuses)
             {
-                var id = db.Inventories.Find(status.InventoryId);
+                var inventory = db.Inventories.Find(status.InventoryId);
 
-                if (id != null && status.IsStarted)
-                    statusViewModel.StatusStartedInventories.Add(id.InventoryId);
+                if (inventory != null && status.IsStarted)
+                    statusViewModel.StatusStartedInventories.Add(inventory.InventoryId);
             }
 
             return View(statusViewModel);
@@ -48,10 +48,10 @@ namespace I4PRJ_SmartStorage.Controllers
             var statuses = db.Status.ToList();
             foreach (var status in statuses)
             {
-                var id = db.Inventories.Find(status.InventoryId);
+                var inventory = db.Inventories.Find(status.InventoryId);
 
-                if (id != null && status.IsStarted)
-                    statusViewModel.StatusStartedInventories.Add(id.InventoryId);
+                if (inventory != null && status.IsStarted)
+                    statusViewModel.StatusStartedInventories.Add(inventory.InventoryId);
             }
 
             return View("Index");
