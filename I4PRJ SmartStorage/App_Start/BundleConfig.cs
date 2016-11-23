@@ -14,8 +14,8 @@ namespace I4PRJ_SmartStorage
                       "~/Content/font-awesome.min.css",
                       "~/Content/bootstrap-social.css",
                       "~/Content/DataTables/css/dataTables.min.css",
-                      "~/content/datatables/css/datatables.bootstrap.css"
-
+                      "~/content/datatables/css/datatables.bootstrap.css",
+                      "~/content/toastr.css"
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/script").Include(
@@ -27,7 +27,8 @@ namespace I4PRJ_SmartStorage
                         "~/Scripts/metisMenu.min.js",
                         "~/Scripts/pace.min.js",
                         "~/Scripts/DataTables/jquery.dataTables.min.js",
-                        "~/Scripts/DataTables/dataTables.bootstrap.min.js"
+                        "~/Scripts/DataTables/dataTables.bootstrap.min.js",
+                        "~/Scripts/toastr.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/validate").Include(

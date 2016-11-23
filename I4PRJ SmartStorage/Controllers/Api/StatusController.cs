@@ -24,38 +24,16 @@ namespace I4PRJ_SmartStorage.Controllers.Api
 
         public IHttpActionResult GetStatus(int id)
         {
-            /*
-            if (product == null)
+            var inventory = db.Inventories.Find(id);
+
+            if (inventory == null)
                return NotFound();
+            
+            var status = db.Stocks.Include(s => s.Inventory)
+                .Include(p => p.Product)
+                .Include(c => c.Product.Category).Where(i => i.InventoryId == id);
 
-            var result = db.Stocks.Join(db.Products.Include(p => p.Category),
-                s => s.ProductId,
-                p => p.ProductId,
-                (stock, product) => new
-                {
-                    Product = product,
-                    Stock = stock
-                }).Where(s => s.Stock.InventoryId == id);
-          
-            var result = db.Products.Include(s => s.Stocks).Include(c => c.Category)
-                (product, stock) => new
-            {
-                Product = product,
-                Stock = stock
-            }).
-            */
-
-            var result = db.Products.Join(db.Stocks,
-                p => p.ProductId,
-                s => s.ProductId,
-                (product, stock) => new
-                {
-                    Product = product,
-                    Stock = stock
-                }).Where(s => s.Stock.InventoryId == id);
-
-            return Ok(result);
-            //return Ok();
+            return Ok(status);
         }
 
         [HttpPost]
