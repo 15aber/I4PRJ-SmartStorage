@@ -2,6 +2,11 @@
     .ready(function() {
         var table = $("#status")
             .DataTable({
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv' },
+                    { extend: 'excel' },
+                    { extend: 'pdf' }],
                 ajax: {
                     url: "/api/status/1",
                     dataSrc: ""
@@ -34,28 +39,19 @@
                 ]
             });
 
+        $("#product").append(table.row(2).data() - table.row(3).data());
+
         $('#quantity')
             .focusout(function() {
                 console.log("it worked");
             });
 
-        $('#newStatus').validate({
-            submitHandler: function () {
-                $.ajax({
-                    url: "/api/status",
-                    method: "post",
-                    dataSrc: ""
-                })
-                .done(function () {
+        $("#newStatus").on("click",
+                ".js-submit",
+                function() {
+                    var url = "/Transactions/";
+                    window.location.href = url;
                     toastr.success("Status successfully recorded.");
-                })
-                .fail(function () {
-                    toastr.error("Something unexpected happened.");
                 });
-
-                return false;
-            }
-
-        });
     });
 

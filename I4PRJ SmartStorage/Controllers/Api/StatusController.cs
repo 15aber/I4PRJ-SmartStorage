@@ -37,23 +37,23 @@ namespace I4PRJ_SmartStorage.Controllers.Api
         }
 
         [HttpPost]
-        public IHttpActionResult CreateNewStatus(StatusDto statusDto)
+        public IHttpActionResult CreateNewRentals(StatusDto status)
         {
-            if (!ModelState.IsValid)
-                return BadRequest();
-
-            var status = Mapper.Map<StatusDto, Status>(statusDto);
-            db.Status.Add(status);
-            db.SaveChanges();
-
-            statusDto.StatusId = status.StatusId;
-            return Created(new Uri(Request.RequestUri + "/" + status.StatusId), statusDto);
+            return Ok();
         }
 
         //[HttpPost]
-        //public IHttpActionResult CreateNewRentals(StatusDto status)
+        //public IHttpActionResult CreateNewStatus(StatusDto statusDto)
         //{
-        //    return Ok();
+        //    if (!ModelState.IsValid)
+        //        return BadRequest();
+
+        //    var status = Mapper.Map<StatusDto, Status>(statusDto);
+        //    db.Status.Add(status);
+        //    db.SaveChanges();
+
+        //    statusDto.StatusId = status.StatusId;
+        //    return Created(new Uri(Request.RequestUri + "/" + status.StatusId), statusDto);
         //}
     }
 }
