@@ -32,8 +32,8 @@ namespace I4PRJ_SmartStorage.Controllers
             if (viewModel.IsChecked)
             {
                 viewModel.Transaction = new Transaction();
-                viewModel.ToInventory = db.Inventories.ToList();
-                viewModel.Products = db.Products.ToList();
+                viewModel.ToInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList();
+                viewModel.Products = db.Products.Where(p => p.IsDeleted == false).ToList();
 
                 return View("RestockForm", viewModel);
             }
@@ -41,8 +41,8 @@ namespace I4PRJ_SmartStorage.Controllers
             {
                 viewModel.Transaction = new Transaction();
                 viewModel.FromInventory = db.Inventories.ToList();
-                viewModel.ToInventory = db.Inventories.ToList();
-                viewModel.Products = db.Products.ToList();
+                viewModel.ToInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList();
+                viewModel.Products = db.Products.Where(p => p.IsDeleted == false).ToList();
 
                 return View("TransactionForm", viewModel);
             }
@@ -56,8 +56,8 @@ namespace I4PRJ_SmartStorage.Controllers
             {
                 var viewModel = new TransactionViewModel
                 {
-                    ToInventory = db.Inventories.ToList(),
-                    Products = db.Products.ToList()
+                    ToInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList(),
+                    Products = db.Products.Where(p => p.IsDeleted == false).ToList()
                 };
 
                 return View("RestockForm", viewModel);
@@ -80,7 +80,7 @@ namespace I4PRJ_SmartStorage.Controllers
 
                 var product = db.Products.Single(p => p.ProductId == transaction.ProductId);
                 product.Stocks.Add(toStock);
-
+                
                 var inventory = db.Inventories.Single(p => p.InventoryId == transaction.ToInventoryId);
                 inventory.Stocks.Add(toStock);
 
@@ -107,8 +107,8 @@ namespace I4PRJ_SmartStorage.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var inventoriesInDb = db.Inventories.ToList();
-                var productsInDb = db.Products.ToList();
+                var inventoriesInDb = db.Inventories.Where(p => p.IsDeleted == false).ToList();
+                var productsInDb = db.Products.Where(p => p.IsDeleted == false).ToList();
 
                 var viewModel = new TransactionViewModel
                 {

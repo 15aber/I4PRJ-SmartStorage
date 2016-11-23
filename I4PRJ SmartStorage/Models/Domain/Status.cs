@@ -22,6 +22,7 @@ namespace I4PRJ_SmartStorage.Models.Domain
         public Product Product { get; set; }
 
         [Required]
+        [Range(0, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
         public int Quantity { get; set; }
 
         public int Difference { get; set; }

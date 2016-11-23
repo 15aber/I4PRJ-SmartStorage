@@ -7,13 +7,13 @@ namespace I4PRJ_SmartStorage.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddStockCompositePrimaryKey : IMigrationMetadata
+    public sealed partial class transaktion : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddStockCompositePrimaryKey));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(transaktion));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611221439222_AddStockCompositePrimaryKey"; }
+            get { return "201611231119223_transaktion"; }
         }
         
         string IMigrationMetadata.Source
