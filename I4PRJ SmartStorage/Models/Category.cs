@@ -19,6 +19,7 @@ namespace I4PRJ_SmartStorage.Models
         [DisplayName("Timestamp")]
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:G}")]
+        [Editable(false)]
         public DateTime Timestamp { get; set; }
     }
 }
