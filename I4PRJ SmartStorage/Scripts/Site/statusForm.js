@@ -1,5 +1,5 @@
 ﻿$(document)
-    .ready(function () {
+    .ready(function() {
         var table = $("#status")
             .DataTable({
                 ajax: {
@@ -7,11 +7,11 @@
                     dataSrc: ""
                 },
                 "columnDefs": [
-                { "width": "20%", "targets": 0 },
-                { "width": "20%", "targets": 1 },
-                { "width": "20%", "targets": 2 },
-                { "width": "20%", "targets": 3 },
-                { "width": "20%", "targets": 4 }
+                    { "width": "20%", "targets": 0 },
+                    { "width": "20%", "targets": 1 },
+                    { "width": "20%", "targets": 2 },
+                    { "width": "20%", "targets": 3 },
+                    { "width": "20%", "targets": 4 }
                 ],
                 columns: [
                     {
@@ -24,7 +24,7 @@
                         data: "quantity"
                     },
                     {
-                        render: function () {
+                        render: function() {
                             return "<div id='quantity'><input type='number' style='width: 100%' class='form-control'/></div>";
                         }
                     },
@@ -35,9 +35,10 @@
             });
 
         $('#quantity')
-            .focusout(function () {
+            .focusout(function() {
                 console.log("it worked");
             });
+
         $('#newStatus').validate({
             submitHandler: function () {
                 $.ajax({
@@ -54,6 +55,7 @@
 
                 return false;
             }
+
         });
     });
 

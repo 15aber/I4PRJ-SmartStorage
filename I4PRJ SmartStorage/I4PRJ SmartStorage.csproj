@@ -220,17 +220,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611211729398_InitialModel.cs" />
-    <Compile Include="Migrations\201611211729398_InitialModel.Designer.cs">
-      <DependentUpon>201611211729398_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\201611231040582_validate.cs" />
+    <Compile Include="Migrations\201611231040582_validate.Designer.cs">
+      <DependentUpon>201611231040582_validate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611211817327_MinorModelChanges.cs" />
-    <Compile Include="Migrations\201611211817327_MinorModelChanges.Designer.cs">
-      <DependentUpon>201611211817327_MinorModelChanges.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611221439222_AddStockCompositePrimaryKey.cs" />
-    <Compile Include="Migrations\201611221439222_AddStockCompositePrimaryKey.Designer.cs">
-      <DependentUpon>201611221439222_AddStockCompositePrimaryKey.cs</DependentUpon>
+    <Compile Include="Migrations\201611231119223_transaktion.cs" />
+    <Compile Include="Migrations\201611231119223_transaktion.Designer.cs">
+      <DependentUpon>201611231119223_transaktion.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -847,14 +843,11 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611211729398_InitialModel.resx">
-      <DependentUpon>201611211729398_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611231040582_validate.resx">
+      <DependentUpon>201611231040582_validate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611211817327_MinorModelChanges.resx">
-      <DependentUpon>201611211817327_MinorModelChanges.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611221439222_AddStockCompositePrimaryKey.resx">
-      <DependentUpon>201611221439222_AddStockCompositePrimaryKey.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611231119223_transaktion.resx">
+      <DependentUpon>201611231119223_transaktion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

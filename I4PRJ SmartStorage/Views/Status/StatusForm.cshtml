@@ -3,8 +3,6 @@
     ViewBag.Title = "StatusForm";
 }
 
-<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-
 <form id="newStatus">
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
@@ -30,6 +28,10 @@
                         </table>
                         <div class="form-group ibox-tools">
                             <input type="submit" value="Create" class="btn btn-primary" />
+                            @*@using (Html.BeginForm("Create", "Status"))
+                            {
+                                <button type="submit">Start</button>
+                            }*@
                             @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-white" })
                         </div>
                     </div>
@@ -40,5 +42,6 @@
 </form>
 
 @section scripts {
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
     <script type="text/javascript" src="~/Scripts/Site/statusForm.js"></script>
 }
