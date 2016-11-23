@@ -22,14 +22,17 @@ namespace I4PRJ_SmartStorage.Controllers.Api
         }
 
         // GET /api/products
+        [ActionName("DefaultAction")]
         public IHttpActionResult GetProducts()
         {
-            var productDtos = _context.Products.Include(p => p.Category).ToList().Select(Mapper.Map<Product, ProductDto>);
+            var productsInDb = _context.Products.Include(p => p.Category).ToList();
 
-            return Ok(productDtos);
+            var products = Mapper.Map<List<Product>, List<ProductDto>>(productsInDb.ToList());
+
+            return Ok(products);
         }
 
-        // GET /api/products/1
+        // GET /api/products/getproduct/1
         public IHttpActionResult GetProduct(int id)
         {
             var product = _context.Products.SingleOrDefault(p => p.ProductId == id);
@@ -40,7 +43,18 @@ namespace I4PRJ_SmartStorage.Controllers.Api
             return Ok(Mapper.Map<Product, ProductDto>(product));
         }
 
-        // POST /api/products
+        // GET /api/products/getproductsofinventory/1
+        public IHttpActionResult GetProductsOfInventory(int id)
+        {
+            // get stocks that have InventoryId == id
+            var productsInDb = _context.Stocks.Where(o => o.InventoryId == id).Select(o => o.Product);
+
+            var products = Mapper.Map<List<Product>, List<ProductDto>>(productsInDb.ToList());
+
+            return Json(products);
+        }
+
+        // POST /api/products/createproduct
         [HttpPost]
         public IHttpActionResult CreateProduct(ProductDto productDto)
         {
@@ -55,7 +69,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
             return Created(new Uri(Request.RequestUri + "/" + product.ProductId), productDto);
         }
 
-        // PUT /api/products/1
+        // PUT /api/products/updateproduct/1
         [HttpPut]
         public IHttpActionResult UpdateProduct(int id, ProductDto productDto)
         {
@@ -74,7 +88,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
             return Ok();
         }
 
-        // DELETE /api/products/1
+        // DELETE /api/products/deleteproduct/1
         [HttpDelete]
         public IHttpActionResult DeleteProduct(int id)
         {
