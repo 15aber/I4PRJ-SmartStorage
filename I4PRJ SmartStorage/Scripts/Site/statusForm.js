@@ -25,7 +25,7 @@
                     },
                     {
                         render: function() {
-                            return "<div id='quantity'><input type='number' style='width: 100%' class='form-control'/></div>";
+                            return "<input type='number' style='width: 100%' class='form-control quantity'/>";
                         }
                     },
                     {
@@ -34,10 +34,21 @@
                 ]
             });
 
+        $('.quantity')
+            .on('focusout',
+                function() {
+                    alert("it worked");
+                });
         $('#quantity')
             .focusout(function() {
-                console.log("it worked");
+                alert("it worked");
             });
+
+        $('#quantity')
+            .addEventListener("focusout",
+                function() {
+                    alert("it worked");
+                });
 
         $('#newStatus').validate({
             submitHandler: function () {

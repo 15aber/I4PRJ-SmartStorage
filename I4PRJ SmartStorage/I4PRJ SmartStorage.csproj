@@ -766,6 +766,7 @@
     <Content Include="Scripts\pace.min.js" />
     <Content Include="Scripts\Site\productsIndex.js" />
     <Content Include="Scripts\Site\statusForm.js" />
+    <Content Include="Scripts\Site\transactionForm.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config">
