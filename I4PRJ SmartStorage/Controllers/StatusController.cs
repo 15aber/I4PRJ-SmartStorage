@@ -98,6 +98,27 @@ namespace I4PRJ_SmartStorage.Controllers
             return View("StatusForm");
         }
 
+        public ActionResult SetupStatus(int id)
+        {
+            Inventory inventory = db.Inventories.Find(id);
+
+            int index = inventory.InventoryId;
+
+            if (inventory == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new StatusViewModel
+            {
+                Products = db.Products.Include(p => p.Category).Where(p => p.IsDeleted != true).ToList(),
+                Stocks = db.Stocks.Where(s => s.InventoryId == id).ToList(),
+                //StatusStartedInventories = inventory.InventoryId
+            };
+
+            return View("StatusForm", viewModel);
+        }
+
         // GET: /Status/Details/5
         public ActionResult Details(int? id)
         {
@@ -116,9 +137,13 @@ namespace I4PRJ_SmartStorage.Controllers
         // GET: /Status/Create
         public ActionResult Create()
         {
-            ViewBag.InventoryId = new SelectList(db.Inventories, "InventoryId", "Name");
-            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "Name");
-            return View();
+            var viewModel = new StatusViewModel()
+            {
+                Products = db.Products.ToList(),
+            };
+
+            return View("Index", viewModel);
+
         }
 
         // POST: /Status/Create

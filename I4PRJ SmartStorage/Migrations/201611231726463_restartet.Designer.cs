@@ -7,13 +7,13 @@ namespace I4PRJ_SmartStorage.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class validate : IMigrationMetadata
+    public sealed partial class restartet : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(validate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(restartet));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611231040582_validate"; }
+            get { return "201611231726463_restartet"; }
         }
         
         string IMigrationMetadata.Source
