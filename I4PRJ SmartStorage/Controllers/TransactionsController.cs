@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
+using System.Web.Http.Results;
 using System.Web.Mvc;
 using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
@@ -32,17 +35,17 @@ namespace I4PRJ_SmartStorage.Controllers
             if (viewModel.IsChecked)
             {
                 viewModel.Transaction = new Transaction();
-                viewModel.ToInventory = db.Inventories.ToList();
-                viewModel.Products = db.Products.ToList();
+                viewModel.ToInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList();
+                viewModel.Products = db.Products.Where(p => p.IsDeleted == false).ToList();
 
                 return View("RestockForm", viewModel);
             }
             else
             {
                 viewModel.Transaction = new Transaction();
-                viewModel.FromInventory = db.Inventories.ToList();
-                viewModel.ToInventory = db.Inventories.ToList();
-                viewModel.Products = db.Products.ToList();
+                viewModel.FromInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList();
+                viewModel.ToInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList();
+                viewModel.Products = db.Products.Where(p => p.IsDeleted == false).ToList();
 
                 return View("TransactionForm", viewModel);
             }
@@ -56,18 +59,17 @@ namespace I4PRJ_SmartStorage.Controllers
             {
                 var viewModel = new TransactionViewModel
                 {
-                    ToInventory = db.Inventories.ToList(),
-                    Products = db.Products.ToList()
+                    ToInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList(),
+                    Products = db.Products.Where(p => p.IsDeleted == false).ToList()
                 };
 
                 return View("RestockForm", viewModel);
             }
 
-            var toStockInDb =
-                db.Stocks.Include(s => s.Inventory)
+            var toStockInDb = db.Stocks.Include(s => s.Inventory)
                     .Include(s => s.Product)
                     .Where(s => s.InventoryId == transaction.ToInventoryId)
-                    .SingleOrDefault(s => s.ProductId == transaction.ProductId);
+                    .Single(s => s.ProductId == transaction.ProductId);
 
             if (toStockInDb == null)
             {
@@ -78,22 +80,14 @@ namespace I4PRJ_SmartStorage.Controllers
                     Quantity = transaction.Quantity
                 };
 
-                var product = db.Products.Single(p => p.ProductId == transaction.ProductId);
-                product.Stocks.Add(toStock);
-
-                var inventory = db.Inventories.Single(p => p.InventoryId == transaction.ToInventoryId);
-                inventory.Stocks.Add(toStock);
-
                 db.Stocks.Add(toStock);
             }
+
             else
-            {
                 toStockInDb.Quantity += transaction.Quantity;
-            }
 
             transaction.DateTime = DateTime.Now;
             transaction.ByUser = User.Identity.Name;
-
             db.Transactions.Add(transaction);
 
             db.SaveChanges();
@@ -103,12 +97,12 @@ namespace I4PRJ_SmartStorage.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(Transaction transaction)
+        public ActionResult SaveTransaction(Transaction transaction)
         {
             if (!ModelState.IsValid)
             {
-                var inventoriesInDb = db.Inventories.ToList();
-                var productsInDb = db.Products.ToList();
+                var inventoriesInDb = db.Inventories.Where(p => p.IsDeleted == false).ToList();
+                var productsInDb = db.Products.Where(p => p.IsDeleted == false).ToList();
 
                 var viewModel = new TransactionViewModel
                 {
@@ -120,11 +114,10 @@ namespace I4PRJ_SmartStorage.Controllers
                 return View("TransactionForm", viewModel);
             }
 
-            var fromStockInDb =
-                db.Stocks.Include(s => s.Inventory)
-                    .Include(s => s.Product)
-                    .Where(s => s.InventoryId == transaction.FromInventoryId)
-                    .SingleOrDefault(s => s.ProductId == transaction.ProductId);
+            var fromStockInDb = db.Stocks.Include(i => i.Inventory)
+                    .Include(p => p.Product)
+                    .Where(i => i.InventoryId == transaction.FromInventoryId)
+                    .Single(p => p.ProductId == transaction.ProductId);
 
             if (fromStockInDb == null)
             {
@@ -140,16 +133,14 @@ namespace I4PRJ_SmartStorage.Controllers
 
                 return View("TransactionForm", viewModel);
             }
-            else
-            {
-                fromStockInDb.Quantity -= transaction.Quantity;
-            }
 
-            var toStockInDb =
-                db.Stocks.Include(s => s.Inventory)
-                    .Include(s => s.Product)
-                    .Where(s => s.InventoryId == transaction.ToInventoryId)
-                    .SingleOrDefault(s => s.ProductId == transaction.ProductId);
+            else
+                fromStockInDb.Quantity -= transaction.Quantity;
+
+            var toStockInDb = db.Stocks.Include(s => s.Inventory)
+                .Include(s => s.Product)
+                .Where(s => s.InventoryId == transaction.ToInventoryId)
+                .SingleOrDefault(s => s.ProductId == transaction.ProductId);
 
             if (toStockInDb == null)
             {
@@ -160,22 +151,14 @@ namespace I4PRJ_SmartStorage.Controllers
                     Quantity = transaction.Quantity
                 };
 
-                var product = db.Products.Single(p => p.ProductId == transaction.ProductId);
-                product.Stocks.Add(toStock);
-
-                var inventory = db.Inventories.Single(p => p.InventoryId == transaction.ToInventoryId);
-                inventory.Stocks.Add(toStock);
-
                 db.Stocks.Add(toStock);
             }
+
             else
-            {
                 toStockInDb.Quantity += transaction.Quantity;
-            }
 
             transaction.DateTime = DateTime.Now;
             transaction.ByUser = User.Identity.Name;
-
             db.Transactions.Add(transaction);
 
             db.SaveChanges();

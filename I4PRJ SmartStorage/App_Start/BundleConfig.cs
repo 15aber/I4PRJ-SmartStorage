@@ -28,7 +28,8 @@ namespace I4PRJ_SmartStorage
                         "~/Scripts/pace.min.js",
                         "~/Scripts/DataTables/jquery.dataTables.min.js",
                         "~/Scripts/DataTables/dataTables.bootstrap.min.js",
-                        "~/Scripts/toastr.js"
+                        "~/Scripts/toastr.min.js",
+                        "~/Scripts/bootbox.min.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/validate").Include(

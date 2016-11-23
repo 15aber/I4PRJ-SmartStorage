@@ -27,8 +27,6 @@ namespace I4PRJ_SmartStorage.Models.Domain
 
         public bool IsDeleted { get; set; }
 
-        public List<Stock> Stocks { get; set; }
-
         //[Timestamp]
         //[HiddenInput(DisplayValue = false)]
         //public byte[] Version { get; set; }

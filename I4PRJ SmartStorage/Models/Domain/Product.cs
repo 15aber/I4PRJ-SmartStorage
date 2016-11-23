@@ -29,8 +29,6 @@ namespace I4PRJ_SmartStorage.Models.Domain
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 
-        public List<Stock> Stocks { get; set; }
-
         [DisplayName("Updated")]
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:G}")]
