@@ -17,15 +17,7 @@ namespace I4PRJ_SmartStorage.Models.Domain
         public string Name { get; set; }
 
         //[Required]
-        //[ForeignKey("Product")]
         //[DisplayName("Product")]
-        //public int ProductId { get; set; }
-
-        //[DisplayName("Delivery date")]
-        //[DataType(DataType.DateTime)]
-        //[DisplayFormat(DataFormatString = "{0:G}")]
-        //[Editable(false)]
-        //public DateTime DeliveryDate { get; set; }
-
+        //public Product Product { get; set; }
     }
 }
