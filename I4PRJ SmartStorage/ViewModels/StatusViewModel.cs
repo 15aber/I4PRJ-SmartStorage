@@ -14,8 +14,11 @@ namespace I4PRJ_SmartStorage.ViewModels
 
         public List<Product> Products { get; set; }
 
+        public List<Category> Categories { get; set; }
+
         public List<int> StatusStartedInventories { get; set; }
 
         public string Name { get; set; }
+
     }
 }
