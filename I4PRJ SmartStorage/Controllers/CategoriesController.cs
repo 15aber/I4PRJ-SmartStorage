@@ -31,14 +31,14 @@ namespace I4PRJ_SmartStorage.Controllers
       return View(category);
     }
 
-    public ActionResult New()
+    public ActionResult Create()
     {
-      return View("CategoriesForm");
+      return View();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Save([Bind(Include = "CategoryId,Name,IsActiv,LastUpdated,ByUser,Version")] Category category)
+    public ActionResult Create([Bind(Include = "CategoryId,Name,IsActiv,LastUpdated,ByUser,Version")] Category category)
     {
       if(ModelState.IsValid)
       {

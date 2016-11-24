@@ -40,7 +40,7 @@ namespace I4PRJ_SmartStorage.Helpers
     {
       using(ApplicationDbContext db = new ApplicationDbContext())
       {
-        return db.Inventories.ToList();
+        return db.Inventories.Where(i => i.IsDeleted != true).ToList();
       }
     }
 
@@ -48,7 +48,7 @@ namespace I4PRJ_SmartStorage.Helpers
     {
       using(ApplicationDbContext db = new ApplicationDbContext())
       {
-        return db.Categories.Where(i => i.IsDeleted == true).ToList();
+        return db.Categories.Where(c => c.IsDeleted != true).ToList();
       }
     }
   }

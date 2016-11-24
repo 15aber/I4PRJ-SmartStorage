@@ -12,7 +12,6 @@ namespace I4PRJ_SmartStorage
           "~/Content/bootstrap-social.css",
           "~/Content/animate.min.css",
           "~/Content/style.css"
-
       ));
 
       bundles.Add(new ScriptBundle("~/bundles/script").Include(
@@ -32,21 +31,23 @@ namespace I4PRJ_SmartStorage
           ));
 
       bundles.Add(new StyleBundle("~/Content/datatables").Include(
+          "~/Content/dataTables/datatables.min.css",
+          "~/Content/dataTables/dataTables.bootstrap.min.css",
           "~/Content/dataTables/autoFill.dataTables.min.css",
           "~/Content/dataTables/buttons.dataTables.min.css",
-          "~/Content/dataTables/datatables.min.css",
           "~/Content/dataTables/keyTable.dataTables.min.css",
           "~/Content/dataTables/responsive.dataTables.min.css",
           "~/Content/dataTables/select.dataTables.min.css"
       ));
 
       bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
+          "~/Scripts/dataTables/datatables.min.js",
+          "~/Scripts/dataTables/jquery.dataTables.min.js",
           "~/Scripts/dataTables/dataTables.autoFill.min.js",
           "~/Scripts/dataTables/dataTables.buttons.min.js",
           "~/Scripts/dataTables/dataTables.keyTable.min.js",
           "~/Scripts/dataTables/dataTables.reponsice.min.js",
           "~/Scripts/dataTables/dataTables.select.min.js",
-          "~/Scripts/dataTables/datatables.min.js",
           "~/Scripts/jszip/jszip.min.js",
           "~/Scripts/pdfmake/pdfmake.min.js",
           "~/Scripts/pdfmake/vfs_fonts.js"

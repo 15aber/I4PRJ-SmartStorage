@@ -34,7 +34,7 @@
         </div>
         <div class="ibox-content">
 
-          @using (Html.BeginForm())
+          @using(Html.BeginForm())
           {
             @Html.AntiForgeryToken()
 
@@ -58,11 +58,37 @@
               </div>
 
               <div class="form-group">
+                @Html.LabelFor(model => model.Product.Package, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                  @Html.EditorFor(model => model.Product.Package)
+                  @Html.ValidationMessageFor(model => model.Product.Package)
+                </div>
+              </div>
+
+              <div class="form-group">
                 @Html.LabelFor(model => model.Product.CategoryId, "CategoryId", new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                   @Html.DropDownListFor(model => model.Product.CategoryId, new SelectList(Model.Categories, "CategoryId", "Name"), "", new { @class = "form-control" })
 
                   @Html.ValidationMessageFor(model => model.Product.CategoryId)
+                </div>
+              </div>
+
+              <div class="form-group">
+                @Html.LabelFor(model => model.Product.CategoryId, "SupplierId", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                  @Html.DropDownListFor(model => model.Product.SupplierId, new SelectList(Model.Suppliers, "SupplierId", "Name"), "", new { @class = "form-control" })
+
+                  @Html.ValidationMessageFor(model => model.Product.SupplierId)
+                </div>
+              </div>
+
+              <div class="form-group">
+                @Html.LabelFor(model => model.Product.WholesalerId, "WholesalerId", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                  @Html.DropDownListFor(model => model.Product.WholesalerId, new SelectList(Model.Wholesalers, "WholesalerId", "Name"), "", new { @class = "form-control" })
+
+                  @Html.ValidationMessageFor(model => model.Product.WholesalerId)
                 </div>
               </div>
 
