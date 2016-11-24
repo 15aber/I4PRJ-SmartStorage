@@ -6,7 +6,7 @@
 
 <div class="middle-box text-center loginscreen  animated fadeInDown">
     <div>
-        <h4>Welcom to SmartStorage</h4>        
+        <h4>Welcom to SmartStorage</h4>
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
             {
@@ -50,9 +50,9 @@
                     </p>*@
             }
         </section>
-        <hr />
+        <hr/>
         <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel {ReturnUrl = ViewBag.ReturnUrl})
         </section>
     </div>
 </div>

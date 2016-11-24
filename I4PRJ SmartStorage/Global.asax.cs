@@ -15,6 +15,5 @@ namespace I4PRJ_SmartStorage
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-
     }
 }
