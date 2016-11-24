@@ -3,7 +3,7 @@
         var table = $("#products")
             .DataTable({
                 ajax: {
-                    url: "/api/products/getproductsofcategory/" + $('#products').name,
+                    url: "/api/products/getproductsofcategory/" + document.location.pathname.split('/')[3],
                     dataSrc: ""
                 },
                 "columnDefs": [
