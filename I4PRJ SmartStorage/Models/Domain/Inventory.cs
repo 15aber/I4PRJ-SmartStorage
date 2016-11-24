@@ -27,7 +27,7 @@ namespace I4PRJ_SmartStorage.Models.Domain
         [Editable(false)]
         public string UpdatedByUser { get; set; }
 
-        public bool IsDeleted { get; set; }
+        //public bool IsDeleted { get; set; }
         //public List<Stock> Stocks { get; set; }
     }
 }

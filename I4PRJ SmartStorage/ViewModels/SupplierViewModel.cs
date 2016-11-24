@@ -10,6 +10,6 @@ namespace I4PRJ_SmartStorage.ViewModels
     {
         public List<Supplier> Suppliers { get; set; }
         //public Product Products { get; set; }
-        public DateTime DeliveryDate { get; set; }
+        public DateTime DeliveryDate { get; set; }  
     }
 }
