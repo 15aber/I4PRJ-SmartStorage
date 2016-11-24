@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
 
 namespace I4PRJ_SmartStorage.ViewModels
@@ -11,5 +12,7 @@ namespace I4PRJ_SmartStorage.ViewModels
         public List<Inventory> Inventories { get; set; }
         //public Product Products { get; set; }
         //public Stock Stocks { get; set; }
+        //public ApplicationUser UpdateByUser { get; set; }
+        public DateTime LastUpdated { get; set; }
     }
 }

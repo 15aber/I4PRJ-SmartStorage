@@ -211,6 +211,18 @@
     <Compile Include="Migrations\201611231535512_InventoryAndSupplier.Designer.cs">
       <DependentUpon>201611231535512_InventoryAndSupplier.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611240756024_newUpdates.cs" />
+    <Compile Include="Migrations\201611240756024_newUpdates.Designer.cs">
+      <DependentUpon>201611240756024_newUpdates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611240826523_migration.cs" />
+    <Compile Include="Migrations\201611240826523_migration.Designer.cs">
+      <DependentUpon>201611240826523_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611240838205_init1.cs" />
+    <Compile Include="Migrations\201611240838205_init1.Designer.cs">
+      <DependentUpon>201611240838205_init1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -730,17 +742,17 @@
     <Content Include="Views\Shared\_TopNavBar.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Scripts\pace.min.js.map" />
-    <Content Include="Views\Inventories\Create.cshtml" />
-    <Content Include="Views\Inventories\Delete.cshtml" />
-    <Content Include="Views\Inventories\Details.cshtml" />
-    <Content Include="Views\Inventories\Edit.cshtml" />
-    <Content Include="Views\Inventories\Index.cshtml" />
     <Content Include="Views\Suppliers\Create.cshtml" />
     <Content Include="Views\Suppliers\Delete.cshtml" />
     <Content Include="Views\Suppliers\Details.cshtml" />
     <Content Include="Views\Suppliers\Edit.cshtml" />
     <Content Include="Views\Suppliers\Index.cshtml" />
     <Content Include="Views\Suppliers\SupplierReportForm.cshtml" />
+    <Content Include="Views\Inventories\Create.cshtml" />
+    <Content Include="Views\Inventories\Delete.cshtml" />
+    <Content Include="Views\Inventories\Details.cshtml" />
+    <Content Include="Views\Inventories\Edit.cshtml" />
+    <Content Include="Views\Inventories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -760,6 +772,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611231535512_InventoryAndSupplier.resx">
       <DependentUpon>201611231535512_InventoryAndSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611240756024_newUpdates.resx">
+      <DependentUpon>201611240756024_newUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611240826523_migration.resx">
+      <DependentUpon>201611240826523_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611240838205_init1.resx">
+      <DependentUpon>201611240838205_init1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

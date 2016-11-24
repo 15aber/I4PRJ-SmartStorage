@@ -47,7 +47,7 @@ namespace I4PRJ_SmartStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="InventoryId,Name,Updated,UpdatedByUser,IsDeleted")] Inventory inventory)
+        public ActionResult Create([Bind(Include="InventoryId,Name")] Inventory inventory)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace I4PRJ_SmartStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="InventoryId,Name,Updated,UpdatedByUser,IsDeleted")] Inventory inventory)
+        public ActionResult Edit([Bind(Include="InventoryId,Name")] Inventory inventory)
         {
             if (ModelState.IsValid)
             {
