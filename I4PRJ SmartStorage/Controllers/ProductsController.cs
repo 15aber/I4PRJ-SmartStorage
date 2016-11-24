@@ -23,17 +23,18 @@ namespace I4PRJ_SmartStorage.Controllers
     }
 
     // GET: /Products/
-    public ActionResult Categories(int? id)
+    public ActionResult Categories(int id)
     {
-        if (id == null)
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        var viewModel = new ProductViewModel()
+        {
+            Products = db.Products.Include(s => s.Category).Where(s => s.CategoryId == id).ToList(),
+            CategoryId = id
+        };
 
-        var products = db.Products.Include(s => s.Category).Where(s => s.CategoryId == id);
-
-        if (products == null)
+        if (viewModel.Products == null)
             return HttpNotFound();
 
-        return View("Index", products.ToList());
+        return View("Index", viewModel);
     }
 
     // GET: /Products/Details/5

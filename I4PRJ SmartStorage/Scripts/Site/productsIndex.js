@@ -3,7 +3,7 @@
         var table = $("#products")
             .DataTable({
                 ajax: {
-                    url: "/api/products/",
+                    url: "/api/products/getproductsofcategory/" + $('#products').name,
                     dataSrc: ""
                 },
                 "columnDefs": [
@@ -64,7 +64,7 @@ $("#products").on("click", ".js-delete", function () {
         function (result) {
             if (result) {
                 $.ajax({
-                    url: "/api/products/" + button.attr("data-product-id"),
+                    url: "/api/products/deleteproduct/" + button.attr("data-product-id"),
                     method: "DELETE",
                     success: function () {
                         table.row(button.parents("tr")).remove().draw();
