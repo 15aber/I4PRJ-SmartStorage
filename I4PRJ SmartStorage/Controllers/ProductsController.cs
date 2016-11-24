@@ -16,19 +16,35 @@ namespace I4PRJ_SmartStorage.Controllers
     // GET: /Products/
     public ActionResult Index()
     {
-      var products = db.Products.Include(p => p.Category);
+      var products = db.Products.Include(p => p.Category).Where(p => p.IsDeleted != true);
       return View(products.ToList());
     }
+
+    public ActionResult Categories(int id)
+    {
+      if(id == null)
+      {
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+      }
+      var products = db.Products.Include(s => s.Category).Where(s => s.CategoryId == id);
+
+      if(products == null)
+      {
+        return HttpNotFound();
+      }
+      return View("Index", products.ToList());
+    }
+
 
     // GET: /Products/Details/5
     public ActionResult Details(int? id)
     {
-      if (id == null)
+      if(id == null)
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }
       Product product = db.Products.Find(id);
-      if (product == null)
+      if(product == null)
       {
         return HttpNotFound();
       }
@@ -42,7 +58,7 @@ namespace I4PRJ_SmartStorage.Controllers
       var viewModel = new ProductViewModel
       {
         Product = new Product(),
-        Categories = db.Categories.Where(c => c.IsActiv == true).ToList()
+        Categories = db.Categories.Where(c => c.IsDeleted != true).ToList()
       };
 
       return View("Create", viewModel);
@@ -56,7 +72,7 @@ namespace I4PRJ_SmartStorage.Controllers
     public ActionResult Create(
         [Bind(Include = "ProductId,Name,Size,CostPrice,CategoryId,LastUpdated,ByUser,Version")] Product product)
     {
-      if (ModelState.IsValid)
+      if(ModelState.IsValid)
       {
         product.Updated = DateTime.Now;
         product.ByUser = User.Identity.Name;
@@ -73,12 +89,12 @@ namespace I4PRJ_SmartStorage.Controllers
     // GET: /Products/Edit/5
     public ActionResult Edit(int? id)
     {
-      if (id == null)
+      if(id == null)
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }
       Product product = db.Products.Find(id);
-      if (product == null)
+      if(product == null)
       {
         return HttpNotFound();
       }
@@ -94,7 +110,7 @@ namespace I4PRJ_SmartStorage.Controllers
     public ActionResult Edit(
         [Bind(Include = "ProductId,Name,Size,CostPrice,CategoryId,LastUpdated,ByUser,Version")] Product product)
     {
-      if (ModelState.IsValid)
+      if(ModelState.IsValid)
       {
         product.Updated = DateTime.Now;
         product.ByUser = User.Identity.Name;
@@ -110,12 +126,12 @@ namespace I4PRJ_SmartStorage.Controllers
     // GET: /Products/Delete/5
     public ActionResult Delete(int? id)
     {
-      if (id == null)
+      if(id == null)
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }
       Product product = db.Products.Find(id);
-      if (product == null)
+      if(product == null)
       {
         return HttpNotFound();
       }
@@ -128,32 +144,14 @@ namespace I4PRJ_SmartStorage.Controllers
     public ActionResult DeleteConfirmed(int id)
     {
       Product product = db.Products.Find(id);
-      db.Products.Remove(product);
+      product.IsDeleted = true;
       db.SaveChanges();
       return RedirectToAction("Index");
     }
 
-    public ActionResult Categories(int id)
-    {
-      if (id == null)
-      {
-        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-      }
-      var products = db.Products.Include(s => s.Category).Where(s => s.CategoryId == id);
-
-      if (products == null)
-      {
-        return HttpNotFound();
-      }
-
-
-
-      return View("Index", products.ToList());
-    }
-
     protected override void Dispose(bool disposing)
     {
-      if (disposing)
+      if(disposing)
       {
         db.Dispose();
       }

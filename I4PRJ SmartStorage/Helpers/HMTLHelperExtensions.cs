@@ -12,16 +12,16 @@ namespace I4PRJ_SmartStorage.Helpers
     public static string IsSelected(this HtmlHelper html, string controller = null, string action = null,
         string cssClass = null)
     {
-      if (String.IsNullOrEmpty(cssClass))
+      if(String.IsNullOrEmpty(cssClass))
         cssClass = "active";
 
       string currentAction = (string)html.ViewContext.RouteData.Values["action"];
       string currentController = (string)html.ViewContext.RouteData.Values["controller"];
 
-      if (String.IsNullOrEmpty(controller))
+      if(String.IsNullOrEmpty(controller))
         controller = currentController;
 
-      if (String.IsNullOrEmpty(action))
+      if(String.IsNullOrEmpty(action))
         action = currentAction;
 
       return controller == currentController && action == currentAction
@@ -38,7 +38,7 @@ namespace I4PRJ_SmartStorage.Helpers
 
     public static List<Inventory> GetInventories()
     {
-      using (ApplicationDbContext db = new ApplicationDbContext())
+      using(ApplicationDbContext db = new ApplicationDbContext())
       {
         return db.Inventories.ToList();
       }
@@ -46,9 +46,9 @@ namespace I4PRJ_SmartStorage.Helpers
 
     public static List<Category> GetCategories()
     {
-      using (ApplicationDbContext db = new ApplicationDbContext())
+      using(ApplicationDbContext db = new ApplicationDbContext())
       {
-        return db.Categories.Where(i => i.IsActiv == true).ToList();
+        return db.Categories.Where(i => i.IsDeleted == true).ToList();
       }
     }
   }

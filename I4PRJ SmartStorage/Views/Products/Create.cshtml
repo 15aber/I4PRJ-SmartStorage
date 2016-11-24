@@ -50,18 +50,10 @@
               </div>
 
               <div class="form-group">
-                @Html.LabelFor(model => model.Product.Size, new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Product.PurchasePrice, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                  @Html.EditorFor(model => model.Product.Size)
-                  @Html.ValidationMessageFor(model => model.Product.Size)
-                </div>
-              </div>
-
-              <div class="form-group">
-                @Html.LabelFor(model => model.Product.CostPrice, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                  @Html.EditorFor(model => model.Product.CostPrice)
-                  @Html.ValidationMessageFor(model => model.Product.CostPrice)
+                  @Html.EditorFor(model => model.Product.PurchasePrice)
+                  @Html.ValidationMessageFor(model => model.Product.PurchasePrice)
                 </div>
               </div>
 

@@ -49,8 +49,7 @@ namespace I4PRJ_SmartStorage
           "~/Scripts/dataTables/datatables.min.js",
           "~/Scripts/jszip/jszip.min.js",
           "~/Scripts/pdfmake/pdfmake.min.js",
-          "~/Scripts/pdfmake/vfs_fonts.js",
-          "~/Scripts/site/datatables.init.js"
+          "~/Scripts/pdfmake/vfs_fonts.js"
       ));
 
       bundles.Add(new StyleBundle("~/Content/wizardSteps").Include(

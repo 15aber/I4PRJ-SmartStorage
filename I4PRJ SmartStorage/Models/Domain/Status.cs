@@ -5,36 +5,31 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace I4PRJ_SmartStorage.Models.Domain
 {
-  public class Transaction
+  public class Status
   {
     [Key]
     [DisplayName("#")]
-    public int TransactionId { get; set; }
-
-    [ForeignKey("FromInventory")]
-    [DisplayName("From")]
-    public int FromInventoryId { get; set; }
-
-    public Inventory FromInventory { get; set; }
+    public int StatusId { get; set; }
 
     [Required]
-    [ForeignKey("ToInventory")]
-    [DisplayName("To")]
-    public int ToInventoryId { get; set; }
-
-    public Inventory ToInventory { get; set; }
+    [ForeignKey("Inventory")]
+    [DisplayName("Inventory")]
+    public int InventoryId { get; set; }
+    public Inventory Inventory { get; set; }
 
     [Required]
     [ForeignKey("Product")]
     [DisplayName("Product")]
     public int ProductId { get; set; }
-
     public Product Product { get; set; }
 
     [Required]
-    [DisplayFormat(DataFormatString = "{0:F2}")]
-    [Range(Double.MinValue, Double.MaxValue)]
+    [Range(0, double.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
     public double Quantity { get; set; }
+
+    [Range(Double.MinValue, Double.MaxValue)]
+    [Editable(false)]
+    public double Difference { get; set; }
 
     [DisplayName("Updated")]
     [DataType(DataType.DateTime)]
@@ -45,5 +40,8 @@ namespace I4PRJ_SmartStorage.Models.Domain
     [DisplayName("By")]
     [Editable(false)]
     public string ByUser { get; set; }
+
+    [Editable(false)]
+    public bool IsStarted { get; set; }
   }
 }

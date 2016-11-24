@@ -15,18 +15,18 @@ namespace I4PRJ_SmartStorage.Controllers
     // GET: /Inventories/
     public ActionResult Index()
     {
-      return View(db.Inventories.ToList());
+      return View(db.Inventories.Where(i => i.IsDeleted != true).ToList());
     }
 
     // GET: /Inventories/Details/5
     public ActionResult Details(int? id)
     {
-      if (id == null)
+      if(id == null)
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }
       Inventory inventory = db.Inventories.Find(id);
-      if (inventory == null)
+      if(inventory == null)
       {
         return HttpNotFound();
       }
@@ -46,7 +46,7 @@ namespace I4PRJ_SmartStorage.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult Create([Bind(Include = "InventoryId,Name,LastUpdated,ByUser,Version")] Inventory inventory)
     {
-      if (ModelState.IsValid)
+      if(ModelState.IsValid)
       {
         inventory.Updated = DateTime.Now;
         inventory.ByUser = User.Identity.Name;
@@ -62,12 +62,12 @@ namespace I4PRJ_SmartStorage.Controllers
     // GET: /Inventories/Edit/5
     public ActionResult Edit(int? id)
     {
-      if (id == null)
+      if(id == null)
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }
       Inventory inventory = db.Inventories.Find(id);
-      if (inventory == null)
+      if(inventory == null)
       {
         return HttpNotFound();
       }
@@ -81,7 +81,7 @@ namespace I4PRJ_SmartStorage.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult Edit([Bind(Include = "InventoryId,Name,LastUpdated,ByUser,Version")] Inventory inventory)
     {
-      if (ModelState.IsValid)
+      if(ModelState.IsValid)
       {
         inventory.Updated = DateTime.Now;
         inventory.ByUser = User.Identity.Name;
@@ -96,12 +96,12 @@ namespace I4PRJ_SmartStorage.Controllers
     // GET: /Inventories/Delete/5
     public ActionResult Delete(int? id)
     {
-      if (id == null)
+      if(id == null)
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }
       Inventory inventory = db.Inventories.Find(id);
-      if (inventory == null)
+      if(inventory == null)
       {
         return HttpNotFound();
       }
@@ -114,14 +114,14 @@ namespace I4PRJ_SmartStorage.Controllers
     public ActionResult DeleteConfirmed(int id)
     {
       Inventory inventory = db.Inventories.Find(id);
-      db.Inventories.Remove(inventory);
+      inventory.IsDeleted = true;
       db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing)
+      if(disposing)
       {
         db.Dispose();
       }

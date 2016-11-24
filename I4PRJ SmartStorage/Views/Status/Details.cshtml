@@ -1,0 +1,106 @@
+﻿@model I4PRJ_SmartStorage.Models.Domain.Status
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Details</h2>
+        <ol class="breadcrumb">
+            <li>
+                @Html.ActionLink("List", "Index")
+            </li>
+            <li class="active">
+                <strong>Details</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Details Status</h5>
+                </div>
+                <div class="ibox-content">
+
+
+				    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Inventory.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Inventory.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Difference)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Difference)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsFinished)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsFinished)
+        </dd>
+
+    </dl>
+
+
+	    @Html.ActionLink("Edit", "Edit", new { id = Model.StatusId }, new { @class = "btn btn-primary"})
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-white"})
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+

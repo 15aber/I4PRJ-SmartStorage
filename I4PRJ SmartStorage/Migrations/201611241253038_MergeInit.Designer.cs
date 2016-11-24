@@ -7,13 +7,13 @@ namespace I4PRJ_SmartStorage.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitDb : IMigrationMetadata
+    public sealed partial class MergeInit : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitDb));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(MergeInit));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611011018267_InitDb"; }
+            get { return "201611241253038_MergeInit"; }
         }
         
         string IMigrationMetadata.Source

@@ -14,17 +14,17 @@ namespace I4PRJ_SmartStorage.Controllers
 
     public ActionResult Index()
     {
-      return View(db.Categories.ToList());
+      return View(db.Categories.Where(c => c.IsDeleted != true).ToList());
     }
 
     public ActionResult Details(int? id)
     {
-      if (id == null)
+      if(id == null)
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }
       Category category = db.Categories.Find(id);
-      if (category == null)
+      if(category == null)
       {
         return HttpNotFound();
       }
@@ -40,7 +40,7 @@ namespace I4PRJ_SmartStorage.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult Save([Bind(Include = "CategoryId,Name,IsActiv,LastUpdated,ByUser,Version")] Category category)
     {
-      if (ModelState.IsValid)
+      if(ModelState.IsValid)
       {
         category.Updated = DateTime.Now;
         category.ByUser = User.Identity.Name;
@@ -56,12 +56,12 @@ namespace I4PRJ_SmartStorage.Controllers
     // GET: /Categories/Edit/5
     public ActionResult Edit(int? id)
     {
-      if (id == null)
+      if(id == null)
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }
       Category category = db.Categories.Find(id);
-      if (category == null)
+      if(category == null)
       {
         return HttpNotFound();
       }
@@ -75,7 +75,7 @@ namespace I4PRJ_SmartStorage.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult Edit([Bind(Include = "CategoryId,Name,LastUpdated,ByUser,Version")] Category category)
     {
-      if (ModelState.IsValid)
+      if(ModelState.IsValid)
       {
         category.Updated = DateTime.Now;
         category.ByUser = User.Identity.Name;
@@ -90,12 +90,12 @@ namespace I4PRJ_SmartStorage.Controllers
     // GET: /Categories/Delete/5
     public ActionResult Delete(int? id)
     {
-      if (id == null)
+      if(id == null)
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }
       Category category = db.Categories.Find(id);
-      if (category == null)
+      if(category == null)
       {
         return HttpNotFound();
       }
@@ -108,14 +108,14 @@ namespace I4PRJ_SmartStorage.Controllers
     public ActionResult DeleteConfirmed(int id)
     {
       Category category = db.Categories.Find(id);
-      db.Categories.Remove(category);
+      category.IsDeleted = true;
       db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing)
+      if(disposing)
       {
         db.Dispose();
       }

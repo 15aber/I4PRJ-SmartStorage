@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
+using AutoMapper;
+using I4PRJ_SmartStorage.Dtos;
 using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
 
@@ -15,105 +14,104 @@ namespace I4PRJ_SmartStorage.Controllers.Api
 {
     public class ProductsController : ApiController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext _context;
 
-        // GET: api/Products
-        public IQueryable<Product> GetProducts()
+        public ProductsController()
         {
-            return db.Products;
+            _context = new ApplicationDbContext();
         }
 
-        // GET: api/Products/5
-        [ResponseType(typeof(Product))]
+        // GET /api/products
+        [ActionName("DefaultAction")]
+        public IHttpActionResult GetProducts()
+        {
+            var productsInDb = _context.Products.Include(p => p.Category).ToList();
+
+            var products = Mapper.Map<List<Product>, List<ProductDto>>(productsInDb.ToList());
+
+            return Ok(products);
+        }
+
+        // GET /api/products/getproduct/1
         public IHttpActionResult GetProduct(int id)
         {
-            Product product = db.Products.Find(id);
+            var product = _context.Products.SingleOrDefault(p => p.ProductId == id);
+
             if (product == null)
-            {
                 return NotFound();
-            }
 
-            return Ok(product);
+            return Ok(Mapper.Map<Product, ProductDto>(product));
         }
 
-        // PUT: api/Products/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutProduct(int id, Product product)
+        // GET /api/products/getproductsofinventory/1
+        public IHttpActionResult GetProductsOfInventory(int id)
+        {
+            // get stocks that have InventoryId == id
+            var productsInDb = _context.Stocks.Where(o => o.InventoryId == id).Select(o => o.Product);
+
+            var products = Mapper.Map<List<Product>, List<ProductDto>>(productsInDb.ToList());
+
+            return Json(products);
+        }
+
+        // GET /api/products/getproductsofinventory/1
+        public IHttpActionResult GetProductsOfCategory(int id)
+        {
+            // get stocks that have InventoryId == id
+            var productsInDb = _context.Products.Where(o => o.CategoryId == id);
+
+            var products = Mapper.Map<List<Product>, List<ProductDto>>(productsInDb.ToList());
+
+            return Ok(products);
+        }
+
+        // POST /api/products/createproduct
+        [HttpPost]
+        public IHttpActionResult CreateProduct(ProductDto productDto)
         {
             if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != product.ProductId)
-            {
                 return BadRequest();
-            }
 
-            db.Entry(product).State = EntityState.Modified;
+            var product = Mapper.Map<ProductDto, Product>(productDto);
+            _context.Products.Add(product);
+            _context.SaveChanges();
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProductExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            productDto.ProductId = product.ProductId;
+            return Created(new Uri(Request.RequestUri + "/" + product.ProductId), productDto);
         }
 
-        // POST: api/Products
-        [ResponseType(typeof(Product))]
-        public IHttpActionResult PostProduct(Product product)
+        // PUT /api/products/updateproduct/1
+        [HttpPut]
+        public IHttpActionResult UpdateProduct(int id, ProductDto productDto)
         {
             if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+                return BadRequest();
 
-            db.Products.Add(product);
-            db.SaveChanges();
+            var productInDb = _context.Products.SingleOrDefault(p => p.ProductId == id);
 
-            return CreatedAtRoute("DefaultApi", new { id = product.ProductId }, product);
+            if (productInDb == null)
+                return NotFound();
+
+            Mapper.Map(productDto, productInDb);
+
+            _context.SaveChanges();
+
+            return Ok();
         }
 
-        // DELETE: api/Products/5
-        [ResponseType(typeof(Product))]
+        // DELETE /api/products/deleteproduct/1
+        [HttpDelete]
         public IHttpActionResult DeleteProduct(int id)
         {
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
+            var productInDb = _context.Products.SingleOrDefault(p => p.ProductId == id);
+
+            if (productInDb == null)
                 return NotFound();
-            }
 
-            db.Products.Remove(product);
-            db.SaveChanges();
+            _context.Products.Remove(productInDb);
+            _context.SaveChanges();
 
-            return Ok(product);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool ProductExists(int id)
-        {
-            return db.Products.Count(e => e.ProductId == id) > 0;
+            return Ok();
         }
     }
 }

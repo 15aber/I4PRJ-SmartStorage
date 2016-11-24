@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using I4PRJ_SmartStorage.Models;
+using I4PRJ_SmartStorage.ViewModel;
 
 namespace I4PRJ_SmartStorage.Controllers
 {
@@ -19,22 +20,27 @@ namespace I4PRJ_SmartStorage.Controllers
 
     public ActionResult Inventories(int id)
     {
-      if (id == null)
+      if(id == null)
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }
-      var stocks = db.Stocks.Include(s => s.Inventory).Include(s => s.Product).Where(s => s.InventoryId == id);
 
-      if (stocks == null)
+      var stockViewModel = new StockViewModel
+      {
+        Stocks = db.Stocks.Include(s => s.Inventory).Include(s => s.Product).Where(s => s.InventoryId == id).ToList(),
+        Inventory = db.Inventories.Single(i => i.InventoryId == id)
+      };
+
+      if(stockViewModel.Stocks == null)
       {
         return HttpNotFound();
       }
-      return View("Index", stocks.ToList());
+      return View("Index", stockViewModel);
     }
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing)
+      if(disposing)
       {
         db.Dispose();
       }

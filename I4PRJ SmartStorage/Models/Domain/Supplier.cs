@@ -4,14 +4,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace I4PRJ_SmartStorage.Models.Domain
 {
-  public class Category
+  public class Supplier
   {
     [Key]
     [DisplayName("#")]
-    public int CategoryId { get; set; }
+    public int SupplierId { get; set; }
 
     [Required]
-    [DisplayName("Category")]
+    [DisplayName("Inventory")]
     public string Name { get; set; }
 
     [DisplayName("Updated")]
