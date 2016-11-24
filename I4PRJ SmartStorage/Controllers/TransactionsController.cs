@@ -44,7 +44,7 @@ namespace I4PRJ_SmartStorage.Controllers
         viewModel.ToInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList();
         viewModel.Products = db.Products.Where(p => p.IsDeleted == false).ToList();
 
-        return View("TransactionForm", viewModel);
+        return View("TransactionsForm", viewModel);
       }
     }
 
@@ -108,7 +108,7 @@ namespace I4PRJ_SmartStorage.Controllers
           Products = productsInDb
         };
 
-        return View("TransactionForm", viewModel);
+        return View("TransactionsForm", viewModel);
       }
 
       var fromStockInDb = db.Stocks.Include(i => i.Inventory)
@@ -128,7 +128,7 @@ namespace I4PRJ_SmartStorage.Controllers
           Products = productsInDb
         };
 
-        return View("TransactionForm", viewModel);
+        return View("TransactionsForm", viewModel);
       }
 
       else

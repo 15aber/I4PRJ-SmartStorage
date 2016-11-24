@@ -6,7 +6,7 @@ namespace I4PRJ_SmartStorage
   {
     public static void RegisterBundles(BundleCollection bundles)
     {
-      bundles.Add(new StyleBundle("~/Content/css").Include(
+      bundles.Add(new StyleBundle("~/bundles/css").Include(
           "~/Content/bootstrap.min.css",
           "~/Content/font-awesome.min.css",
           "~/Content/bootstrap-social.css",
@@ -21,6 +21,8 @@ namespace I4PRJ_SmartStorage
           "~/Scripts/respond/respond.min.js",
           "~/Scripts/slimScroll/jquery.slimscroll.min.js",
           "~/Scripts/mentisMenu/metisMenu.min.js",
+          "~/Scripts/toastr/toastr.min.js",
+          "~/Scripts/bootbox/bootbox.min.js",
           "~/Scripts/inspinia/inspinia.js"
       ));
 
@@ -30,33 +32,15 @@ namespace I4PRJ_SmartStorage
           "~/Scripts/site/jquery.validate.fix.js"
           ));
 
-      bundles.Add(new StyleBundle("~/Content/datatables").Include(
-          "~/Content/dataTables/dataTables.bootstrap.min.css",
-          "~/Content/dataTables/autoFill.dataTables.min.css",
-          "~/Content/dataTables/buttons.dataTables.min.css",
-          "~/Content/dataTables/keyTable.dataTables.min.css",
-          "~/Content/dataTables/responsive.dataTables.min.css",
-          "~/Content/dataTables/select.dataTables.min.css",
-          "~/Content/toastr/toastr.min.css",
-          "~/Content/dataTables/datatables.min.css"
+      bundles.Add(new StyleBundle("~/bundles/datatables").Include(
+          "~/Content/DataTables/datatables.min.css"
       ));
 
       bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
-          "~/Scripts/dataTables/datatables.min.js",
-          "~/Scripts/dataTables/jquery.dataTables.min.js",
-          "~/Scripts/dataTables/dataTables.autoFill.min.js",
-          "~/Scripts/dataTables/dataTables.buttons.min.js",
-          "~/Scripts/dataTables/dataTables.keyTable.min.js",
-          "~/Scripts/dataTables/dataTables.reponsice.min.js",
-          "~/Scripts/dataTables/dataTables.select.min.js",
-          "~/Scripts/jszip/jszip.min.js",
-          "~/Scripts/pdfmake/pdfmake.min.js",
-          "~/Scripts/pdfmake/vfs_fonts.js",
-          "~/Scripts/toastr/toastr.min.js",
-          "~/Scripts/bootbox/bootbox.min.js"
+          "~/Content/DataTables/datatables.min.js"
       ));
 
-      bundles.Add(new StyleBundle("~/Content/wizardSteps").Include(
+      bundles.Add(new StyleBundle("~/bundles/wizardSteps").Include(
            "~/Content/wizardSteps/jquery.steps.css"
       ));
 
