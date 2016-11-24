@@ -250,6 +250,7 @@
     <Content Include="Content\dataTables\autoFill.dataTables.min.css" />
     <Content Include="Content\dataTables\buttons.dataTables.css" />
     <Content Include="Content\dataTables\buttons.dataTables.min.css" />
+    <Content Include="Content\dataTables\dataTables.bootstrap.min.css" />
     <Content Include="Content\dataTables\datatables.css" />
     <Content Include="Content\dataTables\datatables.min.css" />
     <Content Include="Content\dataTables\keyTable.dataTables.css" />
@@ -279,6 +280,8 @@
     <Content Include="Content\patterns\shattered.png" />
     <Content Include="Content\patterns\triangular.png" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\toastr\toastr.css" />
+    <Content Include="Content\toastr\toastr.min.css" />
     <Content Include="Content\wizardSteps\jquery.steps.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
@@ -306,7 +309,13 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\toastr\toastr.less" />
+    <Content Include="Content\toastr\toastr.scss" />
     <None Include="Properties\PublishProfiles\SmartStorageAPP - Web Deploy.pubxml" />
+    <Content Include="Scripts\bootbox\bootbox.js" />
+    <Content Include="Scripts\bootbox\bootbox.min.js" />
+    <Content Include="Scripts\dataTables\jquery.dataTables.js" />
+    <Content Include="Scripts\dataTables\jquery.dataTables.min.js" />
     <Content Include="Scripts\modernizr\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond\respond.js" />
     <Content Include="Scripts\respond\respond.min.js" />
@@ -339,6 +348,8 @@
     <Content Include="Scripts\jquery\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery\jquery-3.1.1.min.map" />
     <None Include="Scripts\jqValidate\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\site\datatables\statusForm.js" />
+    <Content Include="Scripts\site\datatables\transactionForm.js" />
     <Content Include="Scripts\slimScroll\jquery.slimscroll.js" />
     <Content Include="Scripts\slimScroll\jquery.slimscroll.min.js" />
     <Content Include="Scripts\site\jquery.validate.fix.js" />
@@ -349,6 +360,8 @@
     <Content Include="Scripts\mentisMenu\metisMenu.js" />
     <Content Include="Scripts\mentisMenu\metisMenu.min.js" />
     <Content Include="Scripts\modernizr\modernizr-2.8.3.js" />
+    <Content Include="Scripts\toastr\toastr.js" />
+    <Content Include="Scripts\toastr\toastr.min.js" />
     <Content Include="Scripts\wizardSteps\jquery.steps.js" />
     <Content Include="Scripts\wizardSteps\jquery.steps.min.js" />
     <Content Include="Web.config" />

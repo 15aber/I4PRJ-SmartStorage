@@ -9,7 +9,7 @@
   <div class="col-sm-4">
     <ol class="breadcrumb">
       <li>
-        @Html.ActionLink("Transaction", "List")
+        @Html.ActionLink("Transaction", "Index")
       </li>
       <li class="active">
         <strong>New</strong>
@@ -80,7 +80,11 @@
   </div>
 </div>
 
+@section Styles {
+  @Styles.Render("~/Content/datatables")
+}
+
 @section Scripts {
-  @Scripts.Render("~/bundles/validate")
-  <script type="text/javascript" src="~/Scripts/Site/transactionForm.js"></script>
+  @Scripts.Render("~/bundles/datatables")
+  <script type="text/javascript" src="~/Scripts/site/datatables/transactionForm.js.js"></script>
 }

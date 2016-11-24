@@ -31,13 +31,14 @@ namespace I4PRJ_SmartStorage
           ));
 
       bundles.Add(new StyleBundle("~/Content/datatables").Include(
-          "~/Content/dataTables/datatables.min.css",
           "~/Content/dataTables/dataTables.bootstrap.min.css",
           "~/Content/dataTables/autoFill.dataTables.min.css",
           "~/Content/dataTables/buttons.dataTables.min.css",
           "~/Content/dataTables/keyTable.dataTables.min.css",
           "~/Content/dataTables/responsive.dataTables.min.css",
-          "~/Content/dataTables/select.dataTables.min.css"
+          "~/Content/dataTables/select.dataTables.min.css",
+          "~/Content/toastr/toastr.min.css",
+          "~/Content/dataTables/datatables.min.css"
       ));
 
       bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
@@ -50,7 +51,9 @@ namespace I4PRJ_SmartStorage
           "~/Scripts/dataTables/dataTables.select.min.js",
           "~/Scripts/jszip/jszip.min.js",
           "~/Scripts/pdfmake/pdfmake.min.js",
-          "~/Scripts/pdfmake/vfs_fonts.js"
+          "~/Scripts/pdfmake/vfs_fonts.js",
+          "~/Scripts/toastr/toastr.min.js",
+          "~/Scripts/bootbox/bootbox.min.js"
       ));
 
       bundles.Add(new StyleBundle("~/Content/wizardSteps").Include(
@@ -58,7 +61,7 @@ namespace I4PRJ_SmartStorage
       ));
 
       bundles.Add(new ScriptBundle("~/bundles/wizardSteps").Include(
-          "~/Scripts/wizardSteps/jquery.steps.min.js"
+          "~/Scripts/wizardSteps/jquery.steps.js"
       ));
     }
   }
