@@ -29,13 +29,6 @@
               url: "/api/products/getproductsofcategory/" + document.location.pathname.split('/')[3],
               dataSrc: ""
             },
-            "columnDefs": [
-                { "width": "20%", "targets": 0 },
-                { "width": "20%", "targets": 1 },
-                { "width": "20%", "targets": 2 },
-                { "width": "20%", "targets": 3 },
-                { "width": "20%", "targets": 4 }
-            ],
             columns: [
                 {
                   data: "name"
@@ -60,15 +53,12 @@
                 {
                   data: "productId",
                   render: function (data) {
-                    return "<center><button class='btn btn-primary pull-left js-details' id='details' data-product-id=" +
-                        data +
-                        ">Details</button>" +
-                        "<button class='btn btn-white js-edit' data-product-id=" +
+                    return "<button class='btn btn-primary btn-xs js-edit' data-product-id=" +
                         data +
                         ">Edit</button>" +
-                        "<button class='btn btn-white pull-right js-delete' data-product-id=" +
+                        "<button class='btn btn-white btn-xs pull-right js-delete' data-product-id=" +
                         data +
-                        ">Delete</button><center>";
+                        ">Delete</button>";
                   }
                 }
             ]
