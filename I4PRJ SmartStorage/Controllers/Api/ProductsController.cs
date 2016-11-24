@@ -62,7 +62,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
 
             var products = Mapper.Map<List<Product>, List<ProductDto>>(productsInDb.ToList());
 
-            return Json(products);
+            return Ok(products);
         }
 
         // POST /api/products/createproduct

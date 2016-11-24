@@ -1,4 +1,4 @@
-﻿@model I4PRJ_SmartStorage.ViewModels.ProductViewModel
+﻿@model I4PRJ_SmartStorage.Models.Domain.Product
 
 @{
     ViewBag.Title = "Index";
@@ -15,26 +15,25 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <table id="products" name="@Convert.ToInt32(Url.RequestContext.RouteData.Values["id"])" class="table table-striped table-bordered table-hover">
+                    <table id="products" class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Product.Name)
+                                    @Html.DisplayNameFor(model => model.Name)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Product.PurchasePrice)
+                                    @Html.DisplayNameFor(model => model.PurchasePrice)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Product.Updated)
+                                    @Html.DisplayNameFor(model => model.Updated)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Product.ByUser)
+                                    @Html.DisplayNameFor(model => model.ByUser)
                                 </th>
                                 <th></th>
                         </thead>
                         <tbody></tbody>
                         <tfoot>
-                        @Html.HiddenFor(m => m.CategoryId, new { id = "CategoryId" })
                         </tfoot>
                     </table>
                     
