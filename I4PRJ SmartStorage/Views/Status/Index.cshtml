@@ -43,7 +43,7 @@
                                     @*Is inventory found in a Status where IsStarted == true?*@
                                     @if (Model.StatusStartedInventories.FindIndex(x => x == item.InventoryId) == -1)
                                     {
-                                        @Html.ActionLink("Start", "StartStatus", new { id = item.InventoryId }, new { @class = "btn btn-primary pull-right" });
+                                        @Html.ActionLink("Start", "StartStatus", new { id = item.InventoryId }, new { @class = "btn btn-primary pull-right startBtn" })                                     
                                     }
 
                                     else
