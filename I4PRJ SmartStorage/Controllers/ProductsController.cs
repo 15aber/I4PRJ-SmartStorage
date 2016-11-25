@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
 using I4PRJ_SmartStorage.ViewModels;
@@ -18,8 +19,8 @@ namespace I4PRJ_SmartStorage.Controllers
 
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.Category).Where(p => p.IsDeleted != true);
-            return View(products.ToList());
+            var product = new Product();
+            return View(product);
         }
 
         // GET: /Products/
@@ -109,7 +110,8 @@ namespace I4PRJ_SmartStorage.Controllers
 
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Categories", new RouteValueDictionary(
+                new { controller = "Products", action = "Categories", Id = product.CategoryId }));
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", product.CategoryId);
             return View(product);
