@@ -54,7 +54,7 @@ namespace I4PRJ_SmartStorage.Controllers
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
     {
-      if (!ModelState.IsValid)
+      if(!ModelState.IsValid)
       {
         return View(model);
       }
@@ -65,7 +65,7 @@ namespace I4PRJ_SmartStorage.Controllers
           await
               SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe,
                   shouldLockout: false);
-      switch (result)
+      switch(result)
       {
         case SignInStatus.Success:
           return RedirectToLocal(returnUrl);
@@ -86,7 +86,7 @@ namespace I4PRJ_SmartStorage.Controllers
     public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
     {
       // Require that the user has already logged in via username/password or external login
-      if (!await SignInManager.HasBeenVerifiedAsync())
+      if(!await SignInManager.HasBeenVerifiedAsync())
       {
         return View("Error");
       }
@@ -100,7 +100,7 @@ namespace I4PRJ_SmartStorage.Controllers
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
     {
-      if (!ModelState.IsValid)
+      if(!ModelState.IsValid)
       {
         return View(model);
       }
@@ -113,7 +113,7 @@ namespace I4PRJ_SmartStorage.Controllers
           await
               SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe,
                   rememberBrowser: model.RememberBrowser);
-      switch (result)
+      switch(result)
       {
         case SignInStatus.Success:
           return RedirectToLocal(model.ReturnUrl);
@@ -141,7 +141,7 @@ namespace I4PRJ_SmartStorage.Controllers
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> Register(RegisterViewModel model)
     {
-      if (ModelState.IsValid)
+      if(ModelState.IsValid)
       {
         var user = new ApplicationUser
         {
@@ -154,7 +154,7 @@ namespace I4PRJ_SmartStorage.Controllers
 
         };
         var result = await UserManager.CreateAsync(user, model.Password);
-        if (result.Succeeded)
+        if(result.Succeeded)
         {
           await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
@@ -180,7 +180,7 @@ namespace I4PRJ_SmartStorage.Controllers
     [AllowAnonymous]
     public async Task<ActionResult> ConfirmEmail(string userId, string code)
     {
-      if (userId == null || code == null)
+      if(userId == null || code == null)
       {
         return View("Error");
       }
@@ -203,10 +203,10 @@ namespace I4PRJ_SmartStorage.Controllers
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
     {
-      if (ModelState.IsValid)
+      if(ModelState.IsValid)
       {
         var user = await UserManager.FindByNameAsync(model.Email);
-        if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+        if(user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
         {
           // Don't reveal that the user does not exist or is not confirmed
           return View("ForgotPasswordConfirmation");
@@ -214,10 +214,10 @@ namespace I4PRJ_SmartStorage.Controllers
 
         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
         // Send an email with this link
-        // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-        // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-        // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-        // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+        string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+        var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+        await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+        return RedirectToAction("ForgotPasswordConfirmation", "Account");
       }
 
       // If we got this far, something failed, redisplay form
@@ -247,18 +247,18 @@ namespace I4PRJ_SmartStorage.Controllers
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
     {
-      if (!ModelState.IsValid)
+      if(!ModelState.IsValid)
       {
         return View(model);
       }
       var user = await UserManager.FindByNameAsync(model.Email);
-      if (user == null)
+      if(user == null)
       {
         // Don't reveal that the user does not exist
         return RedirectToAction("ResetPasswordConfirmation", "Account");
       }
       var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
-      if (result.Succeeded)
+      if(result.Succeeded)
       {
         return RedirectToAction("ResetPasswordConfirmation", "Account");
       }
@@ -292,7 +292,7 @@ namespace I4PRJ_SmartStorage.Controllers
     public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
     {
       var userId = await SignInManager.GetVerifiedUserIdAsync();
-      if (userId == null)
+      if(userId == null)
       {
         return View("Error");
       }
@@ -310,13 +310,13 @@ namespace I4PRJ_SmartStorage.Controllers
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> SendCode(SendCodeViewModel model)
     {
-      if (!ModelState.IsValid)
+      if(!ModelState.IsValid)
       {
         return View();
       }
 
       // Generate the token and send it
-      if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
+      if(!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
       {
         return View("Error");
       }
@@ -330,14 +330,14 @@ namespace I4PRJ_SmartStorage.Controllers
     public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
     {
       var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
-      if (loginInfo == null)
+      if(loginInfo == null)
       {
         return RedirectToAction("Login");
       }
 
       var user = new ExternalLoginConfirmationViewModel();
 
-      if (loginInfo.Login.LoginProvider == "Facebook")
+      if(loginInfo.Login.LoginProvider == "Facebook")
       {
         var identity = AuthenticationManager.GetExternalIdentity(DefaultAuthenticationTypes.ExternalCookie);
         var access_token = identity.FindFirstValue("FacebookAccessToken");
@@ -353,7 +353,7 @@ namespace I4PRJ_SmartStorage.Controllers
 
       // Sign in the user with this external login provider if the user already has a login
       var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
-      switch (result)
+      switch(result)
       {
         case SignInStatus.Success:
           return RedirectToLocal(returnUrl);
@@ -378,6 +378,12 @@ namespace I4PRJ_SmartStorage.Controllers
       }
     }
 
+    [AllowAnonymous]
+    public ActionResult ExternalLoginConfirmation()
+    {
+      return View();
+    }
+
     //
     // POST: /Account/ExternalLoginConfirmation
     [HttpPost]
@@ -386,16 +392,16 @@ namespace I4PRJ_SmartStorage.Controllers
     public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model,
         string returnUrl)
     {
-      if (User.Identity.IsAuthenticated)
+      if(User.Identity.IsAuthenticated)
       {
         return RedirectToAction("Index", "Manage");
       }
 
-      if (ModelState.IsValid)
+      if(ModelState.IsValid)
       {
         // Get the information about the user from the external login provider
         var info = await AuthenticationManager.GetExternalLoginInfoAsync();
-        if (info == null)
+        if(info == null)
         {
           return View("ExternalLoginFailure");
         }
@@ -410,10 +416,10 @@ namespace I4PRJ_SmartStorage.Controllers
           ProfilePicture = model.ProfilePicture
         };
         var result = await UserManager.CreateAsync(user);
-        if (result.Succeeded)
+        if(result.Succeeded)
         {
           result = await UserManager.AddLoginAsync(user.Id, info.Login);
-          if (result.Succeeded)
+          if(result.Succeeded)
           {
             await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
             return RedirectToAction("VerifyPhoneNumber", "Manage", new { PhoneNumber = model.PhoneNumber });
@@ -465,15 +471,15 @@ namespace I4PRJ_SmartStorage.Controllers
 
     protected override void Dispose(bool disposing)
     {
-      if (disposing)
+      if(disposing)
       {
-        if (_userManager != null)
+        if(_userManager != null)
         {
           _userManager.Dispose();
           _userManager = null;
         }
 
-        if (_signInManager != null)
+        if(_signInManager != null)
         {
           _signInManager.Dispose();
           _signInManager = null;
@@ -495,7 +501,7 @@ namespace I4PRJ_SmartStorage.Controllers
 
     private void AddErrors(IdentityResult result)
     {
-      foreach (var error in result.Errors)
+      foreach(var error in result.Errors)
       {
         ModelState.AddModelError("", error);
       }
@@ -503,7 +509,7 @@ namespace I4PRJ_SmartStorage.Controllers
 
     private ActionResult RedirectToLocal(string returnUrl)
     {
-      if (Url.IsLocalUrl(returnUrl))
+      if(Url.IsLocalUrl(returnUrl))
       {
         return Redirect(returnUrl);
       }
@@ -531,7 +537,7 @@ namespace I4PRJ_SmartStorage.Controllers
       public override void ExecuteResult(ControllerContext context)
       {
         var properties = new AuthenticationProperties { RedirectUri = RedirectUri };
-        if (UserId != null)
+        if(UserId != null)
         {
           properties.Dictionary[XsrfKey] = UserId;
         }

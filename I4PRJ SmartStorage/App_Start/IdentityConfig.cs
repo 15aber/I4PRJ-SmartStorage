@@ -32,7 +32,7 @@ namespace I4PRJ_SmartStorage
       emailMessage.Body = message.Body;
       emailMessage.IsBodyHtml = true;
 
-      using (var smtpClient = new SmtpClient())
+      using(var smtpClient = new SmtpClient())
       {
         smtpClient.UseDefaultCredentials = false;
         smtpClient.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["SmtpUserName"],
@@ -69,7 +69,7 @@ namespace I4PRJ_SmartStorage
 
       smsClient.SendMessages(
                         messages: smsMessagesToSend,
-                        messageStatusCallbackUrl: "http://mywebsite.com/example/messagestatus");
+                        messageStatusCallbackUrl: "https://smartstorage.dk/api/sms/callback");
 
       return Task.CompletedTask;
     }
@@ -123,10 +123,13 @@ namespace I4PRJ_SmartStorage
       manager.EmailService = new EmailService();
       manager.SmsService = new SmsService();
       var dataProtectionProvider = options.DataProtectionProvider;
-      if (dataProtectionProvider != null)
+      if(dataProtectionProvider != null)
       {
         manager.UserTokenProvider =
-            new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+            new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"))
+            {
+              TokenLifespan = TimeSpan.FromMinutes(15)
+            };
       }
       return manager;
     }

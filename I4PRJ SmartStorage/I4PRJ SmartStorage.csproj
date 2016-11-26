@@ -61,10 +61,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Mono.Reflection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mono.Reflection.1.0.0.0\lib\Mono.Reflection.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -197,6 +193,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\ProductsController.cs" />
+    <Compile Include="Controllers\Api\SmsController.cs" />
     <Compile Include="Controllers\Api\StatusController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -205,9 +202,7 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\StocksController.cs" />
-    <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
-    <Compile Include="Controllers\WholesalersController.cs" />
     <Compile Include="Dtos\CategoryDto.cs" />
     <Compile Include="Dtos\ProductDto.cs" />
     <Compile Include="Dtos\StatusDto.cs" />
@@ -216,11 +211,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611261148228_init.cs" />
-    <Compile Include="Migrations\201611261148228_init.Designer.cs">
-      <DependentUpon>201611261148228_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -331,8 +321,8 @@
     <Content Include="Content\toastr\toastr.min.css" />
     <Content Include="Content\wizardSteps\jquery.steps.css" />
     <Content Include="favicon.ico" />
-    <Content Include="Content\fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="CodeTemplates\MvcControllerWithContext\Controller.cs.t4" />
     <Content Include="CodeTemplates\MvcView\Create.cs.t4" />
@@ -343,15 +333,6 @@
     <Content Include="CodeTemplates\MvcView\Imports.include.t4" />
     <Content Include="CodeTemplates\MvcView\List.cs.t4" />
     <Content Include="CodeTemplates\MvcView\ModelMetadataFunctions.cs.include.t4" />
-    <Content Include="Content\fonts\FontAwesome.otf" />
-    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
@@ -360,6 +341,15 @@
     <Content Include="Content\toastr\toastr.scss" />
     <Content Include="Content\DataTables\Buttons-1.2.2\css\common.scss" />
     <Content Include="Content\DataTables\Buttons-1.2.2\css\mixins.scss" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\SmartStorageAPP - Web Deploy.pubxml" />
     <Content Include="Scripts\bootbox\bootbox.js" />
     <Content Include="Scripts\bootbox\bootbox.min.js" />
@@ -456,32 +446,13 @@
     <Content Include="Views\Status\Edit.cshtml" />
     <Content Include="Views\Status\Index.cshtml" />
     <Content Include="Views\Status\StatusForm.cshtml" />
-    <Content Include="Views\Wholesalers\Create.cshtml" />
-    <Content Include="Views\Wholesalers\Delete.cshtml" />
-    <Content Include="Views\Wholesalers\Edit.cshtml" />
-    <Content Include="Views\Wholesalers\Index.cshtml" />
-    <Content Include="Views\Suppliers\Create.cshtml" />
-    <Content Include="Views\Suppliers\Delete.cshtml" />
-    <Content Include="Views\Suppliers\Edit.cshtml" />
-    <Content Include="Views\Suppliers\Index.cshtml" />
-    <Content Include="Views\Wholesalers\WholesalersForm.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\NiMa\NiMa\NiMa.csproj">
-      <Project>{cd25db1b-96fe-480b-a59c-c600dde0c4a5}</Project>
-      <Name>NiMa</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611261148228_init.resx">
-      <DependentUpon>201611261148228_init.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

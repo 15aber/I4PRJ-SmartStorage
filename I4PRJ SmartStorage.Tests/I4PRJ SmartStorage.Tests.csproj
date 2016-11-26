@@ -94,7 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\I4PRJ SmartStorage\I4PRJ SmartStorage.csproj">
-      <Project>{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}</Project>
+      <Project>{5ba405f6-d7a0-46cb-bbad-4a315ff582b2}</Project>
       <Name>I4PRJ SmartStorage</Name>
     </ProjectReference>
   </ItemGroup>
