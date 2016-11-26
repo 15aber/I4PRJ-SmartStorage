@@ -214,9 +214,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611241253038_MergeInit.cs" />
-    <Compile Include="Migrations\201611241253038_MergeInit.Designer.cs">
-      <DependentUpon>201611241253038_MergeInit.cs</DependentUpon>
+    <Compile Include="Migrations\201611261135099_master.cs" />
+    <Compile Include="Migrations\201611261135099_master.Designer.cs">
+      <DependentUpon>201611261135099_master.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -461,15 +461,15 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611241253038_MergeInit.resx">
-      <DependentUpon>201611241253038_MergeInit.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\NiMa\NiMa\NiMa.csproj">
       <Project>{cd25db1b-96fe-480b-a59c-c600dde0c4a5}</Project>
       <Name>NiMa</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611261135099_master.resx">
+      <DependentUpon>201611261135099_master.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

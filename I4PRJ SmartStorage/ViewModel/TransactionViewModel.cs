@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using I4PRJ_SmartStorage.Models.Domain;
 
 namespace I4PRJ_SmartStorage.ViewModel
@@ -13,6 +14,7 @@ namespace I4PRJ_SmartStorage.ViewModel
 
     public Transaction Transaction { get; set; }
 
+    [DisplayName("Restock")]
     public bool IsChecked { get; set; }
 
     public List<Transaction> Transactions { get; set; }
