@@ -33,11 +33,11 @@ namespace I4PRJ_SmartStorage
           ));
 
       bundles.Add(new StyleBundle("~/bundles/datatables").Include(
-          "~/Content/dataTables/datatables.min.css"
+          "~/Content/DataTables/datatables.min.css"
       ));
 
       bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
-          "~/Content/dataTables/datatables.min.js"
+          "~/Content/DataTables/datatables.min.js"
       ));
 
       bundles.Add(new StyleBundle("~/bundles/wizardSteps").Include(
