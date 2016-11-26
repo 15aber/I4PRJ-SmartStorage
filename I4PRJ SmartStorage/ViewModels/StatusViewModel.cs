@@ -20,5 +20,6 @@ namespace I4PRJ_SmartStorage.ViewModels
 
         public string Name { get; set; }
 
+        public bool ShowNotification { get; set; }
     }
 }

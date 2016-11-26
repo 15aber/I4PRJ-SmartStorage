@@ -15,7 +15,8 @@ namespace I4PRJ_SmartStorage
                       "~/Content/bootstrap-social.css",
                       "~/Content/DataTables/css/dataTables.min.css",
                       "~/content/datatables/css/datatables.bootstrap.css",
-                      "~/content/toastr.css"
+                      "~/content/toastr.css",
+                      "~/content/validation-error.css"
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/script").Include(
@@ -38,8 +39,6 @@ namespace I4PRJ_SmartStorage
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
-
-
         }
     }
 }

@@ -23,17 +23,10 @@
                     <h5>List of Transactions</h5>
                     <div class="ibox-tools">
                         <div class="form-group">
-                            @using (Html.BeginForm("New", "Transactions"))
-                            {
-                                @Html.CheckBoxFor(x => x.IsChecked)
-                                @Html.LabelFor(x => x.IsChecked)
-                                @Html.ValidationMessageFor(x => x.IsChecked)
-
-                                <input type="submit" value="New" class="btn btn-primary" />
-                            }
-                            @*
-                                @Html.ActionLink("Create New", "New", null, new {@class = "btn btn-primary btn"})
-                            *@
+                            <div class="col-md-offset-2 col-md-10">
+                                @Html.ActionLink("Restock", "NewRestock", null, new { @class = "btn btn-primary btn-xs" })
+                                @Html.ActionLink("Transaction", "NewTransaction", null, new { @class = "btn btn-primary btn-xs" })
+                            </div>
                         </div>
                     </div>
                     <div class="ibox-content">

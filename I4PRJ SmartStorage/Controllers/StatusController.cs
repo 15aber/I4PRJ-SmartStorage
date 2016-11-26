@@ -17,13 +17,16 @@ namespace I4PRJ_SmartStorage.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: /Status/
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             var statusViewModel = new StatusViewModel
             {
                 Inventories = db.Inventories.Where(i => !i.IsDeleted).ToList(),
                 StatusStartedInventories = new List<int>()
             };
+
+            if (id == 1)
+                statusViewModel.ShowNotification = true;
 
             var statuses = db.Status.ToList();
             foreach (var status in statuses)
@@ -36,7 +39,7 @@ namespace I4PRJ_SmartStorage.Controllers
 
             return View(statusViewModel);
         }
-
+        
         public ActionResult Save()
         {
             var statusViewModel = new StatusViewModel

@@ -28,14 +28,16 @@
                         }
                     },
                     {
+                        data: null,
                         render: function() {
                             return "<input type='number' min='0' style='width: 100%' id='tast' class='form-control quantity'/>";
                         }
                     },
                     {
+                        data: null,
+                        "sDefaulContent": ""
 
-
-                    }
+    }
                 ]
             });
 

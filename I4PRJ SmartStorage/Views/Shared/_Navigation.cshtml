@@ -58,7 +58,7 @@
                         foreach (var item in categories)
                         {
                             <li class="@( Convert.ToInt32(Url.RequestContext.RouteData.Values["id"]) == item.CategoryId && Url.RequestContext.RouteData.Values["controller"].ToString() == "Products" ? "active" : "" )">
-                                <a href="@Url.Action("Categories", "Products", new {id = item.CategoryId})">
+                                <a href="@Url.Action("Index", "Products", new {id = item.CategoryId})">
                                     <span class="nav-label">@item.Name</span>
                                 </a>
                             </li>

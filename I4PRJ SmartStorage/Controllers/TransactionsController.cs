@@ -30,41 +30,44 @@ namespace I4PRJ_SmartStorage.Controllers
             return View(viewModel);
         }
 
-        public ActionResult New(TransactionViewModel viewModel)
+        public ActionResult NewRestock()
         {
-            if (viewModel.IsChecked)
+            var viewModel = new TransactionViewModel
             {
-                viewModel.Transaction = new Transaction();
-                viewModel.ToInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList();
-                viewModel.Products = db.Products.Where(p => p.IsDeleted == false).ToList();
+                ToInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList(),
+                Products = db.Products.Where(p => p.IsDeleted == false).ToList()
+            };
 
-                return View("RestockForm", viewModel);
-            }
-            else
+            return View("RestockForm", viewModel);
+        }
+
+        public ActionResult NewTransaction()
+        {
+            var viewModel = new TransactionViewModel
             {
-                viewModel.Transaction = new Transaction();
-                viewModel.FromInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList();
-                viewModel.ToInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList();
-                viewModel.Products = db.Products.Where(p => p.IsDeleted == false).ToList();
+                FromInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList(),
+                ToInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList(),
+                Products = db.Products.Where(p => p.IsDeleted == false).ToList()
+            };
 
-                return View("TransactionForm", viewModel);
-            }
+            return View("TransactionForm", viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SaveRestock(Transaction transaction)
+        public ActionResult SaveRestock(TransactionViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
-                var viewModel = new TransactionViewModel
-                {
-                    ToInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList(),
-                    Products = db.Products.Where(p => p.IsDeleted == false).ToList()
-                };
-
                 return View("RestockForm", viewModel);
             }
+
+            var transaction = new Transaction
+            {
+                ToInventoryId = viewModel.ToInventoryId,
+                ProductId = viewModel.ProductId,
+                Quantity = viewModel.Quantity
+            };
 
             var toStockInDb = db.Stocks.Include(s => s.Inventory)
                     .Include(s => s.Product)
@@ -97,22 +100,20 @@ namespace I4PRJ_SmartStorage.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SaveTransaction(Transaction transaction)
+        public ActionResult SaveTransaction(TransactionViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
-                var inventoriesInDb = db.Inventories.Where(p => p.IsDeleted == false).ToList();
-                var productsInDb = db.Products.Where(p => p.IsDeleted == false).ToList();
-
-                var viewModel = new TransactionViewModel
-                {
-                    FromInventory = inventoriesInDb,
-                    ToInventory = inventoriesInDb,
-                    Products = productsInDb
-                };
-
                 return View("TransactionForm", viewModel);
             }
+
+            var transaction = new Transaction
+            {
+                FromInventoryId = viewModel.FromInventoryId,
+                ToInventoryId = viewModel.ToInventoryId,
+                ProductId = viewModel.ProductId,
+                Quantity = viewModel.Quantity
+            };
 
             var fromStockInDb = db.Stocks.Include(i => i.Inventory)
                     .Include(p => p.Product)
@@ -121,16 +122,6 @@ namespace I4PRJ_SmartStorage.Controllers
 
             if (fromStockInDb == null)
             {
-                var inventoriesInDb = db.Inventories.ToList();
-                var productsInDb = db.Products.ToList();
-
-                var viewModel = new TransactionViewModel
-                {
-                    FromInventory = inventoriesInDb,
-                    ToInventory = inventoriesInDb,
-                    Products = productsInDb
-                };
-
                 return View("TransactionForm", viewModel);
             }
 

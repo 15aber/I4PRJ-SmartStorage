@@ -30,7 +30,9 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.Inventories)
                             </th>
-                            <th></th>
+                            <th>
+                                @Html.HiddenFor(m => m.ShowNotification)
+                            </th>
                         </tr>
 
                         @foreach (var item in Model.Inventories)
@@ -43,7 +45,7 @@
                                     @*Is inventory found in a Status where IsStarted == true?*@
                                     @if (Model.StatusStartedInventories.FindIndex(x => x == item.InventoryId) == -1)
                                     {
-                                        @Html.ActionLink("Start", "StartStatus", new { id = item.InventoryId }, new { @class = "btn btn-primary pull-right startBtn" })                                     
+                                        @Html.ActionLink("Start", "StartStatus", new { id = item.InventoryId }, new { @class = "btn btn-primary pull-right startBtn" })
                                     }
 
                                     else
@@ -59,3 +61,14 @@
         </div>
     </div>
 </div>
+
+@section scripts
+{
+    <script>
+        $(document)
+            .ready(function () {
+                if ($("#ShowNotification").val() === "True")
+                    toastr.success("Status successfully recorded.");
+            });
+    </script>
+}

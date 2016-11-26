@@ -1,0 +1,9 @@
+﻿.input-validation-error,
+input.error {
+    border: 2px solid red;
+}
+
+.field-validation-error,
+label.error {
+    color: red;
+}

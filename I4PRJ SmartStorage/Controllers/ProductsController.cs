@@ -17,34 +17,13 @@ namespace I4PRJ_SmartStorage.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index()
-        {
-            var product = new Product();
-            return View(product);
-        }
-
         // GET: /Products/
-        public ActionResult Categories(int? id)
+        public ActionResult Index(int? id)
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             return View("Index");
-        }
-
-        // GET: /Products/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
         }
 
         // GET: /Products/Create
@@ -73,7 +52,8 @@ namespace I4PRJ_SmartStorage.Controllers
 
                 db.Products.Add(product);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new RouteValueDictionary(
+                new { controller = "Products", action = "Index", Id = product.CategoryId }));
             }
 
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", product.CategoryId);
@@ -110,39 +90,11 @@ namespace I4PRJ_SmartStorage.Controllers
 
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Categories", new RouteValueDictionary(
-                new { controller = "Products", action = "Categories", Id = product.CategoryId }));
+                return RedirectToAction("Index", new RouteValueDictionary(
+                new { controller = "Products", action = "Index", Id = product.CategoryId }));
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", product.CategoryId);
             return View(product);
-        }
-
-        // GET: /Products/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
-
-        // POST: /Products/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Product product = db.Products.Find(id);
-            product.IsDeleted = true;
-            //db.Products.Remove(product);
-
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

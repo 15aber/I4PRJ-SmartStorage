@@ -19,7 +19,6 @@ namespace I4PRJ_SmartStorage.Models.Domain
         [DisplayName("From")]
         public Inventory FromInventory { get; set; }
 
-        [Required]
         [ForeignKey("ToInventory")]
         [DisplayName("To")]
         public int ToInventoryId { get; set; }
@@ -27,7 +26,6 @@ namespace I4PRJ_SmartStorage.Models.Domain
         [DisplayName("To")]
         public Inventory ToInventory { get; set; }
 
-        [Required]
         [DisplayName("Product")]
         public int ProductId { get; set; }
 

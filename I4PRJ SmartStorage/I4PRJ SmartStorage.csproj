@@ -220,10 +220,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611231726463_restartet.cs" />
-    <Compile Include="Migrations\201611231726463_restartet.Designer.cs">
-      <DependentUpon>201611231726463_restartet.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -584,6 +580,7 @@
     <Content Include="Content\patterns\otis_redding.png" />
     <Content Include="Content\patterns\shattered.png" />
     <Content Include="Content\patterns\triangular.png" />
+    <Content Include="Content\validation-error.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -760,9 +757,9 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\pace.js" />
     <Content Include="Scripts\pace.min.js" />
-    <Content Include="Scripts\Site\productsIndex.js" />
-    <Content Include="Scripts\Site\statusForm.js" />
-    <Content Include="Scripts\Site\transactionForm.js" />
+    <Content Include="Scripts\site\productsIndex.js" />
+    <Content Include="Scripts\site\statusForm.js" />
+    <Content Include="Scripts\site\transactionForm.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config">
@@ -810,7 +807,6 @@
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Inventories\Create.cshtml" />
@@ -818,10 +814,6 @@
     <Content Include="Views\Inventories\Details.cshtml" />
     <Content Include="Views\Inventories\Edit.cshtml" />
     <Content Include="Views\Inventories\Index.cshtml" />
-    <Content Include="Views\Transactions\Create.cshtml" />
-    <Content Include="Views\Transactions\Delete.cshtml" />
-    <Content Include="Views\Transactions\Details.cshtml" />
-    <Content Include="Views\Transactions\Edit.cshtml" />
     <Content Include="Views\Transactions\Index.cshtml" />
     <Content Include="Views\Transactions\TransactionForm.cshtml" />
     <Content Include="Views\Stocks\Index.cshtml" />
@@ -838,11 +830,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611231726463_restartet.resx">
-      <DependentUpon>201611231726463_restartet.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
