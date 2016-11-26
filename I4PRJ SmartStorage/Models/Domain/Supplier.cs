@@ -11,7 +11,7 @@ namespace I4PRJ_SmartStorage.Models.Domain
     public int SupplierId { get; set; }
 
     [Required]
-    [DisplayName("Inventory")]
+    [DisplayName("Supplier")]
     public string Name { get; set; }
 
     [DisplayName("Updated")]

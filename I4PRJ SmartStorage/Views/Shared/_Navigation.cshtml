@@ -103,11 +103,23 @@
         </a>
       </li>
       
-      <li class="@Html.IsSelected(controller: "Status")">
-        <a href="@Url.Action("Index", "Status")">
-          <i class="fa fa-file-text-o"></i> <span class="nav-label">Status</span>
-        </a>
-      </li>
+        <li class="@Html.IsSelected(controller: "Status")">
+            <a href="@Url.Action("Index", "Status")">
+                <i class="fa fa-file-text-o"></i> <span class="nav-label">Status</span>
+            </a>
+        </li>
+        
+        <li class="@Html.IsSelected(controller: "Wholesalers")">
+            <a href="@Url.Action("Index", "Wholesalers")">
+                <i class="fa fa-file-text-o"></i> <span class="nav-label">Wholesalers</span>
+            </a>
+        </li>
+        
+        <li class="@Html.IsSelected(controller: "Suppliers")">
+            <a href="@Url.Action("Index", "Suppliers")">
+                <i class="fa fa-file-text-o"></i> <span class="nav-label">Suppliers</span>
+            </a>
+        </li>
 
     </ul>
   </div>

@@ -205,7 +205,9 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\StocksController.cs" />
+    <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
+    <Compile Include="Controllers\WholesalersController.cs" />
     <Compile Include="Dtos\CategoryDto.cs" />
     <Compile Include="Dtos\ProductDto.cs" />
     <Compile Include="Dtos\StatusDto.cs" />
@@ -214,9 +216,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611241253038_MergeInit.cs" />
-    <Compile Include="Migrations\201611241253038_MergeInit.Designer.cs">
-      <DependentUpon>201611241253038_MergeInit.cs</DependentUpon>
+    <Compile Include="Migrations\201611261148228_init.cs" />
+    <Compile Include="Migrations\201611261148228_init.Designer.cs">
+      <DependentUpon>201611261148228_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -454,6 +456,15 @@
     <Content Include="Views\Status\Edit.cshtml" />
     <Content Include="Views\Status\Index.cshtml" />
     <Content Include="Views\Status\StatusForm.cshtml" />
+    <Content Include="Views\Wholesalers\Create.cshtml" />
+    <Content Include="Views\Wholesalers\Delete.cshtml" />
+    <Content Include="Views\Wholesalers\Edit.cshtml" />
+    <Content Include="Views\Wholesalers\Index.cshtml" />
+    <Content Include="Views\Suppliers\Create.cshtml" />
+    <Content Include="Views\Suppliers\Delete.cshtml" />
+    <Content Include="Views\Suppliers\Edit.cshtml" />
+    <Content Include="Views\Suppliers\Index.cshtml" />
+    <Content Include="Views\Wholesalers\WholesalersForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -462,15 +473,15 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611241253038_MergeInit.resx">
-      <DependentUpon>201611241253038_MergeInit.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\NiMa\NiMa\NiMa.csproj">
       <Project>{cd25db1b-96fe-480b-a59c-c600dde0c4a5}</Project>
       <Name>NiMa</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611261148228_init.resx">
+      <DependentUpon>201611261148228_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
