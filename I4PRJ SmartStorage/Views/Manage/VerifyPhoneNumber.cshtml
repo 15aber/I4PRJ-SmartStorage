@@ -13,7 +13,7 @@
         </div>
         <div class="ibox-content">
 
-          @using (Html.BeginForm("VerifyPhoneNumber", "Manage", FormMethod.Post, new { @class = "wizard-big", role = "form", id = "form", action = "#" }))
+          @using(Html.BeginForm("VerifyPhoneNumber", "Manage", FormMethod.Post, new { @class = "wizard-big", role = "form", id = "form", action = "#" }))
           {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary("", new { @class = "text-danger" })
@@ -25,7 +25,7 @@
             <fieldset></fieldset>
             <h3>Contact</h3>
             <fieldset></fieldset>
-              <h3>Verify</h3>
+            <h3>Verify</h3>
               <fieldset>
                 <h2>Verify Information</h2>
                 <div class="row">
@@ -44,56 +44,55 @@
                   </div>
                 </div>
               </fieldset>
-              }
-</div>
+          }
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-@section Styles {
-  @Styles.Render("~/Content/wizardSteps")
-}
 
 @section Scripts {
   @Scripts.Render("~/bundles/validate")
-  @Scripts.Render("~/bundles/wizardSteps")
 
 
   <script type="text/javascript">
     $("#form")
-          .steps({
-            headerTag: "h3",
-            bodyTag: "fieldset",
-            autoFocus: true,
-            startIndex: 3,
-            enablePagination: false,
-            onStepChanging: function (event, currentIndex, newIndex) {
-              if (currentIndex > newIndex) {
-                return true;
-              }
+      .steps({
+        headerTag: "h3",
+        bodyTag: "fieldset",
+        autoFocus: true,
+        labels: {
+          finish: "Register"
+        },
+        startIndex: 3,
+        forceMoveForward: true,
+        onStepChanging: function (event, currentIndex, newIndex) {
+          if (currentIndex > newIndex) {
+            return true;
+          }
 
-              var form = $(this);
+          var form = $(this);
 
-              if (currentIndex < newIndex) {
-                $(".body:eq(" + newIndex + ") label.error", form).remove();
-                $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
-              }
+          if (currentIndex < newIndex) {
+            $(".body:eq(" + newIndex + ") label.error", form).remove();
+            $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
+          }
 
-              return form.valid();
+          return form.valid();
 
-            },
-            onFinishing: function (event, currentIndex) {
-              var form = $(this);
+        },
+        onFinishing: function (event, currentIndex) {
+          var form = $(this);
 
-              return form.valid();
-            },
-            onFinished: function (event, currentIndex) {
-              var form = $(this);
+          return form.valid();
+        },
+        onFinished: function (event, currentIndex) {
+          var form = $(this);
 
-              form.submit();
-            }
-          });
+          form.submit();
+        }
+      });
 
   </script>
 }
