@@ -27,7 +27,7 @@
                             </tfoot>
                         </table>
                         <div class="form-group ibox-tools">
-                            <input type="submit" value="Create" class="btn btn-primary js-submit" />
+                            <input type="submit" value="Create" onclick="location.href='@Url.Action("Save", "Status")'" class="btn btn-primary js-submit" />
                             @*@using (Html.BeginForm("Create", "Status"))
                             {
                                 <input type="submit" value="Start", class="btn btn-primary"/>

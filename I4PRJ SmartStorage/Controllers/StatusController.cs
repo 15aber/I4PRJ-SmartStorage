@@ -37,24 +37,21 @@ namespace I4PRJ_SmartStorage.Controllers
             return View(statusViewModel);
         }
 
-        public ActionResult Save()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "CategoryId,Name,Updated,ByUser")] Category category)
         {
-            var statusViewModel = new StatusViewModel
+            if (ModelState.IsValid)
             {
-                Inventories = db.Inventories.Where(i => !i.IsDeleted).ToList(),
-                StatusStartedInventories = new List<int>()
-            };
+                category.Updated = DateTime.Now;
+                category.ByUser = User.Identity.Name;
 
-            var statuses = db.Status.ToList();
-            foreach (var status in statuses)
-            {
-                var inventory = db.Inventories.Find(status.InventoryId);
-
-                if (inventory != null && status.IsStarted)
-                    statusViewModel.StatusStartedInventories.Add(inventory.InventoryId);
+                db.Categories.Add(category);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
-            return View("Index");
+            return View(category);
         }
 
         public ActionResult StartStatus(int id)

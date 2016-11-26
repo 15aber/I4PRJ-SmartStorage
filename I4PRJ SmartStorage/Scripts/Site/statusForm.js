@@ -1,5 +1,5 @@
 ﻿$(document)
-    .ready(function () {
+    .ready(function() {
 
         var table = $("#status")
             .DataTable({
@@ -36,53 +36,25 @@
                     {
                         data: null,
                         "sDefaultContent": ""
-    }
+                    }
                 ]
             });
 
-        $('#status').on('change', '.quantity', function (eventArg) {
-            var cells = $(this).closest('tr').children('td');
-            var value1 = document.getElementById("expected").textContent;
-            var value2 = cells.eq(3).find('input').val();
-            var diff = Math.abs(new Number(value1) - new Number(value2));
-            cells.eq(4).text(diff);
-        });
-
-        //cells.eq(4).text(new Number(value1) - new Number(value2));
-
-        //$('.quantity')
-        //    .on('focusout',
-        //        function() {
-        //            alert("it worked");
-        //        });
-        //$('#quantity')
-        //    .focusout(function() {
-        //        alert("it worked");
-        //    });
-
-        //$('#quantity')
-        //    .addEventListener("focusout",
-        //        function() {
-        //            alert("it worked");
-        //        });
-
-        $('#newStatus').validate({
-            submitHandler: function () {
-                $.ajax({
-                    url: "/api/status",
-                    method: "post",
-                    dataSrc: ""
-                })
-                .done(function () {
-                    toastr.success("Status successfully recorded.");
-                })
-                .fail(function () {
-                    toastr.error("Something unexpected happened.");
+        $('#status')
+            .on('change',
+                '.quantity',
+                function(eventArg) {
+                    var cells = $(this).closest('tr').children('td');
+                    var value1 = document.getElementById("expected").textContent;
+                    var value2 = cells.eq(3).find('input').val();
+                    var diff = Math.abs(new Number(value1) - new Number(value2));
+                    cells.eq(4).text(diff);
                 });
 
-                return false;
-            }
-
-        });
+        $('#newStatus')
+            .validate({
+                submitHandler: function() {
+                    toastr.success("Status successfully recorded.");
+                }
+            });
     });
-
