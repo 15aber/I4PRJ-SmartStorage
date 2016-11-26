@@ -195,6 +195,7 @@
     <Compile Include="Controllers\Api\ProductsController.cs" />
     <Compile Include="Controllers\Api\SmsController.cs" />
     <Compile Include="Controllers\Api\StatusController.cs" />
+    <Compile Include="Controllers\Api\TransactionsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoriesController.cs" />
@@ -202,11 +203,15 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\StocksController.cs" />
+    <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
+    <Compile Include="Controllers\WholesalersController.cs" />
     <Compile Include="Dtos\CategoryDto.cs" />
+    <Compile Include="Dtos\InventoryDto.cs" />
     <Compile Include="Dtos\ProductDto.cs" />
     <Compile Include="Dtos\StatusDto.cs" />
     <Compile Include="Dtos\StockDto.cs" />
+    <Compile Include="Dtos\TransactionDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -447,6 +452,15 @@
     <Content Include="Views\Status\Index.cshtml" />
     <Content Include="Views\Status\StatusForm.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation - Copy.cshtml" />
+    <Content Include="Views\Wholesalers\Create.cshtml" />
+    <Content Include="Views\Wholesalers\Delete.cshtml" />
+    <Content Include="Views\Wholesalers\Edit.cshtml" />
+    <Content Include="Views\Wholesalers\Index.cshtml" />
+    <Content Include="Views\Wholesalers\WholesalersForm.cshtml" />
+    <Content Include="Views\Suppliers\Create.cshtml" />
+    <Content Include="Views\Suppliers\Delete.cshtml" />
+    <Content Include="Views\Suppliers\Edit.cshtml" />
+    <Content Include="Views\Suppliers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
