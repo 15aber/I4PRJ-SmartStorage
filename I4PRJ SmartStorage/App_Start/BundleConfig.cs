@@ -13,6 +13,7 @@ namespace I4PRJ_SmartStorage
           "~/Content/animate.min.css",
            "~/Content/wizardSteps/jquery.steps.css",
           "~/Content/DataTables/datatables.min.css",
+          "~/Content/toastr/toastr.css",
           "~/Content/style.css"
       ));
 

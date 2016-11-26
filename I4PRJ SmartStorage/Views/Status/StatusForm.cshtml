@@ -23,15 +23,10 @@
                                 </tr>
                             </thead>
                             <tbody></tbody>
-                            <tfoot>
-                            </tfoot>
+                            <tfoot></tfoot>
                         </table>
                         <div class="form-group ibox-tools">
                             <input type="submit" value="Create" class="btn btn-primary js-submit" />
-                            @*@using (Html.BeginForm("Create", "Status"))
-                            {
-                                <input type="submit" value="Start", class="btn btn-primary"/>
-                            }*@
                             @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-white" })
                         </div>
                     </div>

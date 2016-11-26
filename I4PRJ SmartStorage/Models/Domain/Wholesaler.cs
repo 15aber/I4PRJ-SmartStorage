@@ -11,7 +11,7 @@ namespace I4PRJ_SmartStorage.Models.Domain
     public int WholesalerId { get; set; }
 
     [Required]
-    [DisplayName("Inventory")]
+    [DisplayName("Wholesaler")]
     public string Name { get; set; }
 
     [DisplayName("Updated")]
