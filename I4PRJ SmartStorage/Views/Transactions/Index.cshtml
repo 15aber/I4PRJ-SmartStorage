@@ -20,7 +20,8 @@
     <div class="col-lg-12">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-          <h5>List of Transactions</h5>
+            <h5>List of Transactions</h5>
+            @*<input id="date" type="text" size="8" />*@
           <div class="ibox-tools">
             <div class="form-group">
               @using(Html.BeginForm("New", "Transactions"))
@@ -98,37 +99,6 @@
 
 
 @section Scripts {
-    <script>
-        $(document).ready(function () {
-            $("#transactions-table")
-                .dataTable({
-                    "order": [[ 4, "desc" ]],
-                    ajax: {
-                        url: "/api/transactions/",
-                        dataSrc: ""
-                    },
-                    columns: [
-                        {
-                            data: "product.name"
-                        },
-                        {
-                            data: "fromInventory.name"
-                        },
-                        {
-                            data: "toInventory.name"
-                        },
-                        {
-                            data: "quantity"
-                        },
-                        {
-                            data: "updated"
-                        },
-                        {
-                            data: "byUser"
-                            
-                        }
-                    ]
-                });
-        });
-    </script>
-}
+    @Scripts.Render("~/bundles/datatables")
+    <script type="text/javascript" src="~/Scripts/site/datatables/transactionIndex.js"></script>
+   }
