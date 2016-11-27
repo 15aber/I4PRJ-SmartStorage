@@ -54,12 +54,8 @@
                     {
                         data: "productId",
                         render: function (data) {
-                            return "<button class='btn btn-primary btn-xs js-edit' data-product-id=" +
-                                data +
-                                ">Edit</button>" +
-                                "<button class='btn btn-white btn-xs pull-right js-delete' data-product-id=" +
-                                data +
-                                ">Delete</button>";
+                            return "<button class='btn btn-primary btn-xs js-edit' data-product-id=" + data + ">Edit</button>" +
+                                "<button class='btn btn-white btn-xs js-delete' data-product-id=" + data + ">Delete</button>";
                         }
                     }
                 ]
@@ -83,7 +79,7 @@ $("#products").on("click", ".js-delete", function () {
                     url: "/api/products/deleteproduct/" + button.attr("data-product-id"),
                     method: "DELETE",
                     success: function () {
-                        table.row(button.parents("tr")).remove().draw();
+                        window.location.reload(true);
                     }
                 });
             }

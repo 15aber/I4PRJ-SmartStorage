@@ -56,7 +56,7 @@ namespace I4PRJ_SmartStorage.Controllers
                 new { controller = "Products", action = "Index", Id = product.CategoryId }));
             }
 
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", product.CategoryId);
+            ViewBag.CategoryId = new SelectList(db.Categories.Where(c => c.IsDeleted == false), "CategoryId", "Name", product.CategoryId);
             return View(product);
         }
 
@@ -67,13 +67,19 @@ namespace I4PRJ_SmartStorage.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+
+            var viewModel = new ProductViewModel
+            {
+                Product = db.Products.Find(id)
+            };
+
+            if (viewModel.Product == null)
             {
                 return HttpNotFound();
-            }
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", product.CategoryId);
-            return View(product);
+            };
+
+            ViewBag.CategoryId = new SelectList(db.Categories.Where(c => c.IsDeleted == false), "CategoryId", "Name", viewModel.Product.CategoryId);
+            return View(viewModel);
         }
 
         // POST: /Products/Edit/5
@@ -93,7 +99,7 @@ namespace I4PRJ_SmartStorage.Controllers
                 return RedirectToAction("Index", new RouteValueDictionary(
                 new { controller = "Products", action = "Index", Id = product.CategoryId }));
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name", product.CategoryId);
+            ViewBag.CategoryId = new SelectList(db.Categories.Where(c => c.IsDeleted == false), "CategoryId", "Name", product.CategoryId);
             return View(product);
         }
 

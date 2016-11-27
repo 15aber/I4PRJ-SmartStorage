@@ -25,7 +25,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
         [ActionName("DefaultAction")]
         public IHttpActionResult GetProducts()
         {
-            var productsInDb = db.Products.Include(p => p.Category).ToList();
+            var productsInDb = db.Products.Where(c => c.IsDeleted == false).Include(p => p.Category).ToList();
 
             var products = Mapper.Map<List<Product>, List<ProductDto>>(productsInDb.ToList());
 
@@ -35,7 +35,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
         // GET /api/products/getproduct/1
         public IHttpActionResult GetProduct(int id)
         {
-            var product = db.Products.SingleOrDefault(p => p.ProductId == id);
+            var product = db.Products.Where(c => c.IsDeleted == false).SingleOrDefault(p => p.ProductId == id);
 
             if (product == null)
                 return NotFound();
@@ -58,7 +58,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
         public IHttpActionResult GetProductsOfCategory(int id)
         {
             // get stocks that have InventoryId == id
-            var productsInDb = db.Products.Where(o => o.CategoryId == id);
+            var productsInDb = db.Products.Where(c => c.IsDeleted == false).Where(o => o.CategoryId == id);
 
             var products = Mapper.Map<List<Product>, List<ProductDto>>(productsInDb.ToList());
 
@@ -87,7 +87,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var productInDb = db.Products.SingleOrDefault(p => p.ProductId == id);
+            var productInDb = db.Products.Where(c => c.IsDeleted == false).SingleOrDefault(p => p.ProductId == id);
 
             if (productInDb == null)
                 return NotFound();
@@ -103,7 +103,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
         [HttpDelete]
         public IHttpActionResult DeleteProduct(int id)
         {
-            var productInDb = db.Products.SingleOrDefault(p => p.ProductId == id);
+            var productInDb = db.Products.Where(c => c.IsDeleted == false).SingleOrDefault(p => p.ProductId == id);
 
             if (productInDb == null)
                 return NotFound();
