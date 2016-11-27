@@ -4,13 +4,52 @@
     ViewBag.Title = "Wholesalers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+    
 <h2>New wholesalers report</h2>
 
-@using (Html.BeginForm("CreateNewReport", "Wholesalers"))
+@using (Html.BeginForm("GenerateList", "Wholesalers"))
 {
     <div class="form-group">
-        @Html.LabelFor(w=>w.Wholesaler.WholesalerId)
-        @Html.DropDownListFor(w=>w.Wholesaler.WholesalerId, new SelectList(Model.Wholesalers, "WholesalerId", "Name"), "Select wholesaler",new { @class = "form-control"})
+        @Html.LabelFor(w => w.Wholesaler.WholesalerId)
+        @Html.DropDownListFor(w => w.Wholesaler.WholesalerId, new SelectList(Model.Wholesalers, "WholesalerId", "Name"), "Select wholesaler", new { @class = "form-control" })
     </div>
+    <div class="form-group">
+        <p>Please select which timeperiode you would like to see the wholesaler sales</p>
+    </div>
+    <div class="form-group">
+        <p>Select start date: <input id="from" type="text" size="16" value="Select date" /></p>    
+    </div>
+    <div class="form-group">
+        <p>Select end date: <input id="to" type="text" size="16" value="Select date" /></p>
+    </div>
+
+
+    @*<div class="ibox-tools">
+        @Html.ActionLink("Create list", "Create", null, new { })
+    </div>*@
+
+    <table class="table table-striped table-bordered table-hover" id="datatable-table">
+        <thead>
+        <tr>
+            <th>
+                @Html.LabelFor(model => model.Transaction, "Transaction Id")
+            </th>
+            <th>
+                @Html.LabelFor(model => model.Transaction, "Products")
+            </th>
+            <th>
+                @Html.LabelFor(model => model.Transaction, "Quantity")
+            </th>
+            <th>
+                @Html.LabelFor(model => model.Transaction, "Transaction date")
+            </th>
+        </tr>
+        </thead>
+    </table>
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/datatables")
+    <script type="text/javascript" src="~/Scripts/site/datatables/wholesalerForm.js"></script>
 }
