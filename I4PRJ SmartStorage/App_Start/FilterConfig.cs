@@ -8,7 +8,7 @@ namespace I4PRJ_SmartStorage
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new RequireHttpsAttribute());
-            filters.Add(new AuthorizeAttribute());
+            //filters.Add(new AuthorizeAttribute());
         }
     }
 }

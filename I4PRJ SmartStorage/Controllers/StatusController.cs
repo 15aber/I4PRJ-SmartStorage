@@ -43,7 +43,8 @@ namespace I4PRJ_SmartStorage.Controllers
             var statusViewModel = new StatusViewModel
             {
                 Inventories = db.Inventories.Where(i => !i.IsDeleted).ToList(),
-                StatusStartedInventories = new List<int>()
+                StatusStartedInventories = new List<int>(),
+                
             };
 
             var statuses = db.Statuses.ToList();
@@ -55,7 +56,7 @@ namespace I4PRJ_SmartStorage.Controllers
                     statusViewModel.StatusStartedInventories.Add(inventory.InventoryId);
             }
 
-            return View("Index");
+            return View("Index", statusViewModel);
         }
 
         public ActionResult StartStatus(int id)
