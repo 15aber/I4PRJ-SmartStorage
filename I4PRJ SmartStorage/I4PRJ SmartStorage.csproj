@@ -208,6 +208,7 @@
     <Compile Include="Controllers\WholesalersController.cs" />
     <Compile Include="Dtos\CategoryDto.cs" />
     <Compile Include="Dtos\InventoryDto.cs" />
+    <Compile Include="Dtos\NewStatusDto.cs" />
     <Compile Include="Dtos\ProductDto.cs" />
     <Compile Include="Dtos\StatusDto.cs" />
     <Compile Include="Dtos\StockDto.cs" />
