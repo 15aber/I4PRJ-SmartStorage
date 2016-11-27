@@ -65,6 +65,6 @@ $(document).ready(function () {
 });
 
 function displayDate() {
-    var min = ($('#testing'));
+    var min = document.getElementById("testing");
     alert(min.value);
 }
