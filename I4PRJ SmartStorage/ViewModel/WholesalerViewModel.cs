@@ -11,7 +11,7 @@ namespace I4PRJ_SmartStorage.ViewModel
         public List<Wholesaler> Wholesalers { get; set; }
         public Wholesaler Wholesaler { get; set; }
         public List<Inventory> Inventories { get; set; }
-        public List<Transaction> TransactionDate { get; set; }
+        public List<Transaction> Transaction { get; set; }
         public List<Product> Products { get; set; }
 
 

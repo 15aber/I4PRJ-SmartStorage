@@ -432,6 +432,7 @@
     <Content Include="Scripts\site\datatables\statusForm.js" />
     <Content Include="Scripts\site\datatables\transactionForm.js" />
     <Content Include="Scripts\site\datatables\transactionIndex.js" />
+    <Content Include="Scripts\site\datatables\wholesalerForm.js" />
     <Content Include="Scripts\slimScroll\jquery.slimscroll.js" />
     <Content Include="Scripts\slimScroll\jquery.slimscroll.min.js" />
     <Content Include="Scripts\site\jquery.validate.fix.js" />

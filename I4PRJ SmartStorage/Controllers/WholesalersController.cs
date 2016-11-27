@@ -72,6 +72,11 @@ namespace I4PRJ_SmartStorage.Controllers
             return View("WholesalersForm",viewModel);
         }
 
+        public ActionResult GenerateList()
+        {
+            return View();
+        }
+
         // GET: /Wholesalers/Edit/5
         public ActionResult Edit(int? id)
         {
