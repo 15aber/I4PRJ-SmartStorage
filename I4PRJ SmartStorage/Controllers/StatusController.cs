@@ -47,6 +47,8 @@ namespace I4PRJ_SmartStorage.Controllers
                 
             };
 
+            
+
             var statuses = db.Statuses.ToList();
             foreach (var status in statuses)
             {
@@ -54,6 +56,9 @@ namespace I4PRJ_SmartStorage.Controllers
 
                 if (inventory != null && status.IsStarted)
                     statusViewModel.StatusStartedInventories.Add(inventory.InventoryId);
+
+                status.IsStarted = true;
+
             }
 
             return View("Index", statusViewModel);
