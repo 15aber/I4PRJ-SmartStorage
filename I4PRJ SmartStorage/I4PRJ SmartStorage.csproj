@@ -212,6 +212,7 @@
     <Compile Include="Dtos\StatusDto.cs" />
     <Compile Include="Dtos\StockDto.cs" />
     <Compile Include="Dtos\TransactionDto.cs" />
+    <Compile Include="Dtos\WholesalerDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
