@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
+using I4PRJ_SmartStorage.ViewModel;
 
 namespace I4PRJ_SmartStorage.Controllers
 {
@@ -57,6 +58,18 @@ namespace I4PRJ_SmartStorage.Controllers
             }
 
             return View(wholesaler);
+        }
+
+        public ActionResult CreateNewReport()
+        {
+            var wholesalers = db.Wholesalers.ToList();
+
+            var viewModel = new WholesalerViewModel
+            {
+                Wholesalers = wholesalers 
+            };
+
+            return View("WholesalersForm",viewModel);
         }
 
         // GET: /Wholesalers/Edit/5

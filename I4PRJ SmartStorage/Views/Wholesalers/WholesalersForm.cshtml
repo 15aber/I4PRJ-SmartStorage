@@ -1,19 +1,16 @@
-﻿@model I4PRJ_SmartStorage.Models.Domain.Wholesaler
+﻿@model I4PRJ_SmartStorage.ViewModel.WholesalerViewModel
 
 @{
+    ViewBag.Title = "Wholesalers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<h2>New wholesalers report</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    
+@using (Html.BeginForm("CreateNewReport", "Wholesalers"))
+{
+    <div class="form-group">
+        @Html.LabelFor(w=>w.Wholesaler.WholesalerId)
+        @Html.DropDownListFor(w=>w.Wholesaler.WholesalerId, new SelectList(Model.Wholesalers, "WholesalerId", "Name"), "Select wholesaler",new { @class = "form-control"})
     </div>
-</body>
-</html>
+}
