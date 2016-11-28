@@ -14,12 +14,15 @@ namespace I4PRJ_SmartStorage
            "~/Content/wizardSteps/jquery.steps.css",
           "~/Content/DataTables/datatables.min.css",
           "~/Content/toastr/toastr.css",
-          "~/Content/style.css"
+          "~/Content/style.css",
+          "~/Content/themes/base/*.css"
+
       ));
 
       bundles.Add(new ScriptBundle("~/bundles/script").Include(
           "~/Scripts/modernizr/modernizr-2.9.3.js",
           "~/Scripts/jquery/jquery-3.1.1.min.js",
+          "~/Scripts/jquery-ui/jquery-ui-1.12.1.min.js",
           "~/Scripts/bootstrap/bootstrap.min.js",
           "~/Scripts/respond/respond.min.js",
           "~/Scripts/slimScroll/jquery.slimscroll.min.js",

@@ -37,23 +37,34 @@ namespace I4PRJ_SmartStorage.Controllers.Api
         }
 
         [HttpPost]
-        public IHttpActionResult CreateNewRentals(StatusDto status)
+        public IHttpActionResult CreateNewStatus(NewStatusDto statusDto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            for (int i = 0; i < statusDto.Quantities.Count; i++)
+            {
+                if(statusDto.Quantities[i] == null)
+                    return BadRequest("Quantity value is invalid");
+
+                var status = new Status
+                {
+                    InventoryId = statusDto.InventoryId,
+                    Quantity = statusDto.Quantities[i],
+                    IsStarted = true,
+                    ByUser = User.Identity.Name,
+                    Difference = statusDto.Differences[i],
+                    Updated = DateTime.Now,
+                    ProductId = statusDto.ProductIds[i]
+                };
+
+                db.Statuses.Add(status);
+            }
+
+            db.SaveChanges();
+
             return Ok();
         }
 
-        //[HttpPost]
-        //public IHttpActionResult CreateNewStatus(StatusDto statusDto)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return BadRequest();
-
-        //    var status = Mapper.Map<StatusDto, Status>(statusDto);
-        //    db.Status.Add(status);
-        //    db.SaveChanges();
-
-        //    statusDto.StatusId = status.StatusId;
-        //    return Created(new Uri(Request.RequestUri + "/" + status.StatusId), statusDto);
-        //}
     }
 }
