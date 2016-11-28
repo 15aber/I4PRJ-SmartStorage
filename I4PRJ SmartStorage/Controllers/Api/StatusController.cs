@@ -37,7 +37,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
         }
 
         [HttpPost]
-        public IHttpActionResult CreateNewStatus(NewStatusDto statusDto)
+        public IHttpActionResult CreateStatus(NewStatusDto statusDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
@@ -51,7 +51,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
                 {
                     InventoryId = statusDto.InventoryId,
                     Quantity = statusDto.Quantities[i],
-                    IsStarted = true,
+                    IsStarted = statusDto.IsStarted,
                     ByUser = User.Identity.Name,
                     Difference = statusDto.Differences[i],
                     Updated = DateTime.Now,
@@ -65,6 +65,5 @@ namespace I4PRJ_SmartStorage.Controllers.Api
 
             return Ok();
         }
-
     }
 }

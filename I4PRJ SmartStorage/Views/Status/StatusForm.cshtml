@@ -37,5 +37,12 @@
 </form>
 
 @section Scripts {
-  <script type="text/javascript" src="~/Scripts/site/datatables/statusForm.js"></script>
+    @if (!Model.IsStarted)
+    {
+        <script type="text/javascript" src="~/Scripts/site/datatables/startStatus.js"></script>
+    }
+    else
+    {
+        <script type="text/javascript" src="~/Scripts/site/datatables/finishStatus.js"></script>
+    }
 }

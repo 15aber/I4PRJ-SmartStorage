@@ -429,7 +429,8 @@
     <Content Include="Scripts\jquery\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery\jquery-3.1.1.min.map" />
     <None Include="Scripts\jqValidate\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\site\datatables\statusForm.js" />
+    <Content Include="Scripts\site\datatables\finishStatus.js" />
+    <Content Include="Scripts\site\datatables\startStatus.js" />
     <Content Include="Scripts\site\datatables\transactionForm.js" />
     <Content Include="Scripts\site\datatables\transactionIndex.js" />
     <Content Include="Scripts\site\datatables\wholesalerForm.js" />
@@ -447,7 +448,9 @@
     <Content Include="Scripts\toastr\toastr.min.js" />
     <Content Include="Scripts\wizardSteps\jquery.steps.js" />
     <Content Include="Scripts\wizardSteps\jquery.steps.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
