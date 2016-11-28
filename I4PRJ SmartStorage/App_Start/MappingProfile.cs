@@ -15,10 +15,12 @@ namespace I4PRJ_SmartStorage
             // Domain to Dto
             CreateMap<Product, ProductDto>();
             CreateMap<Category, CategoryDto>();
+            CreateMap<Inventory, InventoryDto>();
 
             // Dto to Domain
             CreateMap<ProductDto, Product>();
             CreateMap<CategoryDto, Category>();
+            CreateMap<InventoryDto, Inventory>();
         }
     }
 }

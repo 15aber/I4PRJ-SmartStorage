@@ -107,6 +107,19 @@ namespace I4PRJ_SmartStorage.Controllers
                 return View("TransactionForm", viewModel);
             }
 
+            var quantity = db.Stocks.Single(s => s.InventoryId == viewModel.FromInventoryId && s.ProductId == viewModel.ProductId).Quantity;
+
+            if (viewModel.Quantity > quantity)
+            {
+                ModelState.AddModelError("", "Quantity exceeds the existing quantity: " + quantity + " in stock.");
+
+                viewModel.FromInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList();
+                viewModel.ToInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList();
+                viewModel.Products = db.Products.Where(p => p.IsDeleted == false).ToList();
+                
+                return View("TransactionForm", viewModel);
+            }
+
             var transaction = new Transaction
             {
                 FromInventoryId = viewModel.FromInventoryId,
@@ -121,9 +134,7 @@ namespace I4PRJ_SmartStorage.Controllers
                     .Single(p => p.ProductId == transaction.ProductId);
 
             if (fromStockInDb == null)
-            {
                 return View("TransactionForm", viewModel);
-            }
 
             else
                 fromStockInDb.Quantity -= transaction.Quantity;

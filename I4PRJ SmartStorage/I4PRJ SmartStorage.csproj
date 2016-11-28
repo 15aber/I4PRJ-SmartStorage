@@ -202,6 +202,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\InventoriesController.cs" />
     <Compile Include="Controllers\Api\ProductsController.cs" />
     <Compile Include="Controllers\Api\StatusController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
@@ -213,6 +214,7 @@
     <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="Dtos\CategoryDto.cs" />
+    <Compile Include="Dtos\InventoryDto.cs" />
     <Compile Include="Dtos\ProductDto.cs" />
     <Compile Include="Dtos\StatusDto.cs" />
     <Compile Include="Dtos\StockDto.cs" />
