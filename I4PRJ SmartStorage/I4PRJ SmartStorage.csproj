@@ -192,6 +192,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\InventoriesController.cs" />
     <Compile Include="Controllers\Api\ProductsController.cs" />
     <Compile Include="Controllers\Api\SmsController.cs" />
     <Compile Include="Controllers\Api\StatusController.cs" />
@@ -448,7 +449,7 @@
     <Content Include="Views\Inventories\Edit.cshtml" />
     <Content Include="Views\Inventories\Index.cshtml" />
     <Content Include="Views\Stocks\Index.cshtml" />
-    <Content Include="Views\Transactions\TransactionsForm.cshtml" />
+    <Content Include="Views\Transactions\TransactionForm.cshtml" />
     <Content Include="Views\Transactions\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
