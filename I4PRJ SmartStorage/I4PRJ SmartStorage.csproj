@@ -409,7 +409,6 @@
     <Content Include="Scripts\bootbox\bootbox.min.js" />
     <Content Include="Scripts\jquery-ui\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui\jquery-ui-1.12.1.min.js" />
-    <Content Include="Scripts\jquery\jquery-ui.min.js" />
     <Content Include="Scripts\modernizr\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond\respond.js" />
     <Content Include="Scripts\respond\respond.min.js" />
