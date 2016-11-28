@@ -49,23 +49,25 @@
         </div>
       </li>
 
-      <li class="@Html.IsSelected(controller: "Products")">
-        <a href="@Url.Action("Index", "Products")"><i class="fa fa-barcode"></i> <span class="nav-label">Products</span> <span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Products", cssClass: "in")">
-          @{
-            IEnumerable<Category> categories = HMTLHelperExtensions.GetCategories();
+        <li class="@Html.IsSelected(controller: "Products")">
+            <a href="@Url.Action("Index", "Products")"><i class="fa fa-barcode"></i> <span class="nav-label">Products</span> <span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Products", cssClass: "in")">
+                @{
+                    IEnumerable<Category> categories = HMTLHelperExtensions.GetCategories();
 
-            foreach (var item in categories)
-            {
-              <li class="@( Convert.ToInt32(Url.RequestContext.RouteData.Values["id"]) == item.CategoryId && Url.RequestContext.RouteData.Values["controller"].ToString() == "Products" ? "active" : "" )">
-                <a href="@Url.Action("Categories", "Products", new {id = item.CategoryId})">
-                  <span class="nav-label">@item.Name</span>
-                </a>
-              </li>
-            }
-          }
-        </ul>
-      </li>
+                    foreach (var item in categories)
+                    {
+                        <li class="@( Convert.ToInt32(Url.RequestContext.RouteData.Values["id"]) == item.CategoryId && Url.RequestContext.RouteData.Values["controller"].ToString() == "Products" ? "active" : "" )">
+                            <a href="@Url.Action("Index", "Products", new {id = item.CategoryId})">
+                                <span class="nav-label">@item.Name</span>
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        </li>
+
+
 
       <li class="@Html.IsSelected(controller: "Categories")">
         <a href="@Url.Action("Index", "Categories")">

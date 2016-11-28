@@ -9,7 +9,7 @@ using AutoMapper;
 using I4PRJ_SmartStorage.Dtos;
 using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
-using I4PRJ_SmartStorage.ViewModel;
+using I4PRJ_SmartStorage.ViewModels;
 
 namespace I4PRJ_SmartStorage.Controllers.Api
 {
