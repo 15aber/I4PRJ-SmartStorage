@@ -206,6 +206,7 @@
     <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
+    <Compile Include="Controllers\WholesalersController.cs" />
     <Compile Include="Dtos\CategoryDto.cs" />
     <Compile Include="Dtos\InventoryDto.cs" />
     <Compile Include="Dtos\NewStatusDto.cs" />
@@ -218,9 +219,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611271412162_Initial.cs" />
-    <Compile Include="Migrations\201611271412162_Initial.Designer.cs">
-      <DependentUpon>201611271412162_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201611290854275_Initial.cs" />
+    <Compile Include="Migrations\201611290854275_Initial.Designer.cs">
+      <DependentUpon>201611290854275_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -242,6 +243,7 @@
     <Compile Include="ViewModels\TransactionViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\WholesalerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.css" />
@@ -529,8 +531,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611271412162_Initial.resx">
-      <DependentUpon>201611271412162_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611290854275_Initial.resx">
+      <DependentUpon>201611290854275_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

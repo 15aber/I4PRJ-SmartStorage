@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
-using I4PRJ_SmartStorage.ViewModel;
+using I4PRJ_SmartStorage.ViewModels;
 
 namespace I4PRJ_SmartStorage.Controllers
 {
