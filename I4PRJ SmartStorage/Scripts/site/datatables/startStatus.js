@@ -20,31 +20,6 @@ $(document)
                     dataSrc: ""
                 },
                 rowId: "product.productId",
-                dom: '<"html5buttons"B>lTfgitp',
-                "buttons": [
-                    {
-                        extend: 'collection',
-                        text: 'Export',
-                        buttons: [
-                            { extend: 'copy' },
-                            { extend: 'csv' },
-                            { extend: 'excel', title: 'Optællingsrapport' },
-                            { extend: 'pdf', title: 'Optællingsrapport' },
-                            {
-                                extend: 'print',
-                                customize: function(win) {
-                                    $(win.document.body).addClass('white-bg');
-                                    $(win.document.body).css('font-size', '10px');
-
-                                    $(win.document.body)
-                                        .find('table')
-                                        .addClass('compact')
-                                        .css('font-size', 'inherit');
-                                }
-                            }
-                        ]
-                    }
-                ],
                 "columnDefs": [
                     { "width": "20%", "targets": 0 },
                     { "width": "20%", "targets": 1 },
@@ -98,7 +73,13 @@ $(document)
                 var diff = new Number(expected) - new Number(current);
                 var productId = table.cell(i, 5).data();
 
-                vm.IsStarted = true;
+                if ($("#IsStarted").val() === "True") {
+                    vm.IsStarted = false;
+                }
+                else {
+                    vm.IsStarted = true;
+                }
+
                 vm.quantities.push(current);
                 vm.differences.push(diff);
                 vm.productIds.push(productId);
@@ -112,7 +93,7 @@ $(document)
                 data: vm
             })
                 .done(function () {
-                    var indexUrl = "/status/index/";
+                    var indexUrl = "/status/index/1";
                     window.location.href = indexUrl;
                 })
                 .fail(function () {

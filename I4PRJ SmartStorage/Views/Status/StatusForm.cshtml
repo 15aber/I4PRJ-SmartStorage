@@ -28,6 +28,7 @@
                         <div class="form-group ibox-tools">
                             <input class="btn btn-primary js-submit" type="button" value="Create" />
                             @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-white" })
+                            @Html.HiddenFor(m => m.IsStarted)
                         </div>
                     </div>
                 </div>
@@ -37,12 +38,5 @@
 </form>
 
 @section Scripts {
-    @if (!Model.IsStarted)
-    {
-        <script type="text/javascript" src="~/Scripts/site/datatables/startStatus.js"></script>
-    }
-    else
-    {
-        <script type="text/javascript" src="~/Scripts/site/datatables/finishStatus.js"></script>
-    }
+    <script type="text/javascript" src="~/Scripts/site/datatables/startStatus.js"></script>
 }
