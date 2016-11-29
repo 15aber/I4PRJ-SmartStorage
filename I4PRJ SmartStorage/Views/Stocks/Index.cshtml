@@ -1,4 +1,4 @@
-﻿@model IEnumerable<I4PRJ_SmartStorage.Models.Domain.Stock>
+﻿@model I4PRJ_SmartStorage.ViewModels.StockViewModel
 
 @{
     ViewBag.Title = "Stock";
@@ -18,18 +18,18 @@
                         <thead>
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.InventoryId)
+                                @Html.DisplayNameFor(model => model.Stock.InventoryId)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.ProductId)
+                                @Html.DisplayNameFor(model => model.Stock.ProductId)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Quantity)
+                                @Html.DisplayNameFor(model => model.Stock.Quantity)
                             </th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.Stocks)
                         {
                             <tr>
                                 <td>
@@ -51,8 +51,3 @@
         </div>
     </div>
 </div>
-
-
-@section Scripts {
-
-}
