@@ -87,13 +87,18 @@ namespace I4PRJ_SmartStorage.Controllers
 
         public ActionResult StatusReports()
         {
-            var viewModel = new StatusViewModel();
-
+            var statuses = new List<Status>();
             foreach (var status in db.Statuses.ToList())
             {
-                if (!db.Statuses.Any(o => o.Updated == status.Updated))
-                    viewModel.Statuses.Add(status);
+                if (!statuses.Any(o => o.Updated == status.Updated))
+                    statuses.Add(status);
             }
+
+            var viewModel = new StatusViewModel()
+            {
+                Statuses = statuses,
+                Status = new Status()
+            };
 
             return View("StatusReports", viewModel);
         }

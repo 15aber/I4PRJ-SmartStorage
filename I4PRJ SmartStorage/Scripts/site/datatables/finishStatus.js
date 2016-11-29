@@ -20,31 +20,6 @@ $(document)
                     dataSrc: ""
                 },
                 rowId: "product.productId",
-                dom: '<"html5buttons"B>lTfgitp',
-                "buttons": [
-                    {
-                        extend: 'collection',
-                        text: 'Export',
-                        buttons: [
-                            { extend: 'copy' },
-                            { extend: 'csv' },
-                            { extend: 'excel', title: 'Optællingsrapport' },
-                            { extend: 'pdf', title: 'Optællingsrapport' },
-                            {
-                                extend: 'print',
-                                customize: function (win) {
-                                    $(win.document.body).addClass('white-bg');
-                                    $(win.document.body).css('font-size', '10px');
-
-                                    $(win.document.body)
-                                        .find('table')
-                                        .addClass('compact')
-                                        .css('font-size', 'inherit');
-                                }
-                            }
-                        ]
-                    }
-                ],
                 "columnDefs": [
                     { "width": "20%", "targets": 0 },
                     { "width": "20%", "targets": 1 },
