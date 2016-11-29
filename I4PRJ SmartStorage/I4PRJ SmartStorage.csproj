@@ -209,17 +209,23 @@
     <Compile Include="Controllers\WholesalersController.cs" />
     <Compile Include="Dtos\CategoryDto.cs" />
     <Compile Include="Dtos\InventoryDto.cs" />
+    <Compile Include="Dtos\NewStatusDto.cs" />
     <Compile Include="Dtos\ProductDto.cs" />
     <Compile Include="Dtos\StatusDto.cs" />
     <Compile Include="Dtos\StockDto.cs" />
     <Compile Include="Dtos\TransactionDto.cs" />
+    <Compile Include="Dtos\WholesalerDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611271412162_Initial.cs" />
-    <Compile Include="Migrations\201611271412162_Initial.Designer.cs">
-      <DependentUpon>201611271412162_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201611290854275_Initial.cs" />
+    <Compile Include="Migrations\201611290854275_Initial.Designer.cs">
+      <DependentUpon>201611290854275_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611290916543_NullableFromInventoryId.cs" />
+    <Compile Include="Migrations\201611290916543_NullableFromInventoryId.Designer.cs">
+      <DependentUpon>201611290916543_NullableFromInventoryId.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -329,6 +335,47 @@
     <Content Include="Content\patterns\shattered.png" />
     <Content Include="Content\patterns\triangular.png" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\toastr\toastr.css" />
     <Content Include="Content\toastr\toastr.min.css" />
     <Content Include="Content\wizardSteps\jquery.steps.css" />
@@ -365,6 +412,8 @@
     <None Include="Properties\PublishProfiles\SmartStorageAPP - Web Deploy.pubxml" />
     <Content Include="Scripts\bootbox\bootbox.js" />
     <Content Include="Scripts\bootbox\bootbox.min.js" />
+    <Content Include="Scripts\jquery-ui\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\modernizr\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond\respond.js" />
     <Content Include="Scripts\respond\respond.min.js" />
@@ -388,6 +437,7 @@
     <Content Include="Scripts\site\datatables\finishStatus.js" />
     <Content Include="Scripts\site\datatables\startStatus.js" />
     <Content Include="Scripts\site\datatables\transactionForm.js" />
+    <Content Include="Scripts\site\datatables\transactionIndex.js" />
     <Content Include="Scripts\site\datatables\wholesalerForm.js" />
     <Content Include="Scripts\slimScroll\jquery.slimscroll.js" />
     <Content Include="Scripts\slimScroll\jquery.slimscroll.min.js" />
@@ -403,6 +453,7 @@
     <Content Include="Scripts\toastr\toastr.min.js" />
     <Content Include="Scripts\wizardSteps\jquery.steps.js" />
     <Content Include="Scripts\wizardSteps\jquery.steps.min.js" />
+    <None Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -475,13 +526,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\pace\templates\" />
+    <Folder Include="Content\pace\themes\blue\" />
+    <Folder Include="Content\pace\themes\green\" />
+    <Folder Include="Content\pace\themes\red\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611271412162_Initial.resx">
-      <DependentUpon>201611271412162_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611290854275_Initial.resx">
+      <DependentUpon>201611290854275_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611290916543_NullableFromInventoryId.resx">
+      <DependentUpon>201611290916543_NullableFromInventoryId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

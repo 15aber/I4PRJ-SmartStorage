@@ -13,7 +13,7 @@ namespace I4PRJ_SmartStorage.Models.Domain
 
     [ForeignKey("FromInventory")]
     [DisplayName("From")]
-    public int FromInventoryId { get; set; }
+    public int? FromInventoryId { get; set; }
 
     public Inventory FromInventory { get; set; }
 
