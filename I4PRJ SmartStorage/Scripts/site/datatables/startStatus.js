@@ -1,4 +1,11 @@
-﻿$(document)
+﻿function calDiff(id) {
+  var expected = document.getElementById('expected' + id).textContent;
+  var curQuantity = document.getElementById('curQuantity' + id).value;
+  var result = curQuantity - expected;
+  document.getElementById('diff' + id).innerHTML = result;
+}
+
+$(document)
     .ready(function () {
         var vm = {
             quantities: [],
@@ -12,6 +19,7 @@
                     url: "/api/status/GetStatus/" + document.location.pathname.split('/')[3],
                     dataSrc: ""
                 },
+                rowId: "product.productId",
                 dom: '<"html5buttons"B>lTfgitp',
                 "buttons": [
                     {
@@ -52,20 +60,23 @@
                         data: "product.category.name"
                     },
                     {
-                        data: "quantity",
-                        render: function(data) {
-                            return "<label id='expected'>" + data + "</label>";
+                      data: "quantity",
+                        render: function(data, type, row, meta) {
+                          return "<div id='expected" + meta.row + "' value='" + data + "'>" + data + "</div>";
+                        }
+                    },
+                    {
+                      data: "product.productId",
+                      render: function (data, type, row, meta) {
+                        return "<input type='number' min='0' step='0.25' style='width: 100%' id='curQuantity" + meta.row + "' class='form-control quantity' onChange='calDiff("+ meta.row +");'/>";
                         }
                     },
                     {
                         data: null,
-                        render: function() {
-                            return "<input type='number' min='0' step='0.25' style='width: 100%' id='curQuantity' class='form-control quantity'/>";
+                        "sDefaultContent": "",
+                        render: function (data, type, row, meta) {
+                          return "<label id='diff" + meta.row + "'></label>";
                         }
-                    },
-                    {
-                        data: null,
-                        "sDefaultContent": ""
                     },
                     {
                         data: "product.productId",
@@ -122,4 +133,5 @@
             }
         });
 
+        
     });

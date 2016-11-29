@@ -223,6 +223,10 @@
     <Compile Include="Migrations\201611290854275_Initial.Designer.cs">
       <DependentUpon>201611290854275_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611291119271_FromInventoryId-nullelbel.cs" />
+    <Compile Include="Migrations\201611291119271_FromInventoryId-nullelbel.Designer.cs">
+      <DependentUpon>201611291119271_FromInventoryId-nullelbel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -533,6 +537,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611290854275_Initial.resx">
       <DependentUpon>201611290854275_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611291119271_FromInventoryId-nullelbel.resx">
+      <DependentUpon>201611291119271_FromInventoryId-nullelbel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
