@@ -44,7 +44,6 @@
                     { "width": "20%", "targets": 3 },
                     { "width": "20%", "targets": 4 }
                 ],
-                "order": [[1,'asc']],
                 columns: [
                     {
                         data: "product.name"
@@ -71,46 +70,9 @@
                         render: function(data) {
                             return "<label id='productIdLabel' value='data'>" + data + "</label>";
                         }
-                    },
-                    {
-                        data: null,
-                        "visible": false,
-                        render: function () {
-                            return "<label id='orderNum' value='data'></label>";
-                        }
                     }
                 ]
             });
-
-        table.on('order.dt search.dt', function () {
-            table.column(3, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
-                cell.innerHTML.name = i;
-            });
-        }).draw();
-
-        //$('#status').on('change', 'tr', function (eventArg) {
-       
-        //    var cells = $(this).closest('tr').children('td');
-
-        //    var value3 = $("orderNum").innerText;
-        //    alert(value3);
-        //    var value1 = 1;
-
-        //    //var value1 = table.cell(,2);
-        //    //var value2 = cells.eq(3).find('input').val();
-        //    var value2 = cells.eq(3).find('input').name;
-        //    var diff = Math.abs(new Number(value1) - new Number(value2));
-        //    cells.eq(4).text(diff);
-
-        //    //var rowId = table.row(this).id();
-        //    ////var value1 = document.getElementById("expected").textContent;
-        //    //alert(rowId);
-        //    //var value1 = table.cell(rowId, 2).data();
-        //    //var value2 = table.cell(rowId, 3).find('input').val();
-        //    //var diff = Math.abs(new Number(value1) - new Number(value2));
-        //    //cells.eq(4).text(diff);
-
-        //});
 
         $('.js-submit').on('click', function () {
 
@@ -121,6 +83,7 @@
                 var current = $(rows[i]).find("td:eq(3)").find('input').val();
                 var diff = Math.abs(new Number(expected) - new Number(current));
                 var productId = table.cell(i, 5).data();
+                table.cell(i, 4).text(diff);
 
                 vm.IsStarted = false;
                 vm.quantities.push(current);

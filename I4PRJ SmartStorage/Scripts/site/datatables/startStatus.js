@@ -77,17 +77,7 @@
                 ]
             });
 
-        $('#status').on('change', '.quantity', function (eventArg) {
-            var cells = $(this).closest('tr').children('td');
-            //var value1 = document.getElementById("expected").textContent;
-            var value1 = cells.eq(2).document.textContent;
-            var value2 = cells.eq(3).find('input').val();
-            var diff = Math.abs(new Number(value1) - new Number(value2));
-            cells.eq(4).text(diff);
-
-        });
-
-        $('.js-submit').on('click', function () {
+       $('.js-submit').on('click', function () {
 
             var rows = $('#status').dataTable().fnGetNodes();
 
@@ -117,6 +107,19 @@
                 .fail(function () {
                     toastr.error("Something unexpected happened!");
                 });
+        });
+
+        $('.js-refresh').on('click', function () {
+
+            var rows = $('#status').dataTable().fnGetNodes();
+
+            for (var i = 0; i < rows.length; i++) {
+                var expected = table.cell(i, 2).data();
+                var current = table.cell(i, 3).data();
+                var diff = new Number(expected) - new Number(current);
+                table.cell(i, 4).text(diff);
+                toastr.info("Differences has been updated.");
+            }
         });
 
     });
