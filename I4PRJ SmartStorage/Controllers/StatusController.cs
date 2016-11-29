@@ -103,7 +103,7 @@ namespace I4PRJ_SmartStorage.Controllers
             return View("StatusReports", viewModel);
         }
 
-        public ActionResult StatusReports(int id)
+        public ActionResult StatusReportDetails(int id)
         {
             Status status = db.Statuses.Find(id);
 
