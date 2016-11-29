@@ -3,7 +3,7 @@ namespace I4PRJ_SmartStorage.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class NullableFromInventoryId : DbMigration
+    public partial class rereenable : DbMigration
     {
         public override void Up()
         {

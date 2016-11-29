@@ -219,13 +219,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611290854275_Initial.cs" />
-    <Compile Include="Migrations\201611290854275_Initial.Designer.cs">
-      <DependentUpon>201611290854275_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611290916543_NullableFromInventoryId.cs" />
-    <Compile Include="Migrations\201611290916543_NullableFromInventoryId.Designer.cs">
-      <DependentUpon>201611290916543_NullableFromInventoryId.cs</DependentUpon>
+    <Compile Include="Migrations\201611291155421_rereenable.cs" />
+    <Compile Include="Migrations\201611291155421_rereenable.Designer.cs">
+      <DependentUpon>201611291155421_rereenable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -535,11 +531,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611290854275_Initial.resx">
-      <DependentUpon>201611290854275_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611290916543_NullableFromInventoryId.resx">
-      <DependentUpon>201611290916543_NullableFromInventoryId.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611291155421_rereenable.resx">
+      <DependentUpon>201611291155421_rereenable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
