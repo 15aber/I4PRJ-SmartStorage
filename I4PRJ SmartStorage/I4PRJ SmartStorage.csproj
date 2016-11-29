@@ -223,6 +223,10 @@
     <Compile Include="Migrations\201611290854275_Initial.Designer.cs">
       <DependentUpon>201611290854275_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611290916543_NullableFromInventoryId.cs" />
+    <Compile Include="Migrations\201611290916543_NullableFromInventoryId.Designer.cs">
+      <DependentUpon>201611290916543_NullableFromInventoryId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -533,6 +537,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611290854275_Initial.resx">
       <DependentUpon>201611290854275_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611290916543_NullableFromInventoryId.resx">
+      <DependentUpon>201611290916543_NullableFromInventoryId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
