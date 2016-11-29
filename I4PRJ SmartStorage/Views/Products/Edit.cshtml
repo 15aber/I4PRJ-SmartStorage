@@ -1,29 +1,8 @@
-﻿@model I4PRJ_SmartStorage.Models.Domain.Product
+﻿@model I4PRJ_SmartStorage.ViewModels.ProductViewModel
 
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-sm-4">
-        <h2>Edit</h2>
-        <ol class="breadcrumb">
-            <li>
-                @Html.ActionLink("List", "Index")
-            </li>
-            <li class="active">
-                <strong>Edit</strong>
-            </li>
-        </ol>
-    </div>
-    <div class="col-sm-8">
-        <div class="title-action">
-            @Html.ActionLink("Back to List", "Index", null, new {@class = "btn btn-primary"})
-        </div>
-    </div>
-</div>
-
 
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
@@ -41,36 +20,55 @@
                         <div class="form-horizontal">
 
                             @Html.ValidationSummary(true)
-                            @Html.HiddenFor(model => model.ProductId)
+                            @Html.HiddenFor(model => model.Product.ProductId)
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Name, new {@class = "control-label col-md-2"})
+                                @Html.LabelFor(model => model.Product.Name, new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Name)
-                                    @Html.ValidationMessageFor(model => model.Name)
+                                    @Html.EditorFor(model => model.Product.Name)
+                                    @Html.ValidationMessageFor(model => model.Product.Name)
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.PurchasePrice, new {@class = "control-label col-md-2"})
+                                @Html.LabelFor(model => model.Product.PurchasePrice, new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.PurchasePrice)
-                                    @Html.ValidationMessageFor(model => model.PurchasePrice)
+                                    @Html.TextBoxFor(model => model.Product.PurchasePrice, new { @class = "form-control", type = "number", step = "0.01", min = "0", value = "" })
+                                    @Html.ValidationMessageFor(model => model.Product.PurchasePrice)
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.CategoryId, "CategoryId", new {@class = "control-label col-md-2"})
+                                @Html.LabelFor(model => model.Product.CategoryId, "Category", new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.DropDownList("CategoryId", String.Empty)
-                                    @Html.ValidationMessageFor(model => model.CategoryId)
+                                    @Html.DropDownListFor(model => model.Product.CategoryId, (IEnumerable<SelectListItem>)ViewBag.CategoryId, new { @class = "form-control" })
+
+                                    @Html.ValidationMessageFor(model => model.Product.CategoryId)
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Product.CategoryId, "Supplier", new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.Product.SupplierId, (IEnumerable<SelectListItem>)ViewBag.SupplierId, new { @class = "form-control" })
+
+                                    @Html.ValidationMessageFor(model => model.Product.SupplierId)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Product.WholesalerId, "Wholesaler", new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.Product.WholesalerId, (IEnumerable<SelectListItem>)ViewBag.WholesalerId, new { @class = "form-control" })
+
+                                    @Html.ValidationMessageFor(model => model.Product.WholesalerId)
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Save" class="btn btn-primary"/>
-                                    @Html.ActionLink("Cancel", "Index", null, new {@class = "btn btn-white"})
+                                    <input type="submit" value="Save" class="btn btn-primary" />
+                                    <a href="##" class="btn btn-white" onclick="history.go(-1); return false;">Cancel</a>
                                 </div>
                             </div>
                         </div>
@@ -84,6 +82,7 @@
 </div>
 
 
+
 @section Scripts {
-    @Scripts.Render("~/bundles/validate")
+    @Scripts.Render("~/bundles/jqueryval")
 }
