@@ -1,4 +1,6 @@
-﻿//$.fn.dataTable.ext.search.push(
+﻿
+
+//$.fn.dataTable.ext.search.push(
 //    function (settings, data, dataIndex) {
 //        var min = Date($('#fromdate').val(), 10);
 //        var max = parseInt($('#todate').val(), 10);
@@ -17,8 +19,8 @@
 
 
 $(document).ready(function () {
-    $('#fromdate').datepicker({dataFormat: 'dd/mm/yyyy'});
-    $('#todate').datepicker({ dataFormat: 'dd/mm/yyyy' });
+    $('#fromdate').datepicker({dataFormat: 'dd-mm-yy'});
+    $('#todate').datepicker({ dataFormat: 'dd-mm-yy' });
     
     $("#transactions-table")
         .dataTable({
@@ -65,6 +67,15 @@ $(document).ready(function () {
 });
 
 function displayDate() {
-    var min = document.getElementById("testing");
-    alert(min.value);
+    //dataFormat df = new Sim 
+    //DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+    var minimum = document.getElementById("fromdate");
+    var fromDate = new Date(minimum);
+    alert(minimum.value);
+    //alert(fromDate.toLocaleString());
+    //var maximum = document.getElementById("todate");
+    //var min = new Date(String(minimum));
+    //var max = new Date(String(maximum));
+    //alert(min.toLocaleDateString("en-US") + " --- " + max.value);
 }
+

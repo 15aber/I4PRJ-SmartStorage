@@ -246,3 +246,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/I4PRJ SmartStorage/Migrations

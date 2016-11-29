@@ -7,13 +7,13 @@ namespace I4PRJ_SmartStorage.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class NullableFromInventoryId : IMigrationMetadata
+    public sealed partial class rereenable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(NullableFromInventoryId));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(rereenable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611290916543_NullableFromInventoryId"; }
+            get { return "201611291155421_rereenable"; }
         }
         
         string IMigrationMetadata.Source
