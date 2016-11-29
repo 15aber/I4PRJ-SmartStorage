@@ -437,6 +437,7 @@
     <None Include="Scripts\jqValidate\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\site\datatables\finishStatus.js" />
     <Content Include="Scripts\site\datatables\startStatus.js" />
+    <Content Include="Scripts\site\datatables\statusReport.js" />
     <Content Include="Scripts\site\datatables\transactionForm.js" />
     <Content Include="Scripts\site\datatables\transactionIndex.js" />
     <Content Include="Scripts\site\datatables\wholesalerForm.js" />
@@ -523,6 +524,7 @@
     <Content Include="Views\Suppliers\Edit.cshtml" />
     <Content Include="Views\Suppliers\Index.cshtml" />
     <Content Include="Views\Status\StatusReports.cshtml" />
+    <Content Include="Views\Status\StatusReportDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
