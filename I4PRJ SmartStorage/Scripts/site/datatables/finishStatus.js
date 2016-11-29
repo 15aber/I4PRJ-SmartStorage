@@ -1,4 +1,4 @@
-﻿function calDiff(id) {
+﻿function calcDiff(id) {
     var expected = document.getElementById('expected' + id).textContent;
     var curQuantity = document.getElementById('curQuantity' + id).value;
     var result = curQuantity - expected;
@@ -68,7 +68,7 @@ $(document)
                     {
                         data: "product.productId",
                         render: function (data, type, row, meta) {
-                            return "<input type='number' min='0' step='0.25' style='width: 100%' id='curQuantity" + meta.row + "' class='form-control quantity' onChange='calDiff(" + meta.row + ");'/>";
+                            return "<input type='number' min='0' step='0.25' style='width: 100%' id='curQuantity" + meta.row + "' class='form-control quantity' onChange='calcDiff(" + meta.row + ");'/>";
                         }
                     },
                     {
@@ -95,7 +95,7 @@ $(document)
             for (var i = 0; i < rows.length; i++) {
                 var expected = document.getElementById('expected' + i).textContent;
                 var current = $(rows[i]).find("td:eq(3)").find('input').val();
-                var diff = Math.abs(new Number(expected) - new Number(current));
+                var diff = new Number(expected) - new Number(current);
                 var productId = table.cell(i, 5).data();
                 table.cell(i, 4).text(diff);
 
