@@ -74,24 +74,24 @@ namespace I4PRJ_SmartStorage.Controllers
 
         public ActionResult GetListReport()
         {
-            var id = 1;
-            var wholesaler = db.Wholesalers.Find(id);
-            
-            if (wholesaler == null)
-            {
-                return HttpNotFound();
-            }
+            //var id = 1;
+            //var wholesaler = db.Wholesalers.Find(id);
+
+            //if (wholesaler == null)
+            //{
+            //    return HttpNotFound();
+            //}
 
 
-            //var time = DateTime.Today;
-            //var time1 = DateTime.Today;
+            ////var time = DateTime.Today;
+            ////var time1 = DateTime.Today;
 
-            var viewModel = new WholesalerViewModel
-            {
-                Transaction = db.Transactions.Include(w => w.Product.WholesalerId == id).ToList()
-            };
+            //var viewModel = new WholesalerViewModel
+            //{
+            //    Transaction = db.Transactions.Include(w => w.Product.WholesalerId == id).ToList()
+            //};
 
-            return View("WholesalersForm",viewModel);
+            return View(/*"WholesalersForm", viewModel*/);
         }
 
         // GET: /Wholesalers/Edit/5

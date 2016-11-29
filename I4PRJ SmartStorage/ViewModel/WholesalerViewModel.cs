@@ -8,10 +8,11 @@ namespace I4PRJ_SmartStorage.ViewModel
 {
     public class WholesalerViewModel
     {
-        public List<Wholesaler> Wholesalers { get; set; }
         public Wholesaler Wholesaler { get; set; }
+        public List<Wholesaler> Wholesalers { get; set; }
+        public Transaction Transaction { get; set; }
         public List<Inventory> Inventories { get; set; }
-        public List<Transaction> Transaction { get; set; }
+        public List<Transaction> Transactions { get; set; }
         public List<Product> Products { get; set; }
 
 
