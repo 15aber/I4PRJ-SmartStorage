@@ -118,20 +118,5 @@ $(document)
                 .fail(function () {
                     toastr.error("Something unexpected happened!");
                 });
-        });
-
-        $('.js-refresh').on('click', function () {
-
-            var rows = $('#status').dataTable().fnGetNodes();
-
-            for (var i = 0; i < rows.length; i++) {
-                var expected = table.cell(i, 2).data();
-                var current = table.cell(i, 3).data();
-                var diff = new Number(expected) - new Number(current);
-                table.cell(i, 4).text(diff);
-                toastr.info("Differences has been updated.");
-            }
-        });
-
-        
+        });        
     });
