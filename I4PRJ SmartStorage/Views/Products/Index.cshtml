@@ -1,8 +1,7 @@
-﻿@model IEnumerable<I4PRJ_SmartStorage.Models.Domain.Product>
+﻿@model I4PRJ_SmartStorage.Models.Domain.Product
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -10,33 +9,32 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>List of Product</h5>
+                    <h5>List of Products</h5>
                     <div class="ibox-tools">
-                        @Html.ActionLink("Create New", "Create", null, new {@class = "btn btn-primary btn-xs"})
+                        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-xs" })
                     </div>
                 </div>
                 <div class="ibox-content">
-
-                    <table class="table table-striped table-bordered table-hover" id="products">
+                    <table id="products" class="table table-striped table-bordered table-hover">
                         <thead>
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Name)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PurchasePrice)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Updated)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.ByUser)
-                            </th>
-                            <th></th>
-                        </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PurchasePrice)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Updated)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ByUser)
+                                </th>
+                                <th></th>
                         </thead>
-                        <tbody>
-                        </tbody>
+                        <tbody></tbody>
+                        <tfoot>
+                        </tfoot>
                     </table>
 
                 </div>
@@ -45,7 +43,6 @@
     </div>
 </div>
 
-
-@section Scripts {
-  <script type="text/javascript" src="~/Scripts/site/datatables/productsIndex.js"></script>
+@section scripts {
+    <script type="text/javascript" src="~/Scripts/site/datatables/productsIndex.js"></script>
 }

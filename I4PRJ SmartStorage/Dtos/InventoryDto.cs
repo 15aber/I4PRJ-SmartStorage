@@ -9,10 +9,14 @@ namespace I4PRJ_SmartStorage.Dtos
 {
     public class InventoryDto
     {
-        [Key]
         public int InventoryId { get; set; }
 
-        [Required]
         public string Name { get; set; }
+
+        public DateTime Updated { get; set; }
+
+        public string ByUser { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

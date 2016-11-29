@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using I4PRJ_SmartStorage.Models.Domain;
 
-namespace I4PRJ_SmartStorage.ViewModel
+namespace I4PRJ_SmartStorage.ViewModels
 {
   public class StatusViewModel
   {
@@ -18,5 +18,7 @@ namespace I4PRJ_SmartStorage.ViewModel
     public string Name { get; set; }
 
     public bool ShowNotification { get; set; }
+
+    public bool IsStarted { get; set; }
   }
 }

@@ -77,16 +77,7 @@
                 ]
             });
 
-        $('#status').on('change', '.quantity', function (eventArg) {
-            var cells = $(this).closest('tr').children('td');
-            var value1 = document.getElementById("expected").textContent;
-            var value2 = cells.eq(3).find('input').val();
-            var diff = Math.abs(new Number(value1) - new Number(value2));
-            cells.eq(4).text(diff);
-
-        });
-
-        $('.js-submit').on('click', function () {
+       $('.js-submit').on('click', function () {
 
             var rows = $('#status').dataTable().fnGetNodes();
 
@@ -96,35 +87,39 @@
                 var diff = Math.abs(new Number(expected) - new Number(current));
                 var productId = table.cell(i, 5).data();
 
-                alert(productId);
-                
+                vm.IsStarted = true;
                 vm.quantities.push(current);
                 vm.differences.push(diff);
                 vm.productIds.push(productId);
             }
 
-
             vm.InventoryId = document.location.pathname.split('/')[3];
 
-
-
-
-
-            //var cells = $(this).closest('tr').children('td');
-            //var quantity = cells.eq(3).find('input').val();
-            //vm.quantities.push(quantity);
-
             $.ajax({
-                url: "/api/status/CreateNewStatus/",
+                url: "/api/status/CreateStatus/",
                 method: "post",
                 data: vm
             })
                 .done(function () {
-                    window.location.href = url;
+                    var indexUrl = "/status/index/";
+                    window.location.href = indexUrl;
                 })
                 .fail(function () {
                     toastr.error("Something unexpected happened!");
                 });
+        });
+
+        $('.js-refresh').on('click', function () {
+
+            var rows = $('#status').dataTable().fnGetNodes();
+
+            for (var i = 0; i < rows.length; i++) {
+                var expected = table.cell(i, 2).data();
+                var current = table.cell(i, 3).data();
+                var diff = new Number(expected) - new Number(current);
+                table.cell(i, 4).text(diff);
+                toastr.info("Differences has been updated.");
+            }
         });
 
     });
