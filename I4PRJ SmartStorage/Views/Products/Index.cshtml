@@ -1,4 +1,4 @@
-﻿@model I4PRJ_SmartStorage.Models.Domain.Product
+﻿@model I4PRJ_SmartStorage.ViewModels.ProductViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -19,16 +19,16 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Name)
+                                    @Html.DisplayNameFor(model => model.Product.Name)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.PurchasePrice)
+                                    @Html.DisplayNameFor(model => model.Product.PurchasePrice)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Updated)
+                                    @Html.DisplayNameFor(model => model.Product.Updated)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.ByUser)
+                                    @Html.DisplayNameFor(model => model.Product.ByUser)
                                 </th>
                                 <th></th>
                         </thead>
