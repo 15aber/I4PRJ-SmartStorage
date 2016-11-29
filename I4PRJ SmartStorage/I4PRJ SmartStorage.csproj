@@ -238,6 +238,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Domain\Transaction.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\InventoryViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\StatusViewModel.cs" />
@@ -419,6 +420,7 @@
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <None Include="Scripts\jquery\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\site\datatables\categoriesIndex.js" />
+    <Content Include="Scripts\site\datatables\inventoriesIndex.js" />
     <Content Include="Scripts\site\datatables\productsIndex.js" />
     <Content Include="Scripts\jszip\jszip.js" />
     <Content Include="Scripts\jszip\jszip.min.js" />
@@ -496,7 +498,6 @@
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Inventories\Create.cshtml" />
-    <Content Include="Views\Inventories\Delete.cshtml" />
     <Content Include="Views\Inventories\Edit.cshtml" />
     <Content Include="Views\Inventories\Index.cshtml" />
     <Content Include="Views\Stocks\Index.cshtml" />
