@@ -219,9 +219,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611290854275_Initial.cs" />
-    <Compile Include="Migrations\201611290854275_Initial.Designer.cs">
-      <DependentUpon>201611290854275_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201611291155421_rereenable.cs" />
+    <Compile Include="Migrations\201611291155421_rereenable.Designer.cs">
+      <DependentUpon>201611291155421_rereenable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201611291119271_FromInventoryId-nullelbel.cs" />
     <Compile Include="Migrations\201611291119271_FromInventoryId-nullelbel.Designer.cs">
@@ -535,8 +535,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611290854275_Initial.resx">
-      <DependentUpon>201611290854275_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611291155421_rereenable.resx">
+      <DependentUpon>201611291155421_rereenable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611291119271_FromInventoryId-nullelbel.resx">
       <DependentUpon>201611291119271_FromInventoryId-nullelbel.cs</DependentUpon>
