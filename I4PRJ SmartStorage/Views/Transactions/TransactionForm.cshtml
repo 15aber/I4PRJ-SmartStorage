@@ -49,7 +49,7 @@
                                 <div class="col-md-4">
                                     @Html.TextBoxFor(model => model.Quantity, new { @class = "form-control", type = "number", step = "0.25", min = "0", value = "" })
                                     @Html.ValidationMessageFor(model => model.Quantity)
-                                    @Html.ValidationSummary(true)
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 

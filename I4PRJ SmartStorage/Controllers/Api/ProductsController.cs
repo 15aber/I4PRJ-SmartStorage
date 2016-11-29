@@ -52,10 +52,10 @@ namespace I4PRJ_SmartStorage.Controllers.Api
             return Json(products);
         }
 
-        // GET /api/products/getproductsofinventory/1
+        // GET /api/products/getproductsofcategory/1
         public IHttpActionResult GetProductsOfCategory(int id)
         {
-            // get stocks that have InventoryId == id
+            // get products that have CategoryId == id
             var productsInDb = db.Products.Where(c => c.IsDeleted == false).Where(o => o.CategoryId == id);
 
             var products = Mapper.Map<List<Product>, List<ProductDto>>(productsInDb.ToList());

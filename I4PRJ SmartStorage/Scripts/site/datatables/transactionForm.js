@@ -3,17 +3,16 @@
 
         // apply changes if modelstate fails
         if ($('#FromInventoryId').val() !== null) {
-            dummy();
+            setDropDownLists();
         };
 
         // add eventlistener for 
         $('#FromInventoryId')
-            .on('change', dummy);
+            .on('change', setDropDownLists);
 
-        function dummy() {
-
+        function setDropDownLists() {
             // ajax get products of inventory
-            $.get('/api/Inventories/GetOtherInventories/' + this.value,
+            $.get('/api/Inventories/GetOtherInventories/' + $('#FromInventoryId').val(),
                 function (data) {
                     // populate with options
                     var inventoriesWithoutFromInventorySelect = $('#ToInventoryId');
@@ -31,7 +30,7 @@
                 });
 
             // ajax get products of inventory
-            $.get('/api/Products/GetProductsOfInventory/' + this.value,
+            $.get('/api/Products/GetProductsOfInventory/' + $('#FromInventoryId').val(),
                 function (data) {
                     // populate with options
                     var productsOfInventorySelect = $('#ProductId');
