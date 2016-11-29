@@ -93,7 +93,7 @@ $(document)
             var rows = $('#status').dataTable().fnGetNodes();
 
             for (var i = 0; i < rows.length; i++) {
-                var expected = document.getElementById("expected").textContent;
+                var expected = document.getElementById('expected' + i).textContent;
                 var current = $(rows[i]).find("td:eq(3)").find('input').val();
                 var diff = Math.abs(new Number(expected) - new Number(current));
                 var productId = table.cell(i, 5).data();
