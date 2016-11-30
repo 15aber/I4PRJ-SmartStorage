@@ -1,9 +1,4 @@
-﻿var timeStamp = $("updated").text();
-
-var expected = document.getElementById('expected' + id).textContent;
-var curQuantity = document.getElementById('curQuantity' + id).value;
-
-$(document)
+﻿$(document)
     .ready(function () {
         var table = $("#status")
             .DataTable({
@@ -19,8 +14,8 @@ $(document)
                         buttons: [
                             { extend: 'copy' },
                             { extend: 'csv' },
-                            { extend: 'excel', title: 'Optællingsrapport', filename: 'Optællingsrapport_' + timeStamp },
-                            { extend: 'pdf', title: 'Optællingsrapport', filename: 'Optællingsrapport_'+timeStamp },
+                            { extend: 'excel', title: 'Optællingsrapport' },
+                            { extend: 'pdf', title: 'Optællingsrapport' },
                             {
                                 extend: 'print',
                                 customize: function (win) {
