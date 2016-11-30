@@ -88,7 +88,7 @@ namespace I4PRJ_SmartStorage.Controllers
         public ActionResult StatusReports()
         {
             var statuses = new List<Status>();
-            foreach (var status in db.Statuses.ToList())
+            foreach (var status in db.Statuses.Include(i => i.Inventory).ToList())
             {
                 if (!statuses.Any(o => o.Updated == status.Updated))
                     statuses.Add(status);
