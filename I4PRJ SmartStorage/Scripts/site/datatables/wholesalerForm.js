@@ -18,3 +18,39 @@
         }
     });
 });
+$(document)
+    .ready(function() {
+        $("#wholesalers-table")
+            .dataTable({
+                "order": [[4, "desc"]],
+                ajax: {
+                    url: "/api/wholesaler/",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "product.wholesaler.name"
+                    },
+                    {
+                        data: "transactionId"
+                    },
+                    {
+                        data: "product.name"
+                    },
+                    {
+                        data: "quantity"
+                    },
+                    {
+                        data: "updated",
+                        render: function(data) {
+                            var date = new Date(data);
+                            return date.toLocaleString();
+                        }
+                    },
+                    {
+                        data: "byUser"
+
+                    }
+                ]
+            });
+    });

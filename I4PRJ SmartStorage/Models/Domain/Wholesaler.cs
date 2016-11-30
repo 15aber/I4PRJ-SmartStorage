@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace I4PRJ_SmartStorage.Models.Domain
 {
@@ -27,5 +28,5 @@ namespace I4PRJ_SmartStorage.Models.Domain
     [DisplayName("Archived")]
     [Editable(false)]
     public bool IsDeleted { get; set; }
-  }
+    }
 }

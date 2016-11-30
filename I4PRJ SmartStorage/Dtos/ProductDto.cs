@@ -26,6 +26,14 @@ namespace I4PRJ_SmartStorage.Dtos
 
         public List<Stock> Stock { get; set; }
 
+        public int WholesalerId { get; set; }
+
+        public Wholesaler Wholesaler { get; set; }
+
+        public int SupplierId { get; set; }
+
+        public Supplier Supplier { get; set; }
+
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:G}")]
         [Editable(false)]

@@ -197,6 +197,7 @@
     <Compile Include="Controllers\Api\SmsController.cs" />
     <Compile Include="Controllers\Api\StatusController.cs" />
     <Compile Include="Controllers\Api\TransactionsController.cs" />
+    <Compile Include="Controllers\Api\WholesalerController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoriesController.cs" />
@@ -463,7 +464,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -519,6 +519,7 @@
     <Content Include="Views\Suppliers\Delete.cshtml" />
     <Content Include="Views\Suppliers\Edit.cshtml" />
     <Content Include="Views\Suppliers\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -526,6 +527,7 @@
     <Folder Include="Content\pace\themes\blue\" />
     <Folder Include="Content\pace\themes\green\" />
     <Folder Include="Content\pace\themes\red\" />
+    <Folder Include="Views\Account\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -62,11 +62,11 @@ namespace I4PRJ_SmartStorage.Controllers
 
         public ActionResult CreateNewReport()
         {
-            var wholesalers = db.Wholesalers.ToList();
+            var wholesaler = db.Wholesalers.ToList();
 
-            var viewModel = new WholesalerViewModel
+            var viewModel = new WholesalerViewModel()
             {
-                Wholesalers = wholesalers 
+                Wholesalers = wholesaler
             };
 
             return View("WholesalersForm",viewModel);
