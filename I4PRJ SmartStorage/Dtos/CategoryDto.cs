@@ -11,15 +11,10 @@ namespace I4PRJ_SmartStorage.Dtos
     {
         public int CategoryId { get; set; }
 
-        [Required]
         public string Name { get; set; }
 
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:G}")]
-        [Editable(false)]
         public DateTime Updated { get; set; }
 
-        [Editable(false)]
         public string ByUser { get; set; }
 
         public bool IsDeleted { get; set; }

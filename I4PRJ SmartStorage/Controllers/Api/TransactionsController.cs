@@ -15,7 +15,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
     public class TransactionsController : ApiController
     {
         private ApplicationDbContext db;
-
+        
         public TransactionsController()
         {
            db = new ApplicationDbContext();
