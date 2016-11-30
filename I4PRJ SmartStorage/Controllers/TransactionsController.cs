@@ -121,7 +121,7 @@ namespace I4PRJ_SmartStorage.Controllers
                 viewModel.FromInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList();
                 viewModel.ToInventory = db.Inventories.Where(p => p.IsDeleted == false).ToList();
                 viewModel.Products = db.Products.Where(p => p.IsDeleted == false).ToList();
-                
+
                 return View("TransactionForm", viewModel);
             }
 

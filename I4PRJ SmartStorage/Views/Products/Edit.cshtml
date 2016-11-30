@@ -33,7 +33,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Product.PurchasePrice, new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.Product.PurchasePrice, new { @class = "form-control", type = "number", step = "0.01", min = "0", value = "" })
+                                    @Html.TextBoxFor(model => model.Product.PurchasePrice, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.Product.PurchasePrice)
                                 </div>
                             </div>

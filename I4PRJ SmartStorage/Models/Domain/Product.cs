@@ -22,10 +22,6 @@ namespace I4PRJ_SmartStorage.Models.Domain
     [Range(0, Double.MaxValue)]
     public double PurchasePrice { get; set; }
 
-    [DisplayName("Package")]
-    [Range(0, Int32.MaxValue)]
-    public int? Package { get; set; }
-
     [Required]
     [ForeignKey("Category")]
     [DisplayName("Category")]

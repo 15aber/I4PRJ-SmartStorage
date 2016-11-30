@@ -85,6 +85,43 @@ namespace I4PRJ_SmartStorage.Controllers
             return View("StatusForm", viewModel);
         }
 
+        public ActionResult StatusReports()
+        {
+            var statuses = new List<Status>();
+            foreach (var status in db.Statuses.Include(i => i.Inventory).ToList())
+            {
+                if (!statuses.Any(o => o.Updated == status.Updated))
+                    statuses.Add(status);
+            }
+
+            var viewModel = new StatusViewModel()
+            {
+                Statuses = statuses,
+                Status = new Status()
+            };
+
+            return View("StatusReports", viewModel);
+        }
+
+        public ActionResult StatusReportDetails(int id)
+        {
+            Status status = db.Statuses.Find(id);
+
+            if (status == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new StatusViewModel
+            {
+                //Products = db.Products.Include(p => p.Category).Where(p => p.IsDeleted != true).ToList(),
+                //Stocks = db.Stocks.Where(s => s.InventoryId == id).ToList(),
+                Statuses = db.Statuses.ToList()
+            };
+
+            return View("StatusReportDetails", viewModel);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

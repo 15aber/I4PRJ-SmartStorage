@@ -7,7 +7,8 @@ namespace I4PRJ_SmartStorage.Dtos
 {
     public class NewStatusDto
     {
-        public List<double> Quantities { get; set; }
+        public List<double> ExpQuantities { get; set; }
+        public List<double> CurQuantities { get; set; }
         public int InventoryId { get; set; }
         public List<double> Differences { get; set; }
         public List<int> ProductIds { get; set; }

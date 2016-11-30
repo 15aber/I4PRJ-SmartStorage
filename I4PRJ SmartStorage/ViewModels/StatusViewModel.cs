@@ -13,6 +13,8 @@ namespace I4PRJ_SmartStorage.ViewModels
 
     public List<Category> Categories { get; set; }
 
+    public List<Status> Statuses { get; set; }
+
     public List<int> StatusStartedInventories { get; set; }
 
     public string Name { get; set; }
@@ -20,5 +22,7 @@ namespace I4PRJ_SmartStorage.ViewModels
     public bool ShowNotification { get; set; }
 
     public bool IsStarted { get; set; }
+
+    public Status Status { get; set; }
   }
 }

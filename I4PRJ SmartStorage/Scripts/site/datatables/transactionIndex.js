@@ -34,7 +34,8 @@ $(document).ready(function () {
                     data: "product.name"
                 },
                 {
-                    data: "fromInventory.name"
+                    data: "fromInventory.name",
+                    "sDefaultContent": ""
                 },
                 {
                     data: "toInventory.name"

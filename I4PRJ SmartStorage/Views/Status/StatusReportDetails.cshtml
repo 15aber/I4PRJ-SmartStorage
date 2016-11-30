@@ -1,6 +1,6 @@
 ﻿@model I4PRJ_SmartStorage.ViewModels.StatusViewModel
 @{
-    ViewBag.Title = "StatusForm";
+    ViewBag.Title = "StatusReportDetails";
 }
 
 <form id="newStatus">
@@ -26,9 +26,7 @@
                             <tfoot></tfoot>
                         </table>
                         <div class="form-group ibox-tools">
-                            <input class="btn btn-primary js-submit" type="button" value="Create" />
-                            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-white" })
-                            @Html.HiddenFor(m => m.IsStarted)
+                            @Html.ActionLink("Return To Report List", "StatusReports", null, new { @class = "btn btn-white" })
                         </div>
                     </div>
                 </div>
@@ -38,5 +36,5 @@
 </form>
 
 @section Scripts {
-    <script type="text/javascript" src="~/Scripts/site/datatables/startStatus.js"></script>
+    <script type="text/javascript" src="~/Scripts/site/datatables/statusReportDetails.js"></script>
 }

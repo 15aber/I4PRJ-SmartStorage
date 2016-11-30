@@ -5,22 +5,12 @@
     ViewBag.Title = "Index";
 }
 
-<div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-sm-4">
-        <h2>Index</h2>
-        <ol class="breadcrumb">
-            <li class="active">
-                <strong>Status</strong>
-            </li>
-        </ol>
-    </div>
-</div>
-
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
+                    @Html.ActionLink("Show Status Reports", "StatusReports", null, new { @class = "btn btn-primary btn-xs pull-right" })
                     <h5>List of Inventories</h5>
                 </div>
                 <div class="ibox-content">
@@ -50,7 +40,7 @@
 
                                     else
                                     {
-                                        @Html.ActionLink("Finish", "FinishStatus", new { id = item.InventoryId }, new { @class = "btn btn-primary pull-right", @style = "background-color:Red" });
+                                        @Html.ActionLink("Finish", "FinishStatus", new { id = item.InventoryId }, new { @class = "btn btn-primary pull-right", @style = "background-color:Red; border-color:Red" });
                                     }
                                 </td>
                             </tr>

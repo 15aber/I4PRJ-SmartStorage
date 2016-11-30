@@ -22,7 +22,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
             db = new ApplicationDbContext();
         }
 
-        public IHttpActionResult GetStatus(int id)
+        public IHttpActionResult GetStatusOfInventory(int id)
         {
             var inventory = db.Inventories.Find(id);
 
@@ -36,25 +36,41 @@ namespace I4PRJ_SmartStorage.Controllers.Api
             return Ok(status);
         }
 
+        public IHttpActionResult GetStatus(int id)
+        {
+            var status = db.Statuses.Find(id);
+
+            if (status == null)
+                return NotFound();
+
+            var statuses = db.Statuses.Include(i => i.Product.Category)
+                .Where(s => s.Updated == status.Updated && s.InventoryId == status.InventoryId).ToList();
+
+            return Ok(statuses);
+        }
+
         [HttpPost]
         public IHttpActionResult CreateStatus(NewStatusDto statusDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            for (int i = 0; i < statusDto.Quantities.Count; i++)
+            var time = DateTime.Now;
+
+            for (int i = 0; i < statusDto.CurQuantities.Count; i++)
             {
-                if(statusDto.Quantities[i] == null)
+                if(statusDto.CurQuantities[i] == null)
                     return BadRequest("Quantity value is invalid");
 
                 var status = new Status
                 {
                     InventoryId = statusDto.InventoryId,
-                    Quantity = statusDto.Quantities[i],
+                    ExpQuantity = statusDto.ExpQuantities[i],
+                    CurQuantity = statusDto.CurQuantities[i],
                     IsStarted = statusDto.IsStarted,
                     ByUser = User.Identity.Name,
                     Difference = statusDto.Differences[i],
-                    Updated = DateTime.Now,
+                    Updated = time,
                     ProductId = statusDto.ProductIds[i]
                 };
 

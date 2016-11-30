@@ -1,7 +1,7 @@
 ﻿$(document)
     .ready(function () {
 
-        var table = $("#products")
+        var table = $("#categories")
             .DataTable({
                 paging: false,
                 searching: true,
@@ -15,8 +15,8 @@
                         buttons: [
                             { extend: 'copy' },
                             { extend: 'csv' },
-                            { extend: 'excel', title: 'SmartStorage - Produkt' },
-                            { extend: 'pdf', title: 'SmartStorage - Produkt' },
+                            { extend: 'excel', title: 'SmartStorage - Kategori' },
+                            { extend: 'pdf', title: 'SmartStorage - Kategori' },
                             {
                                 extend: 'print',
                                 customize: function (win) {
@@ -33,19 +33,12 @@
                     }
                 ],
                 ajax: {
-                    url: "/api/products/getproductsofcategory/" + document.location.pathname.split('/')[3],
+                    url: "/api/categories/",
                     dataSrc: ""
                 },
                 columns: [
                     {
                         data: "name"
-                    },
-                    {
-                        data: "purchasePrice",
-                        render: function (data) {
-                            var price = data;
-                            return price.toFixed(2);
-                        }
                     },
                     {
                         data: "updated",
@@ -58,31 +51,31 @@
                         data: "byUser"
                     },
                     {
-                        data: "productId",
+                        data: "categoryId",
                         render: function (data) {
-                            return "<button class='btn btn-primary btn-xs js-edit' data-product-id=" + data + ">Edit</button>" +
-                                "<button class='btn btn-white btn-xs js-delete' data-product-id=" + data + ">Delete</button>";
+                            return "<button class='btn btn-primary btn-xs js-edit' data-category-id=" + data + ">Edit</button>" +
+                                "<button class='btn btn-white btn-xs js-delete' data-category-id=" + data + ">Delete</button>";
                         }
                     }
                 ]
             });
     });
 
-$("#products").on("click", ".js-edit", function () {
+$("#categories").on("click", ".js-edit", function () {
     var button = $(this);
-    var id = button.attr("data-product-id");
-    var url = "/Products/Edit/" + id;
+    var id = button.attr("data-category-id");
+    var url = "/Categories/Edit/" + id;
     window.location.href = url;
 });
 
-$("#products").on("click", ".js-delete", function () {
+$("#categories").on("click", ".js-delete", function () {
     var button = $(this);
 
-    bootbox.confirm("Are you sure you want to delete this product?",
+    bootbox.confirm("Are you sure you want to delete this category?",
         function (result) {
             if (result) {
                 $.ajax({
-                    url: "/api/products/deleteproduct/" + button.attr("data-product-id"),
+                    url: "/api/categories/deletecategory/" + button.attr("data-category-id"),
                     method: "DELETE",
                     success: function () {
                         window.location.reload(true);
