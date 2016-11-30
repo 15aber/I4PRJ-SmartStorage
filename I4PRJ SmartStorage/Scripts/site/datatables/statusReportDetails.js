@@ -1,5 +1,4 @@
-﻿var inventoryName = $("#market option:selected").text();
-var timeStamp = $("#from").val();
+﻿var timeStamp = $("updated").text();
 
 var expected = document.getElementById('expected' + id).textContent;
 var curQuantity = document.getElementById('curQuantity' + id).value;
@@ -20,8 +19,8 @@ $(document)
                         buttons: [
                             { extend: 'copy' },
                             { extend: 'csv' },
-                            { extend: 'excel', title: 'Optællingsrapport' },
-                            { extend: 'pdf', title: 'Optællingsrapport', filename: 'Optællingsrapport_'+inventoryName+'_'+timeStamp },
+                            { extend: 'excel', title: 'Optællingsrapport', filename: 'Optællingsrapport_' + timeStamp },
+                            { extend: 'pdf', title: 'Optællingsrapport', filename: 'Optællingsrapport_'+timeStamp },
                             {
                                 extend: 'print',
                                 customize: function (win) {
