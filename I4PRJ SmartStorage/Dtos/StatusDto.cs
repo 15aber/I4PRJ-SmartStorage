@@ -17,10 +17,8 @@ namespace I4PRJ_SmartStorage.Dtos
 
         public int ProductId { get; set; }
 
-        [Required]
         public string Name { get; set; }
 
-        [Required]
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }

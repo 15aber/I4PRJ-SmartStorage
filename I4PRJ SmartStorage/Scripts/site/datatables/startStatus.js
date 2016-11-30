@@ -8,7 +8,8 @@
 $(document)
     .ready(function () {
         var vm = {
-            quantities: [],
+            expQuantities: [],
+            curQuantities: [],
             differences: [],
             productIds: []
         };
@@ -16,7 +17,7 @@ $(document)
         var table = $("#status")
             .DataTable({
                 ajax: {
-                    url: "/api/status/GetStatus/" + document.location.pathname.split('/')[3],
+                    url: "/api/status/GetStatusOfInventory/" + document.location.pathname.split('/')[3],
                     dataSrc: ""
                 },
                 rowId: "product.productId",
@@ -80,7 +81,8 @@ $(document)
                     vm.IsStarted = true;
                 }
 
-                vm.quantities.push(current);
+                vm.expQuantities.push(expected);
+                vm.curQuantities.push(current);
                 vm.differences.push(diff);
                 vm.productIds.push(productId);
             }
