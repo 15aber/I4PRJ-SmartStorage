@@ -25,7 +25,11 @@ namespace I4PRJ_SmartStorage.Models.Domain
 
     [Required]
     [Range(0, double.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
-    public double Quantity { get; set; }
+    public double ExpQuantity { get; set; }
+
+    [Required]
+    [Range(0, double.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
+    public double CurQuantity { get; set; }
 
     [Range(Double.MinValue, Double.MaxValue)]
     [Editable(false)]
