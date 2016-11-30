@@ -46,13 +46,13 @@
                         data: "product.category.name"
                     },
                     {
-                        data: "quantity"
+                        data: "expQuantity"
                     },
                     {
-                        data: "product.productId"
+                        data: "curQuantity"
                     },
                     {
-                        data: null
+                        data: "difference"
                     }
                 ]
             });
