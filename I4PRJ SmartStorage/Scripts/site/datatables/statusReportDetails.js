@@ -1,4 +1,10 @@
-﻿$(document)
+﻿var inventoryName = $("#market option:selected").text();
+var timeStamp = $("#from").val();
+
+var expected = document.getElementById('expected' + id).textContent;
+var curQuantity = document.getElementById('curQuantity' + id).value;
+
+$(document)
     .ready(function () {
         var table = $("#status")
             .DataTable({
@@ -15,7 +21,7 @@
                             { extend: 'copy' },
                             { extend: 'csv' },
                             { extend: 'excel', title: 'Optællingsrapport' },
-                            { extend: 'pdf', title: 'Optællingsrapport' },
+                            { extend: 'pdf', title: 'Optællingsrapport', filename: 'Optællingsrapport_'+inventoryName+'_'+timeStamp },
                             {
                                 extend: 'print',
                                 customize: function (win) {
