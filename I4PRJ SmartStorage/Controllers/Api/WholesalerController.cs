@@ -28,6 +28,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
         {   
             return Ok(db.Transactions
                 .Include(p=>p.Product.Wholesaler)
+                .Include(i=>i.FromInventory).Where(i=>i.FromInventoryId==null)
                 .Select(Mapper.Map<Transaction,TransactionDto>));
             //return Ok(db.Transactions
             //    .Include(t => t.Product)

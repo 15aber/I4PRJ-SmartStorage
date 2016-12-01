@@ -192,6 +192,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CategoriesController.cs" />
     <Compile Include="Controllers\Api\InventoriesController.cs" />
     <Compile Include="Controllers\Api\ProductsController.cs" />
     <Compile Include="Controllers\Api\SmsController.cs" />
@@ -220,9 +221,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
-    <Compile Include="Migrations\201611291155421_rereenable.cs" />
-    <Compile Include="Migrations\201611291155421_rereenable.Designer.cs">
-      <DependentUpon>201611291155421_rereenable.cs</DependentUpon>
+    <Compile Include="Migrations\201612011508095_newInit.cs" />
+    <Compile Include="Migrations\201612011508095_newInit.Designer.cs">
+      <DependentUpon>201612011508095_newInit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -237,6 +238,8 @@
     <Compile Include="Models\Domain\Stock.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Domain\Transaction.cs" />
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\InventoryViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\StatusViewModel.cs" />
@@ -533,8 +536,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611291155421_rereenable.resx">
-      <DependentUpon>201611291155421_rereenable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612011508095_newInit.resx">
+      <DependentUpon>201612011508095_newInit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
