@@ -67,18 +67,14 @@
                                 foreach (var item in categories)
                                 {
                                     <li class="@(Convert.ToInt32(Url.RequestContext.RouteData.Values["id"]) == item.CategoryId && Url.RequestContext.RouteData.Values["controller"].ToString() == "Products" ? "active" : "")">
-                                        <a href="@Url.Action("Index", "Products", new {id = item.CategoryId})">
-                                            <span class="nav-label">@item.Name</span>
-                                        </a>
+                                        <a href="@Url.Action("Index", "Products", new {id = item.CategoryId})">@item.Name</a>
                                     </li>
                                 }
                             }
                             else
                             {
                                 <li class="@Html.IsSelected(controller: "Products", action: "Create")">
-                                    <a href="@Url.Action("Create", "Products")">
-                                        <span class="nav-label">Create new</span>
-                                    </a>
+                                    <a href="@Url.Action("Create", "Products")">Create new</a>
                                 </li>
                             }
                         }
@@ -108,9 +104,7 @@
                             foreach (var item in inventories)
                             {
                                 <li class="@(Convert.ToInt32(Url.RequestContext.RouteData.Values["id"]) == item.InventoryId && Url.RequestContext.RouteData.Values["controller"].ToString() == "Stocks" ? "active" : "")">
-                                    <a href="@Url.Action("Inventories", "Stocks", new {id = item.InventoryId})">
-                                        <span class="nav-label">@item.Name</span>
-                                    </a>
+                                    <a href="@Url.Action("Inventories", "Stocks", new {id = item.InventoryId})">@item.Name</a>
                                 </li>
                             }
                         }
