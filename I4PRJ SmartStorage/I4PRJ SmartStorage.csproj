@@ -222,6 +222,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
+    <Compile Include="Migrations\201612021739511_InitDb.cs" />
+    <Compile Include="Migrations\201612021739511_InitDb.Designer.cs">
+      <DependentUpon>201612021739511_InitDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -405,7 +410,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <None Include="Properties\PublishProfiles\SmartStorageAPP - Web Deploy.pubxml" />
     <Content Include="Scripts\bootbox\bootbox.js" />
     <Content Include="Scripts\bootbox\bootbox.min.js" />
     <Content Include="Scripts\jquery-ui\jquery-ui-1.12.1.js" />
@@ -532,9 +536,15 @@
     <Folder Include="Content\pace\themes\blue\" />
     <Folder Include="Content\pace\themes\green\" />
     <Folder Include="Content\pace\themes\red\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201612021739511_InitDb.resx">
+      <DependentUpon>201612021739511_InitDb.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
