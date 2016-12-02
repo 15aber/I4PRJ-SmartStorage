@@ -416,6 +416,8 @@
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <None Include="Scripts\jquery\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\site\datatables\categoriesIndex.js" />
+    <Content Include="Scripts\site\datatables\inventoriesIndex.js" />
     <Content Include="Scripts\site\datatables\productsIndex.js" />
     <Content Include="Scripts\jszip\jszip.js" />
     <Content Include="Scripts\jszip\jszip.min.js" />
@@ -430,8 +432,8 @@
     <Content Include="Scripts\jquery\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery\jquery-3.1.1.min.map" />
     <None Include="Scripts\jqValidate\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\site\datatables\finishStatus.js" />
     <Content Include="Scripts\site\datatables\startStatus.js" />
+    <Content Include="Scripts\site\datatables\statusReportDetails.js" />
     <Content Include="Scripts\site\datatables\transactionForm.js" />
     <Content Include="Scripts\site\datatables\transactionIndex.js" />
     <Content Include="Scripts\site\datatables\wholesalerForm.js" />
