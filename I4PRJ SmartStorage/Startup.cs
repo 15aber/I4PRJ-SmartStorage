@@ -37,7 +37,8 @@ namespace I4PRJ_SmartStorage
                 var user = new ApplicationUser
                 {
                     UserName = "Admin",
-                    Email = "no-reply@smartstorage.dk"
+                    Email = "no-reply@smartstorage.dk",
+                    ProfilePicture = "/Content/images/rubber-duck.png"
                 };
 
                 string userPWD = "SmartStorage2016";
