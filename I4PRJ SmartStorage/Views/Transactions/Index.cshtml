@@ -14,10 +14,10 @@
 
                     <div class="datapickerLine">
                         <div>
-                            <input id="fromdate" type="text" size="8" />
+                            <input id="fromdate" type="text" size="8" value="01-01-2000"/>
                         </div>
                         <div>
-                            <input id="todate" type="text" size="8" />
+                            <input id="todate" type="text" size="8" value="31-12-2016" />
                         </div>
                         <div>
                             <input type="button" name="filter" id="filter" value="filter" class="btn btn-primary btn-xs" />
@@ -94,6 +94,5 @@
 
 
 @section Scripts {
-    @Scripts.Render("~/bundles/datatables")
     <script type="text/javascript" src="~/Scripts/site/datatables/transactionIndex.js"></script>
 }

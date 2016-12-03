@@ -1,20 +1,29 @@
 ﻿
 
-//$.fn.dataTable.ext.search.push(
-//    function (settings, data, dataIndex) {
-//        var min = Date($('#fromdate').val(), 10);
-//        var max = parseInt($('#todate').val(), 10);
-//        var updatedDate = parseFloat(data[4]) || 0; // use data for the age column
+$.fn.dataTable.ext.search.push(
+    function (settings, data, dataIndex) {
+        var fromDate = $("#fromdate").datepicker("getDate");
+        var toDate = $("#todate").datepicker("getDate");
+        console.log(data[4]);
+        var updatedDate = new Date(data[4]); // use data for the "updated" column
+        
+        console.log("updatedDate: " + updatedDate.toLocaleDateString() + " " + updatedDate.getTime());
+        console.log("fromdate: " + fromDate.toLocaleDateString() + " " + fromDate.getTime());
+        console.log("todate: " + toDate.toLocaleDateString() + " " + toDate.getTime());
+        console.log("HEJ");
+        console.log(fromDate.getTime() <= updatedDate);
 
-//        if ((isNaN(min) && isNaN(max)) ||
-//             (isNaN(min) &&  <= max) ||
-//             (min <= updatedDate && isNaN(max)) ||
-//             (min <= updatedDate && updatedDate <= max)) {
-//            return true;
-//        }
-//        return false;
-//    }
-//);
+        
+        //if ((isNaN(fromDate.getTime()) && isNaN(toDate.getTime())) ||
+        //     (isNaN(fromDate.getTime()) &&  updatedDate <= toDate.getTime()) ||
+        //     (fromDate.getTime() <= updatedDate && isNaN(toDate.getTime())) ||
+        //     (fromDate.getTime() <= updatedDate && updatedDate <= toDate.getTime())) {
+        //    return true;
+        //}
+        //return false;
+        return true;
+    }
+);
 
 
 
@@ -46,9 +55,9 @@ $(document).ready(function () {
                 {
                     data: "updated",
                     render: function (data) {
-        var date = new Date(data);
-        return date.toLocaleString();
-    }
+                    var date = new Date(data);
+                    return "0" + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+                    }
                 },
                 {
                     data: "byUser"
@@ -56,7 +65,7 @@ $(document).ready(function () {
                 }
             ]
         });
-    document.getElementById("filter").addEventListener("click", displayDate);
+    //document.getElementById("filter").addEventListener("click", displayDate);
 
     //$('fromdate').on('change', function() {
     //    alert(this.val());
@@ -65,22 +74,19 @@ $(document).ready(function () {
     //$('#min, #max').keyup( function() {
     //    table.draw();
     //});
+    var table = $('#transactions-table').DataTable();
+
+    $('#filter')
+        .click(
+            function displayDate() {
+                var fromDate = $("#fromdate").datepicker("getDate");
+                var toDate = $("#todate").datepicker("getDate");
+                //var updatedDate = new Date();
+                //updatedDate.setHours(updatedDate.getHours() - 2);
+                alert(fromDate.toLocaleDateString() + " --- " + toDate.getTime());
+                console.log("I draw now");
+                table.draw();
+            }); 
 });
 
-function displayDate() {
-    var fromDate = $("#fromdate").datepicker("getDate");
-    var toDate = $("#todate").datepicker("getDate");;
-    alert(fromDate.toLocaleDateString() + " --- " + toDate.getTime());
-
-    //dataFormat df = new Sim 
-    //DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-    //var minimum = document.getElementById("fromdate");
-    //var fromDate = new Date(minimum);
-    //alert(minimum.value);
-    //alert(fromDate.toLocaleString());
-    //var maximum = document.getElementById("todate");
-    //var min = new Date(String(minimum));
-    //var max = new Date(String(maximum));
-    //alert(min.toLocaleDateString("en-US") + " --- " + max.value);
-}
 
