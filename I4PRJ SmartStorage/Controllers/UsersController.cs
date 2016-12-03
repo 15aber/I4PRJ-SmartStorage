@@ -77,13 +77,13 @@ namespace I4PRJ_SmartStorage.Controllers
         }
 
         // GET: User/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string username)
         {
-            if (id == null)
+            if (username == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var userInDb = db.Users.SingleOrDefault(u => u.UserName == id);
+            var userInDb = db.Users.SingleOrDefault(u => u.UserName == username);
             if (userInDb == null)
             {
                 return HttpNotFound();
@@ -104,14 +104,14 @@ namespace I4PRJ_SmartStorage.Controllers
         // POST: User/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(string id, RegisterViewModel model)
+        public ActionResult Edit(string username, RegisterViewModel model)
         {
 
-            if (id == null)
+            if (username == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var userInDb = db.Users.FirstOrDefault(u => u.UserName == id);
+            var userInDb = db.Users.FirstOrDefault(u => u.UserName == username);
             if (userInDb == null)
             {
                 return HttpNotFound();
@@ -132,13 +132,13 @@ namespace I4PRJ_SmartStorage.Controllers
         }
 
         // GET: User/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(string username)
         {
-            if (id == null)
+            if (username == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var userInDb = db.Users.FirstOrDefault(u => u.UserName == id);
+            var userInDb = db.Users.FirstOrDefault(u => u.UserName == username);
             if (userInDb == null)
             {
                 return HttpNotFound();
@@ -149,9 +149,9 @@ namespace I4PRJ_SmartStorage.Controllers
         // POST: User/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(string username)
         {
-            var userInDb = db.Users.FirstOrDefault(u => u.UserName == id);
+            var userInDb = db.Users.FirstOrDefault(u => u.UserName == username);
             db.Users.Remove(userInDb);
             db.SaveChanges();
             return RedirectToAction("Index");
