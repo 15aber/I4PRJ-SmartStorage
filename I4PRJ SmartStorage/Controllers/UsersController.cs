@@ -77,13 +77,13 @@ namespace I4PRJ_SmartStorage.Controllers
         }
 
         // GET: User/Edit/5
-        public ActionResult Edit(string username)
+        public ActionResult Edit(string id)
         {
-            if (username == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var userInDb = db.Users.SingleOrDefault(u => u.UserName == username);
+            var userInDb = db.Users.SingleOrDefault(u => u.PhoneNumber == id);
             if (userInDb == null)
             {
                 return HttpNotFound();
@@ -96,22 +96,23 @@ namespace I4PRJ_SmartStorage.Controllers
                 Middlename = userInDb.Middlename,
                 Lastname = userInDb.Lastname,
                 Email = userInDb.Email,
-                PhoneNumber = userInDb.PhoneNumber,
+                PhoneNumber = userInDb.PhoneNumber
             };
+            model.IsAdmin = UserManager.IsInRole(userInDb.Id, "Admin");
             return View(model);
         }
 
         // POST: User/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(string username, RegisterViewModel model)
+        public async Task<ActionResult> Edit(string id, RegisterViewModel model)
         {
 
-            if (username == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var userInDb = db.Users.FirstOrDefault(u => u.UserName == username);
+            var userInDb = db.Users.FirstOrDefault(u => u.PhoneNumber == id);
             if (userInDb == null)
             {
                 return HttpNotFound();
@@ -128,17 +129,26 @@ namespace I4PRJ_SmartStorage.Controllers
 
             db.SaveChanges();
 
+            if (model.IsAdmin)
+            {
+             await UserManager.AddToRoleAsync(userInDb.Id, "Admin");
+            }
+            else
+            {
+                await UserManager.RemoveFromRoleAsync(userInDb.Id, "Admin");
+            }
+
             return RedirectToAction("Index");
         }
 
         // GET: User/Delete/5
-        public ActionResult Delete(string username)
+        public ActionResult Delete(string id)
         {
-            if (username == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var userInDb = db.Users.FirstOrDefault(u => u.UserName == username);
+            var userInDb = db.Users.FirstOrDefault(u => u.PhoneNumber == id);
             if (userInDb == null)
             {
                 return HttpNotFound();
@@ -149,9 +159,9 @@ namespace I4PRJ_SmartStorage.Controllers
         // POST: User/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string username)
+        public ActionResult DeleteConfirmed(string id)
         {
-            var userInDb = db.Users.FirstOrDefault(u => u.UserName == username);
+            var userInDb = db.Users.FirstOrDefault(u => u.PhoneNumber == id);
             db.Users.Remove(userInDb);
             db.SaveChanges();
             return RedirectToAction("Index");
