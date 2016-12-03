@@ -30,10 +30,10 @@ $(document)
                 ],
                 columns: [
                     {
-                        data: "product.name"
+                        data: "productName"
                     },
                     {
-                        data: "product.category.name"
+                        data: "categoryName"
                     },
                     {
                       data: "quantity",
@@ -42,7 +42,7 @@ $(document)
                         }
                     },
                     {
-                      data: "product.productId",
+                      data: "productId",
                       render: function (data, type, row, meta) {
                         return "<input type='number' min='0' step='0.25' style='width: 100%' id='curQuantity" + meta.row + "' class='form-control quantity' onChange='calcDiff("+ meta.row +");'/>";
                         }
@@ -55,7 +55,7 @@ $(document)
                         }
                     },
                     {
-                        data: "product.productId",
+                        data: "productId",
                         "visible": false,
                         render: function(data) {
                             return "<label id='productIdLabel' value='data'>" + data + "</label>";

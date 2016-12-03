@@ -62,9 +62,10 @@ namespace I4PRJ_SmartStorage.Controllers
 
       // This doesn't count login failures towards account lockout
       // To enable password failures to trigger account lockout, change to shouldLockout: true
+        var user = SignInManager.UserManager.Users.FirstOrDefault(u => u.Email == model.Email);
       var result =
           await
-              SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe,
+              SignInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe,
                   shouldLockout: false);
       switch(result)
       {
@@ -151,7 +152,8 @@ namespace I4PRJ_SmartStorage.Controllers
           PhoneNumber = model.PhoneNumber,
           Firstname = model.Firstname,
           Middlename = model.Middlename,
-          Lastname = model.Lastname
+          Lastname = model.Lastname,
+          ProfilePicture = "/Content/images/rubber-duck.png"
 
         };
         var result = await UserManager.CreateAsync(user, model.Password);
@@ -207,8 +209,10 @@ namespace I4PRJ_SmartStorage.Controllers
     {
       if(ModelState.IsValid)
       {
-        var user = await UserManager.FindByNameAsync(model.Email);
-        if(user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                var user = SignInManager.UserManager.Users.FirstOrDefault(u => u.Email == model.Email);
+                //var user = await UserManager.FindByNameAsync(model.Email);
+
+        if(user == null /*|| !(await UserManager.IsEmailConfirmedAsync(user.Id))*/)
         {
           // Don't reveal that the user does not exist or is not confirmed
           return View("ForgotPasswordConfirmation");
