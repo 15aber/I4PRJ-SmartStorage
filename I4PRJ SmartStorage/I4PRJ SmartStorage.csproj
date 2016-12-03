@@ -538,6 +538,7 @@
     <Content Include="Views\Status\StatusReports.cshtml" />
     <Content Include="Views\Categories\ReadOnlyIndex.cshtml" />
     <Content Include="Views\Products\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Wholesalers\ReadOnlyIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

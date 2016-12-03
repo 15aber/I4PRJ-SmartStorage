@@ -19,7 +19,9 @@ namespace I4PRJ_SmartStorage.Controllers
         // GET: /Wholesalers/
         public ActionResult Index()
         {
-            return View(db.Wholesalers.Where(w=>w.IsDeleted!=true).ToList());
+            if(User.IsInRole(RoleName.Admin))
+                return View("Index", db.Wholesalers.Where(w=>w.IsDeleted!=true).ToList());
+            return View("ReadOnlyIndex", db.Wholesalers.Where(w => w.IsDeleted != true).ToList());
         }
 
         // GET: /Wholesalers/Details/5
@@ -38,6 +40,7 @@ namespace I4PRJ_SmartStorage.Controllers
         }
 
         // GET: /Wholesalers/Create
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Create()
         {
             return View();
@@ -45,6 +48,7 @@ namespace I4PRJ_SmartStorage.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Create([Bind(Include="WholesalerId,Name,Updated,ByUser,IsDeleted")] Wholesaler wholesaler)
         {
             if (ModelState.IsValid)
@@ -95,6 +99,7 @@ namespace I4PRJ_SmartStorage.Controllers
         }
 
         // GET: /Wholesalers/Edit/5
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -114,6 +119,7 @@ namespace I4PRJ_SmartStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Edit([Bind(Include="WholesalerId,Name,Updated,ByUser,IsDeleted")] Wholesaler wholesaler)
         {
             if (ModelState.IsValid)
@@ -129,6 +135,7 @@ namespace I4PRJ_SmartStorage.Controllers
         }
 
         // GET: /Wholesalers/Delete/5
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -146,6 +153,7 @@ namespace I4PRJ_SmartStorage.Controllers
         // POST: /Wholesalers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult DeleteConfirmed(int id)
         {
             Wholesaler wholesaler = db.Wholesalers.Find(id);
