@@ -68,11 +68,15 @@ $(document).ready(function () {
 });
 
 function displayDate() {
+    var fromDate = $("#fromdate").datepicker("getDate");
+    var toDate = $("#todate").datepicker("getDate");;
+    alert(fromDate.toLocaleDateString() + " --- " + toDate.getTime());
+
     //dataFormat df = new Sim 
     //DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-    var minimum = document.getElementById("fromdate");
-    var fromDate = new Date(minimum);
-    alert(minimum.value);
+    //var minimum = document.getElementById("fromdate");
+    //var fromDate = new Date(minimum);
+    //alert(minimum.value);
     //alert(fromDate.toLocaleString());
     //var maximum = document.getElementById("todate");
     //var min = new Date(String(minimum));
