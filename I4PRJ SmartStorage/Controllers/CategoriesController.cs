@@ -17,17 +17,15 @@ namespace I4PRJ_SmartStorage.Controllers
         // GET: /Products/
         public ActionResult Index()
         {
-            if (User.IsInRole("Admin"))
-            {
+            if (User.IsInRole(RoleName.Admin))
                 return View("Index");
-            }
-            else
-            {
-                return View("ReadOnlyIndex");
-            }
+ 
+            return View("ReadOnlyIndex");
+            
         }
 
         // GET: /Categories/Create
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Create()
         {
             var viewModel = new CategoryViewModel
