@@ -39,6 +39,7 @@ namespace I4PRJ_SmartStorage.Controllers
                 Lastname = userInDb.Lastname,
                 Email = userInDb.Email,
                 PhoneNumber = userInDb.PhoneNumber,
+                ProfilePicture = userInDb.ProfilePicture
             }).ToList();
             return View(usersInDb);
         }
