@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using Facebook;
 using I4PRJ_SmartStorage.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
@@ -156,7 +157,14 @@ namespace I4PRJ_SmartStorage.Controllers
         var result = await UserManager.CreateAsync(user, model.Password);
         if(result.Succeeded)
         {
-          await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    //Temp code
+                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManager.CreateAsync(new IdentityRole("Admin"));
+                    //await UserManager.AddToRoleAsync(user.Id, "Admin");
+
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
           // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
           // Send an email with this link

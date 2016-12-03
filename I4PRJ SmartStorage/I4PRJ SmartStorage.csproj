@@ -231,6 +231,7 @@
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Domain\Category.cs" />
+    <Compile Include="Models\Domain\RoleName.cs" />
     <Compile Include="Models\Domain\Wholesaler.cs" />
     <Compile Include="Models\Domain\Supplier.cs" />
     <Compile Include="Models\Domain\Inventory.cs" />
