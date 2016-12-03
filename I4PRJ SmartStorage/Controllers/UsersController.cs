@@ -65,7 +65,8 @@ namespace I4PRJ_SmartStorage.Controllers
                     PhoneNumber = model.PhoneNumber,
                     Firstname = model.Firstname,
                     Middlename = model.Middlename,
-                    Lastname = model.Lastname
+                    Lastname = model.Lastname,
+                    ProfilePicture = "/Content/images/rubber-duck.png"
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

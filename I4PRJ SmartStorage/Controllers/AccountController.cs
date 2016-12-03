@@ -152,7 +152,8 @@ namespace I4PRJ_SmartStorage.Controllers
           PhoneNumber = model.PhoneNumber,
           Firstname = model.Firstname,
           Middlename = model.Middlename,
-          Lastname = model.Lastname
+          Lastname = model.Lastname,
+          ProfilePicture = "/Content/images/rubber-duck.png"
 
         };
         var result = await UserManager.CreateAsync(user, model.Password);
@@ -208,8 +209,10 @@ namespace I4PRJ_SmartStorage.Controllers
     {
       if(ModelState.IsValid)
       {
-        var user = await UserManager.FindByNameAsync(model.Email);
-        if(user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                var user = SignInManager.UserManager.Users.FirstOrDefault(u => u.Email == model.Email);
+                //var user = await UserManager.FindByNameAsync(model.Email);
+
+        if(user == null /*|| !(await UserManager.IsEmailConfirmedAsync(user.Id))*/)
         {
           // Don't reveal that the user does not exist or is not confirmed
           return View("ForgotPasswordConfirmation");
