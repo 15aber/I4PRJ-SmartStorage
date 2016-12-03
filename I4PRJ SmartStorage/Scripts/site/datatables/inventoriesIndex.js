@@ -33,25 +33,25 @@
                     }
                 ],
                 ajax: {
-                    url: "/api/inventories/",
+                    url: "/api/Inventories/",
                     dataSrc: ""
                 },
                 columns: [
                     {
-                        data: "name"
+                        data: "Name"
                     },
                     {
-                        data: "updated",
+                        data: "Updated",
                         render: function (data) {
                             var date = new Date(data);
                             return date.toLocaleString();
                         }
                     },
                     {
-                        data: "byUser"
+                        data: "ByUser"
                     },
                     {
-                        data: "inventoryId",
+                        data: "InventoryId",
                         render: function (data) {
                             return "<button class='btn btn-primary btn-xs js-edit' data-inventory-id=" + data + ">Edit</button>" +
                                 "<button class='btn btn-white btn-xs js-delete' data-inventory-id=" + data + ">Delete</button>";
