@@ -1,19 +1,8 @@
 ﻿@model IEnumerable<I4PRJ_SmartStorage.Models.Domain.Supplier>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Suppliers";
 }
-
-@*<div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-sm-4">
-        <h2>Index</h2>
-        <ol class="breadcrumb">
-            <li class="active">
-                <strong>Supplier</strong>
-            </li>
-        </ol>
-    </div>
-</div>*@
 
 
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -21,7 +10,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>List of Supplier</h5>
+                    <h5>List of Suppliers</h5>
                 </div>
                 <div class="ibox-content">
 
@@ -36,7 +25,6 @@
         <th>
             @Html.DisplayNameFor(model => model.ByUser)
         </th>
-        <th></th>
     
     </tr></thead>
 
@@ -52,9 +40,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.ByUser)
         </td>
-        <td>
-      @Html.ActionLink("Details", "Details", new { id=item.SupplierId }, new { @class = "btn btn-primary btn-sm"})
-        </td>
 
     </tr></tbody>
 }
@@ -66,13 +51,3 @@
         </div>
     </div>
  </div>
-
- @section Styles {
-    @Styles.Render("~/Content/datatables")
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/datatables")
-}
-
-
