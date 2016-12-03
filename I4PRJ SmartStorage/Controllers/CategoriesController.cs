@@ -17,10 +17,15 @@ namespace I4PRJ_SmartStorage.Controllers
         // GET: /Products/
         public ActionResult Index()
         {
-            return View("Index");
+            if (User.IsInRole(RoleName.Admin))
+                return View("Index");
+ 
+            return View("ReadOnlyIndex");
+            
         }
 
         // GET: /Categories/Create
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Create()
         {
             var viewModel = new CategoryViewModel
@@ -37,6 +42,7 @@ namespace I4PRJ_SmartStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Create([Bind(Include = "CategoryId, Name, LastUpdated, ByUser")] Category category)
         {
             if (ModelState.IsValid)
@@ -54,6 +60,7 @@ namespace I4PRJ_SmartStorage.Controllers
         }
 
         // GET: /Categories/Edit/5
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,6 +86,7 @@ namespace I4PRJ_SmartStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Edit([Bind(Include = "CategoryId, Name, LastUpdated, ByUser, Version")] Category category)
         {
             if (ModelState.IsValid)

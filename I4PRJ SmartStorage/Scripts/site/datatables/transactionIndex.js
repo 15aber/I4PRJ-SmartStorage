@@ -34,6 +34,31 @@ $(document).ready(function () {
     $("#transactions-table")
         .dataTable({
             "order": [[4, "desc"]],
+            dom: '<"html5buttons"B>lTfgitp',
+            "buttons": [
+                {
+                    extend: 'collection',
+                    text: 'Export',
+                    buttons: [
+                        { extend: 'copy' },
+                        { extend: 'csv' },
+                        { extend: 'excel', title: 'SmartStorage - Produkt' },
+                        { extend: 'pdf', title: 'SmartStorage - Produkt' },
+                        {
+                            extend: 'print',
+                            customize: function (win) {
+                                $(win.document.body).addClass('white-bg');
+                                $(win.document.body).css('font-size', '10px');
+
+                                $(win.document.body)
+                                    .find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                            }
+                        }
+                    ]
+                }
+            ],
             ajax: {
                 url: "/api/transactions/",
                 dataSrc: ""

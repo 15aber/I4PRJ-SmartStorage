@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 
 namespace I4PRJ_SmartStorage.Models
 {
@@ -31,7 +32,8 @@ namespace I4PRJ_SmartStorage.Models
 
     [DataType(dataType: DataType.ImageUrl)]
     public string ProfilePicture { get; set; }
-  }
+
+    }
 
   public class ExternalLoginListViewModel
   {
@@ -122,7 +124,13 @@ namespace I4PRJ_SmartStorage.Models
     [Display(Name = "Confirm password")]
     [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
     public string ConfirmPassword { get; set; }
-  }
+
+        [DataType(dataType: DataType.ImageUrl)]
+        public string ProfilePicture { get; set; }
+
+        [Display(Name = "Admin")]
+        public bool IsAdmin { get; set; }
+    }
 
   public class ResetPasswordViewModel
   {

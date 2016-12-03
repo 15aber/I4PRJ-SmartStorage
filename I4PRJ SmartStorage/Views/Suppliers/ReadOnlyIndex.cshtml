@@ -22,9 +22,6 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>List of Supplier</h5>
-          <div class="ibox-tools">
-            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-xs"})
-          </div>
                 </div>
                 <div class="ibox-content">
 
@@ -57,8 +54,6 @@
         </td>
         <td>
       @Html.ActionLink("Details", "Details", new { id=item.SupplierId }, new { @class = "btn btn-primary btn-sm"})
-            @Html.ActionLink("Edit", "Edit", new { id=item.SupplierId }, new { @class = "btn btn-white btn-sm"})
-            @Html.ActionLink("Delete", "Delete", new { id=item.SupplierId }, new { @class = "btn btn-white btn-sm"})
         </td>
 
     </tr></tbody>

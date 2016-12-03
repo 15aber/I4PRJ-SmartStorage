@@ -18,7 +18,9 @@ namespace I4PRJ_SmartStorage.Controllers
         // GET: /Suppliers/
         public ActionResult Index()
         {
-            return View(db.Suppliers.Where(s=>s.IsDeleted!=true).ToList());
+            if(User.IsInRole(RoleName.Admin))
+                return View("Index", db.Suppliers.Where(s=>s.IsDeleted!=true).ToList());
+            return View("ReadOnlyIndex", db.Suppliers.Where(s => s.IsDeleted != true).ToList());
         }
 
         // GET: /Suppliers/Details/5
@@ -37,6 +39,7 @@ namespace I4PRJ_SmartStorage.Controllers
         }
 
         // GET: /Suppliers/Create
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +50,7 @@ namespace I4PRJ_SmartStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Create([Bind(Include="SupplierId,Name,Updated,ByUser,IsDeleted")] Supplier supplier)
         {
             if (ModelState.IsValid)
@@ -63,6 +67,7 @@ namespace I4PRJ_SmartStorage.Controllers
         }
 
         // GET: /Suppliers/Edit/5
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,6 +87,7 @@ namespace I4PRJ_SmartStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Edit([Bind(Include="SupplierId,Name,Updated,ByUser,IsDeleted")] Supplier supplier)
         {
             if (ModelState.IsValid)
@@ -97,6 +103,7 @@ namespace I4PRJ_SmartStorage.Controllers
         }
 
         // GET: /Suppliers/Delete/5
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -114,6 +121,7 @@ namespace I4PRJ_SmartStorage.Controllers
         // POST: /Suppliers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.Admin)]
         public ActionResult DeleteConfirmed(int id)
         {
             Supplier supplier = db.Suppliers.Find(id);

@@ -12,9 +12,6 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>List of Users</h5>
-                    <div class="ibox-tools">
-                        @Html.ActionLink("Create new User", "Create", null, new { @class = "btn btn-primary btn-xs" })
-                    </div>
                 </div>
                 <div class="ibox-content">
 
@@ -38,7 +35,6 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.Email)
                             </th>
-                            <th></th>
 
                         </tr>
                         </thead>
@@ -64,10 +60,6 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Email)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.PhoneNumber}, new {@class = "btn btn-info btn-sm"})
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.PhoneNumber}, new {@class = "btn btn-danger btn-sm"})
                                 </td>
 
                             </tr>
