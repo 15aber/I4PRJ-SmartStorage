@@ -1,8 +1,7 @@
 ﻿@model I4PRJ_SmartStorage.ViewModels.TransactionViewModel
 
 @{
-    ViewBag.Title = "Transaction";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Transactions";
 }
 
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -20,8 +19,8 @@
                             </div>
                         </div>
                         <div style="padding-top: 30px" class="form-group">
-                            @Html.ActionLink("Restock", "NewRestock", null, new {@class = "btn btn-primary btn-xs"})
-                            @Html.ActionLink("Transaction", "NewTransaction", null, new {@class = "btn btn-primary btn-xs"})
+                            @Html.ActionLink("Restock", "NewRestock", null, new {@class = "btn btn-primary"})
+                            @Html.ActionLink("Transaction", "NewTransaction", null, new {@class = "btn btn-primary"})
                         </div>
                     </div>
                     <div class="ibox-content">
