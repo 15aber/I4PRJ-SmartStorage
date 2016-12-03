@@ -226,6 +226,10 @@
     <Compile Include="Migrations\201612021739511_InitDb.Designer.cs">
       <DependentUpon>201612021739511_InitDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612031109301_SeedUsers.cs" />
+    <Compile Include="Migrations\201612031109301_SeedUsers.Designer.cs">
+      <DependentUpon>201612031109301_SeedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -530,6 +534,7 @@
     <Content Include="Views\Shared\_LayoutFull.cshtml" />
     <Content Include="Views\Status\StatusReportDetails.cshtml" />
     <Content Include="Views\Status\StatusReports.cshtml" />
+    <Content Include="Views\Categories\ReadOnlyIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -545,6 +550,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612021739511_InitDb.resx">
       <DependentUpon>201612021739511_InitDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612031109301_SeedUsers.resx">
+      <DependentUpon>201612031109301_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

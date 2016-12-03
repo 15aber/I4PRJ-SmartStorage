@@ -17,7 +17,14 @@ namespace I4PRJ_SmartStorage.Controllers
         // GET: /Products/
         public ActionResult Index()
         {
-            return View("Index");
+            if (User.IsInRole("Admin"))
+            {
+                return View("Index");
+            }
+            else
+            {
+                return View("ReadOnlyIndex");
+            }
         }
 
         // GET: /Categories/Create
