@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Configuration;
+using System.Web.Mvc;
 
 namespace I4PRJ_SmartStorage
 {
@@ -8,7 +10,8 @@ namespace I4PRJ_SmartStorage
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new RequireHttpsAttribute());
-            //filters.Add(new AuthorizeAttribute());
+            if(Convert.ToBoolean(ConfigurationManager.AppSettings["AuthorizeAttribute"]))
+                filters.Add(new AuthorizeAttribute());
         }
     }
 }

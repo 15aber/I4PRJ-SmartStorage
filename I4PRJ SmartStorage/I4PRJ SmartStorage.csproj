@@ -197,7 +197,6 @@
     <Compile Include="Controllers\Api\ProductsController.cs" />
     <Compile Include="Controllers\Api\SmsController.cs" />
     <Compile Include="Controllers\Api\StatusController.cs" />
-    <Compile Include="Controllers\Api\SupplierController.cs" />
     <Compile Include="Controllers\Api\TransactionsController.cs" />
     <Compile Include="Controllers\Api\WholesalerController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
@@ -227,11 +226,16 @@
     <Compile Include="Migrations\201612021739511_InitDb.Designer.cs">
       <DependentUpon>201612021739511_InitDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612031109301_SeedUsers.cs" />
+    <Compile Include="Migrations\201612031109301_SeedUsers.Designer.cs">
+      <DependentUpon>201612031109301_SeedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Domain\Category.cs" />
+    <Compile Include="Models\Domain\RoleName.cs" />
     <Compile Include="Models\Domain\Wholesaler.cs" />
     <Compile Include="Models\Domain\Supplier.cs" />
     <Compile Include="Models\Domain\Inventory.cs" />
@@ -246,7 +250,6 @@
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\StatusViewModel.cs" />
     <Compile Include="ViewModels\StockViewModel.cs" />
-    <Compile Include="ViewModels\SupplierViewModel.cs" />
     <Compile Include="ViewModels\TransactionViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -316,7 +319,6 @@
     <Content Include="Content\DataTables\pdfmake-0.1.18\build\pdfmake.js" />
     <Content Include="Content\DataTables\pdfmake-0.1.18\build\pdfmake.min.js" />
     <Content Include="Content\DataTables\pdfmake-0.1.18\build\vfs_fonts.js" />
-    <Content Include="Content\daterangepicker\daterangepicker.css" />
     <Content Include="Content\email.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -415,16 +417,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Scripts\bootbox\bootbox.js" />
     <Content Include="Scripts\bootbox\bootbox.min.js" />
-    <Content Include="Scripts\daterangepicker\daterangepicker.js" />
     <Content Include="Scripts\jquery-ui\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\modernizr\modernizr-2.6.2.js" />
-    <Content Include="Scripts\moment\moment.js" />
     <Content Include="Scripts\respond\respond.js" />
     <Content Include="Scripts\respond\respond.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <None Include="Scripts\jquery\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\site\datatables\ReadOnlyproductsIndex.js" />
+    <Content Include="Scripts\site\datatables\ReadOnlycategoriesIndex.js" />
     <Content Include="Scripts\site\datatables\categoriesIndex.js" />
     <Content Include="Scripts\site\datatables\inventoriesIndex.js" />
     <Content Include="Scripts\site\datatables\productsIndex.js" />
@@ -443,7 +445,6 @@
     <None Include="Scripts\jqValidate\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\site\datatables\startStatus.js" />
     <Content Include="Scripts\site\datatables\statusReportDetails.js" />
-    <Content Include="Scripts\site\datatables\supplierForm.js" />
     <Content Include="Scripts\site\datatables\transactionForm.js" />
     <Content Include="Scripts\site\datatables\transactionIndex.js" />
     <Content Include="Scripts\site\datatables\wholesalerForm.js" />
@@ -535,7 +536,11 @@
     <Content Include="Views\Shared\_LayoutFull.cshtml" />
     <Content Include="Views\Status\StatusReportDetails.cshtml" />
     <Content Include="Views\Status\StatusReports.cshtml" />
-    <Content Include="Views\Suppliers\SupplierForm.cshtml" />
+    <Content Include="Views\Categories\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Products\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Wholesalers\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Suppliers\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Users\ReadOnlyIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -551,6 +556,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201612021739511_InitDb.resx">
       <DependentUpon>201612021739511_InitDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612031109301_SeedUsers.resx">
+      <DependentUpon>201612031109301_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

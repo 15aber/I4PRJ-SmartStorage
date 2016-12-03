@@ -11,76 +11,68 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>List of Transactions</h5>
-
-                    <div class="datapickerLine">
-                        <div>
-                            <input id="fromdate" type="text" size="8" />
-                        </div>
-                        <div>
-                            <input id="todate" type="text" size="8" />
-                        </div>
-                        <div>
-                            <input type="button" name="filter" id="filter" value="filter" class="btn btn-primary btn-xs" />
-                        </div>    
-                    </div>
-                    
                     <div class="ibox-tools">
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                @Html.ActionLink("Restock", "NewRestock", null, new { @class = "btn btn-primary btn-xs" })
-                                @Html.ActionLink("Transaction", "NewTransaction", null, new { @class = "btn btn-primary btn-xs" })
+                        <div style="float: right" class="datapickerLine">
+                            <div>
+                                <input id="fromdate" type="text" size="8" value="01-01-2000" />
+                                <input id="todate" type="text" size="8" value="31-12-2016" />
+                                <input type="button" name="filter" id="filter" value="Filter" class="btn btn-primary btn-xs" />
                             </div>
+                        </div>
+                        <div style="padding-top: 30px" class="form-group">
+                            @Html.ActionLink("Restock", "NewRestock", null, new {@class = "btn btn-primary btn-xs"})
+                            @Html.ActionLink("Transaction", "NewTransaction", null, new {@class = "btn btn-primary btn-xs"})
                         </div>
                     </div>
                     <div class="ibox-content">
 
                         <table class="table table-striped table-bordered table-hover" id="transactions-table">
                             <thead>
-                                <tr>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Transaction.ProductId)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Transaction.FromInventoryId)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Transaction.ToInventoryId)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Transaction.Quantity)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Transaction.Updated)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Transaction.ByUser)
-                                    </th>
-                                </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Transaction.ProductId)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Transaction.FromInventoryId)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Transaction.ToInventoryId)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Transaction.Quantity)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Transaction.Updated)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Transaction.ByUser)
+                                </th>
+                            </tr>
                             </thead>
                             <tbody>
-                                @*@foreach(var item in Model.Transactions)
-                                    {
-                                      <tr>
-                                        <td>
-                                          @Html.DisplayFor(modelItem => item.Product.Name)
-                                        </td>
-                                        <td>
-                                          @Html.DisplayFor(modelItem => item.FromInventory.Name)
-                                        </td>
-                                        <td>
-                                          @Html.DisplayFor(modelItem => item.ToInventory.Name)
-                                        </td>
-                                        <td>
-                                          @Html.DisplayFor(modelItem => item.Quantity)
-                                        </td>
-                                        <td>
-                                          @Html.DisplayFor(modelItem => item.Updated)
-                                        </td>
-                                        <td>
-                                          @Html.DisplayFor(modelItem => item.ByUser)
-                                        </td>
-                                      </tr>
-                                    }*@
+                            @*@foreach(var item in Model.Transactions)
+                        {
+                          <tr>
+                            <td>
+                              @Html.DisplayFor(modelItem => item.Product.Name)
+                            </td>
+                            <td>
+                              @Html.DisplayFor(modelItem => item.FromInventory.Name)
+                            </td>
+                            <td>
+                              @Html.DisplayFor(modelItem => item.ToInventory.Name)
+                            </td>
+                            <td>
+                              @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                              @Html.DisplayFor(modelItem => item.Updated)
+                            </td>
+                            <td>
+                              @Html.DisplayFor(modelItem => item.ByUser)
+                            </td>
+                          </tr>
+                        }*@
                             </tbody>
                         </table>
 
@@ -94,6 +86,5 @@
 
 
 @section Scripts {
-    @Scripts.Render("~/bundles/datatables")
     <script type="text/javascript" src="~/Scripts/site/datatables/transactionIndex.js"></script>
 }

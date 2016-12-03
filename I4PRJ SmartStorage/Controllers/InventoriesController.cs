@@ -14,7 +14,7 @@ namespace I4PRJ_SmartStorage.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: /Products/
+        // GET: /Inventories/
         public ActionResult Index()
         {
             return View("Index");

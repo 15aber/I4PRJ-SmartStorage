@@ -10,9 +10,6 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>List of Products</h5>
-                    <div class="ibox-tools">
-                        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-xs" })
-                    </div>
                 </div>
                 <div class="ibox-content">
                     <table id="products" class="table table-striped table-bordered table-hover">
@@ -30,8 +27,6 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Product.ByUser)
                                 </th>
-                                <th></th>
-                            </tr>
                         </thead>
                         <tbody></tbody>
                         <tfoot>
@@ -45,5 +40,5 @@
 </div>
 
 @section scripts {
-    <script type="text/javascript" src="~/Scripts/site/datatables/productsIndex.js"></script>
+    <script type="text/javascript" src="~/Scripts/site/datatables/ReadOnlyproductsIndex.js"></script>
 }
