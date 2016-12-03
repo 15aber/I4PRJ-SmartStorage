@@ -425,6 +425,7 @@
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <None Include="Scripts\jquery\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\site\datatables\ReadOnlyproductsIndex.js" />
     <Content Include="Scripts\site\datatables\ReadOnlycategoriesIndex.js" />
     <Content Include="Scripts\site\datatables\categoriesIndex.js" />
     <Content Include="Scripts\site\datatables\inventoriesIndex.js" />
@@ -536,6 +537,9 @@
     <Content Include="Views\Status\StatusReportDetails.cshtml" />
     <Content Include="Views\Status\StatusReports.cshtml" />
     <Content Include="Views\Categories\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Products\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Wholesalers\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Suppliers\ReadOnlyIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
