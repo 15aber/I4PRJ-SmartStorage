@@ -1,30 +1,10 @@
-﻿//$(function () {
-//    $("#from").datepicker({
-//        dateFormat: "dd.mm.yy",
-//        changeMonth: true,
-//        changeYear: true,
-//        maxDate: "0",
-//        onSelect: function (selectedDate) {
-//            $("#to").datepicker("option", "minDate", selectedDate);
-//        }
-//    });
-//    $("#to").datepicker({
-//        dateFormat: "dd.mm.yy",
-//        changeMonth: true,
-//        changeYear: true,
-//        maxDate: "0",
-//        onSelect: function (selectedDate) {
-//            $("#from").datepicker("option", "maxDate", selectedDate);
-//        }
-//    });
-//});
-$(document)
+﻿$(document)
     .ready(function () {
-        $("#wholesalers-table")
+        $("#suppliers-table")
             .dataTable({
                 "order": [[4, "desc"]],
                 ajax: {
-                    url: "/api/wholesaler/",
+                    url: "/api/supplier/",
                     dataSrc: ""
                 },
                 dom: '<"html5buttons"B>lTfgitp',
@@ -35,8 +15,8 @@ $(document)
                         buttons: [
                             { extend: 'copy' },
                             { extend: 'csv' },
-                            { extend: 'excel', title: 'Grossistsrapport' },
-                            { extend: 'pdf', title: 'Grossistsrapport' },
+                            { extend: 'excel', title: 'Leverandørsrapport' },
+                            { extend: 'pdf', title: 'Leverandørsrapport' },
                             {
                                 extend: 'print',
                                 customize: function (win) {
@@ -54,7 +34,7 @@ $(document)
                 ],
                 columns: [
                     {
-                        data: "product.wholesaler.name"
+                        data: "product.supplier.name"
                     },
                     {
                         data: "transactionId"
@@ -67,7 +47,7 @@ $(document)
                     },
                     {
                         data: "updated",
-                        render: function(data) {
+                        render: function (data) {
                             var date = new Date(data).toLocaleDateString();
                             return date;
                         }
@@ -76,15 +56,14 @@ $(document)
                         data: "byUser"
                     },
                     {
-                        data: "product.wholesaler.wholesalerId",
+                        data: "product.supplier.supplierId",
                         "visible": false
                     }
                 ]
             });
-        var table = $("#wholesalers-table").DataTable();
+        var table = $("#suppliers-table").DataTable();
 
-        $("#Wholesaler_WholesalerId").on("change", function () {
+        $("#Supplier_SupplierId").on("change", function () {
             table.columns(6).search(this.value).draw();
         });
     });
-

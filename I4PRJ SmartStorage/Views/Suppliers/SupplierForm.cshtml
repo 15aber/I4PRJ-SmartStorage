@@ -1,0 +1,68 @@
+﻿@model I4PRJ_SmartStorage.ViewModels.SupplierViewModel
+@{
+    ViewBag.Title = "Suppliers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New supplier report</h2>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="form-group">
+                    @Html.LabelFor(s=>s.Supplier.SupplierId, "")
+                    <div class="col-lg-4">
+                        @Html.DropDownListFor(s => s.Supplier.SupplierId, new SelectList(Model.Suppliers, "SupplierId", "Name"), "Select supplier", new { @class = "form-control col-lg-4" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p>Please select which timeperiode you would like to see the supplier sales</p>
+                </div>
+                @*<div class="form-group">
+                        <p>Select start date: <input id="from" type="text" size="16" value="Select date" /></p>
+                    </div>*@
+                <div class="form-group">
+                    <p>Select end date: <input id="date_range" type="text" size="16" value="Select date" /></p>
+                </div>
+                <div class="ibox-title">
+                    <h5>List of supplier sales</h5>
+                    <div class="ibox-content">
+                        <table class="table table-striped table-bordered table-hover" id="suppliers-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.LabelFor(model => model.Transaction.Product.Supplier.Name)
+                                    </th>
+                                    <th>
+                                        @Html.LabelFor(model => model.Transaction.TransactionId, "Transaction Id")
+                                    </th>
+                                    <th>
+                                        @Html.LabelFor(model => model.Transaction.ProductId)
+                                    </th>
+                                    <th>
+                                        @Html.LabelFor(model => model.Transaction.Quantity)
+                                    </th>
+                                    <th>
+                                        @Html.LabelFor(model => model.Transaction.Updated, "Transaction date")
+                                    </th>
+                                    <th>
+                                        @Html.LabelFor(model => model.Transaction.ByUser, "Transaction done by")
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/datatables")
+    <script type="text/javascript" src="~/Scripts/site/datatables/supplierForm.js"></script>
+}
