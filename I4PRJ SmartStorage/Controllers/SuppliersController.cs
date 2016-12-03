@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
+using I4PRJ_SmartStorage.ViewModels;
 
 namespace I4PRJ_SmartStorage.Controllers
 {
@@ -60,6 +61,18 @@ namespace I4PRJ_SmartStorage.Controllers
             }
 
             return View(supplier);
+        }
+
+        public ActionResult CreateNewReport()
+        {
+            var supplier = db.Suppliers.ToList();
+
+            var viewModel = new SupplierViewModel()
+            {
+                Suppliers = supplier
+            };
+
+            return View("SupplierForm", viewModel);
         }
 
         // GET: /Suppliers/Edit/5
