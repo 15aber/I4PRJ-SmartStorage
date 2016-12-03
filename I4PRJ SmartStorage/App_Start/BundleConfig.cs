@@ -31,6 +31,7 @@ namespace I4PRJ_SmartStorage
           "~/Scripts/bootbox/bootbox.min.js",
           "~/Scripts/wizardSteps/jquery.steps.js",
           "~/Content/DataTables/datatables.min.js",
+          "~/Scripts/site/datatables/settingsDataTables.js",
           "~/Scripts/inspinia/inspinia.js"
       ));
 
