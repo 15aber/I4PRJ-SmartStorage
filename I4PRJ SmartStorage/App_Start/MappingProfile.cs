@@ -17,12 +17,14 @@ namespace I4PRJ_SmartStorage
             CreateMap<Category, CategoryDto>();
             CreateMap<Transaction, TransactionDto>();
             CreateMap<Inventory, InventoryDto>();
+            CreateMap<Wholesaler, WholesalerDto>();
 
             // Dto to Domain
             CreateMap<ProductDto, Product>();
             CreateMap<CategoryDto, Category>();
             CreateMap<TransactionDto, Transaction>();
             CreateMap<InventoryDto, Inventory>();
+            CreateMap<WholesalerDto, Wholesaler>();
         }
     }
 }

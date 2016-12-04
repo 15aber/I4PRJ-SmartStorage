@@ -13,7 +13,7 @@
                 <div class="form-group">
                     @Html.LabelFor(w => w.Wholesaler.WholesalerId, "")
                     <div class="col-lg-4">
-                        @Html.DropDownListFor(w => w.Wholesaler.WholesalerId, new SelectList(Model.Wholesalers, "WholesalerId", "Name"), "Select wholesaler", new { @class = "form-control col-lg-4" })
+                        @Html.DropDownListFor(w => w.Wholesaler.WholesalerId, new SelectList(Model.Wholesalers, "WholesalerId", "Name"), "All wholesalers", new { @class = "form-control col-lg-4" })
                     </div>
                 </div>
                 <div class="form-group">
@@ -27,33 +27,35 @@
                 </div>
                 <div class="ibox-title">
                     <h5>List of wholesaler sales</h5>
-                    <div class="ibox-content">
-                        <table class="table table-striped table-bordered table-hover" id="wholesalers-table">
-                            <thead>
-                            <tr>
-                                <th>
-                                    @Html.LabelFor(model => model.Transaction.Product.Wholesaler.Name)
-                                </th>
-                                <th>
-                                    @Html.LabelFor(model => model.Transaction.TransactionId, "Transaction Id")
-                                </th>
-                                <th>
-                                    @Html.LabelFor(model => model.Transaction.ProductId)
-                                </th>
-                                <th>
-                                    @Html.LabelFor(model => model.Transaction.Quantity)
-                                </th>
-                                <th>
-                                    @Html.LabelFor(model => model.Transaction.Updated, "Transaction date")
-                                </th>
-                                <th>
-                                    @Html.LabelFor(model => model.Transaction.ByUser, "Transaction done by")
-                                </th>
-                            </tr>
-                            </thead>
-                        </table>
+                    <div class="ibox-tools">
+                        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary" })
+                        <div class="ibox-content">
+                            <table class="table table-striped table-bordered table-hover" id="wholesalers-table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.LabelFor(model => model.Transaction.Product.Wholesaler.Name)
+                                        </th>
+                                        <th>
+                                            @Html.LabelFor(model => model.Transaction.TransactionId, "Transaction Id")
+                                        </th>
+                                        <th>
+                                            @Html.LabelFor(model => model.Transaction.ProductId)
+                                        </th>
+                                        <th>
+                                            @Html.LabelFor(model => model.Transaction.Quantity)
+                                        </th>
+                                        <th>
+                                            @Html.LabelFor(model => model.Transaction.Updated, "Transaction date")
+                                        </th>
+                                        <th>
+                                            @Html.LabelFor(model => model.Transaction.ByUser, "Transaction done by")
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>
