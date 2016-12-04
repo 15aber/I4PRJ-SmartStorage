@@ -1,88 +1,88 @@
 ﻿@model I4PRJ_SmartStorage.ViewModels.ProductViewModel
 
 @{
-    ViewBag.Title = "Edit Product";
+  ViewBag.Title = "Edit Product";
 }
 
 <div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Edit Product</h5>
-                </div>
-                <div class="ibox-content">
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3">
+    <div class="ibox">
+      <div class="ibox-title">
+        <h5>Edit Product</h5>
+      </div>
+      <div class="ibox-content">
 
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
+        @using (Html.BeginForm())
+        {
+          @Html.AntiForgeryToken()
 
-                        <div class="form-horizontal">
+          <div class="form-horizontal">
 
-                            @Html.ValidationSummary(true)
-                            @Html.HiddenFor(model => model.Product.ProductId)
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.Product.ProductId)
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Product.Name, new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Product.Name)
-                                    @Html.ValidationMessageFor(model => model.Product.Name)
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Product.PurchasePrice, new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.Product.PurchasePrice, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Product.PurchasePrice)
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Product.CategoryId, "Category", new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.DropDownListFor(model => model.Product.CategoryId, (IEnumerable<SelectListItem>)ViewBag.CategoryId, new { @class = "form-control" })
-
-                                    @Html.ValidationMessageFor(model => model.Product.CategoryId)
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Product.CategoryId, "Supplier", new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.DropDownListFor(model => model.Product.SupplierId, (IEnumerable<SelectListItem>)ViewBag.SupplierId, new { @class = "form-control" })
-
-                                    @Html.ValidationMessageFor(model => model.Product.SupplierId)
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Product.WholesalerId, "Wholesaler", new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.DropDownListFor(model => model.Product.WholesalerId, (IEnumerable<SelectListItem>)ViewBag.WholesalerId, new { @class = "form-control" })
-
-                                    @Html.ValidationMessageFor(model => model.Product.WholesalerId)
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Save" class="btn btn-primary" />
-                                    <a href="##" class="btn btn-danger" onclick="history.go(-1); return false;">Cancel</a>
-                                </div>
-                            </div>
-                        </div>
-                    }
-
-
-                </div>
+            <div class="form-group">
+              @Html.LabelFor(model => model.Product.Name, new { @class = "control-label col-md-2" })
+              <div class="col-md-10">
+                @Html.EditorFor(model => model.Product.Name)
+                @Html.ValidationMessageFor(model => model.Product.Name)
+              </div>
             </div>
-        </div>
+
+            <div class="form-group">
+              @Html.LabelFor(model => model.Product.PurchasePrice, new { @class = "control-label col-md-2" })
+              <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Product.PurchasePrice, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Product.PurchasePrice)
+              </div>
+            </div>
+
+            <div class="form-group">
+              @Html.LabelFor(model => model.Product.CategoryId, "Category", new { @class = "control-label col-md-2" })
+              <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Product.CategoryId, (IEnumerable<SelectListItem>)ViewBag.CategoryId, new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.Product.CategoryId)
+              </div>
+            </div>
+
+            <div class="form-group">
+              @Html.LabelFor(model => model.Product.CategoryId, "Supplier", new { @class = "control-label col-md-2" })
+              <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Product.SupplierId, (IEnumerable<SelectListItem>)ViewBag.SupplierId, new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.Product.SupplierId)
+              </div>
+            </div>
+
+            <div class="form-group">
+              @Html.LabelFor(model => model.Product.WholesalerId, "Wholesaler", new { @class = "control-label col-md-2" })
+              <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Product.WholesalerId, (IEnumerable<SelectListItem>)ViewBag.WholesalerId, new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.Product.WholesalerId)
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a href="##" class="btn btn-danger" onclick="history.go(-1); return false;">Cancel</a>
+              </div>
+            </div>
+          </div>
+        }
+
+
+      </div>
     </div>
+  </div>
+</div>
 </div>
 
 
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+  @Scripts.Render("~/bundles/jqueryval")
 }

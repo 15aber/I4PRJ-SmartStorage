@@ -12,12 +12,12 @@
             {
                     <div class="dropdown profile-element">
                         <span>
-                            <img alt="image" class="img-circle" width="50px" src="@Html.Action("GetProfilePicture", "Account", new {userId = User.Identity.GetUserId()})" />
+                            <img alt="image" class="img-circle" width="50" src="@Html.Action("GetProfilePicture", "Account", new {userId = User.Identity.GetUserId()})" />
                         </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear">
                                 <span class="block m-t-xs">
-                                    <strong class="font-bold">Hey @Html.Action("GetFirstName", "Account", new { userId = User.Identity.GetUserId() })</strong>
+                                    <strong class="font-bold">Hey @Html.Action("GetFirstName", "Account", new {userId = User.Identity.GetUserId()})</strong>
                                 </span> <span class="text-muted text-xs block">Profil menu <b class="caret"></b></span>
                             </span>
                         </a>
@@ -34,17 +34,17 @@
                 else
                 {
                     <div class="dropdown profile-element">
-                        <i class="fa fa-cubes" aria-hidden="true"></i>
+                      <img alt="image" class="img-circle" width="50" src="~/Content/images/rubber-duck.png" />
                     </div>
                 }
                 <div class="logo-element">
                     @if (Request.IsAuthenticated)
                     {
-                        <img alt="image" class="img-circle" width="50px" src="@Html.Action("GetProfilePicture", "Account", new {userId = User.Identity.GetUserId()})" />
+                        <img alt="image" class="img-circle" width="50" src="@Html.Action("GetProfilePicture", "Account", new {userId = User.Identity.GetUserId()})" />
                     }
                     else
                     {
-                        <i class="fa fa-list-alt"></i>
+                        <img alt="image" class="img-circle" width="50" src="~/Content/images/rubber-duck.png"/>
                     }
                 </div>
             </li>
@@ -137,9 +137,6 @@
                             }
                             else
                             {
-                                <li>
-                                    <a href="@Url.Action("Register", "Account")" id="registerLink"><i class="fa fa-user-plus"></i>Register</a>
-                                </li>
                                 <li>
                                     <a href="@Url.Action("Login", "Account")" id="loginLink"><i class="fa fa-sign-in"></i>Log in</a>
                                 </li>

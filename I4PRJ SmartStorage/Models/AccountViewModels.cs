@@ -1,70 +1,7 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace I4PRJ_SmartStorage.Models
 {
-  public class ExternalLoginConfirmationViewModel
-  {
-    [Required]
-    public string Username { get; set; }
-
-    [Required]
-    [DataType(DataType.EmailAddress)]
-    [Display(Name = "Email")]
-    public string Email { get; set; }
-
-    [Required]
-    [DataType(DataType.PhoneNumber)]
-    [Display(Name = "Phone")]
-    public string PhoneNumber { get; set; }
-
-    [Required]
-    [Display(Name = "First Name")]
-    public string Firstname { get; set; }
-
-    [Display(Name = "Middle Name")]
-    public string Middlename { get; set; }
-
-    [Required]
-    [Display(Name = "Last Name")]
-    public string Lastname { get; set; }
-
-    [DataType(dataType: DataType.ImageUrl)]
-    public string ProfilePicture { get; set; }
-
-    }
-
-  public class ExternalLoginListViewModel
-  {
-    public string ReturnUrl { get; set; }
-  }
-
-  public class SendCodeViewModel
-  {
-    public string SelectedProvider { get; set; }
-    public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
-    public string ReturnUrl { get; set; }
-    public bool RememberMe { get; set; }
-  }
-
-  public class VerifyCodeViewModel
-  {
-    [Required]
-    public string Provider { get; set; }
-
-    [Required]
-    [Display(Name = "Code")]
-    public string Code { get; set; }
-
-    public string ReturnUrl { get; set; }
-
-    [Display(Name = "Remember this browser?")]
-    public bool RememberBrowser { get; set; }
-
-    public bool RememberMe { get; set; }
-  }
-
   public class ForgotViewModel
   {
     [Required]
@@ -104,15 +41,8 @@ namespace I4PRJ_SmartStorage.Models
     public string PhoneNumber { get; set; }
 
     [Required]
-    [Display(Name = "First Name")]
-    public string Firstname { get; set; }
-
-    [Display(Name = "Middle Name")]
-    public string Middlename { get; set; }
-
-    [Required]
-    [Display(Name = "Last Name")]
-    public string Lastname { get; set; }
+    [Display(Name = "Name")]
+    public string FullName { get; set; }
 
     [Required]
     [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -121,16 +51,16 @@ namespace I4PRJ_SmartStorage.Models
     public string Password { get; set; }
 
     [DataType(DataType.Password)]
-    [Display(Name = "Confirm password")]
+    [Display(Name = "Confirm")]
     [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
     public string ConfirmPassword { get; set; }
 
-        [DataType(dataType: DataType.ImageUrl)]
-        public string ProfilePicture { get; set; }
+    [DataType(dataType: DataType.ImageUrl)]
+    public string ProfilePicture { get; set; }
 
-        [Display(Name = "Admin")]
-        public bool IsAdmin { get; set; }
-    }
+    [Display(Name = "Admin")]
+    public bool IsAdmin { get; set; }
+  }
 
   public class ResetPasswordViewModel
   {
@@ -146,7 +76,7 @@ namespace I4PRJ_SmartStorage.Models
     public string Password { get; set; }
 
     [DataType(DataType.Password)]
-    [Display(Name = "Confirm password")]
+    [Display(Name = "Confirm")]
     [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
     public string ConfirmPassword { get; set; }
 

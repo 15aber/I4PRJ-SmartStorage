@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Net;
-using System.Net.Mail;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using I4PRJ_SmartStorage.Models;
+﻿using I4PRJ_SmartStorage.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -13,6 +6,13 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Sms.ApiClient.V2;
 using Sms.ApiClient.V2.SendMessages;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Net;
+using System.Net.Mail;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace I4PRJ_SmartStorage
 {
@@ -32,7 +32,7 @@ namespace I4PRJ_SmartStorage
       emailMessage.Body = message.Body;
       emailMessage.IsBodyHtml = true;
 
-      using(var smtpClient = new SmtpClient())
+      using (var smtpClient = new SmtpClient())
       {
         smtpClient.UseDefaultCredentials = false;
         smtpClient.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["SmtpUserName"],
@@ -123,7 +123,7 @@ namespace I4PRJ_SmartStorage
       manager.EmailService = new EmailService();
       manager.SmsService = new SmsService();
       var dataProtectionProvider = options.DataProtectionProvider;
-      if(dataProtectionProvider != null)
+      if (dataProtectionProvider != null)
       {
         manager.UserTokenProvider =
             new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"))
