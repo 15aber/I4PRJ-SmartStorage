@@ -24,7 +24,7 @@ $(document)
             .dataTable({
                 "order": [[4, "desc"]],
                 ajax: {
-                    url: "/api/wholesaler/",
+                    url: "/api/wholesalers/getwholesalertransactions",
                     dataSrc: ""
                 },
                 columns: [

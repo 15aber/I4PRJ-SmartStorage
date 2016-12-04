@@ -11,36 +11,36 @@ namespace I4PRJ_SmartStorage.ViewModels
         public Wholesaler Wholesaler { get; set; }
         public List<Wholesaler> Wholesalers { get; set; }
 
-        public List<Inventory> FromInventory { get; set; }
+        //public List<Inventory> FromInventory { get; set; }
 
-        public List<Inventory> ToInventory { get; set; }
+        //public List<Inventory> ToInventory { get; set; }
 
-        public List<Product> Products { get; set; }
-        public Product Product { get; set; }
+        //public List<Product> Products { get; set; }
+        //public Product Product { get; set; }
 
         public List<Transaction> Transactions { get; set; }
 
         public Transaction Transaction { get; set; }
 
-        [DisplayName("Restock")]
-        public bool IsChecked { get; set; }
+        //[DisplayName("Restock")]
+        //public bool IsChecked { get; set; }
 
-        [Required]
-        [DisplayName("From")]
-        public int FromInventoryId { get; set; }
+        //[Required]
+        //[DisplayName("From")]
+        //public int FromInventoryId { get; set; }
 
-        [Required]
-        [DisplayName("To")]
-        public int ToInventoryId { get; set; }
+        //[Required]
+        //[DisplayName("To")]
+        //public int ToInventoryId { get; set; }
 
-        [Required]
-        [DisplayName("Product")]
-        public int ProductId { get; set; }
+        //[Required]
+        //[DisplayName("Product")]
+        //public int ProductId { get; set; }
 
-        [Required]
-        [DisplayFormat(DataFormatString = "{0:F2}")]
-        [Range(Double.MinValue, Double.MaxValue)]
-        public double Quantity { get; set; }
+        //[Required]
+        //[DisplayFormat(DataFormatString = "{0:F2}")]
+        //[Range(Double.MinValue, Double.MaxValue)]
+        //public double Quantity { get; set; }
 
 
     }
