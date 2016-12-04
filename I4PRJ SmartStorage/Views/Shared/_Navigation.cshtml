@@ -12,7 +12,7 @@
             {
                     <div class="dropdown profile-element">
                         <span>
-                            <img alt="image" class="img-circle" width="50" src="@Html.Action("GetProfilePicture", "Account", new {userId = User.Identity.GetUserId()})" />
+                            <img alt="image" class="img-circle" width="50" src="@Html.Action("GetProfilePicture", "Account", new {userId = User.Identity.Name})" />
                         </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear">

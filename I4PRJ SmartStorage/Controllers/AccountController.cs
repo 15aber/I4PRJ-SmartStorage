@@ -249,7 +249,7 @@ namespace I4PRJ_SmartStorage.Controllers
     {
       var db = new ApplicationDbContext();
 
-      var user = db.Users.FirstOrDefault(u => u.Id == userId);
+      var user = db.Users.FirstOrDefault(u => u.UserName == userId);
 
       if (user == null)
       {
