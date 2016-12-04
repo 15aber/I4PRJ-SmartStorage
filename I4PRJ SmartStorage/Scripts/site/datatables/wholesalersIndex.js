@@ -26,8 +26,8 @@
                         "orderable": false,
                         "searchable": false,
                         render: function (data) {
-                            return "<button class='btn btn-info js-edit' data-wholesaler-id=" + data + ">Edit</button> " +
-                                "<button class='btn btn-danger js-delete' data-wholesaler-id=" + data + ">Delete</button>";
+                          return "<button class='btn btn-info btn-sm js-edit' data-wholesaler-id=" + data + ">Edit</button> " +
+                                "<button class='btn btn-danger btn-sm js-delete' data-wholesaler-id=" + data + ">Delete</button>";
                         }
                     }
                 ]
