@@ -1,15 +1,15 @@
-﻿
-
-$.fn.dataTable.ext.search.push(
+﻿$.fn.dataTable.ext.search.push(
     function (settings, data, dataIndex) {
         var fromDate = $("#fromdate").datepicker("getDate");
         var toDate = $("#todate").datepicker("getDate");
-        console.log(data[4]);
-        var updatedDate = new Date(data[4]); // use data for the "updated" column
-        
-        console.log("updatedDate: " + updatedDate.toLocaleDateString() + " " + updatedDate.getTime());
-        console.log("fromdate: " + fromDate.toLocaleDateString() + " " + fromDate.getTime());
-        console.log("todate: " + toDate.toLocaleDateString() + " " + toDate.getTime());
+        var updatedDate = (data[6]); // use data for the hidden "updated" column
+        if (fromDate.getTime() === null || toDate.getTime() === null)
+            return true;
+        //console.log(updatedDate);
+        //console.log(fromDate);
+        //console.log("updatedDate: " + updatedDate + " " + updatedDate);
+        //console.log("fromdate: " + fromDate.toLocaleDateString('da-DK') + " " + fromDate.getTime());
+        //console.log("todate: " + toDate.toLocaleDateString('da-DK') + " " + toDate.getTime());
 
         
         if (isNaN(fromDate.getTime()) && isNaN(toDate.getTime()) ||
@@ -51,13 +51,21 @@ $(document).ready(function () {
                     data: "updated",
                     render: function (data) {
                     var date = new Date(data);
-                    return date.toLocaleDateString();
+                    return date.toLocaleDateString('da-DK');
                     //return "0" + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
                     }
                 },
                 {
                     data: "byUser"
 
+                },
+                {
+                    data: "updated",
+                    render: function(data) {
+                        var date = new Date(data);
+                        return date.getTime();
+                    },
+                    "visible": false
                 }
             ]
         });
@@ -67,7 +75,7 @@ $(document).ready(function () {
     
     $('#fromdate').datepicker({
         dataFormat: "dd-mm-yy",
-        defaultDate: '01/01/2010',
+        defaultDate: '-1m',
         changeMonth: true,
         changeYear: true,
         onSelect: function(selectedDate) {

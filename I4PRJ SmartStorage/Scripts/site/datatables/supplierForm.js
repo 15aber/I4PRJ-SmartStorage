@@ -1,4 +1,6 @@
-﻿$(document)
+﻿
+
+$(document)
     .ready(function () {
         $("#suppliers-table")
             .dataTable({
@@ -42,4 +44,3 @@
             table.columns(6).search(this.value).draw();
         });
     });
-

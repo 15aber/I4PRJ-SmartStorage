@@ -15,7 +15,7 @@
                         data: "updated",
                         render: function (data) {
                             var date = new Date(data);
-                            return date.toLocaleString();
+                            return date.toLocaleString('da-DK');
                         }
                     },
                     {

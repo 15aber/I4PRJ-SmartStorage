@@ -22,8 +22,8 @@
                     },
                     {
                         data: "updated",
-                        render: function(data) {
-                            var date = new Date(data).toLocaleDateString();
+                        render: function (data) {
+                            var date = new Date(data).toLocaleDateString('da-DK');
                             return date;
                         }
                     },
@@ -42,4 +42,3 @@
             table.columns(6).search(this.value).draw();
         });
     });
-
