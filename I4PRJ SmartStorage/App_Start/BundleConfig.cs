@@ -14,6 +14,7 @@ namespace I4PRJ_SmartStorage
            "~/Content/wizardSteps/jquery.steps.css",
           "~/Content/DataTables/datatables.min.css",
           "~/Content/toastr/toastr.css",
+          "~/Content/daterangepicker/daterangepicker.css",
           "~/Content/style.css",
           "~/Content/themes/base/*.css"
 
@@ -31,6 +32,9 @@ namespace I4PRJ_SmartStorage
           "~/Scripts/bootbox/bootbox.min.js",
           "~/Scripts/wizardSteps/jquery.steps.js",
           "~/Content/DataTables/datatables.min.js",
+          "~/Scripts/site/datatables/settingsDataTables.js",
+          "~/Scripts/moment/moment.js",
+          "~/Scripts/daterangepicker/daterangepicker.js",
           "~/Scripts/inspinia/inspinia.js"
       ));
 

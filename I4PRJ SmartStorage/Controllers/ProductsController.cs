@@ -97,24 +97,24 @@ namespace I4PRJ_SmartStorage.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = RoleName.Admin)]
-        public ActionResult Edit([Bind(Include = "ProductId, Name, PurchasePrice, CategoryId, SupplierId, WholesalerId, LastUpdated, ByUser")] Product product)
+        public ActionResult Edit(ProductViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                product.Updated = DateTime.Now;
-                product.ByUser = User.Identity.Name;
+                viewModel.Product.Updated = DateTime.Now;
+                viewModel.Product.ByUser = User.Identity.Name;
 
-                db.Entry(product).State = EntityState.Modified;
+                db.Entry(viewModel.Product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index", new RouteValueDictionary(
-                new { controller = "Products", action = "Index", Id = product.CategoryId }));
+                new { controller = "Products", action = "Index", Id = viewModel.Product.CategoryId }));
             }
 
-            ViewBag.CategoryId = new SelectList(db.Categories.Where(c => c.IsDeleted != true), "CategoryId", "Name", product.CategoryId);
-            ViewBag.SupplierId = new SelectList(db.Suppliers.Where(c => c.IsDeleted != true), "SupplierId", "Name", product.SupplierId);
-            ViewBag.WholesalerId = new SelectList(db.Wholesalers.Where(c => c.IsDeleted != true), "WholesalerId", "Name", product.WholesalerId);
+            ViewBag.CategoryId = new SelectList(db.Categories.Where(c => c.IsDeleted != true), "CategoryId", "Name", viewModel.Product.CategoryId);
+            ViewBag.SupplierId = new SelectList(db.Suppliers.Where(c => c.IsDeleted != true), "SupplierId", "Name", viewModel.Product.SupplierId);
+            ViewBag.WholesalerId = new SelectList(db.Wholesalers.Where(c => c.IsDeleted != true), "WholesalerId", "Name", viewModel.Product.WholesalerId);
 
-            return View(product);
+            return View(viewModel);
         }
 
         protected override void Dispose(bool disposing)

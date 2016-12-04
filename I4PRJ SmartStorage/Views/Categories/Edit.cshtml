@@ -1,7 +1,7 @@
 ﻿@model I4PRJ_SmartStorage.ViewModels.CategoryViewModel
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Category";
 }
 
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -19,6 +19,7 @@
 
                         <div class="form-horizontal">
                             @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.Category.CategoryId)
 
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Category.Name, new { @class = "control-label col-md-2" })
@@ -31,7 +32,7 @@
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
                                     <input type="submit" value="Save" class="btn btn-primary" />
-                                    <a href="##" class="btn btn-white" onclick="history.go(-1); return false;">Cancel</a>
+                                    <a href="##" class="btn btn-warning" onclick="history.go(-1); return false;">Cancel</a>
                                 </div>
                             </div>
                         </div>
