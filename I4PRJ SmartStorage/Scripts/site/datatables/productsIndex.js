@@ -31,8 +31,8 @@
                     {
                         data: "productId",
                         render: function (data) {
-                            return "<button class='btn btn-info js-edit' data-product-id=" + data + ">Edit</button> " +
-                                "<button class='btn btn-danger js-delete' data-product-id=" + data + ">Delete</button>";
+                          return "<button class='btn btn-info btn-sm js-edit' data-product-id=" + data + ">Edit</button> " +
+                                "<button class='btn btn-danger btn-sm js-delete' data-product-id=" + data + ">Delete</button>";
                         }
                     }
                 ]
