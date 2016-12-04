@@ -14,7 +14,7 @@
                 <div class="form-group">
                     @Html.LabelFor(s=>s.Supplier.SupplierId, "")
                     <div class="col-lg-4">
-                        @Html.DropDownListFor(s => s.Supplier.SupplierId, new SelectList(Model.Suppliers, "SupplierId", "Name"), "All supplier", new { @class = "form-control col-lg-4" })
+                        @Html.DropDownListFor(s => s.Supplier.SupplierId, new SelectList(Model.Suppliers, "SupplierId", "Name"), "All suppliers", new { @class = "form-control col-lg-4" })
                     </div>
                 </div>
                 <div class="ibox-title">
