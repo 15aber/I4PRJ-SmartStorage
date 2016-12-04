@@ -23,7 +23,7 @@
                     {
                         data: "updated",
                         render: function(data) {
-                            var date = new Date(data).toLocaleDateString();
+                            var date = new Date(data).toLocaleDateString('da-DK');
                             return date;
                         }
                     },
