@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using I4PRJ_SmartStorage;
 using I4PRJ_SmartStorage.Controllers;
 
-namespace I4PRJ_SmartStorage.Tests.Controllers
+namespace I4PRJ_SmartStorage.UnitTests.Controllers
 {
     [TestClass]
     public class HomeControllerTest

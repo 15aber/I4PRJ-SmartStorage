@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I4PRJ SmartStorage.Tests", "I4PRJ SmartStorage.Tests\I4PRJ SmartStorage.Tests.csproj", "{C3E30CBB-2567-437D-A6D0-660DA4B9996B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I4PRJ SmartStorage.UnitTests", "I4PRJ SmartStorage.Tests\I4PRJ SmartStorage.UnitTests.csproj", "{C3E30CBB-2567-437D-A6D0-660DA4B9996B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I4PRJ SmartStorage", "I4PRJ SmartStorage\I4PRJ SmartStorage.csproj", "{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}"
 EndProject
