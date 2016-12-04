@@ -36,8 +36,11 @@ namespace I4PRJ_SmartStorage
                 //Here we create a Admin super user who will maintain the website                  
                 var user = new ApplicationUser
                 {
-                    UserName = "Admin",
+                    UserName = "no-reply@smartstorage.dk",
                     Email = "no-reply@smartstorage.dk",
+                    Firstname = "Admin",
+                    Lastname = "Dummy",
+                    PhoneNumber = "1",
                     ProfilePicture = "/Content/images/rubber-duck.png"
                 };
 
