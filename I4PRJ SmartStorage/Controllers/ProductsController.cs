@@ -19,7 +19,7 @@ namespace I4PRJ_SmartStorage.Controllers
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            if(User.IsInRole(RoleName.Admin))
+            if (User.IsInRole(RoleName.Admin))
                 return View("Index");
             return View("ReadOnlyIndex");
         }
@@ -83,7 +83,7 @@ namespace I4PRJ_SmartStorage.Controllers
             {
                 return HttpNotFound();
             };
-            
+
             ViewBag.CategoryId = new SelectList(db.Categories.Where(c => c.IsDeleted != true), "CategoryId", "Name", viewModel.Product.CategoryId);
             ViewBag.SupplierId = new SelectList(db.Suppliers.Where(c => c.IsDeleted != true), "SupplierId", "Name", viewModel.Product.SupplierId);
             ViewBag.WholesalerId = new SelectList(db.Wholesalers.Where(c => c.IsDeleted != true), "WholesalerId", "Name", viewModel.Product.WholesalerId);
