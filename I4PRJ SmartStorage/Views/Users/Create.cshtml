@@ -21,59 +21,73 @@
                             @Html.ValidationSummary(true)
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Username, new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Username)
-                                    @Html.ValidationMessageFor(model => model.Username)
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 @Html.LabelFor(model => model.Firstname, new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Firstname)
-                                    @Html.ValidationMessageFor(model => model.Firstname)
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                        @Html.EditorFor(model => model.Firstname, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Firstname)
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Middlename, new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Middlename)
-                                    @Html.ValidationMessageFor(model => model.Middlename)
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                        @Html.EditorFor(model => model.Middlename, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Middlename)
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Lastname, new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Lastname)
-                                    @Html.ValidationMessageFor(model => model.Lastname)
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                        @Html.EditorFor(model => model.Lastname, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Lastname)
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.PhoneNumber)
-                                    @Html.ValidationMessageFor(model => model.PhoneNumber)
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                        @Html.EditorFor(model => model.PhoneNumber, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.PhoneNumber)
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Email)
-                                    @Html.ValidationMessageFor(model => model.Email)
+                                    <div class="input-group"> 
+                                        <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                        @Html.EditorFor(model => model.Email, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Email)
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Password, new { @class = " control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Password)
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Password)
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
