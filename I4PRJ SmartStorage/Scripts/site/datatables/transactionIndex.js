@@ -1,12 +1,13 @@
-﻿
-
-$.fn.dataTable.ext.search.push(
+﻿$.fn.dataTable.ext.search.push(
     function (settings, data, dataIndex) {
         var fromDate = $("#fromdate").datepicker("getDate");
         var toDate = $("#todate").datepicker("getDate");
         console.log(data[4]);
         var updatedDate = new Date(data[4]); // use data for the "updated" column
-        
+        if (fromDate === null || toDate === null)
+            return true;
+
+        console.log(fromDate);
         console.log("updatedDate: " + updatedDate.toLocaleDateString() + " " + updatedDate.getTime());
         console.log("fromdate: " + fromDate.toLocaleDateString() + " " + fromDate.getTime());
         console.log("todate: " + toDate.toLocaleDateString() + " " + toDate.getTime());
