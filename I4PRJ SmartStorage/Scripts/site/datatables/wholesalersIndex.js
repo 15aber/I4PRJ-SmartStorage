@@ -1,10 +1,10 @@
 ﻿$(document)
     .ready(function () {
 
-        var table = $("#categories")
+        var table = $("#wholesalers")
             .DataTable({
                 ajax: {
-                    url: "/api/categories/",
+                    url: "/api/wholesalers/",
                     dataSrc: ""
                 },
                 columns: [
@@ -22,33 +22,33 @@
                         data: "byUser"
                     },
                     {
-                        data: "categoryId",
+                        data: "wholesalerId",
                         "orderable": false,
                         "searchable": false,
                         render: function (data) {
-                          return "<button class='btn btn-info btn-sm js-edit' data-category-id=" + data + ">Edit</button> " +
-                                "<button class='btn btn-danger btn-sm js-delete' data-category-id=" + data + ">Delete</button>";
+                          return "<button class='btn btn-info btn-sm js-edit' data-wholesaler-id=" + data + ">Edit</button> " +
+                                "<button class='btn btn-danger btn-sm js-delete' data-wholesaler-id=" + data + ">Delete</button>";
                         }
                     }
                 ]
             });
     });
 
-$("#categories").on("click", ".js-edit", function () {
+$("#wholesalers").on("click", ".js-edit", function () {
     var button = $(this);
-    var id = button.attr("data-category-id");
-    var url = "/Categories/Edit/" + id;
+    var id = button.attr("data-wholesaler-id");
+    var url = "/Wholesalers/Edit/" + id;
     window.location.href = url;
 });
 
-$("#categories").on("click", ".js-delete", function () {
+$("#wholesalers").on("click", ".js-delete", function () {
     var button = $(this);
 
-    bootbox.confirm("Are you sure you want to delete this category?",
+    bootbox.confirm("Are you sure you want to delete this wholesaler?",
         function (result) {
             if (result) {
                 $.ajax({
-                    url: "/api/categories/deletecategory/" + button.attr("data-category-id"),
+                    url: "/api/wholesaler/deletewholesaler/" + button.attr("data-wholesaler-id"),
                     method: "DELETE",
                     success: function () {
                         window.location.reload(true);

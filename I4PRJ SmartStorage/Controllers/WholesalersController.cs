@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
 using I4PRJ_SmartStorage.ViewModels;
@@ -19,37 +20,29 @@ namespace I4PRJ_SmartStorage.Controllers
         // GET: /Wholesalers/
         public ActionResult Index()
         {
-            if(User.IsInRole(RoleName.Admin))
-                return View("Index", db.Wholesalers.Where(w=>w.IsDeleted!=true).ToList());
-            return View("ReadOnlyIndex", db.Wholesalers.Where(w => w.IsDeleted != true).ToList());
-        }
+            if (User.IsInRole(RoleName.Admin))
+                return View("Index");
 
-        // GET: /Wholesalers/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Wholesaler wholesaler = db.Wholesalers.Find(id);
-            if (wholesaler == null)
-            {
-                return HttpNotFound();
-            }
-            return View(wholesaler);
+            return View("ReadOnlyIndex");
         }
 
         // GET: /Wholesalers/Create
         [Authorize(Roles = RoleName.Admin)]
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new WholesalerViewModel()
+            {
+                Wholesaler = new Wholesaler(),
+                Wholesalers = db.Wholesalers.Where(c => c.IsDeleted != true).ToList(),
+            };
+
+            return View("Create", viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = RoleName.Admin)]
-        public ActionResult Create([Bind(Include="WholesalerId,Name,Updated,ByUser,IsDeleted")] Wholesaler wholesaler)
+        public ActionResult Create([Bind(Include = "WholesalerId, Name, Updated, ByUser")] Wholesaler wholesaler)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +51,8 @@ namespace I4PRJ_SmartStorage.Controllers
 
                 db.Wholesalers.Add(wholesaler);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new RouteValueDictionary(
+                new { controller = "Wholesalers", action = "Index" }));
             }
 
             return View(wholesaler);
@@ -76,28 +70,6 @@ namespace I4PRJ_SmartStorage.Controllers
             return View("WholesalersForm",viewModel);
         }
 
-        public ActionResult GetListReport()
-        {
-            //var id = 1;
-            //var wholesaler = db.Wholesalers.Find(id);
-
-            //if (wholesaler == null)
-            //{
-            //    return HttpNotFound();
-            //}
-
-
-            ////var time = DateTime.Today;
-            ////var time1 = DateTime.Today;
-
-            //var viewModel = new WholesalerViewModel
-            //{
-            //    Transaction = db.Transactions.Include(w => w.Product.WholesalerId == id).ToList()
-            //};
-
-            return View(/*"WholesalersForm", viewModel*/);
-        }
-
         // GET: /Wholesalers/Edit/5
         [Authorize(Roles = RoleName.Admin)]
         public ActionResult Edit(int? id)
@@ -106,12 +78,18 @@ namespace I4PRJ_SmartStorage.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Wholesaler wholesaler = db.Wholesalers.Find(id);
-            if (wholesaler == null)
+
+            var viewModel = new WholesalerViewModel()
+            {
+                Wholesaler = db.Wholesalers.Find(id)
+            };
+
+            if (viewModel.Wholesaler == null)
             {
                 return HttpNotFound();
-            }
-            return View(wholesaler);
+            };
+
+            return View(viewModel);
         }
 
         // POST: /Wholesalers/Edit/5
@@ -120,46 +98,19 @@ namespace I4PRJ_SmartStorage.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = RoleName.Admin)]
-        public ActionResult Edit([Bind(Include="WholesalerId,Name,Updated,ByUser,IsDeleted")] Wholesaler wholesaler)
+        public ActionResult Edit([Bind(Include = "WholesalerId, Name, Updated, ByUser, Version")] Wholesaler wholesaler)
         {
             if (ModelState.IsValid)
             {
-                wholesaler.ByUser = User.Identity.Name;
                 wholesaler.Updated = DateTime.Now;
+                wholesaler.ByUser = User.Identity.Name;
 
                 db.Entry(wholesaler).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(wholesaler);
-        }
 
-        // GET: /Wholesalers/Delete/5
-        [Authorize(Roles = RoleName.Admin)]
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Wholesaler wholesaler = db.Wholesalers.Find(id);
-            if (wholesaler == null)
-            {
-                return HttpNotFound();
-            }
             return View(wholesaler);
-        }
-
-        // POST: /Wholesalers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = RoleName.Admin)]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Wholesaler wholesaler = db.Wholesalers.Find(id);
-            db.Wholesalers.Remove(wholesaler);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
