@@ -15,10 +15,10 @@
                 ],
                 columns: [
                     {
-                        data: "product.name"
+                        data: "productName"
                     },
                     {
-                        data: "product.category.name"
+                        data: "categoryName"
                     },
                     {
                         data: "expQuantity"
