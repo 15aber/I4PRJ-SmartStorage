@@ -162,6 +162,12 @@ namespace I4PRJ_SmartStorage.Controllers
       var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
       if (result.Succeeded)
       {
+        using (var db = new ApplicationDbContext())
+        {
+          var userInDb = db.Users.FirstOrDefault(u => u.Id == user.Id);
+          userInDb.EmailConfirmed = true;
+          db.SaveChanges();
+        }
         return RedirectToAction("ResetPasswordConfirmation", "Account");
       }
       AddErrors(result);
@@ -228,19 +234,12 @@ namespace I4PRJ_SmartStorage.Controllers
       return RedirectToAction("Index", "Home");
     }
 
-    //
-    // GET: /Account/ExternalLoginFailure
-    [AllowAnonymous]
-    public ActionResult ExternalLoginFailure()
-    {
-      return View();
-    }
 
     public ActionResult GetProfilePicture(string userId)
     {
       var db = new ApplicationDbContext();
 
-      var user = db.Users.FirstOrDefault(u => u.Id == userId);
+      var user = db.Users.FirstOrDefault(u => u.UserName == userId);
 
       return Content(user == null ? "/Content/images/rubber-duck.png" : user.ProfilePicture);
     }

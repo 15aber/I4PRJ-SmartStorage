@@ -17,7 +17,7 @@
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear">
                                 <span class="block m-t-xs">
-                                    <strong class="font-bold">Hey @Html.Action("GetFirstName", "Account", new {userId = User.Identity.GetUserId()})</strong>
+                                    <strong class="font-bold">Hey @Html.Action("GetFirstName", "Account", new {userId = User.Identity.Name})</strong>
                                 </span> <span class="text-muted text-xs block">Profil menu <b class="caret"></b></span>
                             </span>
                         </a>
@@ -40,7 +40,7 @@
                 <div class="logo-element">
                     @if (Request.IsAuthenticated)
                     {
-                        <img alt="image" class="img-circle" width="50" src="@Html.Action("GetProfilePicture", "Account", new {userId = User.Identity.GetUserId()})" />
+                        <img alt="image" class="img-circle" width="50" src="@Html.Action("GetProfilePicture", "Account", new {userId = User.Identity.Name})" />
                     }
                     else
                     {
