@@ -22,7 +22,7 @@
               <div class="form-group">
                 @Html.LabelFor(model => model.Number, new { @class = "control-label col-md-3" })
                 <div class="col-md-9">
-                  @Html.EditorFor(model => model.Number, new { @class = "form-control" })
+                  @Html.TextBoxFor(model => model.Number, new { @class = "form-control" })
                   @Html.ValidationMessageFor(model => model.Number)
                 </div>
               </div>

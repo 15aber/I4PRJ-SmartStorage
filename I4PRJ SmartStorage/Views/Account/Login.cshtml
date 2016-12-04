@@ -22,7 +22,7 @@
                                       <div class="col-md-12">
                                         <div class="input-group">
                                           <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                                          @Html.EditorFor(m => m.Email, new { @class = "form-control" })
+                                          @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                                         </div>
                                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
 
