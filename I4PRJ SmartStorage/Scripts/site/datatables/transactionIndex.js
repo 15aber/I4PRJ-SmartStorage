@@ -68,7 +68,7 @@ $(document).ready(function () {
     
     $('#fromdate').datepicker({
         dataFormat: "dd-mm-yy",
-        defaultDate: '01/01/2010',
+        defaultDate: '-1m',
         changeMonth: true,
         changeYear: true,
         onSelect: function(selectedDate) {
