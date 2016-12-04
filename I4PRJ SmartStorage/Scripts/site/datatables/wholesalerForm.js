@@ -22,7 +22,7 @@
                     },
                     {
                         data: "updated",
-                        render: function(data) {
+                        render: function (data) {
                             var date = new Date(data).toLocaleDateString('da-DK');
                             return date;
                         }
@@ -33,14 +33,6 @@
                     {
                         data: "product.wholesaler.wholesalerId",
                         "visible": false
-                    },
-                    {
-                        data: "updated",
-                        render: function(data) {
-                            var date = new Date(data).getTime();
-                            return date;
-                        },
-                        "visible": false
                     }
                 ]
             });
@@ -50,4 +42,3 @@
             table.columns(6).search(this.value).draw();
         });
     });
-
