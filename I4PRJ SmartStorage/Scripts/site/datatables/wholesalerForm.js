@@ -33,6 +33,14 @@
                     {
                         data: "product.wholesaler.wholesalerId",
                         "visible": false
+                    },
+                    {
+                        data: "updated",
+                        render: function(data) {
+                            var date = new Date(data).getTime();
+                            return date;
+                        },
+                        "visible": false
                     }
                 ]
             });

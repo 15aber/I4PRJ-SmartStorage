@@ -14,11 +14,42 @@
         </div>
         <div class="ibox-content">
 
-              <div class="col-lg-3">
+            <div class="col-lg-3">
                 @Html.DropDownListFor(s => s.Supplier.SupplierId, new SelectList(Model.Suppliers, "SupplierId", "Name"), "All suppliers", new { @class = "form-control pull-left" })
-              </div>
+            </div>
+            
+            @*DatePicker:*@
+            <label class="pull-right" for="datapickerStuff">Filter supplier transactions: </label>
+            <div id="datapickerStuff" style="float: right" class="datapickerLine">
+                <div class="row">
 
-          <table class="table table-striped table-bordered table-hover" id="suppliers-table">
+                    <div class="col-lg-2 pull-right">
+                        <input type="button" name="filter" id="filter" value="Filter" class="btn btn-primary " />
+                    </div>
+
+                    <div class="col-lg-2 pull-right">
+                        <div class="input-group">
+                            <label class="input-group-addon" for="todate">to:</label>
+                            <input class="form-control" id="todate" name="todate" type="text" size="8" value="@DateTime.Today" />
+                            <span class="input-group-addon" id="toIcon"> <i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 pull-right">
+                        <div class="input-group" id="froms">
+                            <label class="input-group-addon" for="fromdate">from:</label>
+                            <input class="form-control" id="fromdate" name="fromdate" type="text" size="8" value="@DateTime.Today.AddMonths(-1)" />
+                            <span class="input-group-addon" id="fromIcon"> <i class="fa fa-calendar" aria-hidden="true"></i></span>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <table class="table table-striped table-bordered table-hover" id="suppliers-table">
             <thead>
             <tr>
               <th>
