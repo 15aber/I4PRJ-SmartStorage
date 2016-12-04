@@ -1,4 +1,4 @@
-﻿@model IEnumerable<I4PRJ_SmartStorage.Models.Domain.Wholesaler>
+﻿@model I4PRJ_SmartStorage.ViewModels.WholesalerViewModel
 
 @{
     ViewBag.Title = "Wholesalers";
@@ -11,52 +11,28 @@
                 <div class="ibox-title">
                     <h5>List of Wholesalers</h5>
                     <div class="ibox-tools">
-                        @Html.ActionLink("Create new wholesaler", "Create", null, new { @class = "btn btn-primary" })
-                        @Html.ActionLink("Create new wholesaler report", "CreateNewReport", null, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Create New Wholesaler", "Create", null, new { @class = "btn btn-primary" })
                     </div>
                 </div>
                 <div class="ibox-content">
-
-                    <table class="table table-striped table-bordered table-hover" id="datatable-table">
+                    <table id="wholesalers" class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Name)
+                                    @Html.LabelFor(model => model.Wholesaler.Name)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Updated)
+                                    @Html.LabelFor(model => model.Wholesaler.Updated)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.ByUser)
+                                    @Html.LabelFor(model => model.Wholesaler.ByUser)
                                 </th>
                                 <th>Options</th>
-
                             </tr>
                         </thead>
-
-                        @foreach (var item in Model)
-                        {
-                            <tbody>
-                                <tr>
-
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Updated)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ByUser)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.WholesalerId }, new { @class = "btn btn-info" })
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.WholesalerId }, new { @class = "btn btn-danger" })
-                                    </td>
-
-                                </tr>
-                            </tbody>
-                        }
-
+                        <tbody></tbody>
+                        <tfoot>
+                        </tfoot>
                     </table>
 
                 </div>
@@ -64,3 +40,7 @@
         </div>
     </div>
 </div>
+
+@section scripts {
+    <script type="text/javascript" src="~/Scripts/site/datatables/wholesalersIndex.js"></script>
+}
