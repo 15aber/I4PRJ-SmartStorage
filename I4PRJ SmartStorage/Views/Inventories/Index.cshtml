@@ -11,31 +11,33 @@
                 <div class="ibox-title">
                     <h5>List of Inventories</h5>
                     <div class="ibox-tools">
-                        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
                     </div>
                 </div>
-                <div class="ibox-content">
-                    <table id="inventories" class="table table-striped table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Inventory.Name)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Inventory.Updated)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Inventory.ByUser)
-                                </th>
-                                <th>Options</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                        <tfoot>
-                        </tfoot>
-                    </table>
+              <div class="ibox-content">
+                @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
 
-                </div>
+                
+                <table id="inventories" class="table table-striped table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>
+                      @Html.DisplayNameFor(model => model.Inventory.Name)
+                    </th>
+                    <th>
+                      @Html.DisplayNameFor(model => model.Inventory.Updated)
+                    </th>
+                    <th>
+                      @Html.DisplayNameFor(model => model.Inventory.ByUser)
+                    </th>
+                    <th>Options</th>
+                  </tr>
+                  </thead>
+                  <tbody></tbody>
+                  <tfoot>
+                  </tfoot>
+                </table>
+
+              </div>
             </div>
         </div>
     </div>
