@@ -1,4 +1,7 @@
+using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace I4PRJ_SmartStorage.Migrations
 {
@@ -38,19 +41,58 @@ namespace I4PRJ_SmartStorage.Migrations
           new Wholesaler { Name = "Beer wholesaler", ByUser = "Dummy", Updated = DateTime.Now, IsDeleted = false }
       );
 
-      //context.Users.AddOrUpdate(u => u.Email,
-      //  new ApplicationUser
-      //  {
-      //    UserName = "no-reply@smartstorage.dk",
-      //    Email = "no-reply@smartstorage.dk",
-      //    FullName = "Admin",
-      //    PhoneNumber = "12345678",
-      //    ProfilePicture = "/Content/images/rubber-duck.png",
-      //    EmailConfirmed = true,
-      //    LockoutEnabled = false,
-      //    PasswordHash = "APzG0CpFDA+zlGKwXm1atHlBEQN62++rT9aMmhPjCUV88nkAy4sqOf7W+ELWQWMG0g==",
-      //    SecurityStamp = "b9d672a6-7ceb-4f69-a7d9-1a428610731d"
-      //  });
+      var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+      var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+      userManager.UserValidator = new UserValidator<ApplicationUser>(userManager)
+      {
+        AllowOnlyAlphanumericUserNames = false,
+        RequireUniqueEmail = true
+      };
+
+      if (!roleManager.RoleExists("Admin"))
+      {
+        var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole { Name = "Admin" };
+        roleManager.Create(role);
+      }
+
+      var userInDb = userManager.FindByName("no-reply@smartstorage.dk");
+
+      if (userInDb == null)
+      {
+        var user = new ApplicationUser
+        {
+          UserName = "no-reply@smartstorage.dk",
+          Email = "no-reply@smartstorage.dk",
+          FullName = "Admin",
+          PhoneNumber = "12345678",
+          ProfilePicture = "/Content/images/rubber-duck.png",
+          EmailConfirmed = true,
+          LockoutEnabled = false
+        };
+
+        string userPWD = "SmartStorage2016";
+
+        var result = userManager.Create(user, userPWD);
+
+        if (result.Succeeded)
+        {
+          userManager.AddToRole(user.Id, "Admin");
+        }
+      }
+      else
+      {
+        userInDb.Email = "no-reply@smartstorage.dk";
+        userInDb.FullName = "Admin";
+        userInDb.PhoneNumber = "12345678";
+        userInDb.ProfilePicture = "/Content/images/rubber-duck.png";
+        userInDb.EmailConfirmed = true;
+        userInDb.LockoutEnabled = false;
+
+        if (!userManager.IsInRole(userInDb.Id, "Admin"))
+        {
+          userManager.AddToRole(userInDb.Id, "Admin");
+        }
+      }
     }
   }
 }
