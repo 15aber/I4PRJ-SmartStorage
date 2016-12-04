@@ -23,7 +23,6 @@ namespace I4PRJ_SmartStorage.Controllers.Api
         }
 
         //GET /api/wholesalers/getwholesalertransactions
-        //[ActionName("DefaultAction")]
         public IHttpActionResult GetWholesalerTransactions()
         {   
             return Ok(db.Transactions

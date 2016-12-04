@@ -1,9 +1,8 @@
-﻿@model IEnumerable<I4PRJ_SmartStorage.Models.Domain.Supplier>
+﻿@model I4PRJ_SmartStorage.ViewModels.SupplierViewModel
 
 @{
     ViewBag.Title = "Suppliers";
 }
-
 
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
@@ -11,43 +10,37 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>List of Suppliers</h5>
+                    <div class="ibox-tools">
+                        @Html.ActionLink("Create New Supplier Report", "CreateNewReport", null, new { @class = "btn btn-primary" })
+                    </div>
                 </div>
                 <div class="ibox-content">
-
-<table class="table table-striped table-bordered table-hover" id="datatable-table">
-  <thead>  <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Updated)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ByUser)
-        </th>
-    
-    </tr></thead>
-
-@foreach (var item in Model) {
- <tbody>   <tr>
-  
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Updated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ByUser)
-        </td>
-
-    </tr></tbody>
-}
-
-</table>
+                    <table id="suppliers" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.LabelFor(model => model.Supplier.Name)
+                                </th>
+                                <th>
+                                    @Html.LabelFor(model => model.Supplier.Updated)
+                                </th>
+                                <th>
+                                    @Html.LabelFor(model => model.Supplier.ByUser)
+                                </th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
 
                 </div>
             </div>
         </div>
     </div>
- </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/Scripts/site/datatables/ReadOnlysuppliersIndex.js"></script>
+}
