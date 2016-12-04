@@ -4,34 +4,9 @@
             .dataTable({
                 "order": [[4, "desc"]],
                 ajax: {
-                    url: "/api/supplier/",
+                    url: "/api/suppliers/getsuppliertransactions",
                     dataSrc: ""
                 },
-                dom: '<"html5buttons"B>lTfgitp',
-                "buttons": [
-                    {
-                        extend: 'collection',
-                        text: 'Export',
-                        buttons: [
-                            { extend: 'copy' },
-                            { extend: 'csv' },
-                            { extend: 'excel', title: 'Leverandørsrapport' },
-                            { extend: 'pdf', title: 'Leverandørsrapport' },
-                            {
-                                extend: 'print',
-                                customize: function (win) {
-                                    $(win.document.body).addClass('white-bg');
-                                    $(win.document.body).css('font-size', '10px');
-
-                                    $(win.document.body)
-                                        .find('table')
-                                        .addClass('compact')
-                                        .css('font-size', 'inherit');
-                                }
-                            }
-                        ]
-                    }
-                ],
                 columns: [
                     {
                         data: "product.supplier.name"
@@ -67,3 +42,4 @@
             table.columns(6).search(this.value).draw();
         });
     });
+

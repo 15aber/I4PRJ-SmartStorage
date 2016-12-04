@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
 using I4PRJ_SmartStorage.ViewModels;
@@ -19,31 +20,23 @@ namespace I4PRJ_SmartStorage.Controllers
         // GET: /Suppliers/
         public ActionResult Index()
         {
-            if(User.IsInRole(RoleName.Admin))
-                return View("Index", db.Suppliers.Where(s=>s.IsDeleted!=true).ToList());
-            return View("ReadOnlyIndex", db.Suppliers.Where(s => s.IsDeleted != true).ToList());
-        }
+            if (User.IsInRole(RoleName.Admin))
+                return View("Index");
 
-        // GET: /Suppliers/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Supplier supplier = db.Suppliers.Find(id);
-            if (supplier == null)
-            {
-                return HttpNotFound();
-            }
-            return View(supplier);
+            return View("ReadOnlyIndex");
         }
 
         // GET: /Suppliers/Create
         [Authorize(Roles = RoleName.Admin)]
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new SupplierViewModel()
+            {
+                Supplier = new Supplier(),
+                Suppliers = db.Suppliers.Where(c => c.IsDeleted != true).ToList(),
+            };
+
+            return View("Create", viewModel);
         }
 
         // POST: /Suppliers/Create
@@ -56,16 +49,18 @@ namespace I4PRJ_SmartStorage.Controllers
         {
             if (ModelState.IsValid)
             {
-                supplier.ByUser = User.Identity.Name;
                 supplier.Updated = DateTime.Now;
+                supplier.ByUser = User.Identity.Name;
 
                 db.Suppliers.Add(supplier);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new RouteValueDictionary(
+                new { controller = "Suppliers", action = "Index" }));
             }
 
             return View(supplier);
         }
+
 
         public ActionResult CreateNewReport()
         {
@@ -87,12 +82,18 @@ namespace I4PRJ_SmartStorage.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Supplier supplier = db.Suppliers.Find(id);
-            if (supplier == null)
+
+            var viewModel = new SupplierViewModel()
+            {
+                Supplier = db.Suppliers.Find(id)
+            };
+
+            if (viewModel.Supplier == null)
             {
                 return HttpNotFound();
-            }
-            return View(supplier);
+            };
+
+            return View(viewModel);
         }
 
         // POST: /Suppliers/Edit/5
@@ -105,42 +106,15 @@ namespace I4PRJ_SmartStorage.Controllers
         {
             if (ModelState.IsValid)
             {
-                supplier.ByUser = User.Identity.Name;
                 supplier.Updated = DateTime.Now;
+                supplier.ByUser = User.Identity.Name;
 
                 db.Entry(supplier).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(supplier);
-        }
 
-        // GET: /Suppliers/Delete/5
-        [Authorize(Roles = RoleName.Admin)]
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Supplier supplier = db.Suppliers.Find(id);
-            if (supplier == null)
-            {
-                return HttpNotFound();
-            }
             return View(supplier);
-        }
-
-        // POST: /Suppliers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = RoleName.Admin)]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Supplier supplier = db.Suppliers.Find(id);
-            db.Suppliers.Remove(supplier);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

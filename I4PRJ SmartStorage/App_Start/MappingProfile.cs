@@ -18,6 +18,7 @@ namespace I4PRJ_SmartStorage
             CreateMap<Transaction, TransactionDto>();
             CreateMap<Inventory, InventoryDto>();
             CreateMap<Wholesaler, WholesalerDto>();
+            CreateMap<Supplier, SupplierDto>();
 
             // Dto to Domain
             CreateMap<ProductDto, Product>();
@@ -25,6 +26,7 @@ namespace I4PRJ_SmartStorage
             CreateMap<TransactionDto, Transaction>();
             CreateMap<InventoryDto, Inventory>();
             CreateMap<WholesalerDto, Wholesaler>();
+            CreateMap<SupplierDto, Supplier>();
         }
     }
 }

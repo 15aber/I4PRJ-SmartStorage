@@ -217,6 +217,7 @@
     <Compile Include="Dtos\ProductDto.cs" />
     <Compile Include="Dtos\StatusDto.cs" />
     <Compile Include="Dtos\StockDto.cs" />
+    <Compile Include="Dtos\SupplierDto.cs" />
     <Compile Include="Dtos\TransactionDto.cs" />
     <Compile Include="Dtos\WholesalerDto.cs" />
     <Compile Include="Global.asax.cs">
@@ -447,11 +448,13 @@
     <Content Include="Scripts\jquery\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery\jquery-3.1.1.min.map" />
     <None Include="Scripts\jqValidate\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\site\datatables\ReadOnlysuppliersIndex.js" />
     <Content Include="Scripts\site\datatables\ReadOnlywholesalersIndex.js" />
     <Content Include="Scripts\site\datatables\settingsDataTables.js" />
     <Content Include="Scripts\site\datatables\startStatus.js" />
     <Content Include="Scripts\site\datatables\statusReportDetails.js" />
     <Content Include="Scripts\site\datatables\supplierForm.js" />
+    <Content Include="Scripts\site\datatables\suppliersIndex.js" />
     <Content Include="Scripts\site\datatables\transactionForm.js" />
     <Content Include="Scripts\site\datatables\transactionIndex.js" />
     <Content Include="Scripts\site\datatables\wholesalerForm.js" />
