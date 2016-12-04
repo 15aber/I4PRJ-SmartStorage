@@ -43,7 +43,7 @@ namespace I4PRJ_SmartStorage.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = RoleName.Admin)]
-        public ActionResult Create([Bind(Include = "CategoryId, Name, LastUpdated, ByUser")] Category category)
+        public ActionResult Create(Category category)
         {
             if (ModelState.IsValid)
             {
@@ -87,19 +87,19 @@ namespace I4PRJ_SmartStorage.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = RoleName.Admin)]
-        public ActionResult Edit([Bind(Include = "CategoryId, Name, LastUpdated, ByUser, Version")] Category category)
+        public ActionResult Edit(CategoryViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                category.Updated = DateTime.Now;
-                category.ByUser = User.Identity.Name;
+                viewModel.Category.Updated = DateTime.Now;
+                viewModel.Category.ByUser = User.Identity.Name;
 
-                db.Entry(category).State = EntityState.Modified;
+                db.Entry(viewModel.Category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(category);
+            return View(viewModel);
         }
 
         protected override void Dispose(bool disposing)

@@ -7,7 +7,7 @@
     "scrollY": false,
     "info": true,
     "ordering": true,
-    "dom": '<"html5buttons"B><f<t>i>',
+    "dom": '<<t><"html5buttons"B>f>',
     "buttons": [
         {
             extend: 'collection',

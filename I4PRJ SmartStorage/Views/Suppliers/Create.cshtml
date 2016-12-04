@@ -1,4 +1,4 @@
-﻿@model I4PRJ_SmartStorage.Models.Domain.Supplier
+﻿@model I4PRJ_SmartStorage.ViewModels.SupplierViewModel
 
 @{
     ViewBag.Title = "Create Supplier";
@@ -13,34 +13,37 @@
                 </div>
                 <div class="ibox-content">
 
-				@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true)
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name)
-                @Html.ValidationMessageFor(model => model.Name)
-            </div>
-        </div>
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-primary" />
-				@Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-warning" })
-            </div>
-        </div>
-    </div>
-}
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Supplier.Name, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Supplier.Name)
+                                    @Html.ValidationMessageFor(model => model.Supplier.Name)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                    <a href="##" class="btn btn-warning" onclick="history.go(-1); return false;">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
 
                 </div>
             </div>
         </div>
     </div>
- </div>
+</div>
 
- 
+
+@section Scripts {
+    @Scripts.Render("~/bundles/validate")
+}
