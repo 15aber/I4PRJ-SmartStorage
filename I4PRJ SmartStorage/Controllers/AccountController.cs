@@ -257,7 +257,7 @@ namespace I4PRJ_SmartStorage.Controllers
 
       var name = user.FullName.Split(' ');
 
-      return Content(name[0]);
+      return Content(name[0] ?? "Rubber Duck");
     }
 
     protected override void Dispose(bool disposing)
