@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using AutoMapper;
 using I4PRJ_SmartStorage.Dtos;
 using I4PRJ_SmartStorage.Models;
 using I4PRJ_SmartStorage.Models.Domain;
 using I4PRJ_SmartStorage.ViewModels;
+using Microsoft.AspNet.Identity;
+using System.Net.Mail;
 
 namespace I4PRJ_SmartStorage.Controllers.Api
 {
@@ -28,19 +32,19 @@ namespace I4PRJ_SmartStorage.Controllers.Api
             var inventory = db.Inventories.Find(id);
 
             if (inventory == null)
-               return NotFound();
+                return NotFound();
 
             var status = from i in db.Inventories.Where(i => i.InventoryId == id)//Primary where clause
-                               join stk in db.Stocks on i.InventoryId equals stk.InventoryId
-                               join p in db.Products on stk.ProductId equals p.ProductId
-                               join cat in db.Categories on p.CategoryId equals cat.CategoryId
-                               select new //Setup projection
-                               {
-                                   ProductId = p.ProductId,
-                                   ProductName = p.Name,
-                                   Quantity  = stk.Quantity,
-                                   CategoryName = cat.Name
-                               }; //INNER JOIN
+                         join stk in db.Stocks on i.InventoryId equals stk.InventoryId
+                         join p in db.Products on stk.ProductId equals p.ProductId
+                         join cat in db.Categories on p.CategoryId equals cat.CategoryId
+                         select new //Setup projection
+                         {
+                             ProductId = p.ProductId,
+                             ProductName = p.Name,
+                             Quantity = stk.Quantity,
+                             CategoryName = cat.Name
+                         }; //INNER JOIN
 
             return Ok(status);
         }
@@ -52,24 +56,24 @@ namespace I4PRJ_SmartStorage.Controllers.Api
             if (status == null)
                 return NotFound();
 
-            var statuses = from sts in db.Statuses.Where(sts => sts.InventoryId == status.InventoryId 
+            var statuses = from sts in db.Statuses.Where(sts => sts.InventoryId == status.InventoryId
                            && EntityFunctions.DiffSeconds(sts.Updated, status.Updated) == 0) //Primary where clause
-                         join cat in db.Categories on sts.Product.CategoryId equals cat.CategoryId
-                         join p in db.Products on sts.ProductId equals p.ProductId
-                         select new //Setup projection
-                         {
-                             ProductName = p.Name,
-                             CategoryName = cat.Name,
-                             ExpQuantity = sts.ExpQuantity,
-                             CurQuantity = sts.CurQuantity,
-                             Difference = sts.Difference
-                         }; //INNER JOIN
+                           join cat in db.Categories on sts.Product.CategoryId equals cat.CategoryId
+                           join p in db.Products on sts.ProductId equals p.ProductId
+                           select new //Setup projection
+                           {
+                               ProductName = p.Name,
+                               CategoryName = cat.Name,
+                               ExpQuantity = sts.ExpQuantity,
+                               CurQuantity = sts.CurQuantity,
+                               Difference = sts.Difference
+                           }; //INNER JOIN
 
             return Ok(statuses);
         }
 
         [HttpPost]
-        public IHttpActionResult CreateStatus(NewStatusDto statusDto)
+        public async Task<IHttpActionResult> CreateStatus(NewStatusDto statusDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
@@ -78,7 +82,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
 
             for (int i = 0; i < statusDto.CurQuantities.Count; i++)
             {
-                if(statusDto.CurQuantities[i] == null)
+                if (statusDto.CurQuantities[i] == null)
                     return BadRequest("Quantity value is invalid");
 
                 var status = new Status
@@ -94,9 +98,32 @@ namespace I4PRJ_SmartStorage.Controllers.Api
                 };
 
                 db.Statuses.Add(status);
-            }
 
+
+                
+
+            }
             db.SaveChanges();
+
+            var user = User.Identity.Name;
+            var emailMessage = new MailMessage();
+            emailMessage.To.Add(new MailAddress(user));
+            emailMessage.From = new MailAddress(ConfigurationManager.AppSettings["SmtpFrom"]);
+            emailMessage.Subject = "Status";
+            emailMessage.Body = "See new status <a href='https://smartstorage.dk/Status/StatusReportDetails/'>here</a>";
+            emailMessage.IsBodyHtml = true;
+
+            using (var smtpClient = new SmtpClient())
+            {
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["SmtpUserName"],
+                ConfigurationManager.AppSettings["SmtpPassword"]);
+                smtpClient.Host = ConfigurationManager.AppSettings["SmtpHost"];
+                smtpClient.Port = Convert.ToInt32(ConfigurationManager.AppSettings["SmtpPort"]);
+                smtpClient.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["SmtpEnableSsl"]);
+
+                await smtpClient.SendMailAsync(emailMessage);
+            }
 
             return Ok();
         }

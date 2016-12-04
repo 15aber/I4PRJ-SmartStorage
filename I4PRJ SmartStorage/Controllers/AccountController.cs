@@ -62,10 +62,9 @@ namespace I4PRJ_SmartStorage.Controllers
 
       // This doesn't count login failures towards account lockout
       // To enable password failures to trigger account lockout, change to shouldLockout: true
-        var user = SignInManager.UserManager.Users.FirstOrDefault(u => u.Email == model.Email);
       var result =
           await
-              SignInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe,
+              SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe,
                   shouldLockout: false);
       switch(result)
       {
@@ -147,7 +146,7 @@ namespace I4PRJ_SmartStorage.Controllers
       {
         var user = new ApplicationUser
         {
-          UserName = model.Username,
+          UserName = model.Email,
           Email = model.Email,
           PhoneNumber = model.PhoneNumber,
           Firstname = model.Firstname,
@@ -413,13 +412,14 @@ namespace I4PRJ_SmartStorage.Controllers
         }
         var user = new ApplicationUser
         {
-          UserName = model.Username,
+          UserName = model.Email,
           Email = model.Email,
           PhoneNumber = model.PhoneNumber,
           Firstname = model.Firstname,
           Middlename = model.Middlename,
           Lastname = model.Lastname,
-          ProfilePicture = model.ProfilePicture
+          ProfilePicture = model.ProfilePicture,
+          EmailConfirmed = true
         };
         var result = await UserManager.CreateAsync(user);
         if(result.Succeeded)
