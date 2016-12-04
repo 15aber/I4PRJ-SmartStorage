@@ -2,8 +2,7 @@
 @model IEnumerable<I4PRJ_SmartStorage.Models.RegisterViewModel>
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Users";
 }
 
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -13,7 +12,7 @@
                 <div class="ibox-title">
                     <h5>List of Users</h5>
                     <div class="ibox-tools">
-                        @Html.ActionLink("Create new User", "Create", null, new { @class = "btn btn-primary btn-xs" })
+                        @Html.ActionLink("Create new User", "Create", null, new { @class = "btn btn-primary" })
                     </div>
                 </div>
                 <div class="ibox-content">
@@ -38,7 +37,7 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.Email)
                             </th>
-                            <th></th>
+                            <th>Options</th>
 
                         </tr>
                         </thead>
@@ -66,8 +65,8 @@
                                     @Html.DisplayFor(modelItem => item.Email)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.PhoneNumber}, new {@class = "btn btn-info btn-sm"})
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.PhoneNumber}, new {@class = "btn btn-danger btn-sm"})
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.PhoneNumber}, new {@class = "btn btn-info"})
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.PhoneNumber}, new {@class = "btn btn-danger"})
                                 </td>
 
                             </tr>
