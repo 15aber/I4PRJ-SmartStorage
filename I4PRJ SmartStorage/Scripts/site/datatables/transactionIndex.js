@@ -10,26 +10,21 @@ $.fn.dataTable.ext.search.push(
         console.log("updatedDate: " + updatedDate.toLocaleDateString() + " " + updatedDate.getTime());
         console.log("fromdate: " + fromDate.toLocaleDateString() + " " + fromDate.getTime());
         console.log("todate: " + toDate.toLocaleDateString() + " " + toDate.getTime());
-        console.log("HEJ");
-        console.log(fromDate.getTime() <= updatedDate);
 
         
-        //if ((isNaN(fromDate.getTime()) && isNaN(toDate.getTime())) ||
-        //     (isNaN(fromDate.getTime()) &&  updatedDate <= toDate.getTime()) ||
-        //     (fromDate.getTime() <= updatedDate && isNaN(toDate.getTime())) ||
-        //     (fromDate.getTime() <= updatedDate && updatedDate <= toDate.getTime())) {
-        //    return true;
-        //}
-        //return false;
-        return true;
+        if (isNaN(fromDate.getTime()) && isNaN(toDate.getTime()) ||
+             isNaN(fromDate.getTime()) &&  updatedDate <= toDate.getTime() ||
+             fromDate.getTime() <= updatedDate && isNaN(toDate.getTime()) ||
+             fromDate.getTime() <= updatedDate && updatedDate <= toDate.getTime()) {
+            return true;
+        }
+        return false;
     }
 );
 
 
 
 $(document).ready(function () {
-    $('#fromdate').datepicker({dataFormat: 'dd-mm-yy'});
-    $('#todate').datepicker({ dataFormat: 'dd-mm-yy' });
     
     $("#transactions-table")
         .dataTable({
@@ -56,7 +51,8 @@ $(document).ready(function () {
                     data: "updated",
                     render: function (data) {
                     var date = new Date(data);
-                    return "0" + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+                    return date.toLocaleDateString();
+                    //return "0" + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
                     }
                 },
                 {
@@ -65,26 +61,35 @@ $(document).ready(function () {
                 }
             ]
         });
-    //document.getElementById("filter").addEventListener("click", displayDate);
 
-    //$('fromdate').on('change', function() {
-    //    alert(this.val());
-    //});
-    
-    //$('#min, #max').keyup( function() {
-    //    table.draw();
-    //});
     var table = $('#transactions-table').DataTable();
+
+    
+    $('#fromdate').datepicker({
+        dataFormat: "dd-mm-yy",
+        defaultDate: '01/01/2010',
+        changeMonth: true,
+        changeYear: true,
+        onSelect: function(selectedDate) {
+            $("#todate").datepicker("option", "minDate", selectedDate);
+        }
+    });
+    $('#todate').datepicker({
+        dataFormat: "dd-mm-yy",
+        maxDate: 0, changeMonth: true,
+        changeYear: true,
+        onSelect: function (selectedDate) {
+            $("#fromdate").datepicker("option", "maxDate", selectedDate);
+        }
+    });
+
+    $('#fromIcon').click(function() { $('#fromdate').datepicker('show'); });
+ 
+    $('#toIcon').click(function () { $('#todate').datepicker('show'); });
 
     $('#filter')
         .click(
             function displayDate() {
-                var fromDate = $("#fromdate").datepicker("getDate");
-                var toDate = $("#todate").datepicker("getDate");
-                //var updatedDate = new Date();
-                //updatedDate.setHours(updatedDate.getHours() - 2);
-                alert(fromDate.toLocaleDateString() + " --- " + toDate.getTime());
-                console.log("I draw now");
                 table.draw();
             }); 
 });
