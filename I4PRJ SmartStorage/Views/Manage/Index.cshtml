@@ -23,7 +23,7 @@
                     <h3><strong>@Html.Action("GetFullName", "Account", new { userId = User.Identity.Name })</strong></h3>
                     <p><i class="fa fa-phone"></i> @Model.PhoneNumber</p>
                     <p><i class="fa fa-envelope"></i> @Model.Email</p>
-                    <a class="btn btn-block btn-info btn-outline" href="@Url.Action("ChangePassword","Manage")">
+                    <a class="btn btn-block btn-primary btn-outline" href="@Url.Action("ChangePassword","Manage")">
                       <i class="fa fa-key"> </i> Change Password
                     </a>
                     <br/>
