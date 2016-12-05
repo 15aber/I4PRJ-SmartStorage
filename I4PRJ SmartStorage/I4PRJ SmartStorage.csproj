@@ -517,10 +517,6 @@
     <Content Include="Views\Transactions\Index.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Transactions\RestockForm.cshtml" />
-    <Content Include="Views\Status\Create.cshtml" />
-    <Content Include="Views\Status\Delete.cshtml" />
-    <Content Include="Views\Status\Details.cshtml" />
-    <Content Include="Views\Status\Edit.cshtml" />
     <Content Include="Views\Status\Index.cshtml" />
     <Content Include="Views\Status\StatusForm.cshtml" />
     <Content Include="Views\Wholesalers\Create.cshtml" />
