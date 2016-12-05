@@ -154,6 +154,11 @@ namespace I4PRJ_SmartStorage.Controllers
       else
       {
         await UserManager.RemoveFromRoleAsync(userInDb.Id, "Admin");
+        if (userInDb.UserName == User.Identity.Name)
+        {
+          HttpContext.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+          return RedirectToAction("Index", "Home");
+        }
       }
 
       return RedirectToAction("Index");
@@ -186,11 +191,12 @@ namespace I4PRJ_SmartStorage.Controllers
       {
         return View("Index");
       }
-      if (userInDb.PhoneNumber == id)
+      if (userInDb.UserName == User.Identity.Name)
       {
         db.Users.Remove(userInDb);
         db.SaveChanges();
-        return RedirectToAction("LogOff", "Account");
+        HttpContext.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+        return RedirectToAction("Index", "Home");
       }
 
       db.Users.Remove(userInDb);
