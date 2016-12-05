@@ -135,7 +135,7 @@ namespace I4PRJ_SmartStorage.Controllers
         {
           await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
         }
-        return RedirectToAction("Index", new { Message = ManageMessageId.AddPhoneSuccess });
+        return RedirectToAction("Index");
       }
       // If we got this far, something failed, redisplay form
       ModelState.AddModelError("", "Failed to verify phone");

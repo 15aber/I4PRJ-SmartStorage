@@ -111,7 +111,7 @@ namespace I4PRJ_SmartStorage.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Edit(RegisterViewModel model)
+    public ActionResult Edit(RegisterViewModel model)
     {
 
       var db = new ApplicationDbContext();
@@ -315,7 +315,7 @@ namespace I4PRJ_SmartStorage.Controllers
         }
 
       }
-      return RedirectToAction("Index", "Manage");
+      return RedirectToAction("Index", "Home");
     }
 
     //
