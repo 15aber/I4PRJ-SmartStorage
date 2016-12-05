@@ -93,8 +93,8 @@
     <Compile Include="Repositories\SuppliersRepository.cs" />
     <Compile Include="Repositories\TransactionsRepository.cs" />
     <Compile Include="Repositories\WholesalersRepository.cs" />
-    <Compile Include="SmartStorageContext.cs" />
-    <Compile Include="UnitAtWork.cs" />
+    <Compile Include="Context\SmartStorageContext.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EntityConfigurations\" />

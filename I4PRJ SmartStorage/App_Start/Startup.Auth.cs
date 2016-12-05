@@ -1,15 +1,15 @@
-﻿using I4PRJ_SmartStorage.Models;
+﻿using System;
+using System.Configuration;
+using System.Threading.Tasks;
+using I4PRJ_SmartStorage.UI.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Facebook;
 using Owin;
-using System;
-using System.Configuration;
-using System.Threading.Tasks;
 
-namespace I4PRJ_SmartStorage
+namespace I4PRJ_SmartStorage.UI
 {
     public partial class Startup
     {

@@ -1,79 +1,126 @@
 ﻿using AutoMapper;
+using I4PRJ_SmartStorage.BLL.Dtos;
 using I4PRJ_SmartStorage.BLL.Interfaces.Services;
-using I4PRJ_SmartStorage.BLL.ViewModels;
 using I4PRJ_SmartStorage.DAL.Interfaces;
-using I4PRJ_SmartStorage.DAL.Interfaces.Models;
 using I4PRJ_SmartStorage.DAL.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
+using System.Linq;
 
 namespace I4PRJ_SmartStorage.BLL.Services
 {
-  public class CategoryService : Service<ICategoryModel>, ICategoryService
+  public class CategoryService : ICategoryService
   {
     private readonly IUnitOfWork _unitOfWork;
 
     public CategoryService(IUnitOfWork unitOfWork)
     {
-      _unitOfWork = unitOfWork;
-    }
-
-
-    public List<CategoryViewModel> GetAllActive()
-    {
       try
       {
-        var allActiveCategories = _unitOfWork.Categories.GetAll(c => c.IsDeleted == false);
-        var result = Mapper.Map<List<CategoryModel>, List<CategoryViewModel>>(allActiveCategories);
-        return result;
+        _unitOfWork = unitOfWork;
       }
       catch (Exception)
       {
+        // TODO lav exception
+        throw;
+      }
+    }
+
+    public void Add(CategoryDto entityDto)
+    {
+      try
+      {
+        var entity = Mapper.Map<CategoryDto, CategoryModel>(entityDto);
+        _unitOfWork.Categories.Add(entity);
+        _unitOfWork.Complete();
+      }
+      catch (Exception)
+      {
+        // TODO lav exception
 
         throw;
       }
     }
 
-    public List<CategoryViewModel> GetAllActive(Expression<Func<CategoryViewModel, bool>> whereCondition)
+    public void Update(CategoryDto entityDto)
     {
-      throw new NotImplementedException();
+      try
+      {
+        var entity = Mapper.Map<CategoryDto, CategoryModel>(entityDto);
+        _unitOfWork.Categories.Update(entity);
+        _unitOfWork.Complete();
+      }
+      catch (Exception)
+      {
+        // TODO lav exception
+
+        throw;
+      }
     }
 
-
-    public void Add(CategoryViewModel entity)
+    public void Delete(int id)
     {
-      throw new NotImplementedException();
+      try
+      {
+        var entity = _unitOfWork.Categories.Get(id);
+        entity.IsDeleted = true;
+        _unitOfWork.Categories.Update(entity);
+        _unitOfWork.Complete();
+      }
+      catch (Exception)
+      {
+        // TODO lav exception
+
+        throw;
+      }
     }
 
-    public long Count(Expression<Func<CategoryViewModel, bool>> whereCondition)
+    public IList<CategoryDto> GetAll()
     {
-      throw new NotImplementedException();
+      try
+      {
+        var entities = _unitOfWork.Categories.GetAll().ToList();
+        var entitiesDtos = Mapper.Map<List<CategoryModel>, List<CategoryDto>>(entities);
+        return entitiesDtos;
+      }
+      catch (Exception)
+      {
+        // TODO lav exception
+
+        throw;
+      }
     }
 
-    public void Delete(CategoryViewModel entity)
+    public IList<CategoryDto> GetAllActive()
     {
-      throw new NotImplementedException();
+      try
+      {
+        var entities = _unitOfWork.Categories.GetAll(e => e.IsDeleted == false).ToList();
+        var entitiesDtos = Mapper.Map<List<CategoryModel>, List<CategoryDto>>(entities);
+        return entitiesDtos;
+      }
+      catch (Exception)
+      {
+        // TODO lav exception
+
+        throw;
+      }
     }
 
-    public IList<CategoryViewModel> GetAll()
+    public CategoryDto GetSingle(int id)
     {
-      throw new NotImplementedException();
-    }
+      try
+      {
+        var entity = _unitOfWork.Categories.Get(id);
+        var entityDto = Mapper.Map<CategoryModel, CategoryDto>(entity);
+        return entityDto;
+      }
+      catch (Exception)
+      {
+        // TODO lav exception
 
-    public IList<CategoryViewModel> GetAll(Expression<Func<CategoryViewModel, bool>> whereCondition)
-    {
-      throw new NotImplementedException();
-    }
-
-    public CategoryViewModel GetSingle(Expression<Func<CategoryViewModel, bool>> whereCondition)
-    {
-      throw new NotImplementedException();
-    }
-
-    public void Update(CategoryViewModel entity)
-    {
-      throw new NotImplementedException();
+        throw;
+      }
     }
   }
 }

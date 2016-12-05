@@ -1,12 +1,12 @@
-﻿using I4PRJ_SmartStorage.Models;
+﻿using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+using I4PRJ_SmartStorage.UI.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
 
-namespace I4PRJ_SmartStorage.Controllers
+namespace I4PRJ_SmartStorage.UI.Controllers
 {
   [Authorize]
   public class ManageController : Controller
@@ -56,7 +56,7 @@ namespace I4PRJ_SmartStorage.Controllers
                                   : "";
 
       var userId = User.Identity.GetUserId();
-      var model = new IndexViewModel
+      var model = new ManageViewModel
       {
         HasPassword = HasPassword(),
         PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),

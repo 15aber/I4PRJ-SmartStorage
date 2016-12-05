@@ -62,31 +62,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EditModels\CategoryEditModel.cs" />
-    <Compile Include="Interfaces\EditModels\ICategoryEditModel.cs" />
-    <Compile Include="Mapping\MappingProfile.cs" />
+    <Compile Include="Dtos\CategoryDto.cs" />
+    <Compile Include="Interfaces\Dtos\ISupplierDto.cs" />
+    <Compile Include="Interfaces\Dtos\IInventoryDto.cs" />
+    <Compile Include="Dtos\SupplierDto.cs" />
+    <Compile Include="Dtos\InventoryDto.cs" />
+    <Compile Include="Interfaces\Dtos\IWholesalerDto.cs" />
+    <Compile Include="Dtos\WholesalerDto.cs" />
+    <Compile Include="Interfaces\Dtos\ICategoryDto.cs" />
+    <Compile Include="Interfaces\Services\IInventoryService.cs" />
+    <Compile Include="Interfaces\Services\ISupplierService.cs" />
+    <Compile Include="Interfaces\Services\IWholesalerService.cs" />
+    <Compile Include="Services\SupplierService.cs" />
+    <Compile Include="Services\InventoryService.cs" />
+    <Compile Include="Services\WholesalerService.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Interfaces\Services\ICategoryService.cs" />
-    <Compile Include="ViewModels\CategoryViewModel.cs" />
-    <Compile Include="ViewModels\InventoryViewModel.cs" />
-    <Compile Include="ViewModels\ProductViewModel.cs" />
-    <Compile Include="ViewModels\StatusViewModel.cs" />
-    <Compile Include="ViewModels\StockViewModel.cs" />
-    <Compile Include="ViewModels\SupplierViewModel.cs" />
-    <Compile Include="ViewModels\TransactionViewModel.cs" />
-    <Compile Include="EditModels\UserViewModel.cs" />
-    <Compile Include="ViewModels\WholesalerViewModel.cs" />
+    <Compile Include="Mapping\MappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\Services\IService.cs" />
-    <Compile Include="Services\Service.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\I4PRJ SmartStorage.DAL\I4PRJ SmartStorage.DAL.csproj">
       <Project>{9d0d44a3-3e5f-4736-9bb1-07ed89df8c2f}</Project>

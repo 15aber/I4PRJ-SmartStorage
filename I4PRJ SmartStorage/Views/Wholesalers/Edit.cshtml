@@ -1,4 +1,4 @@
-﻿@model I4PRJ_SmartStorage.ViewModels.WholesalerViewModel
+﻿@model I4PRJ_SmartStorage.BLL.Dtos.WholesalerDto
 
 @{
   ViewBag.Title = "Edit Wholesaler";
@@ -9,25 +9,22 @@
     <div class="col-lg-6 col-lg-offset-3">
       <div class="ibox">
         <div class="ibox-title">
-          <h5>Edit Wholesaler</h5>
+          <h5>@ViewBag.Title</h5>
         </div>
         <div class="ibox-content">
-
           @using (Html.BeginForm())
           {
             @Html.AntiForgeryToken()
-
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.WholesalerId)
             <div class="form-horizontal">
-              @Html.ValidationSummary(true)
-
               <div class="form-group">
-                @Html.LabelFor(model => model.Wholesaler.Name, new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                  @Html.EditorFor(model => model.Wholesaler.Name)
-                  @Html.ValidationMessageFor(model => model.Wholesaler.Name)
+                  @Html.EditorFor(model => model.Name)
+                  @Html.ValidationMessageFor(model => model.Name)
                 </div>
               </div>
-
               <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                   <input type="submit" value="Save" class="btn btn-primary" />
@@ -36,13 +33,11 @@
               </div>
             </div>
           }
-
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 @section Scripts {
   @Scripts.Render("~/bundles/validate")

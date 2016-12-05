@@ -1,13 +1,8 @@
-﻿using I4PRJ_SmartStorage.BLL.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
+﻿using I4PRJ_SmartStorage.BLL.Dtos;
 
 namespace I4PRJ_SmartStorage.BLL.Interfaces.Services
 {
-  public interface ICategoryService : IService<CategoryViewModel>
+  public interface ICategoryService : IService<CategoryDto>
   {
-    List<CategoryViewModel> GetAllActive();
-    List<CategoryViewModel> GetAllActive(Expression<Func<CategoryViewModel, bool>> whereCondition);
   }
 }

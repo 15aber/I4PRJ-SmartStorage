@@ -1,4 +1,4 @@
-﻿namespace I4PRJ_SmartStorage
+﻿namespace I4PRJ_SmartStorage.UI
 {
   //public class MappingProfile : Profile
   //{

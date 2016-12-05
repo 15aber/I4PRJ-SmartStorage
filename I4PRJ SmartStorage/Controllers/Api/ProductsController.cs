@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
 using System.Web.Http;
 using AutoMapper;
-using I4PRJ_SmartStorage.Dtos;
-using I4PRJ_SmartStorage.Models;
-using I4PRJ_SmartStorage.Models.Domain;
+using I4PRJ_SmartStorage.UI.Identity;
 
-namespace I4PRJ_SmartStorage.Controllers.Api
+namespace I4PRJ_SmartStorage.UI.Controllers.Api
 {
     public class ProductsController : ApiController
     {

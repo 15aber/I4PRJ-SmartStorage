@@ -8,51 +8,49 @@ namespace I4PRJ_SmartStorage.DAL.Repositories
 {
   public class Repository<T> : IRepository<T> where T : class
   {
-    private readonly DbSet<T> _entities;
+    protected readonly DbContext Context;
+    private readonly DbSet<T> _dbSet;
 
     public Repository(DbContext context)
     {
-      _entities = context.Set<T>();
+      Context = context;
+      _dbSet = Context.Set<T>();
     }
 
     public T Get(int id)
     {
-      return _entities.Find(id);
+      return _dbSet.Find(id);
     }
 
     public List<T> GetAll()
     {
-      return _entities.ToList();
+      return _dbSet.ToList();
     }
 
     public List<T> GetAll(System.Linq.Expressions.Expression<Func<T, bool>> whereCondition)
     {
-      return _entities.Where(whereCondition).ToList();
-    }
-
-    public T SingleOrDefault(System.Linq.Expressions.Expression<Func<T, bool>> whereCondition)
-    {
-      return _entities.SingleOrDefault(whereCondition);
+      return _dbSet.Where(whereCondition).ToList();
     }
 
     public void Add(T entity)
     {
-      _entities.Add(entity);
-    }
-
-    public void AddRange(List<T> entities)
-    {
-      _entities.AddRange(entities);
+      _dbSet.Add(entity);
     }
 
     public void Remove(T entity)
     {
-      _entities.Remove(entity);
+      if (Context.Entry(entity).State == EntityState.Detached)
+      {
+        _dbSet.Attach(entity);
+      }
+      _dbSet.Remove(entity);
     }
 
-    public void RemoveRange(List<T> entities)
+    public void Update(T entity)
     {
-      _entities.RemoveRange(entities);
+      _dbSet.Attach(entity);
+      Context.Entry(entity).State = EntityState.Modified;
     }
+
   }
 }

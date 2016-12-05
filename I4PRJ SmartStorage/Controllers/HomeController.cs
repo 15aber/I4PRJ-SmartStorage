@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace I4PRJ_SmartStorage.Controllers
+namespace I4PRJ_SmartStorage.UI.Controllers
 {
   public class HomeController : Controller
   {

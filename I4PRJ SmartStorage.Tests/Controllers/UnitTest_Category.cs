@@ -1,7 +1,7 @@
 ﻿using System.Web;
-using I4PRJ_SmartStorage.Controllers;
 using System.Web.Mvc;
 using I4PRJ_SmartStorage.Models.Domain;
+using I4PRJ_SmartStorage.UI.Controllers;
 using NSubstitute;
 using NUnit.Framework;
 

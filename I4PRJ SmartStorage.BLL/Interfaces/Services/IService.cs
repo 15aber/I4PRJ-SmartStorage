@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
+﻿using System.Collections.Generic;
 
 namespace I4PRJ_SmartStorage.BLL.Interfaces.Services
 {
   public interface IService<T> where T : class
   {
-    void Add(T entity);
-    long Count();
-    long Count(Expression<Func<T, bool>> whereCondition);
-    void Delete(T entity);
+    void Add(T entityDto);
+    void Delete(int id);
     IList<T> GetAll();
-    IList<T> GetAll(Expression<Func<T, bool>> whereCondition);
-    T GetSingle(Expression<Func<T, bool>> whereCondition);
+    IList<T> GetAllActive();
+    T GetSingle(int id);
     void Update(T entity);
   }
 }

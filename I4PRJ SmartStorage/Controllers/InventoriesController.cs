@@ -1,106 +1,67 @@
 ﻿using System;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
 using System.Web.Mvc;
-using System.Web.Routing;
-using I4PRJ_SmartStorage.Models;
-using I4PRJ_SmartStorage.Models.Domain;
-using I4PRJ_SmartStorage.ViewModels;
+using I4PRJ_SmartStorage.BLL.Dtos;
+using I4PRJ_SmartStorage.BLL.Interfaces.Services;
+using I4PRJ_SmartStorage.UI.Identity;
 
-namespace I4PRJ_SmartStorage.Controllers
+namespace I4PRJ_SmartStorage.UI.Controllers
 {
-    public class InventoriesController : Controller
+  public class InventoriesController : Controller
+  {
+    private readonly IInventoryService _service;
+
+    public InventoriesController(IInventoryService service)
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: /Inventories/
-        public ActionResult Index()
-        {
-            return View("Index");
-        }
-
-        // GET: /Inventories/Create
-        public ActionResult Create()
-        {
-            var viewModel = new InventoryViewModel
-            {
-                Inventory = new Inventory(),
-                Inventories = db.Inventories.Where(c => c.IsDeleted != true).ToList(),
-            };
-
-            return View("Create", viewModel);
-        }
-
-        // POST: /Inventories/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "InventoryId, Name, LastUpdated, ByUser")] Inventory inventory)
-        {
-            if (ModelState.IsValid)
-            {
-                inventory.Updated = DateTime.Now;
-                inventory.ByUser = User.Identity.Name;
-
-                db.Inventories.Add(inventory);
-                db.SaveChanges();
-                return RedirectToAction("Index", new RouteValueDictionary(
-                new { controller = "Inventories", action = "Index" }));
-            }
-
-            return View(inventory);
-        }
-
-        // GET: /Inventories/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var viewModel = new InventoryViewModel
-            {
-                Inventory = db.Inventories.Find(id)
-            };
-
-            if (viewModel.Inventory == null)
-            {
-                return HttpNotFound();
-            };
-
-            return View(viewModel);
-        }
-
-        // POST: /Inventories/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(InventoryViewModel viewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                viewModel.Inventory.Updated = DateTime.Now;
-                viewModel.Inventory.ByUser = User.Identity.Name;
-
-                db.Entry(viewModel.Inventory).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(viewModel);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+      _service = service;
     }
+
+    public ActionResult Index()
+    {
+      return View(User.IsInRole(UserRolesName.Admin) ? "Index" : "ReadOnlyIndex");
+    }
+
+    [Authorize(Roles = UserRolesName.Admin)]
+    public ActionResult Create()
+    {
+      return View("Create");
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Roles = UserRolesName.Admin)]
+    public ActionResult Create(InventoryDto entityDto)
+    {
+      if (!ModelState.IsValid) return View(entityDto);
+
+      entityDto.Updated = DateTime.Now;
+      entityDto.ByUser = User.Identity.Name;
+      _service.Add(entityDto);
+
+      return RedirectToAction("Index");
+    }
+
+    [Authorize(Roles = UserRolesName.Admin)]
+    public ActionResult Edit(int id)
+    {
+      var entityDto = _service.GetSingle(id);
+
+      if (entityDto == null) return HttpNotFound();
+
+      return View(entityDto);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Roles = UserRolesName.Admin)]
+    public ActionResult Edit(InventoryDto entityDto)
+    {
+      if (!ModelState.IsValid) return View(entityDto);
+
+      entityDto.Updated = DateTime.Now;
+      entityDto.ByUser = User.Identity.Name;
+      _service.Update(entityDto);
+
+      return RedirectToAction("Index");
+    }
+  }
 }

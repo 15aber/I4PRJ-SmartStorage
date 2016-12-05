@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace I4PRJ_SmartStorage.Identity
+namespace I4PRJ_SmartStorage.UI.Identity
 {
   public class ChangePasswordViewModel
   {

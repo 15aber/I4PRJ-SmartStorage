@@ -1,17 +1,13 @@
-﻿using I4PRJ_SmartStorage.Dtos;
-using I4PRJ_SmartStorage.Models;
-using I4PRJ_SmartStorage.Models.Domain;
-using System;
+﻿using System;
 using System.Configuration;
-using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web.Http;
+using I4PRJ_SmartStorage.UI.Identity;
 
-namespace I4PRJ_SmartStorage.Controllers.Api
+namespace I4PRJ_SmartStorage.UI.Controllers.Api
 {
   public class StatusController : ApiController
   {

@@ -1,21 +1,18 @@
-﻿using I4PRJ_SmartStorage.BLL.Interfaces.Services;
-using I4PRJ_SmartStorage.BLL.ViewModels;
-using I4PRJ_SmartStorage.Identity;
-using System;
-using System.Data.Entity;
-using System.Net;
+﻿using System;
 using System.Web.Mvc;
-using System.Web.Routing;
+using I4PRJ_SmartStorage.BLL.Dtos;
+using I4PRJ_SmartStorage.BLL.Interfaces.Services;
+using I4PRJ_SmartStorage.UI.Identity;
 
-namespace I4PRJ_SmartStorage.Controllers
+namespace I4PRJ_SmartStorage.UI.Controllers
 {
   public class CategoriesController : Controller
   {
-    private readonly ICategoryService _categoryService;
+    private readonly ICategoryService _service;
 
-    public CategoriesController(ICategoryService categoryService)
+    public CategoriesController(ICategoryService service)
     {
-      _categoryService = categoryService;
+      _service = service;
     }
 
     public ActionResult Index()
@@ -32,72 +29,39 @@ namespace I4PRJ_SmartStorage.Controllers
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Authorize(Roles = UserRolesName.Admin)]
-    public ActionResult Create(Category category)
+    public ActionResult Create(CategoryDto entityDto)
     {
-      if (ModelState.IsValid)
-      {
-        category.Updated = DateTime.Now;
-        category.ByUser = User.Identity.Name;
+      if (!ModelState.IsValid) return View(entityDto);
 
-        db.Categories.Add(category);
-        db.SaveChanges();
-        return RedirectToAction("Index", new RouteValueDictionary(
-        new { controller = "Categories", action = "Index" }));
-      }
+      entityDto.Updated = DateTime.Now;
+      entityDto.ByUser = User.Identity.Name;
+      _service.Add(entityDto);
 
-      return View(category);
+      return RedirectToAction("Index");
     }
 
-    // GET: /Categories/Edit/5
     [Authorize(Roles = UserRolesName.Admin)]
-    public ActionResult Edit(int? id)
+    public ActionResult Edit(int id)
     {
-      if (id == null)
-      {
-        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-      }
+      var entityDto = _service.GetSingle(id);
 
-      var viewModel = new CategoryViewModel
-      {
-        Category = db.Categories.Find(id)
-      };
+      if (entityDto == null) return HttpNotFound();
 
-      if (viewModel.Category == null)
-      {
-        return HttpNotFound();
-      };
-
-      return View(viewModel);
+      return View(entityDto);
     }
 
-    // POST: /Categories/Edit/5
-    // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Authorize(Roles = UserRolesName.Admin)]
-    public ActionResult Edit(CategoryViewModel viewModel)
+    public ActionResult Edit(CategoryDto entityDto)
     {
-      if (ModelState.IsValid)
-      {
-        viewModel.Category.Updated = DateTime.Now;
-        viewModel.Category.ByUser = User.Identity.Name;
+      if (!ModelState.IsValid) return View(entityDto);
 
-        db.Entry(viewModel.Category).State = EntityState.Modified;
-        db.SaveChanges();
-        return RedirectToAction("Index");
-      }
+      entityDto.Updated = DateTime.Now;
+      entityDto.ByUser = User.Identity.Name;
+      _service.Update(entityDto);
 
-      return View(viewModel);
-    }
-
-    protected override void Dispose(bool disposing)
-    {
-      if (disposing)
-      {
-        db.Dispose();
-      }
-      base.Dispose(disposing);
+      return RedirectToAction("Index");
     }
   }
 }

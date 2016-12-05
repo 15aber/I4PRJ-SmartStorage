@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using I4PRJ_SmartStorage.Controllers;
+using I4PRJ_SmartStorage.UI.Controllers;
 using NUnit.Framework;
 
 namespace I4PRJ_SmartStorage.UnitTests.Controllers

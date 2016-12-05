@@ -1,12 +1,8 @@
-﻿using System.Data.Entity;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Web.Mvc;
-using I4PRJ_SmartStorage.Models;
-using I4PRJ_SmartStorage.Models.Domain;
-using I4PRJ_SmartStorage.ViewModels;
+using I4PRJ_SmartStorage.UI.Identity;
 
-namespace I4PRJ_SmartStorage.Controllers
+namespace I4PRJ_SmartStorage.UI.Controllers
 {
   public class StocksController : Controller
   {
