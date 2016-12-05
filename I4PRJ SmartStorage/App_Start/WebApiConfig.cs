@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace I4PRJ_SmartStorage.UI
+namespace I4PRJ_SmartStorage
 {
   public static class WebApiConfig
   {

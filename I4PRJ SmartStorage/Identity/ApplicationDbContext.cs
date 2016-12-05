@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace I4PRJ_SmartStorage.UI.Identity
+// TODO Integeres med ???
+
+namespace I4PRJ_SmartStorage.Identity
 {
   public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
   {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Threading.Tasks;
-using I4PRJ_SmartStorage.UI.Identity;
+using I4PRJ_SmartStorage.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -9,7 +9,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Facebook;
 using Owin;
 
-namespace I4PRJ_SmartStorage.UI
+namespace I4PRJ_SmartStorage
 {
     public partial class Startup
     {

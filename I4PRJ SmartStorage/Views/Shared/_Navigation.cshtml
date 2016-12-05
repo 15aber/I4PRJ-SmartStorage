@@ -1,4 +1,5 @@
 ﻿@using System.Activities.Statements
+@using I4PRJ_SmartStorage.BLL.Dtos
 @using I4PRJ_SmartStorage.Helpers
 @using I4PRJ_SmartStorage.Models.Domain
 @using Microsoft.AspNet.Identity
@@ -24,22 +25,22 @@
           </a>
         </li>
 
-        <li class="@Html.IsSelected(controller: "Status")">
+        @*<li class="@Html.IsSelected(controller: "Status")">
           <a href="@Url.Action("Index", "Status")">
             <i class="fa fa-file-text-o"></i> <span class="nav-label">Status</span>
           </a>
-        </li>
+        </li>*@
 
-              <li class="@Html.IsSelected(controller: "Stocks")">
+              @*<li class="@Html.IsSelected(controller: "Stocks")">
                 <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Stocks</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Stocks", cssClass: "in")">
                   @{
-                    IEnumerable<Inventory> inventories = HMTLHelperExtensions.GetInventories();
+                    List<InventoryDto> inventories = HMTLHelperExtensions.GetInventories();
 
                     foreach (var item in inventories)
                     {
                       <li class="@(Convert.ToInt32(Url.RequestContext.RouteData.Values["id"]) == item.InventoryId && Url.RequestContext.RouteData.Values["controller"].ToString() == "Stocks" ? "active" : "")">
-                        <a href="@Url.Action("Inventories", "Stocks", new {id = item.InventoryId})">@item.Name</a>
+                        <a href="@Url.Action("Index", "Stocks", new {id = item.InventoryId})">@item.Name</a>
                       </li>
                     }
                   }
@@ -50,7 +51,7 @@
                 <a href="#"><i class="fa fa-barcode"></i> <span class="nav-label">Products</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Products", cssClass: "in")">
                   @{
-                    IEnumerable<Category> categories = HMTLHelperExtensions.GetCategories();
+                    List<CategoryDto> categories = HMTLHelperExtensions.GetCategories();
 
                     if (categories.Any())
                     {
@@ -69,7 +70,7 @@
                     }
                   }
                 </ul>
-              </li>
+              </li>*@
 
               <li class="@Html.IsSelected(controller: "Categories")">
                 <a href="@Url.Action("Index", "Categories")">

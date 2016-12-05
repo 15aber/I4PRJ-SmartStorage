@@ -63,6 +63,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\CategoryDto.cs" />
+    <Compile Include="Interfaces\Dtos\IProductDto.cs" />
+    <Compile Include="Interfaces\Dtos\IStatusDto.cs" />
+    <Compile Include="Interfaces\Dtos\IStockDto.cs" />
+    <Compile Include="Interfaces\Dtos\ITransactionDto.cs" />
+    <Compile Include="Dtos\ProductDto.cs" />
+    <Compile Include="Dtos\StatusDto.cs" />
+    <Compile Include="Dtos\StockDto.cs" />
+    <Compile Include="Dtos\TransactionDto.cs" />
     <Compile Include="Interfaces\Dtos\ISupplierDto.cs" />
     <Compile Include="Interfaces\Dtos\IInventoryDto.cs" />
     <Compile Include="Dtos\SupplierDto.cs" />
@@ -70,9 +78,17 @@
     <Compile Include="Interfaces\Dtos\IWholesalerDto.cs" />
     <Compile Include="Dtos\WholesalerDto.cs" />
     <Compile Include="Interfaces\Dtos\ICategoryDto.cs" />
+    <Compile Include="Interfaces\Services\ITransactionService.cs" />
+    <Compile Include="Interfaces\Services\IStockService.cs" />
+    <Compile Include="Interfaces\Services\IStatusService.cs" />
+    <Compile Include="Interfaces\Services\IProductService.cs" />
     <Compile Include="Interfaces\Services\IInventoryService.cs" />
     <Compile Include="Interfaces\Services\ISupplierService.cs" />
     <Compile Include="Interfaces\Services\IWholesalerService.cs" />
+    <Compile Include="Services\TransactionService.cs" />
+    <Compile Include="Services\StockService.cs" />
+    <Compile Include="Services\StatusService.cs" />
+    <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Services\InventoryService.cs" />
     <Compile Include="Services\WholesalerService.cs" />

@@ -2,9 +2,9 @@
 using System.Web.Mvc;
 using I4PRJ_SmartStorage.BLL.Dtos;
 using I4PRJ_SmartStorage.BLL.Interfaces.Services;
-using I4PRJ_SmartStorage.UI.Identity;
+using I4PRJ_SmartStorage.Identity;
 
-namespace I4PRJ_SmartStorage.UI.Controllers
+namespace I4PRJ_SmartStorage.Controllers
 {
   public class InventoriesController : Controller
   {

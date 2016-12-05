@@ -11,11 +11,6 @@ namespace I4PRJ_SmartStorage.BLL.Services
       throw new NotImplementedException();
     }
 
-    public void Delete(int id)
-    {
-      throw new NotImplementedException();
-    }
-
     public void Update(T entity)
     {
       throw new NotImplementedException();
@@ -27,11 +22,6 @@ namespace I4PRJ_SmartStorage.BLL.Services
     }
 
     public IList<T> GetAll()
-    {
-      throw new NotImplementedException();
-    }
-
-    public IList<T> GetAllActive()
     {
       throw new NotImplementedException();
     }

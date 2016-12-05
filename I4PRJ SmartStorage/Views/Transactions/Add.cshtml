@@ -1,7 +1,7 @@
 ﻿@model I4PRJ_SmartStorage.ViewModels.TransactionViewModel
 
 @{
-  ViewBag.Title = "Transaction";
+  ViewBag.Title = "Add Transaction";
 }
 
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -9,44 +9,39 @@
     <div class="col-lg-6 col-lg-offset-3">
       <div class="ibox">
         <div class="ibox-title">
-          <h5>Restock Inventory</h5>
+          <h5>@ViewBag.Title</h5>
         </div>
         <div class="ibox-content">
-
-          @using (Html.BeginForm("SaveRestock", "Transactions"))
+          @using (Html.BeginForm("Save", "Transactions"))
           {
             @Html.AntiForgeryToken()
-
+            @Html.ValidationSummary(true)
             <div class="form-horizontal">
-              @Html.ValidationSummary(true)
-
               <div class="form-group">
                 @Html.LabelFor(model => model.ToInventoryId, new { @class = "control-label col-md-2" })
-                <div class="col-md-4">
+                <div class="col-md-10">
                   @Html.DropDownListFor(model => model.ToInventoryId, new SelectList(Model.ToInventory, "InventoryId", "Name"), "", new { @class = "form-control" })
                   @Html.ValidationMessageFor(model => model.ToInventoryId)
                 </div>
               </div>
-
               <div class="form-group">
-                @Html.LabelFor(model => model.ProductId, new { @class = "control-label col-md-2" })
-                <div class="col-md-4">
-                  @Html.DropDownListFor(model => model.ProductId, new SelectList(Model.Products, "ProductId", "Name"), "", new { @class = "form-control" })
+                @Html.LabelFor(model => model.ProductId, new {@class = "control-label col-md-2"})
+                <div class="col-md-10">
+                  @Html.DropDownListFor(model => model.ProductId, new SelectList(Model.ToInventory, "InventoryId", "Name"), "", new {@class = "form-control"})
                   @Html.ValidationMessageFor(model => model.ProductId)
                 </div>
               </div>
-
               <div class="form-group">
-                @Html.LabelFor(model => model.Quantity, new { @class = "control-label col-md-2" })
-                <div class="col-md-4">
-                  @Html.TextBoxFor(model => model.Quantity, new { @class = "form-control", type = "number", step = "0.25", min = "0", value = "" })
+                @Html.LabelFor(model => model.Quantity, new {@class = "control-label col-md-2"})
+                <div class="col-md-10">
+                  @Html.TextBoxFor(model => model.Quantity, new {@class = "form-control", type = "number", step = "0.25", min = "0", value = ""})
                   @Html.ValidationMessageFor(model => model.Quantity)
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                  <input type="submit" value="Save" class="btn btn-primary" />
-                  <a href="#" class="btn btn-danger btn-outline" onclick="history.go(-1); return false;">Cancel</a>
+                  <input type="submit" value="Save" class="btn btn-primary"/>
+                  <a href="#" class="btn btn-danger btn-outline" onclick="history.go(-1);return false;">Cancel</a>
                 </div>
               </div>
             </div>

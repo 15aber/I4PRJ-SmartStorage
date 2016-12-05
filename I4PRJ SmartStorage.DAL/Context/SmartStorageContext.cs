@@ -1,12 +1,12 @@
-using System.Data.Entity;
 using I4PRJ_SmartStorage.DAL.Models;
+using System.Data.Entity;
 
 namespace I4PRJ_SmartStorage.DAL.Context
 {
   public class SmartStorageContext : DbContext
   {
     public SmartStorageContext()
-        : base("name=SmartStorageConnection")
+        : base("name=DefaultConnection")
     {
       //this.Configuration.LazyLoadingEnabled = false;
     }

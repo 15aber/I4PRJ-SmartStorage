@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using I4PRJ_SmartStorage.BLL.Dtos;
-using I4PRJ_SmartStorage.BLL.Interfaces.Dtos;
-using I4PRJ_SmartStorage.DAL.Interfaces.Models;
 using I4PRJ_SmartStorage.DAL.Models;
 
 namespace I4PRJ_SmartStorage.BLL.Mapping
@@ -11,15 +9,21 @@ namespace I4PRJ_SmartStorage.BLL.Mapping
     public MappingProfile()
     {
       // Model to Dto
-      CreateMap<ICategoryModel, ICategoryDto>();
+      CreateMap<CategoryModel, CategoryDto>();
       CreateMap<InventoryModel, InventoryDto>();
+      CreateMap<ProductModel, ProductDto>();
+      CreateMap<StatusModel, StatusDto>();
       CreateMap<SupplierModel, SupplierDto>();
+      CreateMap<TransactionModel, TransactionDto>();
       CreateMap<WholesalerModel, WholesalerDto>();
 
       // Dto to Model
-      CreateMap<ICategoryDto, ICategoryModel>();
+      CreateMap<CategoryDto, CategoryModel>();
       CreateMap<InventoryDto, InventoryModel>();
+      CreateMap<ProductDto, ProductModel>();
+      CreateMap<StatusDto, StatusModel>();
       CreateMap<SupplierDto, SupplierModel>();
+      CreateMap<TransactionDto, TransactionModel>();
       CreateMap<WholesalerDto, WholesalerModel>();
     }
   }

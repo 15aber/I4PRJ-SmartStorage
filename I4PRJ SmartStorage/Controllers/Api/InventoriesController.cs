@@ -1,7 +1,7 @@
 ﻿using System.Web.Http;
 using I4PRJ_SmartStorage.BLL.Interfaces.Services;
 
-namespace I4PRJ_SmartStorage.UI.Controllers.Api
+namespace I4PRJ_SmartStorage.Controllers.Api
 {
   public class InventoriesController : ApiController
   {

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using I4PRJ_SmartStorage.DAL.Interfaces.Models;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using I4PRJ_SmartStorage.DAL.Interfaces.Models;
 
 namespace I4PRJ_SmartStorage.DAL.Models
 {

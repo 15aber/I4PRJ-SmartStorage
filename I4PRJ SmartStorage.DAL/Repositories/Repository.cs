@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace I4PRJ_SmartStorage.DAL.Repositories
 {
@@ -27,9 +28,24 @@ namespace I4PRJ_SmartStorage.DAL.Repositories
       return _dbSet.ToList();
     }
 
-    public List<T> GetAll(System.Linq.Expressions.Expression<Func<T, bool>> whereCondition)
+    public List<T> GetAll(Expression<Func<T, bool>> predicate)
     {
-      return _dbSet.Where(whereCondition).ToList();
+      return _dbSet.Where(predicate).ToList();
+    }
+
+    public List<T> GetAll(Expression<Func<T, bool>> predicate1, Expression<Func<T, bool>> predicate2)
+    {
+      return _dbSet.Where(predicate1).Where(predicate2).ToList();
+    }
+
+    public T GetSingle(Expression<Func<T, bool>> predicate)
+    {
+      return _dbSet.Where(predicate).SingleOrDefault<T>();
+    }
+
+    public T GetSingle(Expression<Func<T, bool>> predicate1, Expression<Func<T, bool>> predicate2)
+    {
+      return _dbSet.Where(predicate1).Where(predicate2).SingleOrDefault<T>();
     }
 
     public void Add(T entity)
@@ -50,6 +66,11 @@ namespace I4PRJ_SmartStorage.DAL.Repositories
     {
       _dbSet.Attach(entity);
       Context.Entry(entity).State = EntityState.Modified;
+    }
+
+    public IQueryable<T> GetQueryable()
+    {
+      return _dbSet.AsQueryable();
     }
 
   }

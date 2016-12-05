@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Web.Mvc;
 
-namespace I4PRJ_SmartStorage.UI
+namespace I4PRJ_SmartStorage
 {
     public class FilterConfig
     {

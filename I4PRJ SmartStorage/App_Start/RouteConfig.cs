@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace I4PRJ_SmartStorage.UI
+namespace I4PRJ_SmartStorage
 {
     public class RouteConfig
     {

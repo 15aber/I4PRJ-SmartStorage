@@ -1,126 +1,84 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Net;
 using System.Web.Mvc;
-using System.Web.Routing;
-using I4PRJ_SmartStorage.UI.Identity;
+using I4PRJ_SmartStorage.BLL.Dtos;
+using I4PRJ_SmartStorage.BLL.Interfaces.Services;
+using I4PRJ_SmartStorage.Identity;
+using I4PRJ_SmartStorage.ViewModels;
 
-namespace I4PRJ_SmartStorage.UI.Controllers
+namespace I4PRJ_SmartStorage.Controllers
 {
-    public class ProductsController : Controller
+  public class ProductsController : Controller
+  {
+    private readonly IProductService _productService;
+    private readonly ICategoryService _categoryService;
+    private readonly ISupplierService _supplierService;
+    private readonly IWholesalerService _wholesalerService;
+
+    public ProductsController(IProductService productService, ICategoryService categoryService, ISupplierService supplierService, IWholesalerService wholesalerService)
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: /Products/
-        public ActionResult Index(int? id)
-        {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            if (User.IsInRole(UserRolesName.Admin))
-                return View("Index");
-            return View("ReadOnlyIndex");
-        }
-
-        // GET: /Products/Create
-        [Authorize(Roles = UserRolesName.Admin)]
-        public ActionResult Create()
-        {
-            var viewModel = new ProductViewModel
-            {
-                Product = new Product(),
-                Categories = db.Categories.Where(c => c.IsDeleted != true).ToList(),
-                Suppliers = db.Suppliers.Where(s => s.IsDeleted != true).ToList(),
-                Wholesalers = db.Wholesalers.Where(w => w.IsDeleted != true).ToList()
-            };
-
-            return View("Create", viewModel);
-        }
-
-        // POST: /Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = UserRolesName.Admin)]
-        public ActionResult Create([Bind(Include = "ProductId, Name, PurchasePrice, CategoryId, SupplierId, WholesalerId, LastUpdated, ByUser")] Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                product.Updated = DateTime.Now;
-                product.ByUser = User.Identity.Name;
-
-                db.Products.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index", new RouteValueDictionary(
-                new { controller = "Products", action = "Index", Id = product.CategoryId }));
-            }
-
-            ViewBag.CategoryId = new SelectList(db.Categories.Where(c => c.IsDeleted != true), "CategoryId", "Name", product.CategoryId);
-            ViewBag.SupplierId = new SelectList(db.Suppliers.Where(c => c.IsDeleted != true), "SupplierId", "Name", product.SupplierId);
-            ViewBag.WholesalerId = new SelectList(db.Wholesalers.Where(c => c.IsDeleted != true), "WholesalerId", "Name", product.WholesalerId);
-
-            return View(product);
-        }
-
-        // GET: /Products/Edit/5
-        [Authorize(Roles = UserRolesName.Admin)]
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var viewModel = new ProductViewModel
-            {
-                Product = db.Products.Find(id)
-            };
-
-            if (viewModel.Product == null)
-            {
-                return HttpNotFound();
-            };
-
-            ViewBag.CategoryId = new SelectList(db.Categories.Where(c => c.IsDeleted != true), "CategoryId", "Name", viewModel.Product.CategoryId);
-            ViewBag.SupplierId = new SelectList(db.Suppliers.Where(c => c.IsDeleted != true), "SupplierId", "Name", viewModel.Product.SupplierId);
-            ViewBag.WholesalerId = new SelectList(db.Wholesalers.Where(c => c.IsDeleted != true), "WholesalerId", "Name", viewModel.Product.WholesalerId);
-
-            return View(viewModel);
-        }
-
-        // POST: /Products/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = UserRolesName.Admin)]
-        public ActionResult Edit(ProductViewModel viewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                viewModel.Product.Updated = DateTime.Now;
-                viewModel.Product.ByUser = User.Identity.Name;
-
-                db.Entry(viewModel.Product).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index", new RouteValueDictionary(
-                new { controller = "Products", action = "Index", Id = viewModel.Product.CategoryId }));
-            }
-
-            ViewBag.CategoryId = new SelectList(db.Categories.Where(c => c.IsDeleted != true), "CategoryId", "Name", viewModel.Product.CategoryId);
-            ViewBag.SupplierId = new SelectList(db.Suppliers.Where(c => c.IsDeleted != true), "SupplierId", "Name", viewModel.Product.SupplierId);
-            ViewBag.WholesalerId = new SelectList(db.Wholesalers.Where(c => c.IsDeleted != true), "WholesalerId", "Name", viewModel.Product.WholesalerId);
-
-            return View(viewModel);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+      _productService = productService;
+      _categoryService = categoryService;
+      _supplierService = supplierService;
+      _wholesalerService = wholesalerService;
     }
+
+    public ActionResult Index(int? id)
+    {
+      if (id == null)
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+      return View(User.IsInRole(UserRolesName.Admin) ? "Index" : "ReadOnlyIndex");
+    }
+
+    [Authorize(Roles = UserRolesName.Admin)]
+    public ActionResult Create()
+    {
+      var viewModel = new ProductViewModel
+      {
+        Product = new ProductDto(),
+        Categories = _categoryService.GetAllActive(),
+        Suppliers = _supplierService.GetAllActive(),
+        Wholesalers = _wholesalerService.GetAllActive()
+      };
+      return View("Create", viewModel);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Roles = UserRolesName.Admin)]
+    public ActionResult Create(ProductDto entityDto)
+    {
+      if (!ModelState.IsValid) return View(entityDto);
+
+      entityDto.Updated = DateTime.Now;
+      entityDto.ByUser = User.Identity.Name;
+      _productService.Add(entityDto);
+
+      return RedirectToAction("Index");
+    }
+
+    [Authorize(Roles = UserRolesName.Admin)]
+    public ActionResult Edit(int id)
+    {
+      var entityDto = _productService.GetSingle(id);
+
+      if (entityDto == null) return HttpNotFound();
+
+      return View(entityDto);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize(Roles = UserRolesName.Admin)]
+    public ActionResult Edit(ProductDto entityDto)
+    {
+      if (!ModelState.IsValid) return View(entityDto);
+
+      entityDto.Updated = DateTime.Now;
+      entityDto.ByUser = User.Identity.Name;
+      _productService.Update(entityDto);
+
+      return RedirectToAction("Index");
+    }
+  }
 }

@@ -26,7 +26,7 @@
 
 $(document).ready(function () {
     
-    $("#transactions-table")
+    $("#transactions")
         .dataTable({
             "order": [[4, "desc"]],
             ajax: {
@@ -70,7 +70,7 @@ $(document).ready(function () {
             ]
         });
 
-    var table = $('#transactions-table').DataTable();
+    var table = $('#transactions').DataTable();
 
     
     $('#fromdate').datepicker({
