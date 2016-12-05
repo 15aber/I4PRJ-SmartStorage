@@ -6,7 +6,7 @@ namespace I4PRJ_SmartStorage.Controllers
   {
     public ActionResult Index()
     {
-      return View();
+      return RedirectToAction("Index", "Transactions");
     }
   }
 }

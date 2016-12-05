@@ -24,11 +24,9 @@
                             <th>
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Firstname)
+                                @Html.DisplayNameFor(model => model.FullName)
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Lastname)
-                            </th>
+
                             <th>
                                 @Html.DisplayNameFor(model => model.PhoneNumber)
                             </th>
@@ -48,10 +46,7 @@
                                     <img src="@Html.DisplayFor(modelItem => item.ProfilePicture)" class="img-rounded" width="40" height="40"/>
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Firstname)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Lastname)
+                                    @Html.DisplayFor(modelItem => item.FullName)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.PhoneNumber)

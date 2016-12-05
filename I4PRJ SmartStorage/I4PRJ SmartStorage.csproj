@@ -228,9 +228,9 @@
     <Compile Include="Migrations\201612021739511_InitDb.Designer.cs">
       <DependentUpon>201612021739511_InitDb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612031109301_SeedUsers.cs" />
-    <Compile Include="Migrations\201612031109301_SeedUsers.Designer.cs">
-      <DependentUpon>201612031109301_SeedUsers.cs</DependentUpon>
+    <Compile Include="Migrations\201612041816272_UserTableUpdate.cs" />
+    <Compile Include="Migrations\201612041816272_UserTableUpdate.Designer.cs">
+      <DependentUpon>201612041816272_UserTableUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -256,6 +256,7 @@
     <Compile Include="ViewModels\TransactionViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="ViewModels\WholesalerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -322,6 +323,7 @@
     <Content Include="Content\DataTables\pdfmake-0.1.18\build\pdfmake.js" />
     <Content Include="Content\DataTables\pdfmake-0.1.18\build\pdfmake.min.js" />
     <Content Include="Content\DataTables\pdfmake-0.1.18\build\vfs_fonts.js" />
+    <Content Include="Content\daterangepicker\daterangepicker.css" />
     <Content Include="Content\email.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -388,7 +390,7 @@
     <Content Include="Content\toastr\toastr.css" />
     <Content Include="Content\toastr\toastr.min.css" />
     <Content Include="Content\wizardSteps\jquery.steps.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="favicon.png" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -487,23 +489,15 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumberX.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
@@ -521,7 +515,6 @@
     <Content Include="Views\Stocks\Index.cshtml" />
     <Content Include="Views\Transactions\TransactionForm.cshtml" />
     <Content Include="Views\Transactions\Index.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Transactions\RestockForm.cshtml" />
     <Content Include="Views\Status\Create.cshtml" />
@@ -551,6 +544,8 @@
     <Content Include="Views\Suppliers\ReadOnlyIndex.cshtml" />
     <Content Include="Views\Users\ReadOnlyIndex.cshtml" />
     <Content Include="Views\Suppliers\SupplierForm.cshtml" />
+    <Content Include="Views\Account\ActivateAccount.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -567,8 +562,8 @@
     <EmbeddedResource Include="Migrations\201612021739511_InitDb.resx">
       <DependentUpon>201612021739511_InitDb.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612031109301_SeedUsers.resx">
-      <DependentUpon>201612031109301_SeedUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612041816272_UserTableUpdate.resx">
+      <DependentUpon>201612041816272_UserTableUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

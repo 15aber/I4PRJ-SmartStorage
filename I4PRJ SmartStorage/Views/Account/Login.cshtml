@@ -1,75 +1,51 @@
 ﻿@using I4PRJ_SmartStorage.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "Log in";
-    Layout = "~/Views/Shared/_LayoutFull.cshtml";
+  ViewBag.Title = "Log in";
+  Layout = "~/Views/Shared/_LayoutFull.cshtml";
 }
-<div class="wrapper wrapper-content">
-    <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
-         
-                    <div class="middle-box text-center loginscreen  animated fadeInDown">
-                        <div>
-                            <h4>Welcome to SmartStorage</h4>
-                            <section id="loginForm">
-                                @using (Html.BeginForm("Login", "Account", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
-                                {
-                                    @Html.AntiForgeryToken()
 
-                                    <hr/>
-                                    @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-                                    <div class="form-group">
-                                        @Html.LabelFor(m => m.Email, new {@class = "col-md-3 control-label"})
-                                        <div class="col-md-9">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                                                @Html.TextBoxFor(m => m.Email, new {@class = "form-control"})
-                                                @Html.ValidationMessageFor(m => m.Email, "", new {@class = "text-danger"})
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(m => m.Password, new {@class = "col-md-3 control-label"})
-                                        <div class="col-md-9">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
-                                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-8">
-                                            <div class="checkbox">
-                                                @Html.CheckBoxFor(m => m.RememberMe)
-                                                @Html.LabelFor(m => m.RememberMe)
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-8">
-                                            <input type="submit" value="Log in" class="btn btn-primary"/>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        @Html.ActionLink("Register as a new user", "Register")
-                                    </p>
-                                    <p>
-                                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                                    </p>
-                                }
-                            </section>
-                            <hr/>
-                            <section id="socialLoginForm">
-                                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel {ReturnUrl = ViewBag.ReturnUrl})
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+  <div>
+    <h3>Welcome to SmartStorage</h3>
+    <hr/>
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "m-t", role = "form" }))
+    {
+      @Html.AntiForgeryToken()
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+          @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+          @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-8">
+          <div class="checkbox">
+            @Html.CheckBoxFor(m => m.RememberMe)
+            @Html.LabelFor(m => m.RememberMe)
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+    }
+    <div class="form-group">
+      <a href="@Url.Action("ForgotPassword", "Account")"><small>Forgot your password?</small></a>
+    </div>
+    <hr/>
+    <div class="form-group">
+      <a class="btn btn-block btn-success btn-facebook btn-outline" href="@Url.Action("Facebook","Account")">
+        <i class="fa fa-facebook"> </i> Sign in with Facebook
+      </a>
+    </div>
+  </div>
+</div>
 
-
-            @section Scripts {
-                @Scripts.Render("~/bundles/validate")
-            }
+@section Scripts {
+  @Scripts.Render("~/bundles/validate")
+}

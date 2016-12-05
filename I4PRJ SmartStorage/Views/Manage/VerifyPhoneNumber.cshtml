@@ -1,98 +1,44 @@
 ﻿@model I4PRJ_SmartStorage.Models.VerifyPhoneNumberViewModel
 @{
   ViewBag.Title = "Verify Phone Number";
-  Layout = "~/Views/Shared/_Layout.cshtml";
+  Layout = "~/Views/Shared/_LayoutFull.cshtml";
 }
 
 <div class="wrapper wrapper-content animated fadeInRight">
   <div class="row">
-    <div class="col-lg-6 col-lg-offset-3">
-      <div class="ibox">
+      <div class="ibox middle-box">
         <div class="ibox-title">
-          <h5>Verify Phone Number</h5>
+          <h5>@ViewBag.Title</h5>
         </div>
         <div class="ibox-content">
-
-          @using(Html.BeginForm("VerifyPhoneNumber", "Manage", FormMethod.Post, new { @class = "wizard-big", role = "form", id = "form", action = "#" }))
+          @using (Html.BeginForm("VerifyPhoneNumber", "Manage"))
           {
             @Html.AntiForgeryToken()
-            @Html.ValidationSummary("", new { @class = "text-danger" })
             @Html.Hidden("phoneNumber", @Model.PhoneNumber)
 
-            <h3>Account</h3>
-            <fieldset></fieldset>
-            <h3>Profile</h3>
-            <fieldset></fieldset>
-            <h3>Contact</h3>
-            <fieldset></fieldset>
-            <h3>Verify</h3>
-              <fieldset>
-                <h2>Verify Information</h2>
-                <div class="row">
-                  <div class="col-lg-9">
-                    <div class="form-group">
-                      @Html.LabelFor(m => m.Code, new { @class = "control-label" })
-                      @Html.TextBoxFor(m => m.Code, new { @class = "form-control" })
-                    </div>
-                  </div>
-                  <div class="col-lg-3">
-                    <div class="text-center">
-                      <div style="margin-top: 20px">
-                        <i class="fa fa-mobile" style="font-size: 180px; color: #e5e5e5"></i>
-                      </div>
-                    </div>
+            <div class="form-horizontal">
+              @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+              <div class="form-group">
+                @Html.LabelFor(model => model.Code, new {@class = "control-label col-md-3"})
+                <div class="col-md-9">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                    @Html.TextBoxFor(model => model.Code, new {@class = "form-control"})
                   </div>
                 </div>
-              </fieldset>
+              </div>
+              <div class="form-group">
+                <div class="col-md-offset-3 col-md-9">
+                  <input type="submit" value="Verify phone" class="btn btn-primary"/>
+                </div>
+              </div>
+            </div>
           }
         </div>
       </div>
     </div>
-  </div>
 </div>
-
 
 @section Scripts {
   @Scripts.Render("~/bundles/validate")
-
-
-  <script type="text/javascript">
-    $("#form")
-      .steps({
-        headerTag: "h3",
-        bodyTag: "fieldset",
-        autoFocus: true,
-        labels: {
-          finish: "Register"
-        },
-        startIndex: 3,
-        forceMoveForward: true,
-        onStepChanging: function (event, currentIndex, newIndex) {
-          if (currentIndex > newIndex) {
-            return true;
-          }
-
-          var form = $(this);
-
-          if (currentIndex < newIndex) {
-            $(".body:eq(" + newIndex + ") label.error", form).remove();
-            $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
-          }
-
-          return form.valid();
-
-        },
-        onFinishing: function (event, currentIndex) {
-          var form = $(this);
-
-          return form.valid();
-        },
-        onFinished: function (event, currentIndex) {
-          var form = $(this);
-
-          form.submit();
-        }
-      });
-
-  </script>
 }

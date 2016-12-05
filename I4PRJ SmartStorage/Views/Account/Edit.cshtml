@@ -1,7 +1,7 @@
 ﻿@model I4PRJ_SmartStorage.Models.RegisterViewModel
 
 @{
-  ViewBag.Title = "Edit User";
+  ViewBag.Title = "Edit Account";
 }
 
 
@@ -10,7 +10,7 @@
     <div class="col-lg-6 col-lg-offset-3">
       <div class="ibox">
         <div class="ibox-title">
-          <h5>Edit User</h5>
+          <h5>Edit Account</h5>
         </div>
         <div class="ibox-content">
 
@@ -43,17 +43,9 @@
                   @Html.ValidationMessageFor(model => model.Email)
                 </div>
               </div>
-                <div class="form-group">
-                  @Html.LabelFor(model => model.IsAdmin, new { @class = "control-label col-md-2" })
-                  <div class="col-md-10">
-                    @Html.EditorFor(model => model.IsAdmin)
-                    @Html.ValidationMessageFor(model => model.IsAdmin)
-                  </div>
-                </div>
               <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                   <input type="submit" value="Edit" class="btn btn-primary" />
-                  @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-warning" })
                 </div>
               </div>
             </div>

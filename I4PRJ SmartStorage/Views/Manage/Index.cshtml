@@ -1,70 +1,44 @@
 ﻿@using Microsoft.AspNet.Identity
 @model I4PRJ_SmartStorage.Models.IndexViewModel
 @{
-    ViewBag.Title = "Manage";
+  ViewBag.Title = "Manage profile";
 }
 
 <div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>
-                        @ViewBag.Title<small>@ViewBag.StatusMessage</small>
-                    </h5>
-                </div>
-                <div class="ibox-content">
-                    <div class="row">
-                        <div class="col-lg-5 col-lg-offset-4">
-                            <img alt="image" class="img-circle" width="100" src="@Html.Action("GetProfilePicture", "Account", new {userId = User.Identity.GetUserId()})" />
-
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <label>Password:</label>
-                        </div>
-                        <div class="col-lg-8">
-                            @if (Model.HasPassword)
-                            {
-                                @Html.ActionLink("Change your password", "ChangePassword")
-                            }
-                            else
-                            {
-                                @Html.ActionLink("Create", "SetPassword")
-                            }
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <label>Phone Number:</label>
-                        </div>
-                        <div class="col-lg-8">
-                            @(Model.PhoneNumber ?? "None")
-                            @if (Model.PhoneNumber != null)
-                            {
-                                <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
-                            }
-                            else
-                            {
-                                <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")&nbsp;&nbsp;]</text>
-                            }
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-5 col-lg-offset-4">
-                            @using (Html.BeginForm("LinkLogin", "Manage"))
-                            {
-                                @Html.AntiForgeryToken()
-
-                                <button type="submit" class="btn btn-block btn-social btn-facebook" id="facebook" name="provider" value="facebook">
-                                    <span class="fa fa-facebook"></span> Sign in with facebook
-                                </button>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+      <div class="ibox">
+        <div class="ibox-title">
+          <h5>@ViewBag.Title</h5>
         </div>
+        <div class="ibox-content">
+          <div class="row">
+                  <div class="col-sm-4">
+                    <div class="text-center">
+                      <img alt="image" class="img-circle m-t-xs img-responsive" src="@Html.Action("GetProfilePicture", "Account", new {userId = User.Identity.Name})">
+                      <div class="m-t-xs font-bold"></div>
+                    </div>
+                  </div>
+                  <div class="col-sm-8">
+                    <h3><strong>@Html.Action("GetFullName", "Account", new { userId = User.Identity.Name })</strong></h3>
+                    <p><i class="fa fa-phone"></i> @Model.PhoneNumber</p>
+                    <p><i class="fa fa-envelope"></i> @Model.Email</p>
+                    <a class="btn btn-block btn-info btn-outline" href="@Url.Action("ChangePassword","Manage")">
+                      <i class="fa fa-key"> </i> Change Password
+                    </a>
+                    <br/>
+                    <a class="btn btn-block btn-primary btn-outline" href="@Url.Action("Edit","Account")">
+                      <i class="fa fa-paste"> </i> Update info
+                    </a>
+                    <br />
+                    <a class="btn btn-block btn-success btn-facebook btn-outline" href="@Url.Action("Facebook","Account")">
+                      <i class="fa fa-facebook"> </i> Update with Facebook
+                    </a>
+                  </div>
+                  <div class="clearfix"></div>
+              </div>
+          </div>
+      </div>
     </div>
+  </div>
 </div>
