@@ -5,18 +5,27 @@
     {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-top-links navbar-right">
-            <li>
-                <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i>Log off</a>
-            </li>
-        </ul>
+      <ul class="nav navbar-top-links navbar-right">
+        <li>
+          <span class="m-r-sm text-muted welcome-message">Hey @Html.Action("GetFirstName", "Account", new { userId = User.Identity.Name })</span>
+        </li>
+        <li>
+          <img alt="image" class="img-circle" width="30" src="@Html.Action("GetProfilePicture", "Account", new {userId = User.Identity.Name})"/>
+        </li>
+        <li>
+          <a href="@Url.Action("Index", "Manage")"><i class="fa fa-cog"></i> Manage</a>
+        </li>
+        <li>
+          <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out"></i>Log off</a>
+        </li>
+      </ul>
     }
-}
+} 
 else
 {
-    <ul class="nav navbar-top-links navbar-right">
-        <li>
-            <a href="@Url.Action("Login", "Account")" id="loginLink"><i class="fa fa-sign-in"></i>Log in</a>
-        </li>
-    </ul>
+  <ul class="nav navbar-top-links navbar-right">
+    <li>
+      <a href="@Url.Action("Login", "Account")" id="loginLink"><i class="fa fa-sign-in"></i>Log in</a>
+    </li>
+  </ul>
 }
