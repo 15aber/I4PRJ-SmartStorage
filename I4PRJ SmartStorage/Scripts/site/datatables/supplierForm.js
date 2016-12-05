@@ -77,22 +77,27 @@ $(document)
         
 
         $('#fromdate').datepicker({
-        dataFormat: "dd-mm-yy",
-        defaultDate: '-1m',
-        changeMonth: true,
-        changeYear: true,
-        onSelect: function(selectedDate) {
-            $("#todate").datepicker("option", "minDate", selectedDate);
-        }
-    });
-    $('#todate').datepicker({
-        dataFormat: "dd-mm-yy",
-        maxDate: 0, changeMonth: true,
-        changeYear: true,
-        onSelect: function (selectedDate) {
-            $("#fromdate").datepicker("option", "maxDate", selectedDate);
-        }
-    });
+            dataFormat: "dd-mm-yy",
+            defaultDate: '-1m+1d',
+            changeMonth: true,
+            changeYear: true,
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            onSelect: function (selectedDate) {
+                $("#todate").datepicker("option", "minDate", selectedDate);
+            }
+        });
+        $('#todate').datepicker({
+            dataFormat: "dd-mm-yy",
+            maxDate: +1,
+            changeMonth: true,
+            changeYear: true,
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            onSelect: function (selectedDate) {
+                $("#fromdate").datepicker("option", "maxDate", selectedDate);
+            }
+        });
 
     $('#fromIcon').click(function() { $('#fromdate').datepicker('show'); });
  

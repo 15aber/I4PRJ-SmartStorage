@@ -25,7 +25,7 @@
                       <div class="col-lg-2 pull-right">
                           <div class="input-group">
                               <label class="input-group-addon" for="todate">to:</label>
-                              <input class="form-control" id="todate" name="todate" type="text" size="8" value="@DateTime.Today" />
+                              <input class="form-control" id="todate" name="todate" type="text" size="8" value="@DateTime.Today.AddDays(1)" />
                               <span class="input-group-addon" id="toIcon"> <i class="fa fa-calendar" aria-hidden="true"></i></span>
                           </div>
                       </div>
@@ -33,7 +33,7 @@
                       <div class="col-lg-2 pull-right">
                           <div class="input-group" id="froms">
                               <label class="input-group-addon" for="fromdate">from:</label>
-                              <input class="form-control" id="fromdate" name="fromdate" type="text" size="8" value="@DateTime.Today.AddMonths(-1)" />
+                              <input class="form-control" id="fromdate" name="fromdate" type="text" size="8" value="@DateTime.Today.AddMonths(-1).AddDays(1)" />
                               <span class="input-group-addon" id="fromIcon"> <i class="fa fa-calendar" aria-hidden="true"></i></span>
 
                           </div>
