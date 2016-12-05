@@ -263,12 +263,13 @@ namespace I4PRJ_SmartStorage.Controllers
           db.SaveChanges();
           await UserManager.AddLoginAsync(user.Id, logInInfo.Login);
           await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+          if (userInDb.PhoneNumberConfirmed == false)
+          {
+            return RedirectToAction("VerifyPhoneNumber", "Manage", new { PhoneNumber = userInDb.PhoneNumber });
+          }
         }
 
       }
-
-
-
       return RedirectToAction("Index", "Manage");
     }
 
