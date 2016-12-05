@@ -20,14 +20,14 @@ namespace I4PRJ_SmartStorage.Controllers
         // GET: /Suppliers/
         public ActionResult Index()
         {
-            if (User.IsInRole(RoleName.Admin))
+            if (User.IsInRole(UserRolesName.Admin))
                 return View("Index");
 
             return View("ReadOnlyIndex");
         }
 
         // GET: /Suppliers/Create
-        [Authorize(Roles = RoleName.Admin)]
+        [Authorize(Roles = UserRolesName.Admin)]
         public ActionResult Create()
         {
             var viewModel = new SupplierViewModel()
@@ -44,7 +44,7 @@ namespace I4PRJ_SmartStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = RoleName.Admin)]
+        [Authorize(Roles = UserRolesName.Admin)]
         public ActionResult Create([Bind(Include="SupplierId,Name,Updated,ByUser,IsDeleted")] Supplier supplier)
         {
             if (ModelState.IsValid)
@@ -75,7 +75,7 @@ namespace I4PRJ_SmartStorage.Controllers
         }
 
         // GET: /Suppliers/Edit/5
-        [Authorize(Roles = RoleName.Admin)]
+        [Authorize(Roles = UserRolesName.Admin)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -101,7 +101,7 @@ namespace I4PRJ_SmartStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = RoleName.Admin)]
+        [Authorize(Roles = UserRolesName.Admin)]
         public ActionResult Edit([Bind(Include="SupplierId,Name,Updated,ByUser,IsDeleted")] Supplier supplier)
         {
             if (ModelState.IsValid)

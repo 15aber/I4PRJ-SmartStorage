@@ -20,14 +20,14 @@ namespace I4PRJ_SmartStorage.Controllers
         // GET: /Wholesalers/
         public ActionResult Index()
         {
-            if (User.IsInRole(RoleName.Admin))
+            if (User.IsInRole(UserRolesName.Admin))
                 return View("Index");
 
             return View("ReadOnlyIndex");
         }
 
         // GET: /Wholesalers/Create
-        [Authorize(Roles = RoleName.Admin)]
+        [Authorize(Roles = UserRolesName.Admin)]
         public ActionResult Create()
         {
             var viewModel = new WholesalerViewModel()
@@ -41,7 +41,7 @@ namespace I4PRJ_SmartStorage.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = RoleName.Admin)]
+        [Authorize(Roles = UserRolesName.Admin)]
         public ActionResult Create([Bind(Include = "WholesalerId, Name, Updated, ByUser")] Wholesaler wholesaler)
         {
             if (ModelState.IsValid)
@@ -71,7 +71,7 @@ namespace I4PRJ_SmartStorage.Controllers
         }
 
         // GET: /Wholesalers/Edit/5
-        [Authorize(Roles = RoleName.Admin)]
+        [Authorize(Roles = UserRolesName.Admin)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -97,7 +97,7 @@ namespace I4PRJ_SmartStorage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = RoleName.Admin)]
+        [Authorize(Roles = UserRolesName.Admin)]
         public ActionResult Edit([Bind(Include = "WholesalerId, Name, Updated, ByUser, Version")] Wholesaler wholesaler)
         {
             if (ModelState.IsValid)

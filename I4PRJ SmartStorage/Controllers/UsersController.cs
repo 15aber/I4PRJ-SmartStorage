@@ -38,7 +38,7 @@ namespace I4PRJ_SmartStorage.Controllers
         PhoneNumber = userInDb.PhoneNumber,
         ProfilePicture = userInDb.ProfilePicture
       }).ToList();
-      if (User.IsInRole(RoleName.Admin))
+      if (User.IsInRole(UserRolesName.Admin))
         return View("Index", usersInDb);
       return View("ReadOnlyIndex", usersInDb);
     }
@@ -97,7 +97,7 @@ namespace I4PRJ_SmartStorage.Controllers
     }
 
     // GET: User/Edit/5
-    [Authorize(Roles = RoleName.Admin)]
+    [Authorize(Roles = UserRolesName.Admin)]
     public ActionResult Edit(string id)
     {
       if (id == null)
@@ -124,7 +124,7 @@ namespace I4PRJ_SmartStorage.Controllers
     // POST: User/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    [Authorize(Roles = RoleName.Admin)]
+    [Authorize(Roles = UserRolesName.Admin)]
     public async Task<ActionResult> Edit(string id, RegisterViewModel model)
     {
 
@@ -165,7 +165,7 @@ namespace I4PRJ_SmartStorage.Controllers
     }
 
     // GET: User/Delete/5
-    [Authorize(Roles = RoleName.Admin)]
+    [Authorize(Roles = UserRolesName.Admin)]
     public ActionResult Delete(string id)
     {
       if (id == null)
@@ -183,7 +183,7 @@ namespace I4PRJ_SmartStorage.Controllers
     // POST: User/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    [Authorize(Roles = RoleName.Admin)]
+    [Authorize(Roles = UserRolesName.Admin)]
     public ActionResult DeleteConfirmed(string id)
     {
       var userInDb = db.Users.FirstOrDefault(u => u.PhoneNumber == id);
