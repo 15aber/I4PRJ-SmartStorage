@@ -32,7 +32,7 @@
         </li>
 
               <li class="@Html.IsSelected(controller: "Stocks")">
-                <a href="@Url.Action("Index", "Stocks")"><i class="fa fa-table"></i> <span class="nav-label">Stocks</span> <span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Stocks</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Stocks", cssClass: "in")">
                   @{
                     IEnumerable<Inventory> inventories = HMTLHelperExtensions.GetInventories();
@@ -48,7 +48,7 @@
               </li>
 
               <li class="@Html.IsSelected(controller: "Products")">
-                <a href="@Url.Action("Index", "Products")"><i class="fa fa-barcode"></i> <span class="nav-label">Products</span> <span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-barcode"></i> <span class="nav-label">Products</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Products", cssClass: "in")">
                   @{
                     IEnumerable<Category> categories = HMTLHelperExtensions.GetCategories();

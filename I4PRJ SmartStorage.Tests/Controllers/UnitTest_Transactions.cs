@@ -10,14 +10,14 @@ using NUnit.Framework;
 namespace I4PRJ_SmartStorage.UnitTests.Controllers
 {
     [TestFixture]
-    class UnitTestUser
+    class UnitTest_Transactions
     {
-        private readonly UsersController _usr = new UsersController();
+        private readonly TransactionsController _tran = new TransactionsController();
 
         [Test]
-        public void UserIndex_LoadUserIndex_ReturnsUserIndexView()
+        public void TransactionIndex_LoadTransactionIndex_ReturnsTransactionIndexView()
         {
-            var result = _usr.Index() as ViewResult;
+            var result = _tran.Index() as ViewResult;
             Assert.AreEqual("Index", result.ViewName);
 
         }

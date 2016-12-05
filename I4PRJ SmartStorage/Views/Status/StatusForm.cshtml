@@ -27,7 +27,7 @@
                         </table>
                         <div class="form-group ibox-tools">
                             <input class="btn btn-primary js-submit" type="button" value="Create" />
-                            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-white" })
+                          <a href="#" class="btn btn-danger btn-outline" onclick="history.go(-1); return false;">Cancel</a>
                             @Html.HiddenFor(m => m.IsStarted)
                         </div>
                     </div>
