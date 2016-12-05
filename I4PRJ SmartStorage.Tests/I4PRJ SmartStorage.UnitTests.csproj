@@ -94,7 +94,11 @@
     <Compile Include="Controllers\UnitTest_Account.cs" />
     <Compile Include="Controllers\UnitTestUser.cs" />
     <Compile Include="Controllers\UnitTest_Category.cs" />
+    <Compile Include="Controllers\UnitTest_Inventory.cs" />
     <Compile Include="Controllers\UnitTest_Products.cs" />
+    <Compile Include="Controllers\UnitTest_Supplier.cs" />
+    <Compile Include="Controllers\UnitTest_Transactions.cs" />
+    <Compile Include="Controllers\UnitTest_Wholesaler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>

@@ -127,7 +127,7 @@ namespace I4PRJ_SmartStorage.Controllers.Api
       emailMessage.To.Add(new MailAddress(user));
       emailMessage.From = new MailAddress(ConfigurationManager.AppSettings["SmtpFrom"]);
       emailMessage.Subject = "Status";
-      emailMessage.Body = "See new status <a href='https://smartstorage.dk/Status/StatusReportDetails/'>here</a>";
+      emailMessage.Body = "See new status <a href='https://smartstorage.dk/Status/StatusReports'>here</a>";
       emailMessage.IsBodyHtml = true;
 
       using (var smtpClient = new SmtpClient())
