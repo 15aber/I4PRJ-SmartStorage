@@ -6,7 +6,7 @@ namespace I4PRJ_SmartStorage.Models
   {
     public bool HasPassword { get; set; }
     public string PhoneNumber { get; set; }
-    public bool BrowserRemembered { get; set; }
+    public string Email { get; set; }
   }
 
   public class SetPasswordViewModel

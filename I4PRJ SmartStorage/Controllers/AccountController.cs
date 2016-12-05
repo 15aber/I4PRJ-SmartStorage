@@ -3,6 +3,7 @@ using I4PRJ_SmartStorage.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -87,6 +88,50 @@ namespace I4PRJ_SmartStorage.Controllers
           ModelState.AddModelError("", "Invalid login attempt.");
           return View(model);
       }
+    }
+
+    public ActionResult Edit()
+    {
+
+      var userInDb = UserManager.FindByName(User.Identity.Name);
+      if (userInDb == null)
+      {
+        return HttpNotFound();
+      }
+
+      var model = new RegisterViewModel
+      {
+        Username = userInDb.UserName,
+        FullName = userInDb.FullName,
+        Email = userInDb.Email,
+        PhoneNumber = userInDb.PhoneNumber
+      };
+      return View(model);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<ActionResult> Edit(RegisterViewModel model)
+    {
+
+      var db = new ApplicationDbContext();
+      var userInDb = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
+      if (userInDb == null)
+      {
+        return HttpNotFound();
+      }
+
+      userInDb.UserName = model.Email;
+      userInDb.FullName = model.FullName;
+      userInDb.Email = model.Email;
+      userInDb.PhoneNumber = model.PhoneNumber;
+
+      db.Entry(userInDb).State = EntityState.Modified;
+
+      db.SaveChanges();
+
+
+      return RedirectToAction("Index", "Manage");
     }
 
     //
@@ -307,6 +352,20 @@ namespace I4PRJ_SmartStorage.Controllers
       var name = user.FullName.Split(' ');
 
       return Content(name[0] ?? "Rubber Duck");
+    }
+
+    public ActionResult GetFullName(string userId)
+    {
+      var db = new ApplicationDbContext();
+
+      var user = db.Users.FirstOrDefault(u => u.UserName == userId);
+
+      if (user == null)
+      {
+        return Content("Rubber Duck");
+      }
+
+      return Content(user.FullName ?? "Rubber Duck");
     }
 
     protected override void Dispose(bool disposing)

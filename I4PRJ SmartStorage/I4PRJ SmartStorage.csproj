@@ -545,6 +545,7 @@
     <Content Include="Views\Users\ReadOnlyIndex.cshtml" />
     <Content Include="Views\Suppliers\SupplierForm.cshtml" />
     <Content Include="Views\Account\ActivateAccount.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

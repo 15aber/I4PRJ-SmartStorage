@@ -60,7 +60,7 @@ namespace I4PRJ_SmartStorage.Controllers
       {
         HasPassword = HasPassword(),
         PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
-        BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+        Email = await UserManager.GetEmailAsync(userId)
       };
       return View(model);
     }
