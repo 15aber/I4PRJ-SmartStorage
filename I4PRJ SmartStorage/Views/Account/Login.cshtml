@@ -17,49 +17,53 @@
               @Html.AntiForgeryToken()
 
               <hr />
-                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                    <div class="form-group">
-                                      <div class="col-md-12">
-                                        <div class="input-group">
-                                          <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                                          @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                                        </div>
-                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+              @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+              <div class="form-group">
+                <div class="col-md-12">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                  </div>
+                  @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
 
 
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <div class="col-md-12">
-                                        <div class="input-group">
-                                          <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
-                                          @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                                        </div>
-                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-
-
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <div class="col-md-offset-2 col-md-8">
-                                        <div class="checkbox">
-                                          @Html.CheckBoxFor(m => m.RememberMe)
-                                          @Html.LabelFor(m => m.RememberMe)
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <div class="col-md-offset-2 col-md-8">
-                                        <input type="submit" value="Log in" class="btn btn-primary" />
-                                      </div>
-                                    </div>
-
-                                    <p>
-                                      @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                                    </p>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                  </div>
+                  @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-offset-2 col-md-8">
+                  <div class="checkbox">
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe)
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-offset-2 col-md-8">
+                  <input type="submit" value="Log in" class="btn btn-primary" />
+                </div>
+              </div>
             }
+
+            <p>
+              @Html.ActionLink("Forgot your password?", "ForgotPassword")
+            </p>
+
           </section>
           <hr />
+          <section>
+            <a class="btn btn-success btn-facebook btn-outline" href="@Url.Action("Facebook","Account")">
+              <i class="fa fa-facebook"> </i> Sign in with Facebook
+            </a>
+          </section>
         </div>
       </div>
     </div>

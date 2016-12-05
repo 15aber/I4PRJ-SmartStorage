@@ -1,4 +1,5 @@
-﻿using I4PRJ_SmartStorage.Models;
+﻿using Facebook;
+using I4PRJ_SmartStorage.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -222,6 +223,53 @@ namespace I4PRJ_SmartStorage.Controllers
       }
       AddErrors(result);
       return View();
+    }
+
+    [AllowAnonymous]
+    public ActionResult Facebook()
+    {
+      return new ChallengeResult("Facebook", Url.Action("GetFacebook", "Account"));
+    }
+
+    [AllowAnonymous]
+    public async Task<ActionResult> GetFacebook()
+    {
+      var logInInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+
+      var identity = AuthenticationManager.GetExternalIdentity(DefaultAuthenticationTypes.ExternalCookie);
+      var token = identity.FindFirstValue("FacebookAccessToken");
+      var fb = new FacebookClient(token);
+      dynamic fbInfo =
+          fb.Get(
+              "/me?fields=email,name,picture.width(300).height(300)");
+      string fbEmail = fbInfo.email;
+      var user = UserManager.FindByName(fbEmail);
+
+      if (user == null)
+      {
+        return RedirectToAction("Login", "Account");
+      }
+
+      using (var db = new ApplicationDbContext())
+      {
+        var userInDb = db.Users.FirstOrDefault(u => u.Id == user.Id);
+        if (userInDb != null)
+        {
+          userInDb.FullName = fbInfo.name;
+          userInDb.Email = fbEmail;
+          userInDb.UserName = fbEmail;
+          userInDb.ProfilePicture = fbInfo.picture.data.url;
+          userInDb.EmailConfirmed = true;
+          db.SaveChanges();
+          await UserManager.AddLoginAsync(user.Id, logInInfo.Login);
+          await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+        }
+
+      }
+
+
+
+      return RedirectToAction("Index", "Manage");
     }
 
     //

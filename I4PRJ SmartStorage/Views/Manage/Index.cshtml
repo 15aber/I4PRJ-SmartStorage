@@ -14,7 +14,7 @@
         <div class="ibox-content">
           <div class="row">
             <div class="col-lg-5 col-lg-offset-4">
-              <img alt="image" class="img-circle" width="100" src="@Html.Action("GetProfilePicture", "Account", new {userId = User.Identity.GetUserId()})" />
+              <img alt="image" class="img-circle" width="100" src="@Html.Action("GetProfilePicture", "Account", new {userId = User.Identity.Name})" />
 
             </div>
           </div>
@@ -49,6 +49,9 @@
               }
             </div>
           </div>
+          <a class="btn btn-success btn-facebook btn-outline" href="@Url.Action("Facebook","Account")">
+            <i class="fa fa-facebook"> </i> Update with Facebook
+          </a>
         </div>
       </div>
     </div>

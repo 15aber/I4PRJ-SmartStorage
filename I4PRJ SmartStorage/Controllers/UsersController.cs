@@ -57,6 +57,8 @@ namespace I4PRJ_SmartStorage.Controllers
 
       if (ModelState.IsValid)
       {
+
+
         var user = new ApplicationUser
         {
           UserName = model.Email,
