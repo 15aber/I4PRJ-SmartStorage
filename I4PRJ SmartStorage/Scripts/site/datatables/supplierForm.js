@@ -5,11 +5,11 @@
         var updatedDate = data[7]; // use data for the hidden "updated" column
         if (fromDate.getTime() === null || toDate.getTime() === null)
             return true;
-        console.log(updatedDate);
-        console.log(fromDate);
-        console.log("updatedDate: " + updatedDate + " " + updatedDate);
-        console.log("fromdate: " + fromDate.toLocaleDateString('da-DK') + " " + fromDate.getTime());
-        console.log("todate: " + toDate.toLocaleDateString('da-DK') + " " + toDate.getTime());
+        //console.log(updatedDate);
+        //console.log(fromDate);
+        //console.log("updatedDate: " + updatedDate + " " + updatedDate);
+        //console.log("fromdate: " + fromDate.toLocaleDateString('da-DK') + " " + fromDate.getTime());
+        //console.log("todate: " + toDate.toLocaleDateString('da-DK') + " " + toDate.getTime());
 
 
         if (isNaN(fromDate.getTime()) && isNaN(toDate.getTime()) ||
@@ -74,7 +74,7 @@ $(document)
         $("#Supplier_SupplierId").on("change", function () {
             table.columns(6).search(this.value).draw();
         });
-
+        
 
         $('#fromdate').datepicker({
         dataFormat: "dd-mm-yy",
