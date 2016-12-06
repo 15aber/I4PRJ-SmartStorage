@@ -91,7 +91,7 @@ namespace SmartStorage.BLL.Services
       }
     }
 
-    public IList<WholesalerDto> GetAllActive()
+    public List<WholesalerDto> GetAllActive()
     {
       try
       {

@@ -4,7 +4,7 @@
         var table = $("#stocks")
             .DataTable({
                 ajax: {
-                    url: "/api/products/getstocksofinventory/" + document.location.pathname.split('/')[3],
+                    url: "/api/stocks/" + document.location.pathname.split('/')[3],
                     dataSrc: ""
                 },
                 columns: [

@@ -6,6 +6,6 @@ namespace SmartStorage.BLL.Interfaces.Services
   public interface IWholesalerService : IService<WholesalerDto>
   {
     void Delete(int id);
-    IList<WholesalerDto> GetAllActive();
+    List<WholesalerDto> GetAllActive();
   }
 }

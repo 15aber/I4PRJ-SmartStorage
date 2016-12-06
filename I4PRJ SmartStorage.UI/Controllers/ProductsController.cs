@@ -1,13 +1,13 @@
-﻿using System;
-using System.Net;
-using System.Web.Mvc;
-using SmartStorage.BLL.Dtos;
+﻿using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
 using SmartStorage.BLL.Services;
 using SmartStorage.DAL.Context;
 using SmartStorage.DAL.UnitOfWork;
 using SmartStorage.UI.ViewModels;
 using SmartStorage.UI.ViewModels.Identity;
+using System;
+using System.Net;
+using System.Web.Mvc;
 
 namespace SmartStorage.UI.Controllers
 {
@@ -54,13 +54,13 @@ namespace SmartStorage.UI.Controllers
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Authorize(Roles = UserRolesName.Admin)]
-    public ActionResult Create(ProductDto entityDto)
+    public ActionResult Create(ProductViewModel entityDto)
     {
       if (!ModelState.IsValid) return View(entityDto);
 
-      entityDto.Updated = DateTime.Now;
-      entityDto.ByUser = User.Identity.Name;
-      _productService.Add(entityDto);
+      entityDto.Product.Updated = DateTime.Now;
+      entityDto.Product.ByUser = User.Identity.Name;
+      _productService.Add(entityDto.Product);
 
       return RedirectToAction("Index");
     }
