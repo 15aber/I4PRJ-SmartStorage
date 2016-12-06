@@ -1,4 +1,9 @@
-﻿using System;
+﻿using SmartStorage.BLL.Dtos;
+using SmartStorage.BLL.Services;
+using SmartStorage.DAL.Context;
+using SmartStorage.DAL.UnitOfWork;
+using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace SmartStorage.UI.Helpers
@@ -29,6 +34,20 @@ namespace SmartStorage.UI.Helpers
     {
       string currentAction = (string)html.ViewContext.RouteData.Values["action"];
       return currentAction;
+    }
+
+    public static IList<CategoryDto> GetCategories()
+    {
+      var service = new CategoryService(new UnitOfWork(new ApplicationDbContext()));
+
+      return service.GetAllActive();
+    }
+
+    public static IList<InventoryDto> GetInventories()
+    {
+      var service = new InventoryService(new UnitOfWork(new ApplicationDbContext()));
+
+      return service.GetAllActive();
     }
   }
 }
