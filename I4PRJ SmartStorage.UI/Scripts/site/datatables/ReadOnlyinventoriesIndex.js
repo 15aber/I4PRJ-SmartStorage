@@ -4,7 +4,7 @@
         var table = $("#inventories")
             .DataTable({
                 ajax: {
-                    url: "/api/inventories/",
+                  url: "/api/inventories/",
                     dataSrc: ""
                 },
                 columns: [

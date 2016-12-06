@@ -1,8 +1,8 @@
-﻿using System.Web.Http;
-using I4PRJ_SmartStorage.BLL.Interfaces.Services;
+﻿using I4PRJ_SmartStorage.BLL.Interfaces.Services;
 using I4PRJ_SmartStorage.BLL.Services;
 using I4PRJ_SmartStorage.DAL.Context;
 using I4PRJ_SmartStorage.DAL.UnitOfWork;
+using System.Web.Http;
 
 namespace I4PRJ_SmartStorage.UI.Controllers.Api
 {
@@ -22,11 +22,11 @@ namespace I4PRJ_SmartStorage.UI.Controllers.Api
     [ActionName("DefaultAction")]
     public IHttpActionResult GetInventories()
     {
-      var wholesalerDto = _service.GetAllActive();
+      var entityDto = _service.GetAllActive();
 
-      if (wholesalerDto == null) return NotFound();
+      if (entityDto == null) return NotFound();
 
-      return Ok(wholesalerDto);
+      return Ok(entityDto);
     }
 
     [HttpDelete]

@@ -23,11 +23,11 @@ namespace I4PRJ_SmartStorage.UI.Controllers.Api
     [ActionName("DefaultAction")]
     public IHttpActionResult GetWholesalers()
     {
-      var wholesalerDto = _service.GetAllActive();
+      var entityDto = _service.GetAllActive();
 
-      if (wholesalerDto == null) return NotFound();
+      if (entityDto == null) return NotFound();
 
-      return Ok(wholesalerDto);
+      return Ok(entityDto);
     }
 
     [HttpDelete]

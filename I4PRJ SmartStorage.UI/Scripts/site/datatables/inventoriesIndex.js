@@ -9,20 +9,20 @@
                 },
                 columns: [
                     {
-                        data: "Name"
+                        data: "name"
                     },
                     {
-                        data: "Updated",
+                        data: "updated",
                         render: function (data) {
                             var date = new Date(data);
                             return date.toLocaleString('da-DK');
                         }
                     },
                     {
-                        data: "ByUser"
+                        data: "byUser"
                     },
                     {
-                        data: "InventoryId",
+                        data: "inventoryId",
                         render: function (data) {
                           return "<button class='btn btn-primary btn-sm js-edit' data-inventory-id=" + data + ">Edit</button> " +
                                 "<button class='btn btn-danger btn-sm js-delete' data-inventory-id=" + data + ">Delete</button>";
