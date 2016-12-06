@@ -6,10 +6,10 @@ using I4PRJ_SmartStorage.DAL.Interfaces;
 using I4PRJ_SmartStorage.DAL.Interfaces.Repositories;
 using I4PRJ_SmartStorage.DAL.Repositories;
 using I4PRJ_SmartStorage.DAL.UnitOfWork;
-using I4PRJ_SmartStorage.UI.Controllers;
 using Microsoft.Practices.Unity;
+using SmartStorage.UI.Controllers;
 
-namespace I4PRJ_SmartStorage.UI
+namespace SmartStorage.UI
 {
   /// <summary>
   /// Specifies the Unity configuration for the main container.

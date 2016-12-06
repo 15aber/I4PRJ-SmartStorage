@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Web.Mvc;
 
-namespace I4PRJ_SmartStorage.UI.Controllers
+namespace SmartStorage.UI.Controllers
 {
   public class StocksController : Controller
   {

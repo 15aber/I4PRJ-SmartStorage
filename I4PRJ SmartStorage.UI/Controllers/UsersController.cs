@@ -6,11 +6,11 @@ using System.Web;
 using System.Web.Mvc;
 using I4PRJ_SmartStorage.DAL.Context;
 using I4PRJ_SmartStorage.DAL.Models;
-using I4PRJ_SmartStorage.UI.ViewModels.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using SmartStorage.UI.ViewModels.Identity;
 
-namespace I4PRJ_SmartStorage.UI.Controllers
+namespace SmartStorage.UI.Controllers
 {
   [Authorize]
   public class UsersController : Controller

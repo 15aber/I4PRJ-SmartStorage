@@ -15,7 +15,7 @@ using Microsoft.Owin.Security;
 using Sms.ApiClient.V2;
 using Sms.ApiClient.V2.SendMessages;
 
-namespace I4PRJ_SmartStorage.UI
+namespace SmartStorage.UI
 {
   public class EmailService : IIdentityMessageService
   {

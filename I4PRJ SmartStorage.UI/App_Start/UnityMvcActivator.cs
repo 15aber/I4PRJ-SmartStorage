@@ -1,12 +1,12 @@
 using System.Linq;
 using System.Web.Mvc;
-using I4PRJ_SmartStorage.UI;
 using Microsoft.Practices.Unity.Mvc;
+using SmartStorage.UI;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(UnityWebActivator), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(UnityWebActivator), "Shutdown")]
 
-namespace I4PRJ_SmartStorage.UI
+namespace SmartStorage.UI
 {
     /// <summary>Provides the bootstrapping for integrating Unity with ASP.NET MVC.</summary>
     public static class UnityWebActivator

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace I4PRJ_SmartStorage.UI
+namespace SmartStorage.UI
 {
   public class FilterConfig
   {

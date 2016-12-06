@@ -4,7 +4,7 @@ using I4PRJ_SmartStorage.BLL.Services;
 using I4PRJ_SmartStorage.DAL.Context;
 using I4PRJ_SmartStorage.DAL.UnitOfWork;
 
-namespace I4PRJ_SmartStorage.UI.Controllers.Api
+namespace SmartStorage.UI.Controllers.Api
 {
   public class TransactionsController : ApiController
   {

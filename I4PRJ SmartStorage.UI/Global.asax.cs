@@ -5,7 +5,7 @@ using System.Web.Routing;
 using AutoMapper;
 using I4PRJ_SmartStorage.BLL.Mapping;
 
-namespace I4PRJ_SmartStorage.UI
+namespace SmartStorage.UI
 {
   public class MvcApplication : System.Web.HttpApplication
   {

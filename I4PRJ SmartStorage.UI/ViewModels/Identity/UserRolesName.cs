@@ -1,4 +1,4 @@
-﻿namespace I4PRJ_SmartStorage.UI.ViewModels.Identity
+﻿namespace SmartStorage.UI.ViewModels.Identity
 {
   public static class UserRolesName
   {

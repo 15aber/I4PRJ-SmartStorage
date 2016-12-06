@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace I4PRJ_SmartStorage.UI.ViewModels.Identity
+namespace SmartStorage.UI.ViewModels.Identity
 {
   public class ForgotPasswordViewModel
   {

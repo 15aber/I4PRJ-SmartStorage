@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace I4PRJ_SmartStorage.UI.Helpers
+namespace SmartStorage.UI.Helpers
 {
   public static class HMTLHelperExtensions
   {

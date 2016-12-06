@@ -10,7 +10,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Facebook;
 using Owin;
 
-namespace I4PRJ_SmartStorage.UI
+namespace SmartStorage.UI
 {
   public partial class Startup
   {

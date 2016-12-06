@@ -1,10 +1,10 @@
-﻿using System.Web.Http;
-using I4PRJ_SmartStorage.BLL.Interfaces.Services;
+﻿using I4PRJ_SmartStorage.BLL.Interfaces.Services;
 using I4PRJ_SmartStorage.BLL.Services;
 using I4PRJ_SmartStorage.DAL.Context;
 using I4PRJ_SmartStorage.DAL.UnitOfWork;
+using System.Web.Http;
 
-namespace I4PRJ_SmartStorage.UI.Controllers.Api
+namespace SmartStorage.UI.Controllers.Api
 {
   public class WholesalersController : ApiController
   {

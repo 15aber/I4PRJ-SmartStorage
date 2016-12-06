@@ -5,12 +5,12 @@ using System.Web;
 using System.Web.Mvc;
 using Facebook;
 using I4PRJ_SmartStorage.DAL.Context;
-using I4PRJ_SmartStorage.UI.ViewModels.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using SmartStorage.UI.ViewModels.Identity;
 
-namespace I4PRJ_SmartStorage.UI.Controllers
+namespace SmartStorage.UI.Controllers
 {
   [Authorize]
   public class AccountController : Controller

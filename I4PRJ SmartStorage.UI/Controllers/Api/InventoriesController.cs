@@ -4,7 +4,7 @@ using I4PRJ_SmartStorage.DAL.Context;
 using I4PRJ_SmartStorage.DAL.UnitOfWork;
 using System.Web.Http;
 
-namespace I4PRJ_SmartStorage.UI.Controllers.Api
+namespace SmartStorage.UI.Controllers.Api
 {
   public class InventoriesController : ApiController
   {

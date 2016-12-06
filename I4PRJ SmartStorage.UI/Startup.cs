@@ -1,10 +1,10 @@
-﻿using I4PRJ_SmartStorage.UI;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Owin;
+using SmartStorage.UI;
 
-[assembly: OwinStartup("I4PRJ SmartStorage", typeof(Startup))]
+[assembly: OwinStartup("SmartStorage", typeof(Startup))]
 
-namespace I4PRJ_SmartStorage.UI
+namespace SmartStorage.UI
 {
   public partial class Startup
   {
