@@ -1,6 +1,6 @@
-﻿using I4PRJ_SmartStorage.DAL.Interfaces.Models;
+﻿using SmartStorage.DAL.Interfaces.Models;
 
-namespace I4PRJ_SmartStorage.BLL.Interfaces.Dtos
+namespace SmartStorage.BLL.Interfaces.Dtos
 {
   public interface IStockDto
   {

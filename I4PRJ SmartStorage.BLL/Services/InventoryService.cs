@@ -1,13 +1,13 @@
-﻿using AutoMapper;
-using I4PRJ_SmartStorage.BLL.Dtos;
-using I4PRJ_SmartStorage.BLL.Interfaces.Services;
-using I4PRJ_SmartStorage.DAL.Interfaces;
-using I4PRJ_SmartStorage.DAL.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
+using SmartStorage.BLL.Dtos;
+using SmartStorage.BLL.Interfaces.Services;
+using SmartStorage.DAL.Interfaces;
+using SmartStorage.DAL.Models;
 
-namespace I4PRJ_SmartStorage.BLL.Services
+namespace SmartStorage.BLL.Services
 {
   public class InventoryService : IInventoryService
   {

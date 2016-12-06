@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace I4PRJ_SmartStorage.DAL.Interfaces.Models
+namespace SmartStorage.DAL.Interfaces.Models
 {
   public interface IWholesaler
   {

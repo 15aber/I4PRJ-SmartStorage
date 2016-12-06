@@ -7,8 +7,8 @@
     <ProjectGuid>{9D0D44A3-3E5F-4736-9BB1-07ED89DF8C2F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>I4PRJ_SmartStorage.DAL</RootNamespace>
-    <AssemblyName>I4PRJ SmartStorage.DAL</AssemblyName>
+    <RootNamespace>SmartStorage.DAL</RootNamespace>
+    <AssemblyName>SmartStorage.DAL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

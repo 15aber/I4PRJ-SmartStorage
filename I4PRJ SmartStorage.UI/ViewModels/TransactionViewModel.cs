@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using I4PRJ_SmartStorage.BLL.Dtos;
+using SmartStorage.BLL.Dtos;
 
 namespace SmartStorage.UI.ViewModels
 {

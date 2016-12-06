@@ -1,7 +1,7 @@
-namespace I4PRJ_SmartStorage.DAL.Migrations
-{
-  using System.Data.Entity.Migrations;
+using System.Data.Entity.Migrations;
 
+namespace SmartStorage.DAL.Migrations
+{
   public partial class InitDb : DbMigration
   {
     public override void Up()

@@ -1,10 +1,9 @@
-﻿using I4PRJ_SmartStorage.DAL.Interfaces.Models;
-using System;
-using System.ComponentModel;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SmartStorage.DAL.Interfaces.Models;
 
-namespace I4PRJ_SmartStorage.DAL.Models
+namespace SmartStorage.DAL.Models
 {
   public class Product : IProduct
   {

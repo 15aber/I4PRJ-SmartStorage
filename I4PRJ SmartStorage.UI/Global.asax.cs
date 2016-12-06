@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using AutoMapper;
-using I4PRJ_SmartStorage.BLL.Mapping;
+using SmartStorage.BLL.Mapping;
 
 namespace SmartStorage.UI
 {

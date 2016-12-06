@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using I4PRJ_SmartStorage.BLL.Dtos;
-using I4PRJ_SmartStorage.BLL.Interfaces.Dtos;
+using SmartStorage.BLL.Dtos;
+using SmartStorage.BLL.Interfaces.Dtos;
 
 namespace SmartStorage.UI.ViewModels
 {

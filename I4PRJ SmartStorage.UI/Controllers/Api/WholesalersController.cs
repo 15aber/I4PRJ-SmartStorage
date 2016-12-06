@@ -1,8 +1,8 @@
-﻿using I4PRJ_SmartStorage.BLL.Interfaces.Services;
-using I4PRJ_SmartStorage.BLL.Services;
-using I4PRJ_SmartStorage.DAL.Context;
-using I4PRJ_SmartStorage.DAL.UnitOfWork;
+﻿using SmartStorage.DAL.Context;
+using SmartStorage.DAL.UnitOfWork;
 using System.Web.Http;
+using SmartStorage.BLL.Interfaces.Services;
+using SmartStorage.BLL.Services;
 
 namespace SmartStorage.UI.Controllers.Api
 {

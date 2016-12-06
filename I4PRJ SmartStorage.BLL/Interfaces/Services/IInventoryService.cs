@@ -1,7 +1,7 @@
-﻿using I4PRJ_SmartStorage.BLL.Dtos;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using SmartStorage.BLL.Dtos;
 
-namespace I4PRJ_SmartStorage.BLL.Interfaces.Services
+namespace SmartStorage.BLL.Interfaces.Services
 {
   public interface IInventoryService : IService<InventoryDto>
   {

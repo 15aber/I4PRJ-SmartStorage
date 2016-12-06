@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Web.Mvc;
-using I4PRJ_SmartStorage.BLL.Dtos;
-using I4PRJ_SmartStorage.BLL.Interfaces.Services;
-using I4PRJ_SmartStorage.BLL.Services;
-using I4PRJ_SmartStorage.DAL.Context;
-using I4PRJ_SmartStorage.DAL.UnitOfWork;
+using SmartStorage.BLL.Dtos;
+using SmartStorage.BLL.Interfaces.Services;
+using SmartStorage.BLL.Services;
+using SmartStorage.DAL.Context;
+using SmartStorage.DAL.UnitOfWork;
 using SmartStorage.UI.ViewModels.Identity;
 
 namespace SmartStorage.UI.Controllers

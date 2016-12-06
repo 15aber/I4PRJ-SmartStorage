@@ -1,12 +1,12 @@
 using System;
-using I4PRJ_SmartStorage.BLL.Interfaces.Services;
-using I4PRJ_SmartStorage.BLL.Services;
-using I4PRJ_SmartStorage.DAL.Context;
-using I4PRJ_SmartStorage.DAL.Interfaces;
-using I4PRJ_SmartStorage.DAL.Interfaces.Repositories;
-using I4PRJ_SmartStorage.DAL.Repositories;
-using I4PRJ_SmartStorage.DAL.UnitOfWork;
 using Microsoft.Practices.Unity;
+using SmartStorage.BLL.Interfaces.Services;
+using SmartStorage.BLL.Services;
+using SmartStorage.DAL.Context;
+using SmartStorage.DAL.Interfaces;
+using SmartStorage.DAL.Interfaces.Repositories;
+using SmartStorage.DAL.Repositories;
+using SmartStorage.DAL.UnitOfWork;
 using SmartStorage.UI.Controllers;
 
 namespace SmartStorage.UI

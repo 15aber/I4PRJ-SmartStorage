@@ -1,13 +1,12 @@
-using I4PRJ_SmartStorage.DAL.Context;
-using I4PRJ_SmartStorage.DAL.Models;
+using System;
+using System.Data.Entity.Migrations;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using SmartStorage.DAL.Context;
+using SmartStorage.DAL.Models;
 
-namespace I4PRJ_SmartStorage.DAL.Migrations
+namespace SmartStorage.DAL.Migrations
 {
-  using System;
-  using System.Data.Entity.Migrations;
-
   internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
   {
     public Configuration()

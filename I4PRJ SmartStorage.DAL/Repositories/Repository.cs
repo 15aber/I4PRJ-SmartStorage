@@ -1,11 +1,11 @@
-﻿using I4PRJ_SmartStorage.DAL.Interfaces.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using SmartStorage.DAL.Interfaces.Repositories;
 
-namespace I4PRJ_SmartStorage.DAL.Repositories
+namespace SmartStorage.DAL.Repositories
 {
   public class Repository<T> : IRepository<T> where T : class
   {

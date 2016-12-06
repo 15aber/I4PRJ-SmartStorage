@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace I4PRJ_SmartStorage.DAL.Interfaces.Repositories
+namespace SmartStorage.DAL.Interfaces.Repositories
 {
   public interface IRepository<T> where T : class
   {

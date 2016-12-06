@@ -1,9 +1,9 @@
-﻿using I4PRJ_SmartStorage.BLL.Interfaces.Dtos;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using SmartStorage.BLL.Interfaces.Dtos;
 
-namespace I4PRJ_SmartStorage.BLL.Dtos
+namespace SmartStorage.BLL.Dtos
 {
   public class WholesalerDto : IWholesalerDto
   {

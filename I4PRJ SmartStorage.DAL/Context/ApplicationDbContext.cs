@@ -1,8 +1,8 @@
-using I4PRJ_SmartStorage.DAL.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using SmartStorage.DAL.Models;
 
-namespace I4PRJ_SmartStorage.DAL.Context
+namespace SmartStorage.DAL.Context
 {
   public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
   {

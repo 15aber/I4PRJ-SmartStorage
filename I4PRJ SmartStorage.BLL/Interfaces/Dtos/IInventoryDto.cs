@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace I4PRJ_SmartStorage.BLL.Interfaces.Dtos
+namespace SmartStorage.BLL.Interfaces.Dtos
 {
   public interface IInventoryDto
   {

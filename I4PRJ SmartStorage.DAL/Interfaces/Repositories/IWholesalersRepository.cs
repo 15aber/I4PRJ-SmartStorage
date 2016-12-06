@@ -1,6 +1,6 @@
-﻿using I4PRJ_SmartStorage.DAL.Models;
+﻿using SmartStorage.DAL.Models;
 
-namespace I4PRJ_SmartStorage.DAL.Interfaces.Repositories
+namespace SmartStorage.DAL.Interfaces.Repositories
 {
   public interface IWholesalersRepository : IRepository<Wholesaler>
   {

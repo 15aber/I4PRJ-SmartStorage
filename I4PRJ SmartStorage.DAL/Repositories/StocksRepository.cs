@@ -1,9 +1,8 @@
-﻿using I4PRJ_SmartStorage.DAL.Context;
-using I4PRJ_SmartStorage.DAL.Interfaces;
-using I4PRJ_SmartStorage.DAL.Interfaces.Repositories;
-using I4PRJ_SmartStorage.DAL.Models;
+﻿using SmartStorage.DAL.Context;
+using SmartStorage.DAL.Interfaces.Repositories;
+using SmartStorage.DAL.Models;
 
-namespace I4PRJ_SmartStorage.DAL.Repositories
+namespace SmartStorage.DAL.Repositories
 {
   public class StocksRepository : Repository<Stock>, IStocksRepository
   {

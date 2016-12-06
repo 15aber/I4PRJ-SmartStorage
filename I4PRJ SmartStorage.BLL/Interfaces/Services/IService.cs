@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace I4PRJ_SmartStorage.BLL.Interfaces.Services
+namespace SmartStorage.BLL.Interfaces.Services
 {
   public interface IService<T> where T : class
   {

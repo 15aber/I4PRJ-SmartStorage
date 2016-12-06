@@ -1,8 +1,8 @@
-﻿using I4PRJ_SmartStorage.BLL.Interfaces.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using SmartStorage.BLL.Interfaces.Services;
 
-namespace I4PRJ_SmartStorage.BLL.Services
+namespace SmartStorage.BLL.Services
 {
   public abstract class ServiceBase<T> : IService<T> where T : class
   {

@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Facebook;
-using I4PRJ_SmartStorage.DAL.Context;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using SmartStorage.DAL.Context;
 using SmartStorage.UI.ViewModels.Identity;
 
 namespace SmartStorage.UI.Controllers

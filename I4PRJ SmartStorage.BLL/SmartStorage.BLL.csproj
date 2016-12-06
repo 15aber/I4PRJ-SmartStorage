@@ -7,8 +7,8 @@
     <ProjectGuid>{0A0E6BA3-C63E-4C08-BD63-3A0BB2919BEE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>I4PRJ_SmartStorage.BLL</RootNamespace>
-    <AssemblyName>I4PRJ SmartStorage.BLL</AssemblyName>
+    <RootNamespace>SmartStorage.BLL</RootNamespace>
+    <AssemblyName>SmartStorage.BLL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -98,9 +98,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\I4PRJ SmartStorage.DAL\I4PRJ SmartStorage.DAL.csproj">
+    <ProjectReference Include="..\I4PRJ SmartStorage.DAL\SmartStorage.DAL.csproj">
       <Project>{9d0d44a3-3e5f-4736-9bb1-07ed89df8c2f}</Project>
-      <Name>I4PRJ SmartStorage.DAL</Name>
+      <Name>SmartStorage.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using I4PRJ_SmartStorage.BLL.Dtos;
-using I4PRJ_SmartStorage.DAL.Models;
+using SmartStorage.BLL.Dtos;
+using SmartStorage.DAL.Models;
 
-namespace I4PRJ_SmartStorage.BLL.Mapping
+namespace SmartStorage.BLL.Mapping
 {
   public class MappingProfile : Profile
   {

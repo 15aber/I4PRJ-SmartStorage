@@ -1,6 +1,6 @@
-﻿using I4PRJ_SmartStorage.DAL.Interfaces.Repositories;
+﻿using SmartStorage.DAL.Interfaces.Repositories;
 
-namespace I4PRJ_SmartStorage.DAL.Interfaces
+namespace SmartStorage.DAL.Interfaces
 {
   public interface IUnitOfWork
   {

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Configuration;
 using System.Threading.Tasks;
-using I4PRJ_SmartStorage.DAL.Context;
-using I4PRJ_SmartStorage.DAL.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Facebook;
 using Owin;
+using SmartStorage.DAL.Context;
+using SmartStorage.DAL.Models;
 
 namespace SmartStorage.UI
 {

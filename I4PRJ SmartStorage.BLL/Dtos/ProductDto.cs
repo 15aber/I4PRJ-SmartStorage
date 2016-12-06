@@ -1,10 +1,10 @@
-﻿using I4PRJ_SmartStorage.BLL.Interfaces.Dtos;
-using I4PRJ_SmartStorage.DAL.Interfaces.Models;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using SmartStorage.BLL.Interfaces.Dtos;
+using SmartStorage.DAL.Interfaces.Models;
 
-namespace I4PRJ_SmartStorage.BLL.Dtos
+namespace SmartStorage.BLL.Dtos
 {
   public class ProductDto : IProductDto
   {

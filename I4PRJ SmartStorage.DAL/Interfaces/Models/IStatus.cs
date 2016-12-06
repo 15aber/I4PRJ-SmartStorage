@@ -1,7 +1,7 @@
-﻿using I4PRJ_SmartStorage.DAL.Models;
-using System;
+﻿using System;
+using SmartStorage.DAL.Models;
 
-namespace I4PRJ_SmartStorage.DAL.Interfaces.Models
+namespace SmartStorage.DAL.Interfaces.Models
 {
   public interface IStatus
   {

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I4PRJ SmartStorage.BLL", "I4PRJ SmartStorage.BLL\I4PRJ SmartStorage.BLL.csproj", "{0A0E6BA3-C63E-4C08-BD63-3A0BB2919BEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStorage.BLL", "I4PRJ SmartStorage.BLL\SmartStorage.BLL.csproj", "{0A0E6BA3-C63E-4C08-BD63-3A0BB2919BEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I4PRJ SmartStorage.DAL", "I4PRJ SmartStorage.DAL\I4PRJ SmartStorage.DAL.csproj", "{9D0D44A3-3E5F-4736-9BB1-07ED89DF8C2F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStorage.DAL", "I4PRJ SmartStorage.DAL\SmartStorage.DAL.csproj", "{9D0D44A3-3E5F-4736-9BB1-07ED89DF8C2F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStorage.UI", "I4PRJ SmartStorage.UI\SmartStorage.UI.csproj", "{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}"
 EndProject
