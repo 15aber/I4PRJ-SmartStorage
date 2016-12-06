@@ -1,13 +1,13 @@
-﻿using I4PRJ_SmartStorage.BLL.Dtos;
+﻿using System;
+using System.Web.Mvc;
+using I4PRJ_SmartStorage.BLL.Dtos;
 using I4PRJ_SmartStorage.BLL.Interfaces.Services;
 using I4PRJ_SmartStorage.BLL.Services;
 using I4PRJ_SmartStorage.DAL.Context;
 using I4PRJ_SmartStorage.DAL.UnitOfWork;
-using System;
-using System.Web.Mvc;
-using I4PRJ_SmartStorage.ViewModels.Identity;
+using I4PRJ_SmartStorage.UI.ViewModels.Identity;
 
-namespace I4PRJ_SmartStorage.Controllers
+namespace I4PRJ_SmartStorage.UI.Controllers
 {
   public class CategoriesController : Controller
   {

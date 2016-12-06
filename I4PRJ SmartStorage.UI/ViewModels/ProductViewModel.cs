@@ -2,7 +2,7 @@
 using I4PRJ_SmartStorage.BLL.Dtos;
 using I4PRJ_SmartStorage.BLL.Interfaces.Dtos;
 
-namespace I4PRJ_SmartStorage.ViewModels
+namespace I4PRJ_SmartStorage.UI.ViewModels
 {
   public class ProductViewModel
   {

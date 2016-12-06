@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using I4PRJ_SmartStorage.ViewModels.Identity;
+using I4PRJ_SmartStorage.UI.ViewModels.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
-namespace I4PRJ_SmartStorage.Controllers
+namespace I4PRJ_SmartStorage.UI.Controllers
 {
   [Authorize]
   public class ManageController : Controller

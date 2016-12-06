@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace I4PRJ_SmartStorage
+namespace I4PRJ_SmartStorage.UI
 {
   public class BundleConfig
   {

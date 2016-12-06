@@ -1,11 +1,11 @@
-﻿using AutoMapper;
-using I4PRJ_SmartStorage.BLL.Mapping;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using AutoMapper;
+using I4PRJ_SmartStorage.BLL.Mapping;
 
-namespace I4PRJ_SmartStorage
+namespace I4PRJ_SmartStorage.UI
 {
   public class MvcApplication : System.Web.HttpApplication
   {

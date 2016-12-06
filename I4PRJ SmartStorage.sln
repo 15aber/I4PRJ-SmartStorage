@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I4PRJ SmartStorage.BLL", "I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I4PRJ SmartStorage.DAL", "I4PRJ SmartStorage.DAL\I4PRJ SmartStorage.DAL.csproj", "{9D0D44A3-3E5F-4736-9BB1-07ED89DF8C2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I4PRJ SmartStorage", "I4PRJ SmartStorage\I4PRJ SmartStorage.csproj", "{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I4PRJ SmartStorage.UI", "I4PRJ SmartStorage.UI\I4PRJ SmartStorage.UI.csproj", "{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

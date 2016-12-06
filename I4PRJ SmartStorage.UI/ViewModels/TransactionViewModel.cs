@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using I4PRJ_SmartStorage.BLL.Dtos;
 
-namespace I4PRJ_SmartStorage.ViewModels
+namespace I4PRJ_SmartStorage.UI.ViewModels
 {
   public class TransactionViewModel
   {
