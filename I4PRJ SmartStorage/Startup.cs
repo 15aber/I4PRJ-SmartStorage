@@ -2,7 +2,7 @@
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(Startup))]
+[assembly: OwinStartup("SmartStorage",typeof(Startup))]
 
 namespace I4PRJ_SmartStorage
 {

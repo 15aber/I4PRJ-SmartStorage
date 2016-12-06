@@ -1,11 +1,15 @@
-﻿using System.Web.Http;
-using I4PRJ_SmartStorage.BLL.Interfaces.Services;
+﻿using I4PRJ_SmartStorage.BLL.Interfaces.Services;
+using System.Web.Http;
 
 namespace I4PRJ_SmartStorage.Controllers.Api
 {
   public class TransactionsController : ApiController
   {
     private readonly ITransactionService _service;
+
+    public TransactionsController()
+    {
+    }
 
     public TransactionsController(ITransactionService service)
     {

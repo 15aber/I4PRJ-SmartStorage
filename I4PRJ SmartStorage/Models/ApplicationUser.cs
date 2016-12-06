@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 // TODO Flyttes til ???
 
-namespace I4PRJ_SmartStorage.Identity
+namespace I4PRJ_SmartStorage.Models
 {
   // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
   public class ApplicationUser : IdentityUser

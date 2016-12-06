@@ -2,7 +2,7 @@
 
 // TODO Integeres med ???
 
-namespace I4PRJ_SmartStorage.Identity
+namespace I4PRJ_SmartStorage.Models
 {
   public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
   {

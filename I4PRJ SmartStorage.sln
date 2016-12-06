@@ -5,11 +5,11 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I4PRJ SmartStorage.UnitTests", "I4PRJ SmartStorage.Tests\I4PRJ SmartStorage.UnitTests.csproj", "{C3E30CBB-2567-437D-A6D0-660DA4B9996B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I4PRJ SmartStorage", "I4PRJ SmartStorage\I4PRJ SmartStorage.csproj", "{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I4PRJ SmartStorage.BLL", "I4PRJ SmartStorage.BLL\I4PRJ SmartStorage.BLL.csproj", "{0A0E6BA3-C63E-4C08-BD63-3A0BB2919BEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I4PRJ SmartStorage.DAL", "I4PRJ SmartStorage.DAL\I4PRJ SmartStorage.DAL.csproj", "{9D0D44A3-3E5F-4736-9BB1-07ED89DF8C2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I4PRJ SmartStorage", "I4PRJ SmartStorage\I4PRJ SmartStorage.csproj", "{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		{C3E30CBB-2567-437D-A6D0-660DA4B9996B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3E30CBB-2567-437D-A6D0-660DA4B9996B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3E30CBB-2567-437D-A6D0-660DA4B9996B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0A0E6BA3-C63E-4C08-BD63-3A0BB2919BEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0A0E6BA3-C63E-4C08-BD63-3A0BB2919BEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A0E6BA3-C63E-4C08-BD63-3A0BB2919BEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{9D0D44A3-3E5F-4736-9BB1-07ED89DF8C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D0D44A3-3E5F-4736-9BB1-07ED89DF8C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D0D44A3-3E5F-4736-9BB1-07ED89DF8C2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
