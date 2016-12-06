@@ -406,6 +406,7 @@
     <Content Include="Scripts\respond\respond.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\SmartStorageAPP - Web Deploy.pubxml" />
     <None Include="Scripts\jquery\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\site\datatables\ReadOnlyinventoriesIndex.js" />
     <Content Include="Scripts\site\datatables\stocksIndex.js" />
