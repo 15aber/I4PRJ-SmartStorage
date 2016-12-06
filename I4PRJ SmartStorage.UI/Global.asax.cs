@@ -17,7 +17,7 @@ namespace SmartStorage.UI
       RouteConfig.RegisterRoutes(RouteTable.Routes);
       BundleConfig.RegisterBundles(BundleTable.Bundles);
       Mapper.Initialize(c => c.AddProfile<MappingProfile>());
-      UnityWebActivator.Start();
+      //UnityWebActivator.Start();
 
     }
 
