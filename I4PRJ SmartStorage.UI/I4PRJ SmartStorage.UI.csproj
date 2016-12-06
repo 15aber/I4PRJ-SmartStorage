@@ -375,7 +375,6 @@
     <Content Include="Content\toastr\toastr.css" />
     <Content Include="Content\toastr\toastr.min.css" />
     <Content Include="Content\wizardSteps\jquery.steps.css" />
-    <Content Include="favicon.png" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -407,7 +406,6 @@
     <Content Include="Scripts\respond\respond.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
-    <None Include="Properties\PublishProfiles\SmartStorageAPP - Web Deploy.pubxml" />
     <None Include="Scripts\jquery\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\site\datatables\ReadOnlyinventoriesIndex.js" />
     <Content Include="Scripts\site\datatables\stocksIndex.js" />
