@@ -1,8 +1,11 @@
-﻿using System;
-using System.Web.Mvc;
-using I4PRJ_SmartStorage.BLL.Dtos;
+﻿using I4PRJ_SmartStorage.BLL.Dtos;
 using I4PRJ_SmartStorage.BLL.Interfaces.Services;
-using I4PRJ_SmartStorage.Models;
+using I4PRJ_SmartStorage.BLL.Services;
+using I4PRJ_SmartStorage.DAL.Context;
+using I4PRJ_SmartStorage.DAL.UnitOfWork;
+using I4PRJ_SmartStorage.ViewModels.Identity;
+using System;
+using System.Web.Mvc;
 
 namespace I4PRJ_SmartStorage.Controllers
 {
@@ -10,9 +13,14 @@ namespace I4PRJ_SmartStorage.Controllers
   {
     private readonly ISupplierService _service;
 
+    public SuppliersController()
+      : this(new SupplierService(new UnitOfWork(new ApplicationDbContext())))
+    {
+    }
+
     public SuppliersController(ISupplierService service)
     {
-      _service = service;
+      _service = service ?? new SupplierService(new UnitOfWork(new ApplicationDbContext()));
     }
 
     public ActionResult Index()

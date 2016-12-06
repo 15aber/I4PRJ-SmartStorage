@@ -1,10 +1,13 @@
-﻿using System;
+﻿using I4PRJ_SmartStorage.BLL.Dtos;
+using I4PRJ_SmartStorage.BLL.Interfaces.Services;
+using I4PRJ_SmartStorage.BLL.Services;
+using I4PRJ_SmartStorage.DAL.Context;
+using I4PRJ_SmartStorage.DAL.UnitOfWork;
+using I4PRJ_SmartStorage.ViewModels;
+using I4PRJ_SmartStorage.ViewModels.Identity;
+using System;
 using System.Net;
 using System.Web.Mvc;
-using I4PRJ_SmartStorage.BLL.Dtos;
-using I4PRJ_SmartStorage.BLL.Interfaces.Services;
-using I4PRJ_SmartStorage.Models;
-using I4PRJ_SmartStorage.ViewModels;
 
 namespace I4PRJ_SmartStorage.Controllers
 {
@@ -15,12 +18,17 @@ namespace I4PRJ_SmartStorage.Controllers
     private readonly ISupplierService _supplierService;
     private readonly IWholesalerService _wholesalerService;
 
+    public ProductsController()
+      : this(new ProductService(new UnitOfWork(new ApplicationDbContext())), new CategoryService(new UnitOfWork(new ApplicationDbContext())), new SupplierService(new UnitOfWork(new ApplicationDbContext())), new WholesalerService(new UnitOfWork(new ApplicationDbContext())))
+    {
+    }
+
     public ProductsController(IProductService productService, ICategoryService categoryService, ISupplierService supplierService, IWholesalerService wholesalerService)
     {
-      _productService = productService;
-      _categoryService = categoryService;
-      _supplierService = supplierService;
-      _wholesalerService = wholesalerService;
+      _productService = productService ?? new ProductService(new UnitOfWork(new ApplicationDbContext()));
+      _categoryService = categoryService ?? new CategoryService(new UnitOfWork(new ApplicationDbContext()));
+      _supplierService = supplierService ?? new SupplierService(new UnitOfWork(new ApplicationDbContext()));
+      _wholesalerService = wholesalerService ?? new WholesalerService(new UnitOfWork(new ApplicationDbContext()));
     }
 
     public ActionResult Index(int? id)

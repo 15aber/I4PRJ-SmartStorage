@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace I4PRJ_SmartStorage.Models
+namespace I4PRJ_SmartStorage.ViewModels.Identity
 {
-  public class ForgotPasswordViewModel
+  public class ForgotViewModel
   {
     [Required]
-    [EmailAddress]
     [Display(Name = "Email")]
     public string Email { get; set; }
   }

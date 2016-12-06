@@ -1,5 +1,8 @@
-﻿using System.Web.Http;
-using I4PRJ_SmartStorage.BLL.Interfaces.Services;
+﻿using I4PRJ_SmartStorage.BLL.Interfaces.Services;
+using I4PRJ_SmartStorage.BLL.Services;
+using I4PRJ_SmartStorage.DAL.Context;
+using I4PRJ_SmartStorage.DAL.UnitOfWork;
+using System.Web.Http;
 
 namespace I4PRJ_SmartStorage.Controllers.Api
 {
@@ -7,9 +10,13 @@ namespace I4PRJ_SmartStorage.Controllers.Api
   {
     private readonly IProductService _service;
 
+    public ProductsController()
+      : this(new ProductService(new UnitOfWork(new ApplicationDbContext())))
+    {
+    }
     public ProductsController(IProductService service)
     {
-      _service = service;
+      _service = service ?? new ProductService(new UnitOfWork(new ApplicationDbContext()));
     }
 
     [ActionName("DefaultAction")]

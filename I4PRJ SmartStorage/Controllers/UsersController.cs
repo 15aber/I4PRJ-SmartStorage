@@ -1,6 +1,5 @@
 ﻿using I4PRJ_SmartStorage.DAL.Context;
 using I4PRJ_SmartStorage.DAL.Models;
-using I4PRJ_SmartStorage.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.Data.Entity;
@@ -9,6 +8,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using I4PRJ_SmartStorage.ViewModels.Identity;
 
 namespace I4PRJ_SmartStorage.Controllers
 {

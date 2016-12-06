@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Facebook;
 using I4PRJ_SmartStorage.DAL.Context;
-using I4PRJ_SmartStorage.Models;
+using I4PRJ_SmartStorage.ViewModels.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
