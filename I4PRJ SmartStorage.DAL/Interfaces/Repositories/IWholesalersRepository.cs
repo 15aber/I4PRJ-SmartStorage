@@ -2,7 +2,7 @@
 
 namespace I4PRJ_SmartStorage.DAL.Interfaces.Repositories
 {
-  public interface IWholesalersRepository : IRepository<WholesalerModel>
+  public interface IWholesalersRepository : IRepository<Wholesaler>
   {
   }
 }

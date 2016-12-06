@@ -1,17 +1,14 @@
-﻿using System;
-using System.Configuration;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace I4PRJ_SmartStorage
 {
-    public class FilterConfig
+  public class FilterConfig
+  {
+    public static void RegisterGlobalFilters(GlobalFilterCollection filters)
     {
-        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
-        {
-            filters.Add(new HandleErrorAttribute());
-            filters.Add(new RequireHttpsAttribute());
-            if(Convert.ToBoolean(ConfigurationManager.AppSettings["AuthorizeAttribute"]))
-                filters.Add(new AuthorizeAttribute());
-        }
+      filters.Add(new HandleErrorAttribute());
+      filters.Add(new RequireHttpsAttribute());
+      filters.Add(new AuthorizeAttribute());
     }
+  }
 }

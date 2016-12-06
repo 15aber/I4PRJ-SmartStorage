@@ -6,12 +6,12 @@ namespace I4PRJ_SmartStorage.BLL.Interfaces.Dtos
   public interface ITransactionDto
   {
     string ByUser { get; set; }
-    IInventoryModel FromInventory { get; set; }
+    IInventory FromInventory { get; set; }
     int? FromInventoryId { get; set; }
-    IProductModel Product { get; set; }
+    IProduct Product { get; set; }
     int ProductId { get; set; }
     double Quantity { get; set; }
-    IInventoryModel ToInventory { get; set; }
+    IInventory ToInventory { get; set; }
     int ToInventoryId { get; set; }
     int TransactionId { get; set; }
     DateTime Updated { get; set; }

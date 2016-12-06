@@ -43,7 +43,7 @@ namespace I4PRJ_SmartStorage
       // container.LoadConfiguration();
 
       //DAL
-      container.RegisterType<IUnitOfWork, UnitOfWork>(new InjectionConstructor(new SmartStorageContext()));
+      container.RegisterType<IUnitOfWork, UnitOfWork>(new InjectionConstructor(new ApplicationDbContext()));
       container.RegisterType(typeof(IRepository<>), typeof(Repository<>));
       container.RegisterType<ICategoriesRepository, CategoriesRepository>();
       container.RegisterType<IInventoriesRepository, InventoriesRepository>();

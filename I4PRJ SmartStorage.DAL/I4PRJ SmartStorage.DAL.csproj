@@ -52,14 +52,15 @@
     <Reference Include="System.Linq.Expressions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\Models\ICategoryModel.cs" />
-    <Compile Include="Interfaces\Models\IInventoryModel.cs" />
-    <Compile Include="Interfaces\Models\IProductModel.cs" />
-    <Compile Include="Interfaces\Models\IStatusModel.cs" />
-    <Compile Include="Interfaces\Models\IStockModel.cs" />
-    <Compile Include="Interfaces\Models\ISupplierModel.cs" />
-    <Compile Include="Interfaces\Models\ITransactionModel.cs" />
-    <Compile Include="Interfaces\Models\IWholesalerModel.cs" />
+    <Content Include="Context\DbConfiguration.txt" />
+    <Compile Include="Interfaces\Models\ICategory.cs" />
+    <Compile Include="Interfaces\Models\IInventory.cs" />
+    <Compile Include="Interfaces\Models\IProduct.cs" />
+    <Compile Include="Interfaces\Models\IStatus.cs" />
+    <Compile Include="Interfaces\Models\IStock.cs" />
+    <Compile Include="Interfaces\Models\ISupplier.cs" />
+    <Compile Include="Interfaces\Models\ITransaction.cs" />
+    <Compile Include="Interfaces\Models\IWholesaler.cs" />
     <Compile Include="Interfaces\Repositories\ICategoriesRepository.cs" />
     <Compile Include="Interfaces\Repositories\IInventoriesRepository.cs" />
     <Compile Include="Interfaces\Repositories\IProductsRepository.cs" />
@@ -70,14 +71,20 @@
     <Compile Include="Interfaces\Repositories\ITransactionsRepository.cs" />
     <Compile Include="Interfaces\Repositories\IWholesalersRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Models\CategoryModel.cs" />
-    <Compile Include="Models\InventoryModel.cs" />
-    <Compile Include="Models\ProductModel.cs" />
-    <Compile Include="Models\StatusModel.cs" />
-    <Compile Include="Models\StockModel.cs" />
-    <Compile Include="Models\SupplierModel.cs" />
-    <Compile Include="Models\TransactionModel.cs" />
-    <Compile Include="Models\WholesalerModel.cs" />
+    <Compile Include="Migrations\201612060333262_InitDb.cs" />
+    <Compile Include="Migrations\201612060333262_InitDb.Designer.cs">
+      <DependentUpon>201612060333262_InitDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Inventory.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\Stock.cs" />
+    <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\Wholesaler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoriesRepository.cs" />
     <Compile Include="Repositories\InventoriesRepository.cs" />
@@ -88,15 +95,17 @@
     <Compile Include="Repositories\SuppliersRepository.cs" />
     <Compile Include="Repositories\TransactionsRepository.cs" />
     <Compile Include="Repositories\WholesalersRepository.cs" />
-    <Compile Include="Context\SmartStorageContext.cs" />
+    <Compile Include="Context\ApplicationDbContext.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EntityConfigurations\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201612060333262_InitDb.resx">
+      <DependentUpon>201612060333262_InitDb.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

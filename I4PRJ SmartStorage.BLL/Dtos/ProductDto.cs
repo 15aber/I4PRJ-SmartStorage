@@ -26,19 +26,19 @@ namespace I4PRJ_SmartStorage.BLL.Dtos
     [DisplayName("Category")]
     public int CategoryId { get; set; }
 
-    public ICategoryModel Category { get; set; }
+    public ICategory Category { get; set; }
 
     [Required]
     [DisplayName("Supplier")]
     public int SupplierId { get; set; }
 
-    public ISupplierModel Supplier { get; set; }
+    public ISupplier Supplier { get; set; }
 
     [Required]
     [DisplayName("Wholesaler")]
     public int WholesalerId { get; set; }
 
-    public IWholesalerModel Wholesaler { get; set; }
+    public IWholesaler Wholesaler { get; set; }
 
     [DisplayName("Updated")]
     [DataType(DataType.DateTime)]

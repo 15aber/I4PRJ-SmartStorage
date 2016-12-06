@@ -9,10 +9,10 @@ namespace I4PRJ_SmartStorage.BLL.Interfaces.Dtos
     double CurQuantity { get; set; }
     double Difference { get; set; }
     double ExpQuantity { get; set; }
-    IInventoryModel Inventory { get; set; }
+    IInventory Inventory { get; set; }
     int InventoryId { get; set; }
     bool IsStarted { get; set; }
-    IProductModel Product { get; set; }
+    IProduct Product { get; set; }
     int ProductId { get; set; }
     int StatusId { get; set; }
     DateTime Updated { get; set; }

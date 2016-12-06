@@ -30,7 +30,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
     {
       try
       {
-        var entity = Mapper.Map<TransactionDto, TransactionModel>(entityDto);
+        var entity = Mapper.Map<TransactionDto, Transaction>(entityDto);
 
         if (entity.FromInventoryId != null)
         {
@@ -47,7 +47,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
         var toStock = _unitOfWork.Stocks.GetSingle(s => s.InventoryId == entityDto.ToInventoryId, s => s.ProductId == entityDto.ProductId);
         if (toStock == null)
         {
-          var stock = new StockModel
+          var stock = new Stock
           {
             InventoryId = entity.ToInventoryId,
             ProductId = entity.ProductId,
@@ -76,7 +76,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
     {
       try
       {
-        var entity = Mapper.Map<TransactionDto, TransactionModel>(entityDto);
+        var entity = Mapper.Map<TransactionDto, Transaction>(entityDto);
         _unitOfWork.Transactions.Update(entity);
         _unitOfWork.Complete();
       }
@@ -93,7 +93,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entities = _unitOfWork.Transactions.GetAll().ToList();
-        var entitiesDtos = Mapper.Map<List<TransactionModel>, List<TransactionDto>>(entities);
+        var entitiesDtos = Mapper.Map<List<Transaction>, List<TransactionDto>>(entities);
         return entitiesDtos;
       }
       catch (Exception)
@@ -109,7 +109,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entity = _unitOfWork.Transactions.Get(id);
-        var entityDto = Mapper.Map<TransactionModel, TransactionDto>(entity);
+        var entityDto = Mapper.Map<Transaction, TransactionDto>(entity);
         return entityDto;
       }
       catch (Exception)

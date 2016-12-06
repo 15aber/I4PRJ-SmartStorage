@@ -2,7 +2,7 @@ using I4PRJ_SmartStorage.DAL.Models;
 
 namespace I4PRJ_SmartStorage.DAL.Interfaces.Repositories
 {
-  public interface ICategoriesRepository : IRepository<CategoryModel>
+  public interface ICategoriesRepository : IRepository<Category>
   {
   }
 }

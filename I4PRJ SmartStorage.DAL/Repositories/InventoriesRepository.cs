@@ -7,20 +7,20 @@ using I4PRJ_SmartStorage.DAL.Models;
 
 namespace I4PRJ_SmartStorage.DAL.Repositories
 {
-  public class InventoriesRepository : Repository<InventoryModel>, IInventoriesRepository
+  public class InventoriesRepository : Repository<Inventory>, IInventoriesRepository
   {
-    public InventoriesRepository(SmartStorageContext context) : base(context)
+    public InventoriesRepository(ApplicationDbContext context) : base(context)
     {
     }
 
-    public SmartStorageContext SmartStorageContext
+    public ApplicationDbContext ApplicationDbContext
     {
-      get { return Context as SmartStorageContext; }
+      get { return Context as ApplicationDbContext; }
     }
 
-    public IEnumerable<InventoryModel> GetAllActiveInventories()
+    public IEnumerable<Inventory> GetAllActiveInventories()
     {
-      return Context.Set<InventoryModel>().Where(c => c.IsDeleted == false).ToList();
+      return Context.Set<Inventory>().Where(c => c.IsDeleted == false).ToList();
     }
   }
 }

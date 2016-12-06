@@ -30,7 +30,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
     {
       try
       {
-        var entity = Mapper.Map<ProductDto, ProductModel>(entityDto);
+        var entity = Mapper.Map<ProductDto, Product>(entityDto);
         _unitOfWork.Products.Add(entity);
         _unitOfWork.Complete();
       }
@@ -46,7 +46,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
     {
       try
       {
-        var entity = Mapper.Map<ProductDto, ProductModel>(entityDto);
+        var entity = Mapper.Map<ProductDto, Product>(entityDto);
         _unitOfWork.Products.Update(entity);
         _unitOfWork.Complete();
       }
@@ -80,7 +80,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entities = _unitOfWork.Products.GetAll().ToList();
-        var entitiesDtos = Mapper.Map<List<ProductModel>, List<ProductDto>>(entities);
+        var entitiesDtos = Mapper.Map<List<Product>, List<ProductDto>>(entities);
         return entitiesDtos;
       }
       catch (Exception)
@@ -96,7 +96,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entities = _unitOfWork.Products.GetAll(e => e.IsDeleted == false).ToList();
-        var entitiesDtos = Mapper.Map<List<ProductModel>, List<ProductDto>>(entities);
+        var entitiesDtos = Mapper.Map<List<Product>, List<ProductDto>>(entities);
         return entitiesDtos;
       }
       catch (Exception)
@@ -112,7 +112,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entities = _unitOfWork.Products.GetAll(e => e.IsDeleted == false, e => e.CategoryId == id).ToList();
-        var entitiesDtos = Mapper.Map<List<ProductModel>, List<ProductDto>>(entities);
+        var entitiesDtos = Mapper.Map<List<Product>, List<ProductDto>>(entities);
         return entitiesDtos;
       }
       catch (Exception)
@@ -128,7 +128,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entity = _unitOfWork.Products.Get(id);
-        var entityDto = Mapper.Map<ProductModel, ProductDto>(entity);
+        var entityDto = Mapper.Map<Product, ProductDto>(entity);
         return entityDto;
       }
       catch (Exception)

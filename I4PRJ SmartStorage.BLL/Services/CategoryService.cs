@@ -30,7 +30,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
     {
       try
       {
-        var entity = Mapper.Map<CategoryDto, CategoryModel>(entityDto);
+        var entity = Mapper.Map<CategoryDto, Category>(entityDto);
         _unitOfWork.Categories.Add(entity);
         _unitOfWork.Complete();
       }
@@ -46,7 +46,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
     {
       try
       {
-        var entity = Mapper.Map<CategoryDto, CategoryModel>(entityDto);
+        var entity = Mapper.Map<CategoryDto, Category>(entityDto);
         _unitOfWork.Categories.Update(entity);
         _unitOfWork.Complete();
       }
@@ -80,7 +80,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entities = _unitOfWork.Categories.GetAll().ToList();
-        var entitiesDtos = Mapper.Map<List<CategoryModel>, List<CategoryDto>>(entities);
+        var entitiesDtos = Mapper.Map<List<Category>, List<CategoryDto>>(entities);
         return entitiesDtos;
       }
       catch (Exception)
@@ -96,7 +96,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entities = _unitOfWork.Categories.GetAll(e => e.IsDeleted == false).ToList();
-        var entitiesDtos = Mapper.Map<List<CategoryModel>, List<CategoryDto>>(entities);
+        var entitiesDtos = Mapper.Map<List<Category>, List<CategoryDto>>(entities);
         return entitiesDtos;
       }
       catch (Exception)
@@ -112,7 +112,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entity = _unitOfWork.Categories.Get(id);
-        var entityDto = Mapper.Map<CategoryModel, CategoryDto>(entity);
+        var entityDto = Mapper.Map<Category, CategoryDto>(entity);
         return entityDto;
       }
       catch (Exception)

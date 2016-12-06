@@ -9,22 +9,22 @@ namespace I4PRJ_SmartStorage.BLL.Mapping
     public MappingProfile()
     {
       // Model to Dto
-      CreateMap<CategoryModel, CategoryDto>();
-      CreateMap<InventoryModel, InventoryDto>();
-      CreateMap<ProductModel, ProductDto>();
-      CreateMap<StatusModel, StatusDto>();
-      CreateMap<SupplierModel, SupplierDto>();
-      CreateMap<TransactionModel, TransactionDto>();
-      CreateMap<WholesalerModel, WholesalerDto>();
+      CreateMap<Category, CategoryDto>();
+      CreateMap<Inventory, InventoryDto>();
+      CreateMap<Product, ProductDto>();
+      CreateMap<Status, StatusDto>();
+      CreateMap<Supplier, SupplierDto>();
+      CreateMap<Transaction, TransactionDto>();
+      CreateMap<Wholesaler, WholesalerDto>();
 
       // Dto to Model
-      CreateMap<CategoryDto, CategoryModel>();
-      CreateMap<InventoryDto, InventoryModel>();
-      CreateMap<ProductDto, ProductModel>();
-      CreateMap<StatusDto, StatusModel>();
-      CreateMap<SupplierDto, SupplierModel>();
-      CreateMap<TransactionDto, TransactionModel>();
-      CreateMap<WholesalerDto, WholesalerModel>();
+      CreateMap<CategoryDto, Category>();
+      CreateMap<InventoryDto, Inventory>();
+      CreateMap<ProductDto, Product>();
+      CreateMap<StatusDto, Status>();
+      CreateMap<SupplierDto, Supplier>();
+      CreateMap<TransactionDto, Transaction>();
+      CreateMap<WholesalerDto, Wholesaler>();
     }
   }
 }

@@ -7,20 +7,20 @@ using I4PRJ_SmartStorage.DAL.Models;
 
 namespace I4PRJ_SmartStorage.DAL.Repositories
 {
-  public class WholesalersRepository : Repository<WholesalerModel>, IWholesalersRepository
+  public class WholesalersRepository : Repository<Wholesaler>, IWholesalersRepository
   {
-    public WholesalersRepository(SmartStorageContext context) : base(context)
+    public WholesalersRepository(ApplicationDbContext context) : base(context)
     {
     }
 
-    public SmartStorageContext SmartStorageContext
+    public ApplicationDbContext ApplicationDbContext
     {
-      get { return Context as SmartStorageContext; }
+      get { return Context as ApplicationDbContext; }
     }
 
-    public IEnumerable<WholesalerModel> GetAllActiveWholesalers()
+    public IEnumerable<Wholesaler> GetAllActiveWholesalers()
     {
-      return Context.Set<WholesalerModel>().Where(c => c.IsDeleted == false).ToList();
+      return Context.Set<Wholesaler>().Where(c => c.IsDeleted == false).ToList();
     }
   }
 }

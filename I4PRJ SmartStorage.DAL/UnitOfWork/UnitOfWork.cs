@@ -7,9 +7,9 @@ namespace I4PRJ_SmartStorage.DAL.UnitOfWork
 {
   public class UnitOfWork : IUnitOfWork
   {
-    private readonly SmartStorageContext _context;
+    private readonly ApplicationDbContext _context;
 
-    public UnitOfWork(SmartStorageContext context)
+    public UnitOfWork(ApplicationDbContext context)
     {
       _context = context;
       Categories = new CategoriesRepository(_context);

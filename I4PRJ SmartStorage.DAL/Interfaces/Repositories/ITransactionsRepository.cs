@@ -2,7 +2,7 @@
 
 namespace I4PRJ_SmartStorage.DAL.Interfaces.Repositories
 {
-  public interface ITransactionsRepository : IRepository<TransactionModel>
+  public interface ITransactionsRepository : IRepository<Transaction>
   {
   }
 }

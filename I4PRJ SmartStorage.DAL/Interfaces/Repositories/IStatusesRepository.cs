@@ -2,7 +2,7 @@
 
 namespace I4PRJ_SmartStorage.DAL.Interfaces.Repositories
 {
-  public interface IStatusesRepository : IRepository<StatusModel>
+  public interface IStatusesRepository : IRepository<Status>
   {
   }
 }

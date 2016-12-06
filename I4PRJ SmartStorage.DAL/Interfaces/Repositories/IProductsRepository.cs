@@ -2,7 +2,7 @@
 
 namespace I4PRJ_SmartStorage.DAL.Interfaces.Repositories
 {
-  public interface IProductsRepository : IRepository<ProductModel>
+  public interface IProductsRepository : IRepository<Product>
   {
   }
 }

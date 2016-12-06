@@ -1,18 +1,19 @@
-﻿using System;
+﻿using I4PRJ_SmartStorage.DAL.Models;
+using System;
 
 namespace I4PRJ_SmartStorage.DAL.Interfaces.Models
 {
-  public interface ITransactionModel
+  public interface ITransaction
   {
     string ByUser { get; set; }
-    IInventoryModel FromInventory { get; set; }
+    Inventory FromInventory { get; set; }
     int? FromInventoryId { get; set; }
-    IProductModel Product { get; set; }
+    Product Product { get; set; }
     int ProductId { get; set; }
     double Quantity { get; set; }
-    IInventoryModel ToInventory { get; set; }
+    Inventory ToInventory { get; set; }
     int ToInventoryId { get; set; }
     int TransactionId { get; set; }
-    DateTime Updated { get; set; }
+    DateTime? Updated { get; set; }
   }
 }

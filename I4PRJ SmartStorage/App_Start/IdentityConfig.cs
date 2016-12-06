@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Net;
-using System.Net.Mail;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using I4PRJ_SmartStorage.Models;
+﻿using I4PRJ_SmartStorage.DAL.Context;
+using I4PRJ_SmartStorage.DAL.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -13,6 +7,13 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Sms.ApiClient.V2;
 using Sms.ApiClient.V2.SendMessages;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Net;
+using System.Net.Mail;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace I4PRJ_SmartStorage
 {

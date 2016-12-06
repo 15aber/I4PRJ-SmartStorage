@@ -5,15 +5,15 @@ using I4PRJ_SmartStorage.DAL.Models;
 
 namespace I4PRJ_SmartStorage.DAL.Repositories
 {
-  public class CategoriesRepository : Repository<CategoryModel>, ICategoriesRepository
+  public class CategoriesRepository : Repository<Category>, ICategoriesRepository
   {
-    public CategoriesRepository(SmartStorageContext context) : base(context)
+    public CategoriesRepository(ApplicationDbContext context) : base(context)
     {
     }
 
-    public SmartStorageContext SmartStorageContext
+    public ApplicationDbContext ApplicationDbContext
     {
-      get { return Context as SmartStorageContext; }
+      get { return Context as ApplicationDbContext; }
     }
 
   }

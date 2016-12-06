@@ -30,7 +30,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
     {
       try
       {
-        var entity = Mapper.Map<StatusDto, StatusModel>(entityDto);
+        var entity = Mapper.Map<StatusDto, Status>(entityDto);
         _unitOfWork.Statuses.Add(entity);
         _unitOfWork.Complete();
       }
@@ -46,7 +46,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
     {
       try
       {
-        var entity = Mapper.Map<StatusDto, StatusModel>(entityDto);
+        var entity = Mapper.Map<StatusDto, Status>(entityDto);
         _unitOfWork.Statuses.Update(entity);
         _unitOfWork.Complete();
       }
@@ -63,7 +63,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entities = _unitOfWork.Statuses.GetAll().ToList();
-        var entitiesDtos = Mapper.Map<List<StatusModel>, List<StatusDto>>(entities);
+        var entitiesDtos = Mapper.Map<List<Status>, List<StatusDto>>(entities);
         return entitiesDtos;
       }
       catch (Exception)
@@ -79,7 +79,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entity = _unitOfWork.Statuses.Get(id);
-        var entityDto = Mapper.Map<StatusModel, StatusDto>(entity);
+        var entityDto = Mapper.Map<Status, StatusDto>(entity);
         return entityDto;
       }
       catch (Exception)

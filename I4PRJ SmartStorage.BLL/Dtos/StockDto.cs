@@ -12,13 +12,13 @@ namespace I4PRJ_SmartStorage.BLL.Dtos
     [DisplayName("Inventory")]
     public int InventoryId { get; set; }
 
-    public IInventoryModel Inventory { get; set; }
+    public IInventory Inventory { get; set; }
 
     [Required]
     [DisplayName("Product")]
     public int ProductId { get; set; }
 
-    public IProductModel Product { get; set; }
+    public IProduct Product { get; set; }
 
     [Required]
     [DisplayFormat(DataFormatString = "{0:G}")]

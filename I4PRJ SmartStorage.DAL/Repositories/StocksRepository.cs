@@ -5,15 +5,15 @@ using I4PRJ_SmartStorage.DAL.Models;
 
 namespace I4PRJ_SmartStorage.DAL.Repositories
 {
-  public class StocksRepository : Repository<StockModel>, IStocksRepository
+  public class StocksRepository : Repository<Stock>, IStocksRepository
   {
-    public StocksRepository(SmartStorageContext context) : base(context)
+    public StocksRepository(ApplicationDbContext context) : base(context)
     {
     }
 
-    public SmartStorageContext SmartStorageContext
+    public ApplicationDbContext ApplicationDbContext
     {
-      get { return Context as SmartStorageContext; }
+      get { return Context as ApplicationDbContext; }
     }
   }
 }

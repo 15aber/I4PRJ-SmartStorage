@@ -5,15 +5,15 @@ using I4PRJ_SmartStorage.DAL.Models;
 
 namespace I4PRJ_SmartStorage.DAL.Repositories
 {
-  public class StatusesRepository : Repository<StatusModel>, IStatusesRepository
+  public class StatusesRepository : Repository<Status>, IStatusesRepository
   {
-    public StatusesRepository(SmartStorageContext context) : base(context)
+    public StatusesRepository(ApplicationDbContext context) : base(context)
     {
     }
 
-    public SmartStorageContext SmartStorageContext
+    public ApplicationDbContext ApplicationDbContext
     {
-      get { return Context as SmartStorageContext; }
+      get { return Context as ApplicationDbContext; }
     }
   }
 }

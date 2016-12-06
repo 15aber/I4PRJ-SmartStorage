@@ -14,12 +14,12 @@ namespace I4PRJ_SmartStorage.BLL.Dtos
     [Required]
     [DisplayName("Inventory")]
     public int InventoryId { get; set; }
-    public IInventoryModel Inventory { get; set; }
+    public IInventory Inventory { get; set; }
 
     [Required]
     [DisplayName("Product")]
     public int ProductId { get; set; }
-    public IProductModel Product { get; set; }
+    public IProduct Product { get; set; }
 
     [Required]
     [Range(0, double.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]

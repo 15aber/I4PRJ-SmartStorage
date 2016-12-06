@@ -5,15 +5,15 @@ using I4PRJ_SmartStorage.DAL.Models;
 
 namespace I4PRJ_SmartStorage.DAL.Repositories
 {
-  public class TransactionsRepository : Repository<TransactionModel>, ITransactionsRepository
+  public class TransactionsRepository : Repository<Transaction>, ITransactionsRepository
   {
-    public TransactionsRepository(SmartStorageContext context) : base(context)
+    public TransactionsRepository(ApplicationDbContext context) : base(context)
     {
     }
 
-    public SmartStorageContext SmartStorageContext
+    public ApplicationDbContext ApplicationDbContext
     {
-      get { return Context as SmartStorageContext; }
+      get { return Context as ApplicationDbContext; }
     }
   }
 }

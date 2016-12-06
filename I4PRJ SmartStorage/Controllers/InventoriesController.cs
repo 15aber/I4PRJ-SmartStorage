@@ -1,8 +1,11 @@
-﻿using System;
-using System.Web.Mvc;
-using I4PRJ_SmartStorage.BLL.Dtos;
+﻿using I4PRJ_SmartStorage.BLL.Dtos;
 using I4PRJ_SmartStorage.BLL.Interfaces.Services;
+using I4PRJ_SmartStorage.BLL.Services;
+using I4PRJ_SmartStorage.DAL.Context;
+using I4PRJ_SmartStorage.DAL.UnitOfWork;
 using I4PRJ_SmartStorage.Models;
+using System;
+using System.Web.Mvc;
 
 namespace I4PRJ_SmartStorage.Controllers
 {
@@ -10,9 +13,13 @@ namespace I4PRJ_SmartStorage.Controllers
   {
     private readonly IInventoryService _service;
 
+    public InventoriesController()
+      : this(new InventoryService(new UnitOfWork(new ApplicationDbContext())))
+    {
+    }
     public InventoriesController(IInventoryService service)
     {
-      _service = service;
+      _service = service ?? new InventoryService(new UnitOfWork(new ApplicationDbContext()));
     }
 
     public ActionResult Index()

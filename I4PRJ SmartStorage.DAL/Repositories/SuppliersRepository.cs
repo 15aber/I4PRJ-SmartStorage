@@ -7,20 +7,20 @@ using I4PRJ_SmartStorage.DAL.Models;
 
 namespace I4PRJ_SmartStorage.DAL.Repositories
 {
-  public class SuppliersRepository : Repository<SupplierModel>, ISuppliersRepository
+  public class SuppliersRepository : Repository<Supplier>, ISuppliersRepository
   {
-    public SuppliersRepository(SmartStorageContext context) : base(context)
+    public SuppliersRepository(ApplicationDbContext context) : base(context)
     {
     }
 
-    public SmartStorageContext SmartStorageContext
+    public ApplicationDbContext ApplicationDbContext
     {
-      get { return Context as SmartStorageContext; }
+      get { return Context as ApplicationDbContext; }
     }
 
-    public IEnumerable<SupplierModel> GetAllActiveSuppliers()
+    public IEnumerable<Supplier> GetAllActiveSuppliers()
     {
-      return Context.Set<SupplierModel>().Where(c => c.IsDeleted == false).ToList();
+      return Context.Set<Supplier>().Where(c => c.IsDeleted == false).ToList();
     }
   }
 }

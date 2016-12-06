@@ -30,7 +30,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
     {
       try
       {
-        var entity = Mapper.Map<WholesalerDto, WholesalerModel>(entityDto);
+        var entity = Mapper.Map<WholesalerDto, Wholesaler>(entityDto);
         _unitOfWork.Wholesalers.Add(entity);
         _unitOfWork.Complete();
       }
@@ -46,7 +46,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
     {
       try
       {
-        var entity = Mapper.Map<WholesalerDto, WholesalerModel>(entityDto);
+        var entity = Mapper.Map<WholesalerDto, Wholesaler>(entityDto);
         _unitOfWork.Wholesalers.Update(entity);
         _unitOfWork.Complete();
       }
@@ -80,7 +80,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entities = _unitOfWork.Wholesalers.GetAll().ToList();
-        var entitiesDtos = Mapper.Map<List<WholesalerModel>, List<WholesalerDto>>(entities);
+        var entitiesDtos = Mapper.Map<List<Wholesaler>, List<WholesalerDto>>(entities);
         return entitiesDtos;
       }
       catch (Exception)
@@ -96,7 +96,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entities = _unitOfWork.Wholesalers.GetAll(e => e.IsDeleted == false).ToList();
-        var entitiesDtos = Mapper.Map<List<WholesalerModel>, List<WholesalerDto>>(entities);
+        var entitiesDtos = Mapper.Map<List<Wholesaler>, List<WholesalerDto>>(entities);
         return entitiesDtos;
       }
       catch (Exception)
@@ -112,7 +112,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entity = _unitOfWork.Wholesalers.Get(id);
-        var entityDto = Mapper.Map<WholesalerModel, WholesalerDto>(entity);
+        var entityDto = Mapper.Map<Wholesaler, WholesalerDto>(entity);
         return entityDto;
       }
       catch (Exception)

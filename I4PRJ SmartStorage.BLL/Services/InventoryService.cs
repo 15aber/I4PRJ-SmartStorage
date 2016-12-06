@@ -30,7 +30,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
     {
       try
       {
-        var entity = Mapper.Map<InventoryDto, InventoryModel>(entityDto);
+        var entity = Mapper.Map<InventoryDto, Inventory>(entityDto);
         _unitOfWork.Inventories.Add(entity);
         _unitOfWork.Complete();
       }
@@ -46,7 +46,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
     {
       try
       {
-        var entity = Mapper.Map<InventoryDto, InventoryModel>(entityDto);
+        var entity = Mapper.Map<InventoryDto, Inventory>(entityDto);
         _unitOfWork.Inventories.Update(entity);
         _unitOfWork.Complete();
       }
@@ -80,7 +80,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entities = _unitOfWork.Inventories.GetAll().ToList();
-        var entitiesDtos = Mapper.Map<List<InventoryModel>, List<InventoryDto>>(entities);
+        var entitiesDtos = Mapper.Map<List<Inventory>, List<InventoryDto>>(entities);
         return entitiesDtos;
       }
       catch (Exception)
@@ -96,7 +96,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entities = _unitOfWork.Inventories.GetAll(e => e.IsDeleted == false).ToList();
-        var entitiesDtos = Mapper.Map<List<InventoryModel>, List<InventoryDto>>(entities);
+        var entitiesDtos = Mapper.Map<List<Inventory>, List<InventoryDto>>(entities);
         return entitiesDtos;
       }
       catch (Exception)
@@ -112,7 +112,7 @@ namespace I4PRJ_SmartStorage.BLL.Services
       try
       {
         var entity = _unitOfWork.Inventories.Get(id);
-        var entityDto = Mapper.Map<InventoryModel, InventoryDto>(entity);
+        var entityDto = Mapper.Map<Inventory, InventoryDto>(entity);
         return entityDto;
       }
       catch (Exception)
