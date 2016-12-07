@@ -1,14 +1,14 @@
-﻿using System.Data.Entity;
+﻿using Facebook;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using SmartStorage.BLL.ViewModels.Identity;
+using SmartStorage.DAL.Context;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Facebook;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using SmartStorage.DAL.Context;
-using SmartStorage.BLL.ViewModels.Identity;
 
 namespace SmartStorage.UI.Controllers
 {
@@ -81,6 +81,10 @@ namespace SmartStorage.UI.Controllers
       switch (result)
       {
         case SignInStatus.Success:
+          if (!await UserManager.IsPhoneNumberConfirmedAsync(user.Id))
+          {
+            return RedirectToAction("VerifyPhoneNumber", "Manage", new { PhoneNumber = UserManager.GetPhoneNumber(user.Id) });
+          }
           return RedirectToLocal(returnUrl);
         case SignInStatus.LockedOut:
           return View("Lockout");

@@ -1,6 +1,4 @@
-﻿@model SmartStorage.BLL.ViewModels.Identity.UserViewModel
-
-@{
+﻿@{
   ViewBag.Title = "Delete User";
 }
 
@@ -10,7 +8,7 @@
     <div class="col-lg-6 col-lg-offset-3">
       <div class="ibox">
         <div class="ibox-title">
-          <h5>Are you sure you want to delete <strong class="text-danger">@Html.DisplayFor(model => model.FullName)</strong>?</h5>
+          <h5>Are you sure you want to delete <strong class="text-danger">@ViewBag.FullName</strong>?</h5>
         </div>
         <div class="ibox-content">
           @using (Html.BeginForm())

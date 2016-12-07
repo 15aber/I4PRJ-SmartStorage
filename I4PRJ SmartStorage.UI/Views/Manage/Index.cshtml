@@ -23,9 +23,19 @@
                     <h3><strong>@Html.Action("GetFullName", "Account", new { userId = User.Identity.Name })</strong></h3>
                     <p><i class="fa fa-phone"></i> @Model.PhoneNumber</p>
                     <p><i class="fa fa-envelope"></i> @Model.Email</p>
-                    <a class="btn btn-block btn-primary btn-outline" href="@Url.Action("ChangePassword","Manage")">
-                      <i class="fa fa-key"> </i> Change Password
-                    </a>
+                    
+                    @if (Model.HasPassword)
+                    {
+                      <a class="btn btn-block btn-primary btn-outline" href="@Url.Action("ChangePassword", "Manage")">
+                        <i class="fa fa-key"> </i> Change Password
+                      </a>
+                    }
+                    else
+                    {
+                      <a class="btn btn-block btn-danger btn-outline" href="@Url.Action("SetPassword", "Manage")">
+                        <i class="fa fa-key"> </i> Create Password
+                      </a>
+                    }
                     <br/>
                     <a class="btn btn-block btn-primary btn-outline" href="@Url.Action("Edit","Account")">
                       <i class="fa fa-paste"> </i> Update info

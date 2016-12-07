@@ -1,9 +1,9 @@
-using System;
-using System.Data.Entity.Migrations;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SmartStorage.DAL.Context;
 using SmartStorage.DAL.Models;
+using System;
+using System.Data.Entity.Migrations;
 
 namespace SmartStorage.DAL.Migrations
 {
@@ -66,6 +66,7 @@ namespace SmartStorage.DAL.Migrations
           PhoneNumber = "12345678",
           ProfilePicture = "/Content/images/rubber-duck.png",
           EmailConfirmed = true,
+          PhoneNumberConfirmed = true,
           LockoutEnabled = false
         };
 
@@ -85,6 +86,7 @@ namespace SmartStorage.DAL.Migrations
         userInDb.PhoneNumber = "12345678";
         userInDb.ProfilePicture = "/Content/images/rubber-duck.png";
         userInDb.EmailConfirmed = true;
+        userInDb.PhoneNumberConfirmed = true;
         userInDb.LockoutEnabled = false;
 
         if (!userManager.IsInRole(userInDb.Id, "Admin"))

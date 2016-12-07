@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SmartStorage.BLL.ViewModels.Identity;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace SmartStorage.UI.Controllers
 {
@@ -190,6 +190,38 @@ namespace SmartStorage.UI.Controllers
         return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
       }
       AddErrors(result);
+      return View(model);
+    }
+
+    //
+    // GET: /Manage/SetPassword
+    public ActionResult SetPassword()
+    {
+      return View();
+    }
+
+    //
+    // POST: /Manage/SetPassword
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<ActionResult> SetPassword(SetPasswordViewModel model)
+    {
+      if (ModelState.IsValid)
+      {
+        var result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+        if (result.Succeeded)
+        {
+          var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+          if (user != null)
+          {
+            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+          }
+          return RedirectToAction("Index", new { Message = ManageMessageId.SetPasswordSuccess });
+        }
+        AddErrors(result);
+      }
+
+      // If we got this far, something failed, redisplay form
       return View(model);
     }
 

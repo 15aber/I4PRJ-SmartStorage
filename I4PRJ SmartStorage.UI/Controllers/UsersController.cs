@@ -1,14 +1,14 @@
-﻿using System.Data.Entity;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using SmartStorage.BLL.ViewModels.Identity;
+using SmartStorage.DAL.Context;
+using SmartStorage.DAL.Models;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using SmartStorage.DAL.Context;
-using SmartStorage.DAL.Models;
-using SmartStorage.BLL.ViewModels.Identity;
 
 namespace SmartStorage.UI.Controllers
 {
@@ -67,7 +67,7 @@ namespace SmartStorage.UI.Controllers
           FullName = model.FullName,
           ProfilePicture = model.ProfilePicture
         };
-        var result = await UserManager.CreateAsync(user, "SmartStorage.2016");
+        var result = await UserManager.CreateAsync(user);
         if (result.Succeeded)
         {
           if (model.IsAdmin)
@@ -110,14 +110,14 @@ namespace SmartStorage.UI.Controllers
         return HttpNotFound();
       }
 
-      var model = new RegisterViewModel
+      var model = new UserViewModel
       {
         Username = userInDb.UserName,
         FullName = userInDb.FullName,
         Email = userInDb.Email,
-        PhoneNumber = userInDb.PhoneNumber
+        PhoneNumber = userInDb.PhoneNumber,
+        IsAdmin = UserManager.IsInRole(userInDb.Id, "Admin")
       };
-      model.IsAdmin = UserManager.IsInRole(userInDb.Id, "Admin");
       return View(model);
     }
 
@@ -177,7 +177,10 @@ namespace SmartStorage.UI.Controllers
       {
         return HttpNotFound();
       }
-      return View(userInDb);
+
+      ViewBag.FullName = userInDb.FullName;
+
+      return View();
     }
 
     // POST: User/Delete/5
