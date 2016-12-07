@@ -1,6 +1,6 @@
-﻿using System.Web.Http;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Web.Http;
 
 namespace SmartStorage.UI
 {
@@ -20,7 +20,11 @@ namespace SmartStorage.UI
           name: "DefaultApi",
           routeTemplate: "api/{controller}/{action}/{id}",
           defaults: new { action = "DefaultAction", id = RouteParameter.Optional }
+
       );
+
+      config.Filters.Add(new AuthorizeAttribute());
+
     }
   }
 }

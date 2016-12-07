@@ -23,6 +23,7 @@ namespace SmartStorage.UI.Controllers.Api
     }
 
     [HttpDelete]
+    [Authorize(Roles = "Admin")]
     public IHttpActionResult DeleteSupplier(int id)
     {
       // TODO null kontrol
