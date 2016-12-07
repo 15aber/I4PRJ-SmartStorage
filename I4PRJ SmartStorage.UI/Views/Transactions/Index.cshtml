@@ -24,7 +24,7 @@
               <div class="col-lg-5">
                 <div class="input-group pull-right" id="froms">
                   <label class="input-group-addon" for="fromdate">from:</label>
-                  <input class="form-control" id="fromdate" name="fromdate" type="text" size="8" value="@DateTime.Today.AddMonths(-1)" />
+                  <input class="form-control" id="fromdate" name="fromdate" type="text" value="@DateTime.Now.AddMonths(-1).ToShortDateString()" />
                   <span class="input-group-addon" id="fromIcon"> <i class="fa fa-calendar" aria-hidden="true"></i></span>
                 </div>
               </div>
@@ -32,14 +32,14 @@
               <div class="col-lg-5">
                 <div class="input-group pull-right">
                   <label class="input-group-addon" for="todate">to:</label>
-                  <input class="form-control" id="todate" name="todate" type="text" size="8" value="@DateTime.Now.Date" />
+                  <input class="form-control" id="todate" name="todate" type="text" value="@DateTime.Now.ToShortDateString()" />
                   <span class="input-group-addon" id="toIcon"> <i class="fa fa-calendar" aria-hidden="true"></i></span>
                 </div>
               </div>
 
               <div class="col-lg-2">
                 <div class="pull-right">
-                  <input type="button" name="filter" id="filter" value="Filter" class="btn btn-primary" />
+                  <input type="button" name="filter" id="filter" value="Filter" class="btn btn-primary pull-right" />
                 </div>
               </div>
             </div>
