@@ -1,13 +1,11 @@
-using System;
 using Microsoft.Practices.Unity;
 using SmartStorage.BLL.Interfaces.Services;
 using SmartStorage.BLL.Services;
 using SmartStorage.DAL.Context;
 using SmartStorage.DAL.Interfaces;
-using SmartStorage.DAL.Interfaces.Repositories;
-using SmartStorage.DAL.Repositories;
 using SmartStorage.DAL.UnitOfWork;
 using SmartStorage.UI.Controllers;
+using System;
 
 namespace SmartStorage.UI
 {
@@ -42,19 +40,12 @@ namespace SmartStorage.UI
       // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
       // container.LoadConfiguration();
 
-      //DAL
-      container.RegisterType<IUnitOfWork, UnitOfWork>(new InjectionConstructor(new ApplicationDbContext()));
-      container.RegisterType(typeof(IRepository<>), typeof(Repository<>));
-      container.RegisterType<ICategoriesRepository, CategoriesRepository>();
-      container.RegisterType<IInventoriesRepository, InventoriesRepository>();
-      container.RegisterType<IProductsRepository, ProductsRepository>();
-      container.RegisterType<IStatusesRepository, StatusesRepository>();
-      container.RegisterType<IStocksRepository, StocksRepository>();
-      container.RegisterType<ISuppliersRepository, SuppliersRepository>();
-      container.RegisterType<ITransactionsRepository, TransactionsRepository>();
-      container.RegisterType<IWholesalersRepository, WholesalersRepository>();
+      // Register your types here
+      // container.RegisterType<IProductRepository, ProductRepository>();
 
-      //BLL
+      container.RegisterType<ApplicationDbContext>();
+      container.RegisterType<IUnitOfWork, UnitOfWork>();
+
       container.RegisterType<ICategoryService, CategoryService>();
       container.RegisterType<IInventoryService, InventoryService>();
       container.RegisterType<IProductService, ProductService>();
@@ -64,10 +55,8 @@ namespace SmartStorage.UI
       container.RegisterType<ITransactionService, TransactionService>();
       container.RegisterType<IWholesalerService, WholesalerService>();
 
-      // UI
-      container.RegisterType<AccountController>(new InjectionConstructor());
       container.RegisterType<ManageController>(new InjectionConstructor());
-
+      container.RegisterType<AccountController>(new InjectionConstructor());
     }
   }
 }

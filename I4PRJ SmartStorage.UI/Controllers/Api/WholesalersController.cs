@@ -1,8 +1,5 @@
-﻿using SmartStorage.DAL.Context;
-using SmartStorage.DAL.UnitOfWork;
+﻿using SmartStorage.BLL.Interfaces.Services;
 using System.Web.Http;
-using SmartStorage.BLL.Interfaces.Services;
-using SmartStorage.BLL.Services;
 
 namespace SmartStorage.UI.Controllers.Api
 {
@@ -10,14 +7,9 @@ namespace SmartStorage.UI.Controllers.Api
   {
     private readonly IWholesalerService _service;
 
-    public WholesalersController()
-      : this(new WholesalerService(new UnitOfWork(new ApplicationDbContext())))
-    {
-    }
-
     public WholesalersController(IWholesalerService service)
     {
-      _service = service ?? new WholesalerService(new UnitOfWork(new ApplicationDbContext()));
+      _service = service;
     }
 
     [ActionName("DefaultAction")]

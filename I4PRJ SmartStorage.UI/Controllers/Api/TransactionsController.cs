@@ -1,8 +1,5 @@
-﻿using System.Web.Http;
-using SmartStorage.BLL.Interfaces.Services;
-using SmartStorage.BLL.Services;
-using SmartStorage.DAL.Context;
-using SmartStorage.DAL.UnitOfWork;
+﻿using SmartStorage.BLL.Interfaces.Services;
+using System.Web.Http;
 
 namespace SmartStorage.UI.Controllers.Api
 {
@@ -10,14 +7,9 @@ namespace SmartStorage.UI.Controllers.Api
   {
     private readonly ITransactionService _service;
 
-    public TransactionsController()
-      : this(new TransactionService(new UnitOfWork(new ApplicationDbContext())))
-    {
-    }
-
     public TransactionsController(ITransactionService service)
     {
-      _service = service ?? new TransactionService(new UnitOfWork(new ApplicationDbContext()));
+      _service = service;
     }
 
     [ActionName("DefaultAction")]

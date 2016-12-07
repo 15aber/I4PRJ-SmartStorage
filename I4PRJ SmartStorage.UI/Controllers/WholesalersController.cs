@@ -1,11 +1,8 @@
-﻿using System;
-using System.Web.Mvc;
-using SmartStorage.BLL.Dtos;
+﻿using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
-using SmartStorage.BLL.Services;
-using SmartStorage.DAL.Context;
-using SmartStorage.DAL.UnitOfWork;
 using SmartStorage.UI.ViewModels.Identity;
+using System;
+using System.Web.Mvc;
 
 namespace SmartStorage.UI.Controllers
 {
@@ -13,14 +10,9 @@ namespace SmartStorage.UI.Controllers
   {
     private readonly IWholesalerService _service;
 
-    public WholesalersController()
-      : this(new WholesalerService(new UnitOfWork(new ApplicationDbContext())))
-    {
-    }
-
     public WholesalersController(IWholesalerService service)
     {
-      _service = service ?? new WholesalerService(new UnitOfWork(new ApplicationDbContext()));
+      _service = service;
     }
 
     public ActionResult Index()

@@ -1,8 +1,5 @@
-﻿using System.Web.Http;
-using SmartStorage.BLL.Interfaces.Services;
-using SmartStorage.BLL.Services;
-using SmartStorage.DAL.Context;
-using SmartStorage.DAL.UnitOfWork;
+﻿using SmartStorage.BLL.Interfaces.Services;
+using System.Web.Http;
 
 namespace SmartStorage.UI.Controllers.Api
 {
@@ -10,14 +7,9 @@ namespace SmartStorage.UI.Controllers.Api
   {
     private readonly ICategoryService _service;
 
-    public CategoriesController()
-      : this(new CategoryService(new UnitOfWork(new ApplicationDbContext())))
-    {
-    }
-
     public CategoriesController(ICategoryService service)
     {
-      _service = service ?? new CategoryService(new UnitOfWork(new ApplicationDbContext()));
+      _service = service;
     }
 
     [ActionName("DefaultAction")]

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Web.Mvc;
-using SmartStorage.BLL.Dtos;
+﻿using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
-using SmartStorage.BLL.Services;
-using SmartStorage.DAL.Context;
-using SmartStorage.DAL.UnitOfWork;
 using SmartStorage.UI.ViewModels;
+using System;
+using System.Web.Mvc;
 
 namespace SmartStorage.UI.Controllers
 {
@@ -15,16 +12,11 @@ namespace SmartStorage.UI.Controllers
     private readonly IInventoryService _inventoryService;
     private readonly IProductService _productService;
 
-    public TransactionsController()
-      : this(new TransactionService(new UnitOfWork(new ApplicationDbContext())), new InventoryService(new UnitOfWork(new ApplicationDbContext())), new ProductService(new UnitOfWork(new ApplicationDbContext())))
-    {
-    }
-
     public TransactionsController(ITransactionService transactionService, IInventoryService inventoryService, IProductService productService)
     {
-      _transactionService = transactionService ?? new TransactionService(new UnitOfWork(new ApplicationDbContext()));
-      _inventoryService = inventoryService ?? new InventoryService(new UnitOfWork(new ApplicationDbContext()));
-      _productService = productService ?? new ProductService(new UnitOfWork(new ApplicationDbContext()));
+      _transactionService = transactionService;
+      _inventoryService = inventoryService;
+      _productService = productService;
     }
     public ActionResult Index()
     {
