@@ -1,11 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using SmartStorage.DAL.Interfaces.Models;
 
 namespace SmartStorage.DAL.Models
 {
-  public class Product : IProduct
+  public class Product
   {
     [Key]
     public int ProductId { get; set; }

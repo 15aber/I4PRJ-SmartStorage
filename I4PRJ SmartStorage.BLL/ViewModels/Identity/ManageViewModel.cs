@@ -1,4 +1,4 @@
-﻿namespace SmartStorage.UI.ViewModels.Identity
+﻿namespace SmartStorage.BLL.ViewModels.Identity
 {
   public class ManageViewModel
   {

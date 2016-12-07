@@ -1,13 +1,25 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SmartStorage.UI.ViewModels.Identity
+namespace SmartStorage.BLL.ViewModels.Identity
 {
-  public class ResetPasswordViewModel
+  public class RegisterViewModel
   {
     [Required]
-    [EmailAddress]
+    public string Username { get; set; }
+
+    [Required]
+    [DataType(DataType.EmailAddress)]
     [Display(Name = "Email")]
     public string Email { get; set; }
+
+    [Required]
+    [DataType(DataType.PhoneNumber)]
+    [Display(Name = "Phone")]
+    public string PhoneNumber { get; set; }
+
+    [Required]
+    [Display(Name = "Name")]
+    public string FullName { get; set; }
 
     [Required]
     [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -20,6 +32,10 @@ namespace SmartStorage.UI.ViewModels.Identity
     [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
     public string ConfirmPassword { get; set; }
 
-    public string Code { get; set; }
+    [DataType(dataType: DataType.ImageUrl)]
+    public string ProfilePicture { get; set; }
+
+    [Display(Name = "Admin")]
+    public bool IsAdmin { get; set; }
   }
 }

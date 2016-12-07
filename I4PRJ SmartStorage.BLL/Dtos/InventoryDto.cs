@@ -1,11 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using SmartStorage.BLL.Interfaces.Dtos;
 
 namespace SmartStorage.BLL.Dtos
 {
-  public class InventoryDto : IInventoryDto
+  public class InventoryDto
   {
     [DisplayName("#")]
     public int InventoryId { get; set; }

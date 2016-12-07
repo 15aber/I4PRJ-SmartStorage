@@ -1,7 +1,7 @@
-﻿@model SmartStorage.BLL.Dtos.InventoryDto
+﻿@model SmartStorage.BLL.ViewModels.InventoryEditModel
 
 @{
-  ViewBag.Title = "Edit Inventory";
+  ViewBag.Title = "Edit Indentory";
 }
 
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -16,13 +16,13 @@
           {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
-            @Html.HiddenFor(model => model.InventoryId)
+            @Html.HiddenFor(model => model.Inventory.InventoryId)
             <div class="form-horizontal">
               <div class="form-group">
-                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Inventory.Name, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                  @Html.EditorFor(model => model.Name)
-                  @Html.ValidationMessageFor(model => model.Name)
+                  @Html.EditorFor(model => model.Inventory.Name)
+                  @Html.ValidationMessageFor(model => model.Inventory.Name)
                 </div>
               </div>
               <div class="form-group">

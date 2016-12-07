@@ -1,9 +1,9 @@
 ﻿using SmartStorage.BLL.Dtos;
 using System.Collections.Generic;
 
-namespace SmartStorage.UI.ViewModels
+namespace SmartStorage.BLL.ViewModels
 {
-  public class ProductViewModel
+  public class ProductEditModel
   {
     public List<CategoryDto> Categories { get; set; }
     public List<SupplierDto> Suppliers { get; set; }

@@ -53,14 +53,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Context\DbConfiguration.txt" />
-    <Compile Include="Interfaces\Models\ICategory.cs" />
-    <Compile Include="Interfaces\Models\IInventory.cs" />
-    <Compile Include="Interfaces\Models\IProduct.cs" />
-    <Compile Include="Interfaces\Models\IStatus.cs" />
-    <Compile Include="Interfaces\Models\IStock.cs" />
-    <Compile Include="Interfaces\Models\ISupplier.cs" />
-    <Compile Include="Interfaces\Models\ITransaction.cs" />
-    <Compile Include="Interfaces\Models\IWholesaler.cs" />
     <Compile Include="Interfaces\Repositories\ICategoriesRepository.cs" />
     <Compile Include="Interfaces\Repositories\IInventoriesRepository.cs" />
     <Compile Include="Interfaces\Repositories\IProductsRepository.cs" />

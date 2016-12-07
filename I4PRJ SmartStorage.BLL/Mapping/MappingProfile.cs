@@ -13,6 +13,7 @@ namespace SmartStorage.BLL.Mapping
       CreateMap<Inventory, InventoryDto>();
       CreateMap<Product, ProductDto>();
       CreateMap<Status, StatusDto>();
+      CreateMap<Stock, StockDto>();
       CreateMap<Supplier, SupplierDto>();
       CreateMap<Transaction, TransactionDto>();
       CreateMap<Wholesaler, WholesalerDto>();
@@ -22,6 +23,7 @@ namespace SmartStorage.BLL.Mapping
       CreateMap<InventoryDto, Inventory>();
       CreateMap<ProductDto, Product>();
       CreateMap<StatusDto, Status>();
+      CreateMap<StockDto, Stock>();
       CreateMap<SupplierDto, Supplier>();
       CreateMap<TransactionDto, Transaction>();
       CreateMap<WholesalerDto, Wholesaler>();

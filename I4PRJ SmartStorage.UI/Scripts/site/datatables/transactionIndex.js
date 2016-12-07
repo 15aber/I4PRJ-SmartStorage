@@ -30,7 +30,7 @@ $(document).ready(function () {
         .dataTable({
             "order": [[4, "desc"]],
             ajax: {
-                url: "/api/transactions/",
+              url: "/api/transactions/",
                 dataSrc: ""
             },
             columns: [

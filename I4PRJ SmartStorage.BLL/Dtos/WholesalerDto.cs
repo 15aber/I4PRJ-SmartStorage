@@ -1,11 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using SmartStorage.BLL.Interfaces.Dtos;
 
 namespace SmartStorage.BLL.Dtos
 {
-  public class WholesalerDto : IWholesalerDto
+  public class WholesalerDto
   {
     [DisplayName("#")]
     public int WholesalerId { get; set; }

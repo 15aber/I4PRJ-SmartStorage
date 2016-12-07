@@ -1,6 +1,7 @@
 ﻿using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
-using SmartStorage.UI.ViewModels.Identity;
+using SmartStorage.BLL.ViewModels;
+using SmartStorage.BLL.ViewModels.Identity;
 using System;
 using System.Web.Mvc;
 
@@ -23,19 +24,23 @@ namespace SmartStorage.UI.Controllers
     [Authorize(Roles = UserRolesName.Admin)]
     public ActionResult Create()
     {
-      return View("Create");
+      var viewModel = new CategoryEditModel
+      {
+        Category = new CategoryDto()
+      };
+      return View(viewModel);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Authorize(Roles = UserRolesName.Admin)]
-    public ActionResult Create(CategoryDto entityDto)
+    public ActionResult Create(CategoryEditModel model)
     {
-      if (!ModelState.IsValid) return View(entityDto);
+      if (!ModelState.IsValid) return View(model);
 
-      entityDto.Updated = DateTime.Now;
-      entityDto.ByUser = User.Identity.Name;
-      _service.Add(entityDto);
+      model.Category.Updated = DateTime.Now;
+      model.Category.ByUser = User.Identity.Name;
+      _service.Add(model.Category);
 
       return RedirectToAction("Index");
     }
@@ -43,23 +48,28 @@ namespace SmartStorage.UI.Controllers
     [Authorize(Roles = UserRolesName.Admin)]
     public ActionResult Edit(int id)
     {
-      var entityDto = _service.GetSingle(id);
+      var modelDto = _service.GetSingle(id);
 
-      if (entityDto == null) return HttpNotFound();
+      if (modelDto == null) return HttpNotFound();
 
-      return View(entityDto);
+      var viewModel = new CategoryEditModel
+      {
+        Category = modelDto
+      };
+
+      return View(viewModel);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Authorize(Roles = UserRolesName.Admin)]
-    public ActionResult Edit(CategoryDto entityDto)
+    public ActionResult Edit(CategoryEditModel model)
     {
-      if (!ModelState.IsValid) return View(entityDto);
+      if (!ModelState.IsValid) return View(model);
 
-      entityDto.Updated = DateTime.Now;
-      entityDto.ByUser = User.Identity.Name;
-      _service.Update(entityDto);
+      model.Category.Updated = DateTime.Now;
+      model.Category.ByUser = User.Identity.Name;
+      _service.Update(model.Category);
 
       return RedirectToAction("Index");
     }

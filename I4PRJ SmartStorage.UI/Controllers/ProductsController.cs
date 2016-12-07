@@ -1,7 +1,7 @@
 ﻿using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
-using SmartStorage.UI.ViewModels;
-using SmartStorage.UI.ViewModels.Identity;
+using SmartStorage.BLL.ViewModels;
+using SmartStorage.BLL.ViewModels.Identity;
 using System;
 using System.Net;
 using System.Web.Mvc;
@@ -33,52 +33,60 @@ namespace SmartStorage.UI.Controllers
     [Authorize(Roles = UserRolesName.Admin)]
     public ActionResult Create()
     {
-      var viewModel = new ProductViewModel
+      var viewModel = new ProductEditModel
       {
         Product = new ProductDto(),
         Categories = _categoryService.GetAllActive(),
         Suppliers = _supplierService.GetAllActive(),
         Wholesalers = _wholesalerService.GetAllActive()
       };
-      return View("Create", viewModel);
+      return View(viewModel);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Authorize(Roles = UserRolesName.Admin)]
-    public ActionResult Create(ProductViewModel entityDto)
+    public ActionResult Create(ProductEditModel model)
     {
-      if (!ModelState.IsValid) return View(entityDto);
+      if (!ModelState.IsValid) return View(model);
 
-      entityDto.Product.Updated = DateTime.Now;
-      entityDto.Product.ByUser = User.Identity.Name;
-      _productService.Add(entityDto.Product);
+      model.Product.Updated = DateTime.Now;
+      model.Product.ByUser = User.Identity.Name;
+      _productService.Add(model.Product);
 
-      return RedirectToAction("Index");
+      return RedirectToAction("Index", new { id = model.Product.CategoryId });
     }
 
     [Authorize(Roles = UserRolesName.Admin)]
     public ActionResult Edit(int id)
     {
-      var entityDto = _productService.GetSingle(id);
+      var model = _productService.GetSingle(id);
 
-      if (entityDto == null) return HttpNotFound();
+      if (model == null) return HttpNotFound();
 
-      return View(entityDto);
+      var viewModel = new ProductEditModel
+      {
+        Product = model,
+        Categories = _categoryService.GetAllActive(),
+        Suppliers = _supplierService.GetAllActive(),
+        Wholesalers = _wholesalerService.GetAllActive()
+      };
+
+      return View(viewModel);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Authorize(Roles = UserRolesName.Admin)]
-    public ActionResult Edit(ProductDto entityDto)
+    public ActionResult Edit(ProductEditModel model)
     {
-      if (!ModelState.IsValid) return View(entityDto);
+      if (!ModelState.IsValid) return View(model);
 
-      entityDto.Updated = DateTime.Now;
-      entityDto.ByUser = User.Identity.Name;
-      _productService.Update(entityDto);
+      model.Product.Updated = DateTime.Now;
+      model.Product.ByUser = User.Identity.Name;
+      _productService.Update(model.Product);
 
-      return RedirectToAction("Index");
+      return RedirectToAction("Index", new { id = model.Product.CategoryId });
     }
   }
 }

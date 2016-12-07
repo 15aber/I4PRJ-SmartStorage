@@ -1,10 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using SmartStorage.DAL.Interfaces.Models;
 
 namespace SmartStorage.DAL.Models
 {
-  public class Category : ICategory
+  public class Category
   {
     [Key]
     public int CategoryId { get; set; }

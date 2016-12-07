@@ -1,10 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using SmartStorage.DAL.Interfaces.Models;
 
 namespace SmartStorage.DAL.Models
 {
-  public class Inventory : IInventory
+  public class Inventory
   {
     [Key]
     public int InventoryId { get; set; }

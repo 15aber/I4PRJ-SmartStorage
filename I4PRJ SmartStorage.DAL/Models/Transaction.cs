@@ -1,11 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using SmartStorage.DAL.Interfaces.Models;
 
 namespace SmartStorage.DAL.Models
 {
-  public class Transaction : ITransaction
+  public class Transaction
   {
     [Key]
     public int TransactionId { get; set; }

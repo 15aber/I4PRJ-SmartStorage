@@ -1,4 +1,4 @@
-﻿@model SmartStorage.UI.ViewModels.ProductViewModel
+﻿@model SmartStorage.BLL.ViewModels.ProductEditModel
 
 @{
   ViewBag.Title = "Edit Product";
@@ -33,7 +33,7 @@
                 </div>
               </div>
               <div class="form-group">
-                @Html.LabelFor(model => model.Product.CategoryId, "Category", new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Product.CategoryId, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                   @Html.DropDownListFor(model => model.Product.CategoryId, new SelectList(Model.Categories, "CategoryId", "Name"), "", new { @class = "form-control" })
 
@@ -41,7 +41,7 @@
                 </div>
               </div>
               <div class="form-group">
-                @Html.LabelFor(model => model.Product.CategoryId, "Supplier", new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Product.CategoryId, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                   @Html.DropDownListFor(model => model.Product.SupplierId, new SelectList(Model.Suppliers, "SupplierId", "Name"), "", new { @class = "form-control" })
 
@@ -49,7 +49,7 @@
                 </div>
               </div>
               <div class="form-group">
-                @Html.LabelFor(model => model.Product.WholesalerId, "Wholesaler", new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Product.WholesalerId, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                   @Html.DropDownListFor(model => model.Product.WholesalerId, new SelectList(Model.Wholesalers, "WholesalerId", "Name"), "", new { @class = "form-control" })
 

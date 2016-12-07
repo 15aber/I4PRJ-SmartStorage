@@ -1,5 +1,5 @@
 ﻿@using System.Web.UI.WebControls
-@model SmartStorage.UI.ViewModels.TransactionViewModel
+@model SmartStorage.BLL.ViewModels.TransactionEditModel
 
 @{
   ViewBag.Title = "Transaction";
@@ -14,40 +14,40 @@
         </div>
         <div class="ibox-content">
 
-          @using (Html.BeginForm("SaveTransaction", "Transactions"))
+          @using (Html.BeginForm("Save", "Transactions"))
           {
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
               <div class="form-group">
-                @Html.LabelFor(model => model.FromInventoryId, new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Transaction.FromInventoryId, new { @class = "control-label col-md-2" })
                 <div class="col-md-4">
-                  @Html.DropDownListFor(model => model.FromInventoryId, new SelectList(Model.FromInventory, "InventoryId", "Name"), "", new { @class = "form-control" })
-                  @Html.ValidationMessageFor(model => model.FromInventoryId)
+                  @Html.DropDownListFor(model => model.Transaction.FromInventoryId, new SelectList(Model.Inventories, "InventoryId", "Name"), "", new { @class = "form-control" })
+                  @Html.ValidationMessageFor(model => model.Transaction.FromInventoryId)
                 </div>
               </div>
 
               <div class="form-group">
-                @Html.LabelFor(model => model.ToInventoryId, new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Transaction.ToInventoryId, new { @class = "control-label col-md-2" })
                 <div class="col-md-4">
-                  @Html.DropDownListFor(model => model.ToInventoryId, new SelectList(Model.ToInventory, "InventoryId", "Name"), "", new { @class = "form-control" })
-                  @Html.ValidationMessageFor(model => model.ToInventoryId)
+                  @Html.DropDownListFor(model => model.Transaction.ToInventoryId, new SelectList(Model.Inventories, "InventoryId", "Name"), "", new { @class = "form-control" })
+                  @Html.ValidationMessageFor(model => model.Transaction.ToInventoryId)
                 </div>
               </div>
 
               <div class="form-group">
-                @Html.LabelFor(model => model.ProductId, new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Transaction.ProductId, new { @class = "control-label col-md-2" })
                 <div class="col-md-4">
-                  @Html.DropDownListFor(model => model.ProductId, new SelectList(Model.Products, "ProductId", "Name"), "", new { @class = "form-control" })
-                  @Html.ValidationMessageFor(model => model.ProductId)
+                  @Html.DropDownListFor(model => model.Transaction.ProductId, new SelectList(Model.Products, "ProductId", "Name"), "", new { @class = "form-control" })
+                  @Html.ValidationMessageFor(model => model.Transaction.ProductId)
                 </div>
               </div>
 
               <div class="form-group">
-                @Html.LabelFor(model => model.Quantity, new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Transaction.Quantity, new { @class = "control-label col-md-2" })
                 <div class="col-md-4">
-                  @Html.TextBoxFor(model => model.Quantity, new { @class = "form-control", type = "number", step = "0.25", min = "0", value = "" })
-                  @Html.ValidationMessageFor(model => model.Quantity)
+                  @Html.TextBoxFor(model => model.Transaction.Quantity, new { @class = "form-control", type = "number", step = "0.25", min = "0", value = "" })
+                  @Html.ValidationMessageFor(model => model.Transaction.Quantity)
                   @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 </div>
               </div>

@@ -1,13 +1,17 @@
-﻿using System;
+﻿using SmartStorage.BLL.ViewModels;
+using SmartStorage.DAL.Context;
+using SmartStorage.DAL.Models;
+using System;
 using System.Configuration;
+using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web.Http;
-using I4PRJ_SmartStorage.UI.Identity;
 
-namespace I4PRJ_SmartStorage.UI.Controllers.Api
+namespace SmartStorage.UI.Controllers.Api
 {
   public class StatusController : ApiController
   {
@@ -64,7 +68,7 @@ namespace I4PRJ_SmartStorage.UI.Controllers.Api
     }
 
     [HttpPost]
-    public async Task<IHttpActionResult> CreateStatus(NewStatusDto statusDto)
+    public async Task<IHttpActionResult> CreateStatus(StatusEditModel statusDto)
     {
       if (!ModelState.IsValid)
         return BadRequest();

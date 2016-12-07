@@ -1,6 +1,7 @@
 ﻿using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
-using SmartStorage.UI.ViewModels.Identity;
+using SmartStorage.BLL.ViewModels;
+using SmartStorage.BLL.ViewModels.Identity;
 using System;
 using System.Web.Mvc;
 
@@ -23,19 +24,24 @@ namespace SmartStorage.UI.Controllers
     [Authorize(Roles = UserRolesName.Admin)]
     public ActionResult Create()
     {
-      return View("Create");
+      var viewModel = new InventoryEditModel
+      {
+        Inventory = new InventoryDto()
+      };
+
+      return View(viewModel);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Authorize(Roles = UserRolesName.Admin)]
-    public ActionResult Create(InventoryDto entityDto)
+    public ActionResult Create(InventoryEditModel model)
     {
-      if (!ModelState.IsValid) return View(entityDto);
+      if (!ModelState.IsValid) return View(model);
 
-      entityDto.Updated = DateTime.Now;
-      entityDto.ByUser = User.Identity.Name;
-      _service.Add(entityDto);
+      model.Inventory.Updated = DateTime.Now;
+      model.Inventory.ByUser = User.Identity.Name;
+      _service.Add(model.Inventory);
 
       return RedirectToAction("Index");
     }
@@ -43,23 +49,28 @@ namespace SmartStorage.UI.Controllers
     [Authorize(Roles = UserRolesName.Admin)]
     public ActionResult Edit(int id)
     {
-      var entityDto = _service.GetSingle(id);
+      var modelDto = _service.GetSingle(id);
 
-      if (entityDto == null) return HttpNotFound();
+      if (modelDto == null) return HttpNotFound();
 
-      return View(entityDto);
+      var viewModel = new InventoryEditModel
+      {
+        Inventory = modelDto
+      };
+
+      return View(viewModel);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Authorize(Roles = UserRolesName.Admin)]
-    public ActionResult Edit(InventoryDto entityDto)
+    public ActionResult Edit(InventoryEditModel model)
     {
-      if (!ModelState.IsValid) return View(entityDto);
+      if (!ModelState.IsValid) return View(model);
 
-      entityDto.Updated = DateTime.Now;
-      entityDto.ByUser = User.Identity.Name;
-      _service.Update(entityDto);
+      model.Inventory.Updated = DateTime.Now;
+      model.Inventory.ByUser = User.Identity.Name;
+      _service.Update(model.Inventory);
 
       return RedirectToAction("Index");
     }

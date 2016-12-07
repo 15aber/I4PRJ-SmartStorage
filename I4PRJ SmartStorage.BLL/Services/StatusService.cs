@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
 using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SmartStorage.BLL.Services
 {
@@ -81,6 +81,22 @@ namespace SmartStorage.BLL.Services
         var entity = _unitOfWork.Statuses.Get(id);
         var entityDto = Mapper.Map<Status, StatusDto>(entity);
         return entityDto;
+      }
+      catch (Exception)
+      {
+        // TODO lav exception
+
+        throw;
+      }
+    }
+
+    public IList<StatusDto> GetAllOfInventory(int id)
+    {
+      try
+      {
+        var entities = _unitOfWork.Statuses.GetAll(i => i.InventoryId == id).ToList();
+        var entitiesDtos = Mapper.Map<List<Status>, List<StatusDto>>(entities);
+        return entitiesDtos;
       }
       catch (Exception)
       {

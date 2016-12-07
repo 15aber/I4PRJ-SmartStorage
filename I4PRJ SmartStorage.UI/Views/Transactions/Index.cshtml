@@ -1,4 +1,4 @@
-﻿@model SmartStorage.BLL.Dtos.TransactionDto
+﻿@model SmartStorage.BLL.ViewModels.TransactionViewModel
 
 @{
   ViewBag.Title = "Transactions";
@@ -28,7 +28,7 @@
                   <span class="input-group-addon" id="fromIcon"> <i class="fa fa-calendar" aria-hidden="true"></i></span>
                 </div>
               </div>
-              
+
               <div class="col-lg-5">
                 <div class="input-group pull-right">
                   <label class="input-group-addon" for="todate">to:</label>
@@ -79,7 +79,8 @@
         </div>
       </div>
     </div>
-
-    @section scripts {
-      <script type="text/javascript" src="~/Scripts/site/datatables/transactionIndex.js"></script>
-    }
+  </div>
+</div>
+@section scripts {
+  <script type="text/javascript" src="~/Scripts/site/datatables/transactionIndex.js"></script>
+}

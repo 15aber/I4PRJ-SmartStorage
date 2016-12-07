@@ -1,65 +1,65 @@
 ﻿@using System.Web.UI.WebControls
-@model SmartStorage.UI.ViewModels.StatusViewModel
+@model SmartStorage.BLL.ViewModels.StatusViewModel
 
 @{
-    ViewBag.Title = "Status";
+  ViewBag.Title = "Status";
 }
 
 <div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Status</h5>
-                </div>
-                <div class="ibox-content">
-                  @Html.ActionLink("Show Reports", "StatusReports", null, new { @class = "btn btn-primary btn-sm" })
-
-
-                    <table class="table table-striped">
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Inventories)
-                            </th>
-                            <th>
-                                @Html.HiddenFor(m => m.ShowNotification)
-                            </th>
-                        </tr>
-
-                        @foreach (var item in Model.Inventories)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Name)
-                                </td>
-                                <td>
-                                    @*Is inventory found in a Status where IsStarted == true?*@
-                                    @if (Model.StatusStartedInventories.FindIndex(x => x == item.InventoryId) == -1)
-                                    {
-                                        @Html.ActionLink("Start", "StartStatus", new { id = item.InventoryId }, new { @class = "btn btn-primary btn-sm pull-right" });
-                                    }
-
-                                    else
-                                    {
-                                        @Html.ActionLink("Finish", "FinishStatus", new { id = item.InventoryId }, new { @class = "btn btn-danger btn-sm pull-right" });
-                                    }
-                                </td>
-                            </tr>
-                        }
-                    </table>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Status</h5>
         </div>
+        <div class="ibox-content">
+          @Html.ActionLink("Show Reports", "StatusReports", null, new { @class = "btn btn-primary btn-sm" })
+
+
+          <table class="table table-striped">
+            <tr>
+              <th>
+                @Html.DisplayNameFor(model => model.Inventories)
+              </th>
+              <th>
+                @Html.HiddenFor(m => m.ShowNotification)
+              </th>
+            </tr>
+
+            @foreach (var item in Model.Inventories)
+            {
+              <tr>
+                <td>
+                  @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                  @*Is inventory found in a Status where IsStarted == true?*@
+                  @if (Model.StatusStartedInventories.FindIndex(x => x == item.InventoryId) == -1)
+                  {
+                    @Html.ActionLink("Start", "StartStatus", new { id = item.InventoryId }, new { @class = "btn btn-primary btn-sm pull-right" });
+                  }
+
+                  else
+                  {
+                    @Html.ActionLink("Finish", "FinishStatus", new { id = item.InventoryId }, new { @class = "btn btn-danger btn-sm pull-right" });
+                  }
+                </td>
+              </tr>
+            }
+          </table>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
 @section scripts
 {
-    <script>
-        $(document)
-            .ready(function () {
-                if ($("#ShowNotification").val() === "True")
-                    toastr.success("Status successfully recorded.");
-            });
-    </script>
+  <script>
+    $(document)
+        .ready(function () {
+          if ($("#ShowNotification").val() === "True")
+            toastr.success("Status successfully recorded.");
+        });
+  </script>
 }

@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using SmartStorage.UI.ViewModels.Identity;
+using SmartStorage.BLL.ViewModels.Identity;
 
 namespace SmartStorage.UI.Controllers
 {

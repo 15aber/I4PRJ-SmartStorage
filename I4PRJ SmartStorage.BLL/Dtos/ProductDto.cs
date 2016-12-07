@@ -1,19 +1,18 @@
-﻿using System;
+﻿using SmartStorage.DAL.Models;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using SmartStorage.BLL.Interfaces.Dtos;
-using SmartStorage.DAL.Interfaces.Models;
 
 namespace SmartStorage.BLL.Dtos
 {
-  public class ProductDto : IProductDto
+  public class ProductDto
   {
     [DisplayName("#")]
     public int ProductId { get; set; }
 
     [Required]
     [StringLength(255)]
-    [DisplayName("ProductModel")]
+    [DisplayName("Product")]
     public string Name { get; set; }
 
     [Required]
@@ -26,19 +25,19 @@ namespace SmartStorage.BLL.Dtos
     [DisplayName("Category")]
     public int CategoryId { get; set; }
 
-    public ICategory Category { get; set; }
+    public Category Category { get; set; }
 
     [Required]
     [DisplayName("Supplier")]
     public int SupplierId { get; set; }
 
-    public ISupplier Supplier { get; set; }
+    public Supplier Supplier { get; set; }
 
     [Required]
     [DisplayName("Wholesaler")]
     public int WholesalerId { get; set; }
 
-    public IWholesaler Wholesaler { get; set; }
+    public Wholesaler Wholesaler { get; set; }
 
     [DisplayName("Updated")]
     [DataType(DataType.DateTime)]

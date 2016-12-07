@@ -1,5 +1,4 @@
-﻿@model SmartStorage.BLL.Dtos.WholesalerDto
-
+﻿@model SmartStorage.BLL.ViewModels.WholesalerEditModel
 @{
   ViewBag.Title = "Edit Wholesaler";
 }
@@ -16,13 +15,13 @@
           {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
-            @Html.HiddenFor(model => model.WholesalerId)
+            @Html.HiddenFor(model => model.Wholesaler.WholesalerId)
             <div class="form-horizontal">
               <div class="form-group">
-                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Wholesaler.Name, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                  @Html.EditorFor(model => model.Name)
-                  @Html.ValidationMessageFor(model => model.Name)
+                  @Html.EditorFor(model => model.Wholesaler.Name)
+                  @Html.ValidationMessageFor(model => model.Wholesaler.Name)
                 </div>
               </div>
               <div class="form-group">

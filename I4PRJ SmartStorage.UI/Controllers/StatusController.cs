@@ -1,130 +1,127 @@
-﻿using System.Collections.Generic;
+﻿using SmartStorage.BLL.Dtos;
+using SmartStorage.BLL.Interfaces.Services;
+using SmartStorage.BLL.ViewModels;
+using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Web.Mvc;
-using I4PRJ_SmartStorage.UI.Identity;
 
-namespace I4PRJ_SmartStorage.UI.Controllers
+namespace SmartStorage.UI.Controllers
 {
-    public class StatusController : Controller
+  public class StatusController : Controller
+  {
+    private readonly IStatusService _statusService;
+    private readonly IInventoryService _inventoryService;
+    private readonly IProductService _productService;
+    private readonly IStockService _stockService;
+
+    public StatusController(IStatusService statusService, IInventoryService inventoryService, IProductService productService, IStockService stockService)
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: /Status/
-        public ActionResult Index(int? id)
-        {
-            var viewModel = new StatusViewModel
-            {
-                Inventories = db.Inventories.Where(i => !i.IsDeleted).ToList(),
-                StatusStartedInventories = new List<int>()
-            };
-
-            var InventoryIds = new List<int>();
-
-            foreach (var status in db.Statuses.ToList())
-                InventoryIds.Add(db.Inventories.Find(status.InventoryId).InventoryId);
-
-            foreach (var inventory in InventoryIds)
-            {
-                var status = db.Statuses.Where(i => i.InventoryId == inventory)
-                        .OrderByDescending(o => o.Updated).FirstOrDefault();
-                
-                if(status != null && status.IsStarted)
-                    viewModel.StatusStartedInventories.Add(status.InventoryId);
-            }
-
-            if (id == 1)
-                viewModel.ShowNotification = true;
-
-            return View(viewModel);
-        }
-
-        public ActionResult StartStatus(int id)
-        {
-            Inventory inventory = db.Inventories.Find(id);
-
-            if (inventory == null)
-            {
-                return HttpNotFound();
-            }
-
-            var viewModel = new StatusViewModel
-            {
-                Products = db.Products.Include(p => p.Category).Where(p => p.IsDeleted != true).ToList(),
-                Stocks = db.Stocks.Where(s => s.InventoryId == id).ToList(),
-                IsStarted = false
-            };
-
-            return View("StatusForm", viewModel);
-        }
-
-        public ActionResult FinishStatus(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            Inventory inventory = db.Inventories.Find(id);
-            if (inventory == null)
-            {
-                return HttpNotFound();
-            }
-
-            var viewModel = new StatusViewModel
-            {
-                Products = db.Products.Include(p => p.Category).Where(p => p.IsDeleted != true).ToList(),
-                Stocks = db.Stocks.Where(s => s.InventoryId == id).ToList(),
-                IsStarted = true
-            };
-
-            return View("StatusForm", viewModel);
-        }
-
-        public ActionResult StatusReports()
-        {
-            var statuses = new List<Status>();
-            foreach (var status in db.Statuses.Include(i => i.Inventory).ToList())
-            {
-                if (!statuses.Any(o => o.Updated == status.Updated))
-                    statuses.Add(status);
-            }
-
-            var viewModel = new StatusViewModel()
-            {
-                Statuses = statuses,
-                Status = new Status()
-            };
-
-            return View("StatusReports", viewModel);
-        }
-
-        public ActionResult StatusReportDetails(int id)
-        {
-            Status status = db.Statuses.Find(id);
-
-            if (status == null)
-            {
-                return HttpNotFound();
-            }
-
-            var viewModel = new StatusViewModel
-            {
-                //Products = db.Products.Include(p => p.Category).Where(p => p.IsDeleted != true).ToList(),
-                //Stocks = db.Stocks.Where(s => s.InventoryId == id).ToList(),
-                Statuses = db.Statuses.ToList()
-            };
-
-            return View("StatusReportDetails", viewModel);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+      _statusService = statusService;
+      _inventoryService = inventoryService;
+      _productService = productService;
+      _stockService = stockService;
     }
+
+    public ActionResult Index(int? id)
+    {
+      var viewModel = new StatusViewModel
+      {
+        Inventories = _inventoryService.GetAllActive(),
+        StatusStartedInventories = new List<int>()
+      };
+
+      var inventoryIds = new List<int>();
+
+      foreach (var status in _statusService.GetAll())
+        inventoryIds.Add(_inventoryService.GetSingle(status.InventoryId).InventoryId);
+
+      foreach (var inventory in inventoryIds)
+      {
+        var status = _statusService.GetAllOfInventory(inventory)
+                .OrderByDescending(o => o.Updated).FirstOrDefault();
+
+        if (status != null && status.IsStarted)
+          viewModel.StatusStartedInventories.Add(status.InventoryId);
+      }
+
+      if (id == 1)
+        viewModel.ShowNotification = true;
+
+      return View(viewModel);
+    }
+
+    public ActionResult StartStatus(int id)
+    {
+      var inventory = _inventoryService.GetSingle(id);
+
+      if (inventory == null)
+      {
+        return HttpNotFound();
+      }
+
+      var viewModel = new StatusViewModel
+      {
+        Products = _productService.GetAllActive(),
+        Stocks = _stockService.GetAllOfInventory(id),
+        IsStarted = false
+      };
+
+      return View("StatusForm", viewModel);
+    }
+
+    public ActionResult FinishStatus(int id)
+    {
+      var inventory = _inventoryService.GetSingle(id);
+      if (inventory == null)
+      {
+        return HttpNotFound();
+      }
+
+      var viewModel = new StatusViewModel
+      {
+        Products = _productService.GetAllActive(),
+        Stocks = _stockService.GetAllOfInventory(id),
+        IsStarted = true
+      };
+
+      return View("StatusForm", viewModel);
+    }
+
+    public ActionResult StatusReports()
+    {
+      var statuses = new List<StatusDto>();
+      foreach (var status in _statusService.GetAll())
+      {
+        if (statuses.All(o => o.Updated != status.Updated))
+          statuses.Add(status);
+      }
+
+      var viewModel = new StatusViewModel()
+      {
+        Statuses = statuses,
+        Status = new StatusDto()
+      };
+
+      return View("StatusReports", viewModel);
+    }
+
+    public ActionResult StatusReportDetails(int id)
+    {
+      var status = _statusService.GetSingle(id);
+
+      if (status == null)
+      {
+        return HttpNotFound();
+      }
+
+      var viewModel = new StatusViewModel
+      {
+        //Products = db.Products.Include(p => p.Category).Where(p => p.IsDeleted != true).ToList(),
+        //Stocks = db.Stocks.Where(s => s.InventoryId == id).ToList(),
+        Statuses = _statusService.GetAll()
+      };
+
+      return View("StatusReportDetails", viewModel);
+    }
+  }
 }
