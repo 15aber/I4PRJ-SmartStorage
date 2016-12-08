@@ -109,7 +109,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\I4PRJ SmartStorage\I4PRJ SmartStorage.UI.csproj">
+    <ProjectReference Include="..\I4PRJ SmartStorage.UI\SmartStorage.UI.csproj">
       <Project>{5ba405f6-d7a0-46cb-bbad-4a315ff582b2}</Project>
       <Name>I4PRJ SmartStorage.UI</Name>
     </ProjectReference>
