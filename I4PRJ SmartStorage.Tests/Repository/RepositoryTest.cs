@@ -20,6 +20,15 @@ namespace I4PRJ_SmartStorage.UnitTests.Repository
         public void SetUp()
         {
             _repository = Substitute.For<IRepository<Category>>();
+            _repository.Get(3).Returns(new Category()
+            {
+                Name = "Vodka",
+                ByUser = "Admin",
+                CategoryId = 3,
+                IsDeleted = false,
+                Updated = DateTime.Today
+            });
+
             _repository.GetAll().Returns(new List<Category>
             {
                 new Category()
@@ -46,6 +55,12 @@ namespace I4PRJ_SmartStorage.UnitTests.Repository
         public void GetAll_Returns_TwoCategories()
         {
             Assert.That(_repository.GetAll().Count, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void GetCertainCategori_Returns_CategoriWithMatchingId()
+        {
+            Assert.That(_repository.Get(3).Name, Is.EqualTo("Vodka"));
         }
     }
 }
