@@ -50,6 +50,8 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Linq.Expressions" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
