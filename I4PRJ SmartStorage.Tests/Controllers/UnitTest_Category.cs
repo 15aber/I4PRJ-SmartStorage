@@ -27,6 +27,7 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         [SetUp]
         public void SetUp()
         {
+            _service = Substitute.For<ICategoryService>();
             _controller = new CategoriesController(_service);
             Mapper.Initialize(c => c.AddProfile<MappingProfile>());
         }
@@ -41,7 +42,6 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         [Test]
         public void Category_CategoryCreate_ReturnsCategoryIndexView()
         {
-
             var viewModel = new CategoryEditModel
             {
                 Category = new CategoryDto() { ByUser = "no-reply@smartstorage.dk", CategoryId = 1,IsDeleted = false, Name = "Test", Updated = DateTime.Now}
@@ -49,7 +49,10 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
 
             var result = _controller.Create(viewModel) as RedirectToRouteResult;
 
+            _service.Received().Add(viewModel.Category);
             Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
+
+            
         }
     }
 }
