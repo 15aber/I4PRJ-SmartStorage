@@ -19,21 +19,23 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
     {
         private IRepository<Product> _repository;
         private IUnitOfWork _unitOfWork;
-        private ProductsController _controller;
-        private IProductService _service;
+        private TransactionsController _controller;
+        private ITransactionService _service;
+        private IInventoryService _invService;
+        private IProductService _proService;
 
         [SetUp]
         public void SetUp()
         {
             _unitOfWork = Substitute.For<IUnitOfWork>();
             _repository = Substitute.For<IRepository<Product>>();
-            //_controller = new ProductsController(_service);
+            _controller = new TransactionsController(_service, _invService, _proService);
         }
 
         [Test]
         public void TransactionIndex_LoadTransactionIndex_ReturnsTransactionIndexView()
         {
-            //var result = _tran.Index() as ViewResult;
+            var result = _controller.Index() as ViewResult;
             //Assert.AreEqual("Index", result.ViewName);
 
         }
