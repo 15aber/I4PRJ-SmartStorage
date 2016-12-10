@@ -27,6 +27,7 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         [SetUp]
         public void SetUp()
         {
+            _service = Substitute.For<ICategoryService>();
             _controller = new CategoriesController(_service);
             Mapper.Initialize(c => c.AddProfile<MappingProfile>());
         }

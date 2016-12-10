@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using AutoMapper;
 using NSubstitute;
 using NSubstitute.Exceptions;
 using NUnit.Framework;
 using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
+using SmartStorage.BLL.Mapping;
 using SmartStorage.BLL.Services;
 using SmartStorage.BLL.ViewModels;
 using SmartStorage.DAL.Interfaces;
@@ -21,21 +23,15 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
     [TestFixture]
     class UnitTest_Supplier
     {
-        private IRepository<Supplier> _repository;
-        private IUnitOfWork _unitOfWork;
         private SuppliersController _suppliersController;
         private ISupplierService _supplierService;
-        private SupplierEditModel _viewModel;
        
-
         [SetUp]
         public void SetUp()
         {
-            _viewModel = Substitute.For<SupplierEditModel>();
-            _unitOfWork = Substitute.For<IUnitOfWork>();
-            _repository = Substitute.For<IRepository<Supplier>>();
             _supplierService = Substitute.For<ISupplierService>();          
             _suppliersController = new SuppliersController(_supplierService);
+            Mapper.Initialize(c => c.AddProfile<MappingProfile>());
 
         }
 
@@ -47,32 +43,16 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         }
 
         [Test]
-        public void crap()
+        public void Supplier_SupplierCreate_ReturnsSupplierIndexView()
         {
-
-            var viewModel = new SupplierEditModel
+            var viewModel = new SupplierEditModel()
             {
-                Supplier = new SupplierDto() { ByUser = "Test", IsDeleted = false, Name = "TestSupplier", SupplierId = 0, Updated = DateTime.Today }
+                Supplier = new SupplierDto() { ByUser = "no-reply@smartstorage.dk", SupplierId = 1, IsDeleted = false, Name = "Test", Updated = DateTime.Now }
             };
 
-            var result = _suppliersController.Create(viewModel) as ViewResult;
+            var result = _suppliersController.Create(viewModel) as RedirectToRouteResult;
 
-            _supplierService.Add(viewModel.Supplier);
-
-            Assert.AreEqual("Index", result.ViewName);
-
-
+            Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
         }
-
-        //[Test]
-        //public void Supplier_SupplierCreate_ReturnsSupplierIndexView1()
-        //{
-        //    var viewModel = new SupplierEditModel()
-        //    {
-        //        Supplier = new SupplierDto() { ByUser = "no-reply@smartstorage.dk", SupplierId = 0, IsDeleted = false, Name = "Test", Updated = DateTime.Now }
-        //    };
-        //    var result = _suppliersController.Create(viewModel) as ViewResult;
-        //    Assert.AreEqual("Index", result.ViewName);
-        //}
     }
 }
