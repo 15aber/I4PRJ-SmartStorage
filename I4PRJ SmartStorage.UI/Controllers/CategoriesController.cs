@@ -4,19 +4,26 @@ using SmartStorage.BLL.ViewModels;
 using SmartStorage.BLL.ViewModels.Identity;
 using System;
 using System.Web.Mvc;
+using SmartStorage.DAL.Interfaces;
 
 namespace SmartStorage.UI.Controllers
 {
   public class CategoriesController : Controller
   {
     private readonly ICategoryService _service;
+        private IUnitOfWork _unitOfWork;
 
-    public CategoriesController(ICategoryService service)
+        public CategoriesController(ICategoryService service)
     {
       _service = service;
     }
 
-    public ActionResult Index()
+        public CategoriesController(IUnitOfWork _unitOfWork)
+        {
+            this._unitOfWork = _unitOfWork;
+        }
+
+        public ActionResult Index()
     {
       return View(User.IsInRole(UserRolesName.Admin) ? "Index" : "ReadOnlyIndex");
     }
