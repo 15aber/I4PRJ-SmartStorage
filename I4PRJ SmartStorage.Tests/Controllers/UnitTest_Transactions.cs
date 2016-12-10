@@ -26,7 +26,6 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         private ITransactionService _transactionService;
         private TransactionsController _controller;
 
-
         [SetUp]
         public void SetUp()
         {
@@ -49,11 +48,12 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         {
             var viewModel = new TransactionEditModel()
             {
-                Transaction = new TransactionDto() { ByUser = "no-reply@smartstorage.dk", Updated = DateTime.Now, ProductId = 1,FromInventoryId = null, ToInventoryId = 1, Quantity = 2, TransactionId = 1}
+                Transaction = new TransactionDto() { ProductId = 1, ToInventoryId = 1, Quantity = 2, TransactionId = 1}
             };
 
             var result = _controller.Create(viewModel) as RedirectToRouteResult;
 
+            _transactionService.Received().Add(viewModel.Transaction);
             Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
         }
     }

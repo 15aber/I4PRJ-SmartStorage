@@ -23,19 +23,7 @@ namespace SmartStorage.UI.Controllers
       return View("Index");
     }
 
-    public ActionResult Add()
-    {
-      var viewModel = new TransactionEditModel()
-      {
-        Transaction = new TransactionDto(),
-        Inventories = _inventoryService.GetAllActive(),
-        Products = _productService.GetAllActive()
-      };
-
-      return View(viewModel);
-    }
-
-    public ActionResult Create()
+   public ActionResult Create()
     {
       var viewModel = new TransactionEditModel
       {
@@ -48,9 +36,8 @@ namespace SmartStorage.UI.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Save(TransactionEditModel model)
+    public ActionResult Create(TransactionEditModel model)
     {
-      if (!ModelState.IsValid && model.Transaction.FromInventoryId == null) return View("Add", model);
       if (!ModelState.IsValid) return View("Create", model);
 
       model.Transaction.Updated = DateTime.Now;

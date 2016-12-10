@@ -44,7 +44,7 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         {
             var viewModel = new CategoryEditModel
             {
-                Category = new CategoryDto() { ByUser = "no-reply@smartstorage.dk", CategoryId = 1,IsDeleted = false, Name = "Test", Updated = DateTime.Now}
+                Category = new CategoryDto() { CategoryId = 1,IsDeleted = false, Name = "Test" }
             };
 
             var result = _controller.Create(viewModel) as RedirectToRouteResult;

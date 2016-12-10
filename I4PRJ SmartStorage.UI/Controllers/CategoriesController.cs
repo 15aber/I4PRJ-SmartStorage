@@ -43,7 +43,7 @@ namespace SmartStorage.UI.Controllers
       if (!ModelState.IsValid) return View(model);
 
       model.Category.Updated = DateTime.Now;
-      //model.Category.ByUser = User.Identity.Name;
+      model.Category.ByUser = User.Identity.Name;
       _service.Add(model.Category);
 
       return RedirectToAction("Index");
