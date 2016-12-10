@@ -1,36 +1,35 @@
 ﻿using System;
-using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity.Owin;
 using NSubstitute;
 using SmartStorage.BLL.Interfaces.Services;
 using NUnit.Framework;
 using SmartStorage.BLL.Dtos;
-using SmartStorage.BLL.Services;
 using SmartStorage.BLL.ViewModels;
-using SmartStorage.DAL.Context;
 using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Interfaces.Repositories;
 using SmartStorage.DAL.Models;
-using SmartStorage.DAL.Repositories;
-using SmartStorage.DAL.UnitOfWork;
 using SmartStorage.UI.Controllers;
+using AutoMapper;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using SmartStorage.BLL.Mapping;
+using SmartStorage.UI;
 
 namespace I4PRJ_SmartStorage.UnitTests.Controllers
 {
     [TestFixture]
     class UnitTest_Category
     {
-        private IRepository<Category> _repository;
-        private IUnitOfWork _unitOfWork;
         private CategoriesController _controller;
         private ICategoryService _service;
 
         [SetUp]
         public void SetUp()
         {
-            _unitOfWork = Substitute.For<IUnitOfWork>();
-            _repository = Substitute.For<IRepository<Category>>();
+            _service = Substitute.For<ICategoryService>();
             _controller = new CategoriesController(_service);
+            Mapper.Initialize(c => c.AddProfile<MappingProfile>());
         }
 
         [Test]
@@ -45,10 +44,15 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         {
             var viewModel = new CategoryEditModel
             {
-                Category = new CategoryDto() { ByUser = "Admin",CategoryId = 1,IsDeleted = false, Name = "Test", Updated = DateTime.Now}
+                Category = new CategoryDto() { CategoryId = 1,IsDeleted = false, Name = "Test" }
             };
-            var result = _controller.Create(viewModel) as ViewResult;
-            Assert.AreEqual("Index", result.ViewName);
+
+            var result = _controller.Create(viewModel) as RedirectToRouteResult;
+
+            _service.Received().Add(viewModel.Category);
+            Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
+
+            
         }
     }
 }
