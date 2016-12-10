@@ -11,21 +11,16 @@ namespace SmartStorage.UI.Controllers
   public class CategoriesController : Controller
   {
     private readonly ICategoryService _service;
-        private IUnitOfWork _unitOfWork;
-
-        public CategoriesController(ICategoryService service)
+   
+    public CategoriesController(ICategoryService service)
     {
       _service = service;
     }
 
-        public CategoriesController(IUnitOfWork _unitOfWork)
-        {
-            this._unitOfWork = _unitOfWork;
-        }
-
-        public ActionResult Index()
+    public ActionResult Index()
     {
-      return View(User.IsInRole(UserRolesName.Admin) ? "Index" : "ReadOnlyIndex");
+      //return View(User.IsInRole(UserRolesName.Admin) ? "Index" : "ReadOnlyIndex");
+        return View("Index");
     }
 
     [Authorize(Roles = UserRolesName.Admin)]

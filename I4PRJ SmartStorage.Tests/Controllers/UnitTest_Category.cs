@@ -6,6 +6,7 @@ using SmartStorage.BLL.Interfaces.Services;
 using NUnit.Framework;
 using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Services;
+using SmartStorage.BLL.ViewModels;
 using SmartStorage.DAL.Context;
 using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Interfaces.Repositories;
@@ -22,13 +23,14 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         private IRepository<Category> _repository;
         private IUnitOfWork _unitOfWork;
         private CategoriesController _controller;
+        private ICategoryService _service;
 
         [SetUp]
         public void SetUp()
         {
             _unitOfWork = Substitute.For<IUnitOfWork>();
             _repository = Substitute.For<IRepository<Category>>();
-            _controller = new CategoriesController(_unitOfWork);
+            _controller = new CategoriesController(_service);
         }
 
         [Test]
@@ -39,9 +41,13 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         }
 
         [Test]
-        public void Category_CategoryCreate_ReturnsCategoryIndexView1()
+        public void Category_CategoryCreate_ReturnsCategoryIndexView()
         {
-            var result = _controller.Index() as ViewResult;
+            var viewModel = new CategoryEditModel
+            {
+                Category = new CategoryDto() { ByUser = "Admin",CategoryId = 1,IsDeleted = false, Name = "Test", Updated = DateTime.Now}
+            };
+            var result = _controller.Create(viewModel) as ViewResult;
             Assert.AreEqual("Index", result.ViewName);
         }
     }

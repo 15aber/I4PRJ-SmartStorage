@@ -4,6 +4,7 @@ using SmartStorage.BLL.ViewModels;
 using SmartStorage.BLL.ViewModels.Identity;
 using System;
 using System.Web.Mvc;
+using SmartStorage.DAL.Interfaces;
 
 namespace SmartStorage.UI.Controllers
 {
@@ -11,12 +12,13 @@ namespace SmartStorage.UI.Controllers
   {
     private readonly IInventoryService _service;
 
-    public InventoriesController(IInventoryService service)
+        public InventoriesController(IInventoryService service)
     {
       _service = service;
     }
 
-    public ActionResult Index()
+
+        public ActionResult Index()
     {
       return View(User.IsInRole(UserRolesName.Admin) ? "Index" : "ReadOnlyIndex");
     }
