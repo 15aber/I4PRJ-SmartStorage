@@ -2,12 +2,9 @@
 using SmartStorage.DAL.Context;
 using SmartStorage.DAL.Models;
 using System;
-using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
-using System.Net;
-using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -122,25 +119,6 @@ namespace SmartStorage.UI.Controllers.Api
 
       }
       db.SaveChanges();
-
-      var emailMessage = new MailMessage();
-      emailMessage.To.Add(new MailAddress(user));
-      emailMessage.From = new MailAddress(ConfigurationManager.AppSettings["SmtpFrom"]);
-      emailMessage.Subject = "Status";
-      emailMessage.Body = "See new status <a href='https://smartstorage.dk/Status/StatusReports'>here</a>";
-      emailMessage.IsBodyHtml = true;
-
-      using (var smtpClient = new SmtpClient())
-      {
-        smtpClient.UseDefaultCredentials = false;
-        smtpClient.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["SmtpUserName"],
-        ConfigurationManager.AppSettings["SmtpPassword"]);
-        smtpClient.Host = ConfigurationManager.AppSettings["SmtpHost"];
-        smtpClient.Port = Convert.ToInt32(ConfigurationManager.AppSettings["SmtpPort"]);
-        smtpClient.EnableSsl = Convert.ToBoolean(ConfigurationManager.AppSettings["SmtpEnableSsl"]);
-
-        await smtpClient.SendMailAsync(emailMessage);
-      }
 
       return Ok();
     }

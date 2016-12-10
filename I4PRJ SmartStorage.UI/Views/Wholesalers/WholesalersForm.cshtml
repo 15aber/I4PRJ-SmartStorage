@@ -1,4 +1,4 @@
-﻿@model SmartStorage.BLL.ViewModels.WholesalerViewModel
+﻿@model SmartStorage.BLL.ViewModels.WholesalerRepportModel
 @{
   ViewBag.Title = "Rapport";
 }
@@ -8,71 +8,69 @@
     <div class="col-lg-12">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-          <h5>Wholesaler Rapport</h5>
-          <div class="ibox-tools">
-          </div>
+          <h5>@ViewBag.Title</h5>
         </div>
-          <div class="ibox-content">
-              
-              <label class="pull-right" for="datapickerStuff">Filter wholesaler transactions: </label>
-              <div id="datapickerStuff" style="float: right" class="datapickerLine">
-                  <div class="row">
+        <div class="ibox-content">
 
-                      <div class="col-lg-2 pull-right">
-                          <input type="button" name="filter" id="filter" value="Filter" class="btn btn-primary " />
-                      </div>
+          <label class="pull-right" for="datapickerStuff">Filter wholesaler transactions: </label>
+          <div id="datapickerStuff" style="float: right" class="datapickerLine">
+            <div class="row">
 
-                      <div class="col-lg-2 pull-right">
-                          <div class="input-group">
-                              <label class="input-group-addon" for="todate">to:</label>
-                              <input class="form-control" id="todate" name="todate" type="text" size="8" value="@DateTime.Today.AddDays(1)" />
-                              <span class="input-group-addon" id="toIcon"> <i class="fa fa-calendar" aria-hidden="true"></i></span>
-                          </div>
-                      </div>
-
-                      <div class="col-lg-2 pull-right">
-                          <div class="input-group" id="froms">
-                              <label class="input-group-addon" for="fromdate">from:</label>
-                              <input class="form-control" id="fromdate" name="fromdate" type="text" size="8" value="@DateTime.Today.AddMonths(-1).AddDays(1)" />
-                              <span class="input-group-addon" id="fromIcon"> <i class="fa fa-calendar" aria-hidden="true"></i></span>
-
-                          </div>
-                      </div>
-
-
-                  </div>
+              <div class="col-lg-2 pull-right">
+                <input type="button" name="filter" id="filter" value="Filter" class="btn btn-primary " />
               </div>
 
-              <div class="col-lg-3">
-                  @Html.DropDownListFor(w => w.Wholesaler.WholesalerId, new SelectList(Model.Wholesalers, "WholesalerId", "Name"), "All wholesalers", new {@class = "form-control"})
+              <div class="col-lg-2 pull-right">
+                <div class="input-group">
+                  <label class="input-group-addon" for="todate">to:</label>
+                  <input class="form-control" id="todate" name="todate" type="text" size="8" value="@DateTime.Today.AddDays(1)" />
+                  <span class="input-group-addon" id="toIcon"> <i class="fa fa-calendar" aria-hidden="true"></i></span>
+                </div>
               </div>
-              <table class="table table-striped table-bordered table-hover" id="wholesalers-table">
-                  <thead>
-                  <tr>
-                      <th>
-                          @Html.LabelFor(model => model.Transaction.Product.Wholesaler.Name)
-                      </th>
-                      <th>
-                          @Html.LabelFor(model => model.Transaction.TransactionId, "Transaction Id")
-                      </th>
-                      <th>
-                          @Html.LabelFor(model => model.Transaction.ProductId)
-                      </th>
-                      <th>
-                          @Html.LabelFor(model => model.Transaction.Quantity)
-                      </th>
-                      <th>
-                          @Html.LabelFor(model => model.Transaction.Updated, "Transaction date")
-                      </th>
-                      <th>
-                          @Html.LabelFor(model => model.Transaction.ByUser, "Transaction done by")
-                      </th>
-                  </tr>
-                  </thead>
-                  <tbody></tbody>
-                  <tfoot></tfoot>
-              </table>
+
+              <div class="col-lg-2 pull-right">
+                <div class="input-group" id="froms">
+                  <label class="input-group-addon" for="fromdate">from:</label>
+                  <input class="form-control" id="fromdate" name="fromdate" type="text" size="8" value="@DateTime.Today.AddMonths(-1).AddDays(1)" />
+                  <span class="input-group-addon" id="fromIcon"> <i class="fa fa-calendar" aria-hidden="true"></i></span>
+
+                </div>
+              </div>
+
+
+            </div>
           </div>
+
+          <div class="col-lg-3">
+            @Html.DropDownListFor(w => w.Wholesaler.WholesalerId, new SelectList(Model.Name, "WholesalerId", "Name"), "All wholesalers", new { @class = "form-control" })
+          </div>
+          <table class="table table-striped table-bordered table-hover" id="wholesalers-table">
+            <thead>
+              <tr>
+                <th>
+                  @Html.LabelFor(model => model.Transaction.Product.Wholesaler.Name)
+                </th>
+                <th>
+                  @Html.LabelFor(model => model.Transaction.TransactionId, "Transaction Id")
+                </th>
+                <th>
+                  @Html.LabelFor(model => model.Transaction.ProductId)
+                </th>
+                <th>
+                  @Html.LabelFor(model => model.Transaction.Quantity)
+                </th>
+                <th>
+                  @Html.LabelFor(model => model.Transaction.Updated, "Transaction date")
+                </th>
+                <th>
+                  @Html.LabelFor(model => model.Transaction.ByUser, "Transaction done by")
+                </th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot></tfoot>
+          </table>
+        </div>
       </div>
     </div>
   </div>
