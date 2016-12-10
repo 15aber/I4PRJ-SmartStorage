@@ -24,7 +24,7 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         private IUnitOfWork _unitOfWork;
         private CategoriesController _controller;
         private ICategoryService _service;
-
+        
         [SetUp]
         public void SetUp()
         {
@@ -45,7 +45,7 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         {
             var viewModel = new CategoryEditModel
             {
-                Category = new CategoryDto() { ByUser = "Admin",CategoryId = 1,IsDeleted = false, Name = "Test", Updated = DateTime.Now}
+                Category = new CategoryDto() { ByUser = "no-reply@smartstorage.dk",CategoryId = 0,IsDeleted = false, Name = "Test", Updated = DateTime.Now}
             };
             var result = _controller.Create(viewModel) as ViewResult;
             Assert.AreEqual("Index", result.ViewName);

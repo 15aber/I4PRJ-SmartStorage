@@ -19,8 +19,7 @@ namespace SmartStorage.UI.Controllers
 
     public ActionResult Index()
     {
-      //return View(User.IsInRole(UserRolesName.Admin) ? "Index" : "ReadOnlyIndex");
-        return View("Index");
+      return View(User.IsInRole(UserRolesName.Admin) ? "Index" : "ReadOnlyIndex");
     }
 
     [Authorize(Roles = UserRolesName.Admin)]
