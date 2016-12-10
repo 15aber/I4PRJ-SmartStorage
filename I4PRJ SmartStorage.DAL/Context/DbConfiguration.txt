@@ -94,6 +94,7 @@ roleManager.Create(role);
           PhoneNumber = "12345678",
           ProfilePicture = "/Content/images/rubber-duck.png",
           EmailConfirmed = true,
+          PhoneNumberConfirmed = true,
           LockoutEnabled = false
         };
 
@@ -113,6 +114,7 @@ var result = userManager.Create(user, userPWD);
         userInDb.PhoneNumber = "12345678";
         userInDb.ProfilePicture = "/Content/images/rubber-duck.png";
         userInDb.EmailConfirmed = true;
+        userInDb.PhoneNumberConfirmed = true;
         userInDb.LockoutEnabled = false;
 
         if (!userManager.IsInRole(userInDb.Id, "Admin"))
