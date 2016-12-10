@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using NSubstitute;
 using NUnit.Framework;
+using SmartStorage.BLL.Dtos;
+using SmartStorage.DAL.Context;
 using SmartStorage.DAL.Interfaces.Repositories;
 using SmartStorage.DAL.Models;
 using SmartStorage.DAL.Repositories;
@@ -14,13 +16,14 @@ namespace I4PRJ_SmartStorage.UnitTests.Repository
     [TestFixture]
     class RepositoryTest
     {
-        private IRepository<Category> _repository;
+        private IRepository<Category> _categoryRepository;
 
         [SetUp]
         public void SetUp()
         {
-            _repository = Substitute.For<IRepository<Category>>();
-            _repository.Get(3).Returns(new Category()
+            _categoryRepository = Substitute.For<IRepository<Category>>();
+
+            _categoryRepository.Get(3).Returns(new Category
             {
                 Name = "Vodka",
                 ByUser = "Admin",
@@ -29,7 +32,7 @@ namespace I4PRJ_SmartStorage.UnitTests.Repository
                 Updated = DateTime.Today
             });
 
-            _repository.GetAll().Returns(new List<Category>
+            _categoryRepository.GetAll().Returns(new List<Category>
             {
                 new Category()
                 {
@@ -54,13 +57,13 @@ namespace I4PRJ_SmartStorage.UnitTests.Repository
         [Test]
         public void GetAll_Returns_TwoCategories()
         {
-            Assert.That(_repository.GetAll().Count, Is.EqualTo(2));
+            Assert.That(_categoryRepository.GetAll().Count, Is.EqualTo(2));
         }
 
         [Test]
-        public void GetCertainCategori_Returns_CategoriWithMatchingId()
+        public void GetCertainCategory_Returns_CategoryWithMatchingId()
         {
-            Assert.That(_repository.Get(3).Name, Is.EqualTo("Vodka"));
+            Assert.That(_categoryRepository.Get(3).Name, Is.EqualTo("Vodka"));
         }
     }
 }
