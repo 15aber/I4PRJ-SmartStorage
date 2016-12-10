@@ -44,10 +44,49 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         {
             var viewModel = new InventoryEditModel()
             {
-                Inventory = new InventoryDto() { ByUser = "no-reply@smartstorage.dk", InventoryId = 1, IsDeleted = false, Name = "Test", Updated = DateTime.Now}
+                Inventory = new InventoryDto() {Name = "Test"}
             };
 
             var result = _controller.Create(viewModel) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
+        }
+
+        [Test]
+        public void Inventory_InventoryCreate_ReturnsInventoryServiceAdd()
+        {
+            var viewModel = new InventoryEditModel()
+            {
+                Inventory = new InventoryDto() { Name = "Test" }
+            };
+
+            var result = _controller.Create(viewModel) as RedirectToRouteResult;
+
+            _service.Received().Add(viewModel.Inventory);
+        }
+
+        [Test]
+        public void Inventory_InventoryEdit_ReturnsInventoryServiceUpdate()
+        {
+            var viewModel = new InventoryEditModel()
+            {
+                Inventory = new InventoryDto() { Name = "Test" }
+            };
+
+            var result = _controller.Edit(viewModel) as RedirectToRouteResult;
+
+            _service.Received().Update(viewModel.Inventory);
+        }
+
+        [Test]
+        public void Inventory_InventoryEdit_ReturnsInventoryIndexView()
+        {
+            var viewModel = new InventoryEditModel()
+            {
+                Inventory = new InventoryDto() { Name = "Test" }
+            };
+
+            var result = _controller.Edit(viewModel) as RedirectToRouteResult;
 
             Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
         }

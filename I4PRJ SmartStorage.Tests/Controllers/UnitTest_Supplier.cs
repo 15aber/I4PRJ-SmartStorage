@@ -47,10 +47,49 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         {
             var viewModel = new SupplierEditModel()
             {
-                Supplier = new SupplierDto() { ByUser = "no-reply@smartstorage.dk", SupplierId = 1, IsDeleted = false, Name = "Test", Updated = DateTime.Now }
+                Supplier = new SupplierDto() { Name = "Test"}
             };
 
             var result = _suppliersController.Create(viewModel) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
+        }
+
+        [Test]
+        public void Supplier_SupplierCreate_ReturnsSupplierServiceAdd()
+        {
+            var viewModel = new SupplierEditModel()
+            {
+                Supplier = new SupplierDto() {Name = "Test"}
+            };
+
+            var result = _suppliersController.Create(viewModel) as RedirectToRouteResult;
+
+            _supplierService.Received().Add(viewModel.Supplier);
+        }
+
+        [Test]
+        public void Supplier_SupplierEdit_ReturnsSupplierServiceUpdate()
+        {
+            var viewModel = new SupplierEditModel()
+            {
+                Supplier = new SupplierDto() {Name = "Test"}
+            };
+
+            var result = _suppliersController.Edit(viewModel) as RedirectToRouteResult;
+
+            _supplierService.Received().Update(viewModel.Supplier);
+        }
+
+        [Test]
+        public void Supplier_SupplierEdit_ReturnsSupplierIndexView()
+        {
+            var viewModel = new SupplierEditModel()
+            {
+                Supplier = new SupplierDto() { Name = "Test" }
+            };
+
+            var result = _suppliersController.Edit(viewModel) as RedirectToRouteResult;
 
             Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
         }

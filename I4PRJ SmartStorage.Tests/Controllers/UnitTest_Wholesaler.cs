@@ -37,14 +37,53 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         }
 
         [Test]
-        public void Supplier_SupplierCreate_ReturnsSupplierIndexView()
+        public void Wholesaler_WholesalerCreate_ReturnsWholesalersIndexView()
         {
             var viewModel = new WholesalerEditModel()
             {
-                Wholesaler = new WholesalerDto() { ByUser = "no-reply@smartstorage.dk", WholesalerId = 1, IsDeleted = false, Name = "Test", Updated = DateTime.Now }
+                Wholesaler = new WholesalerDto() {Name = "Test"}
             };
 
             var result = _wholesalersController.Create(viewModel) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
+        }
+
+        [Test]
+        public void Wholesaler_WholesalerCreate_ReturnsWholesalerServiceAdd()
+        {
+            var viewModel = new WholesalerEditModel()
+            {
+                Wholesaler = new WholesalerDto() {Name = "Test"}
+            };
+
+            var result = _wholesalersController.Create(viewModel) as RedirectToRouteResult;
+
+            _wholesalerService.Received().Add(viewModel.Wholesaler);
+        }
+
+        [Test]
+        public void Wholesaler_WholesalerEdit_ReturnsWholesalerServiceUpdate()
+        {
+            var viewModel = new WholesalerEditModel()
+            {
+                Wholesaler = new WholesalerDto() {Name = "Test"}
+            };
+
+            var result = _wholesalersController.Edit(viewModel) as RedirectToRouteResult;
+
+            _wholesalerService.Received().Update(viewModel.Wholesaler);
+        }
+
+        [Test]
+        public void Wholesaler_WholesalerEdit_ReturnsWholesalerIndexView()
+        {
+            var viewModel = new WholesalerEditModel()
+            {
+                Wholesaler = new WholesalerDto() {Name = "Test"}
+            };
+
+            var result = _wholesalersController.Edit(viewModel) as RedirectToRouteResult;
 
             Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
         }
