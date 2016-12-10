@@ -92,6 +92,7 @@
     <Compile Include="ViewModels\InventoryEditModel.cs" />
     <Compile Include="ViewModels\CategoryEditModel.cs" />
     <Compile Include="ViewModels\SupplierViewModel.cs" />
+    <Compile Include="ViewModels\WholesalerRepportModel.cs" />
     <Compile Include="ViewModels\WholesalerViewModel.cs" />
     <Compile Include="ViewModels\InventoryViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />

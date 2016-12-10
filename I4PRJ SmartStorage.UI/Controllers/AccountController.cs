@@ -61,17 +61,6 @@ namespace SmartStorage.UI.Controllers
         return View(model);
       }
 
-      // Require the user to have a confirmed email before they can log on.
-      var user = await UserManager.FindByNameAsync(model.Email);
-      if (user != null)
-      {
-        if (!await UserManager.IsEmailConfirmedAsync(user.Id))
-        {
-          ViewBag.errorMessage = "You must have a confirmed email to log on.";
-          return View("Error");
-        }
-      }
-
       // This doesn't count login failures towards account lockout
       // To enable password failures to trigger account lockout, change to shouldLockout: true
       var result =
@@ -81,10 +70,6 @@ namespace SmartStorage.UI.Controllers
       switch (result)
       {
         case SignInStatus.Success:
-          if (!await UserManager.IsPhoneNumberConfirmedAsync(user.Id))
-          {
-            return RedirectToAction("VerifyPhoneNumber", "Manage", new { PhoneNumber = UserManager.GetPhoneNumber(user.Id) });
-          }
           return RedirectToLocal(returnUrl);
         case SignInStatus.LockedOut:
           return View("Lockout");
@@ -108,8 +93,7 @@ namespace SmartStorage.UI.Controllers
       {
         Username = userInDb.UserName,
         FullName = userInDb.FullName,
-        Email = userInDb.Email,
-        PhoneNumber = userInDb.PhoneNumber
+        Email = userInDb.Email
       };
       return View(model);
     }
@@ -129,7 +113,6 @@ namespace SmartStorage.UI.Controllers
       userInDb.UserName = model.Email;
       userInDb.FullName = model.FullName;
       userInDb.Email = model.Email;
-      userInDb.PhoneNumber = model.PhoneNumber;
 
       db.Entry(userInDb).State = EntityState.Modified;
 
@@ -213,12 +196,6 @@ namespace SmartStorage.UI.Controllers
       var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
       if (result.Succeeded)
       {
-        using (var db = new ApplicationDbContext())
-        {
-          var userInDb = db.Users.FirstOrDefault(u => u.Id == user.Id);
-          userInDb.EmailConfirmed = true;
-          db.SaveChanges();
-        }
         return RedirectToAction("ResetPasswordConfirmation", "Account");
       }
       AddErrors(result);
@@ -261,15 +238,9 @@ namespace SmartStorage.UI.Controllers
       var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
       if (result.Succeeded)
       {
-        using (var db = new ApplicationDbContext())
-        {
-          var userInDb = db.Users.FirstOrDefault(u => u.Id == user.Id);
-          userInDb.EmailConfirmed = true;
-          db.SaveChanges();
-        }
         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-        return RedirectToAction("VerifyPhoneNumber", "Manage", new { PhoneNumber = user.PhoneNumber });
+        return RedirectToAction("Index", "Home", new { PhoneNumber = user.PhoneNumber });
       }
       AddErrors(result);
       return View();
@@ -313,10 +284,6 @@ namespace SmartStorage.UI.Controllers
           db.SaveChanges();
           await UserManager.AddLoginAsync(user.Id, logInInfo.Login);
           await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-          if (userInDb.PhoneNumberConfirmed == false)
-          {
-            return RedirectToAction("VerifyPhoneNumber", "Manage", new { PhoneNumber = userInDb.PhoneNumber });
-          }
         }
 
       }

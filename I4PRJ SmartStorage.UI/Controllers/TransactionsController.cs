@@ -4,6 +4,8 @@ using SmartStorage.BLL.ViewModels;
 using System;
 using System.Web.Mvc;
 
+// TODO Merage Add og Create
+
 namespace SmartStorage.UI.Controllers
 {
   public class TransactionsController : Controller
