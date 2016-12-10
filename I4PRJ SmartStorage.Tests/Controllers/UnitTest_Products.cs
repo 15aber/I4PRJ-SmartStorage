@@ -45,10 +45,49 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         {
             var viewModel = new ProductEditModel()
             {
-                Product = new ProductDto() { ByUser = "no-reply@smartstorage.dk", SupplierId = 1, IsDeleted = false, Name = "Test", Updated = DateTime.Now, WholesalerId = 1, PurchasePrice = 9.99, CategoryId = 1, ProductId = 1}
+                Product = new ProductDto() {SupplierId = 1, Name = "Test", WholesalerId = 1, PurchasePrice = 9.99, CategoryId = 1}
             };
 
             var result = _controller.Create(viewModel) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
+        }
+
+        [Test]
+        public void Product_ProductCreate_ReturnsProductServiceAdd()
+        {
+            var viewModel = new ProductEditModel()
+            {
+                Product = new ProductDto() { SupplierId = 1, Name = "Test", WholesalerId = 1, PurchasePrice = 9.99, CategoryId = 1 }
+            };
+
+            var result = _controller.Create(viewModel) as RedirectToRouteResult;
+
+            _productService.Received().Add(viewModel.Product);
+        }
+
+        [Test]
+        public void Product_ProductEdit_ReturnsProductServiceUpdate()
+        {
+            var viewModel = new ProductEditModel()
+            {
+                Product = new ProductDto() { SupplierId = 1, Name = "Test", WholesalerId = 1, PurchasePrice = 9.99, CategoryId = 1 }
+            };
+
+            var result = _controller.Edit(viewModel) as RedirectToRouteResult;
+
+            _productService.Received().Update(viewModel.Product);
+        }
+
+        [Test]
+        public void Product_ProductEdit_ReturnsProductIndexView()
+        {
+            var viewModel = new ProductEditModel()
+            {
+                Product = new ProductDto() { SupplierId = 1, Name = "Test", WholesalerId = 1, PurchasePrice = 9.99, CategoryId = 1 }
+            };
+
+            var result = _controller.Edit(viewModel) as RedirectToRouteResult;
 
             Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
         }
