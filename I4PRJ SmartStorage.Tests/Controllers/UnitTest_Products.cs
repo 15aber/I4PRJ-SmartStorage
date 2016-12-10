@@ -1,44 +1,32 @@
 ﻿using System.Web;
 using System.Web.Mvc;
-using I4PRJ_SmartStorage.UI.Controllers;
 using NSubstitute;
 using NUnit.Framework;
+using SmartStorage.DAL.Interfaces;
+using SmartStorage.DAL.Interfaces.Repositories;
+using SmartStorage.DAL.Models;
+using SmartStorage.UI.Controllers;
 
 namespace I4PRJ_SmartStorage.UnitTests.Controllers
 {
     class UnitTest_Products
     {
+        private IRepository<Product> _repository;
+        private IUnitOfWork _unitOfWork;
+        private ProductsController _controller;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _unitOfWork = Substitute.For<IUnitOfWork>();
+            _repository = Substitute.For<IRepository<Product>>();
+            //_controller = new ProductsController(_unitOfWork);
+        }
         [TestFixture]
         public class ProductControllerTest
         {
-            private HttpContextBase _context;
-            private HttpContext _httpContext;
-            private readonly ProductsController _pro = new ProductsController();
-
-            [SetUp]
-            public void SetUp()
-            {
-                _context = Substitute.For<HttpContextBase>();
-
-            }
-
-            [Test]
-            public void ProductsIndex_LoadProductIndex1_ReturnsProductIndexView1()
-            {
-                var result = _pro.Index(1) as ViewResult;
-                Assert.AreEqual("Index", result.ViewName);
-
-            }
-
-            [Test]
-            public void ProductCreate_CreateView_ReturnsProductCreateView()
-            {
-
-                
-
-            }
-
-
+            //var result = _controller.Index() as ViewResult;
+            //Assert.AreEqual("Index", result.ViewName);            
         }
     }
 }

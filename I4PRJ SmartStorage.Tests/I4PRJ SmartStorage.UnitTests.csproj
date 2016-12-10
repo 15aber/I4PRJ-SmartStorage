@@ -101,6 +101,7 @@
     <Compile Include="Controllers\UnitTest_Wholesaler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Repository\RepositoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -109,6 +110,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\I4PRJ SmartStorage.BLL\SmartStorage.BLL.csproj">
+      <Project>{0a0e6ba3-c63e-4c08-bd63-3a0bb2919bee}</Project>
+      <Name>SmartStorage.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\I4PRJ SmartStorage.DAL\SmartStorage.DAL.csproj">
+      <Project>{9d0d44a3-3e5f-4736-9bb1-07ed89df8c2f}</Project>
+      <Name>SmartStorage.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\I4PRJ SmartStorage.UI\SmartStorage.UI.csproj">
       <Project>{5ba405f6-d7a0-46cb-bbad-4a315ff582b2}</Project>
       <Name>I4PRJ SmartStorage.UI</Name>
