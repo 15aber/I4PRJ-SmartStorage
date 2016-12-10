@@ -44,7 +44,7 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         }
 
         [Test]
-        public void Product_ProductCreate_ReturnsProductIndexView()
+        public void Transaction_TransactionCreate_ReturnsTransactionIndexView()
         {
             var viewModel = new TransactionEditModel()
             {
@@ -53,8 +53,20 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
 
             var result = _controller.Create(viewModel) as RedirectToRouteResult;
 
-            _transactionService.Received().Add(viewModel.Transaction);
             Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
+        }
+
+        [Test]
+        public void Transaction_TransactionCreate_ReturnsTransactionServiceAdd()
+        {
+            var viewModel = new TransactionEditModel()
+            {
+                Transaction = new TransactionDto() { ProductId = 1, ToInventoryId = 1, Quantity = 2, TransactionId = 1 }
+            };
+
+            var result = _controller.Create(viewModel) as RedirectToRouteResult;
+
+            _transactionService.Received().Add(viewModel.Transaction);
         }
     }
 }

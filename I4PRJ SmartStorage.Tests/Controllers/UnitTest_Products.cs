@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using NSubstitute;
@@ -7,6 +8,9 @@ using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
 using SmartStorage.BLL.Mapping;
 using SmartStorage.BLL.ViewModels;
+using SmartStorage.DAL.Interfaces;
+using SmartStorage.DAL.Interfaces.Repositories;
+using SmartStorage.DAL.Models;
 using SmartStorage.UI.Controllers;
 
 namespace I4PRJ_SmartStorage.UnitTests.Controllers
@@ -41,10 +45,49 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         {
             var viewModel = new ProductEditModel()
             {
-                Product = new ProductDto() { SupplierId = 1, Name = "Test", WholesalerId = 1, PurchasePrice = 9.99, CategoryId = 1, ProductId = 1}
+                Product = new ProductDto() {SupplierId = 1, Name = "Test", WholesalerId = 1, PurchasePrice = 9.99, CategoryId = 1}
             };
 
             var result = _controller.Create(viewModel) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
+        }
+
+        [Test]
+        public void Product_ProductCreate_ReturnsProductServiceAdd()
+        {
+            var viewModel = new ProductEditModel()
+            {
+                Product = new ProductDto() { SupplierId = 1, Name = "Test", WholesalerId = 1, PurchasePrice = 9.99, CategoryId = 1 }
+            };
+
+            var result = _controller.Create(viewModel) as RedirectToRouteResult;
+
+            _productService.Received().Add(viewModel.Product);
+        }
+
+        [Test]
+        public void Product_ProductEdit_ReturnsProductServiceUpdate()
+        {
+            var viewModel = new ProductEditModel()
+            {
+                Product = new ProductDto() { SupplierId = 1, Name = "Test", WholesalerId = 1, PurchasePrice = 9.99, CategoryId = 1 }
+            };
+
+            var result = _controller.Edit(viewModel) as RedirectToRouteResult;
+
+            _productService.Received().Update(viewModel.Product);
+        }
+
+        [Test]
+        public void Product_ProductEdit_ReturnsProductIndexView()
+        {
+            var viewModel = new ProductEditModel()
+            {
+                Product = new ProductDto() { SupplierId = 1, Name = "Test", WholesalerId = 1, PurchasePrice = 9.99, CategoryId = 1 }
+            };
+
+            var result = _controller.Edit(viewModel) as RedirectToRouteResult;
 
             Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
         }

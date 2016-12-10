@@ -1,4 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 using AutoMapper;
 using NSubstitute;
 using NUnit.Framework;
@@ -6,6 +11,9 @@ using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
 using SmartStorage.BLL.Mapping;
 using SmartStorage.BLL.ViewModels;
+using SmartStorage.DAL.Interfaces;
+using SmartStorage.DAL.Interfaces.Repositories;
+using SmartStorage.DAL.Models;
 using SmartStorage.UI.Controllers;
 
 namespace I4PRJ_SmartStorage.UnitTests.Controllers
@@ -36,10 +44,49 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         {
             var viewModel = new InventoryEditModel()
             {
-                Inventory = new InventoryDto() { InventoryId = 1, Name = "Test" }
+                Inventory = new InventoryDto() {Name = "Test"}
             };
 
             var result = _controller.Create(viewModel) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
+        }
+
+        [Test]
+        public void Inventory_InventoryCreate_ReturnsInventoryServiceAdd()
+        {
+            var viewModel = new InventoryEditModel()
+            {
+                Inventory = new InventoryDto() { Name = "Test" }
+            };
+
+            var result = _controller.Create(viewModel) as RedirectToRouteResult;
+
+            _service.Received().Add(viewModel.Inventory);
+        }
+
+        [Test]
+        public void Inventory_InventoryEdit_ReturnsInventoryServiceUpdate()
+        {
+            var viewModel = new InventoryEditModel()
+            {
+                Inventory = new InventoryDto() { Name = "Test" }
+            };
+
+            var result = _controller.Edit(viewModel) as RedirectToRouteResult;
+
+            _service.Received().Update(viewModel.Inventory);
+        }
+
+        [Test]
+        public void Inventory_InventoryEdit_ReturnsInventoryIndexView()
+        {
+            var viewModel = new InventoryEditModel()
+            {
+                Inventory = new InventoryDto() { Name = "Test" }
+            };
+
+            var result = _controller.Edit(viewModel) as RedirectToRouteResult;
 
             Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
         }

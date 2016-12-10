@@ -44,15 +44,52 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         {
             var viewModel = new CategoryEditModel
             {
-                Category = new CategoryDto() { CategoryId = 1,IsDeleted = false, Name = "Test" }
+                Category = new CategoryDto() { Name = "Test" }
+            };
+
+            var result = _controller.Create(viewModel) as RedirectToRouteResult;
+
+            
+            Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));          
+        }
+
+        [Test]
+        public void Category_CategoryCreate_ReturnsCategoryServiceAdd()
+        {
+            var viewModel = new CategoryEditModel
+            {
+                Category = new CategoryDto() { Name = "Test" }
             };
 
             var result = _controller.Create(viewModel) as RedirectToRouteResult;
 
             _service.Received().Add(viewModel.Category);
-            Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
+        }
 
-            
+        [Test]
+        public void Category_CategoryEdit_ReturnsCategoryServiceUpdate()
+        {
+            var viewModel = new CategoryEditModel
+            {
+                Category = new CategoryDto() { Name = "Test" }
+            };
+
+            var result = _controller.Edit(viewModel) as RedirectToRouteResult;
+
+            _service.Received().Update(viewModel.Category);
+        }
+
+        [Test]
+        public void Category_CategoryEdit_ReturnsCategoryIndexView()
+        {
+            var viewModel = new CategoryEditModel
+            {
+                Category = new CategoryDto() { Name = "Test" }
+            };
+
+            var result = _controller.Edit(viewModel) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
         }
     }
 }
