@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using AutoMapper;
 using NSubstitute;
 using NUnit.Framework;
@@ -11,9 +6,6 @@ using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
 using SmartStorage.BLL.Mapping;
 using SmartStorage.BLL.ViewModels;
-using SmartStorage.DAL.Interfaces;
-using SmartStorage.DAL.Interfaces.Repositories;
-using SmartStorage.DAL.Models;
 using SmartStorage.UI.Controllers;
 
 namespace I4PRJ_SmartStorage.UnitTests.Controllers
@@ -44,7 +36,7 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         {
             var viewModel = new InventoryEditModel()
             {
-                Inventory = new InventoryDto() { ByUser = "no-reply@smartstorage.dk", InventoryId = 1, IsDeleted = false, Name = "Test", Updated = DateTime.Now}
+                Inventory = new InventoryDto() { InventoryId = 1, Name = "Test" }
             };
 
             var result = _controller.Create(viewModel) as RedirectToRouteResult;

@@ -47,7 +47,7 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         {
             var viewModel = new SupplierEditModel()
             {
-                Supplier = new SupplierDto() { ByUser = "no-reply@smartstorage.dk", SupplierId = 1, IsDeleted = false, Name = "Test", Updated = DateTime.Now }
+                Supplier = new SupplierDto() { SupplierId = 1, Name = "Test" }
             };
 
             var result = _suppliersController.Create(viewModel) as RedirectToRouteResult;
