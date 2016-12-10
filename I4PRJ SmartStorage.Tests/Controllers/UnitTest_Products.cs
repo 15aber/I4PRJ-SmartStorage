@@ -1,7 +1,13 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using NSubstitute;
 using NUnit.Framework;
+using SmartStorage.BLL.Dtos;
+using SmartStorage.BLL.Interfaces.Services;
+using SmartStorage.BLL.Mapping;
+using SmartStorage.BLL.ViewModels;
 using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Interfaces.Repositories;
 using SmartStorage.DAL.Models;
@@ -11,22 +17,40 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
 {
     class UnitTest_Products
     {
-        private IRepository<Product> _repository;
-        private IUnitOfWork _unitOfWork;
+        private IProductService _productService;
+        private ICategoryService _categoryService;
+        private IWholesalerService _wholesalerService;
+        private ISupplierService _supplierService;
         private ProductsController _controller;
 
         [SetUp]
         public void SetUp()
         {
-            _unitOfWork = Substitute.For<IUnitOfWork>();
-            _repository = Substitute.For<IRepository<Product>>();
-            //_controller = new ProductsController(_unitOfWork);
+            _productService = Substitute.For<IProductService>();
+            _categoryService = Substitute.For<ICategoryService>();
+            _wholesalerService = Substitute.For<IWholesalerService>();
+            _supplierService = Substitute.For<ISupplierService>();
+            _controller = new ProductsController(_productService,_categoryService,_supplierService,_wholesalerService);
+            Mapper.Initialize(c => c.AddProfile<MappingProfile>());
         }
-        [TestFixture]
-        public class ProductControllerTest
+        [Test]
+        public void Product_LoadProductIndex_ReturnsProductIndexView()
         {
-            //var result = _controller.Index() as ViewResult;
-            //Assert.AreEqual("Index", result.ViewName);            
+            var result = _controller.Index(1) as ViewResult;
+            Assert.AreEqual("Index", result.ViewName);            
+        }
+
+        [Test]
+        public void Product_ProductCreate_ReturnsProductIndexView()
+        {
+            var viewModel = new ProductEditModel()
+            {
+                Product = new ProductDto() { ByUser = "no-reply@smartstorage.dk", SupplierId = 1, IsDeleted = false, Name = "Test", Updated = DateTime.Now, WholesalerId = 1, PurchasePrice = 9.99, CategoryId = 1, ProductId = 1}
+            };
+
+            var result = _controller.Create(viewModel) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
         }
     }
 }
