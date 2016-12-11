@@ -15,7 +15,7 @@
           <div class="row">
 
             <div class="col-lg-6">
-              @Html.ActionLink("Transaction", "Create", null, new { @class = "btn btn-primary btn-sm" })
+              @Html.ActionLink("Create Transaction", "Create", null, new { @class = "btn btn-primary btn-sm" })
             </div>
 
             <div class="col-lg-6">
@@ -23,7 +23,7 @@
               <div class="col-lg-5">
                 <div class="input-group pull-right" id="froms">
                   <label class="input-group-addon" for="fromdate">from:</label>
-                  <input class="form-control" id="fromdate" name="fromdate" type="text" value="@DateTime.Now.AddMonths(-1).ToShortDateString()" />
+                  <input class="form-control" id="fromdate" name="fromdate" type="text" value="@DateTime.Now.AddDays(-30).ToShortDateString()" />
                   <span class="input-group-addon" id="fromIcon"> <i class="fa fa-calendar" aria-hidden="true"></i></span>
                 </div>
               </div>
@@ -31,7 +31,7 @@
               <div class="col-lg-5">
                 <div class="input-group pull-right">
                   <label class="input-group-addon" for="todate">to:</label>
-                  <input class="form-control" id="todate" name="todate" type="text" value="@DateTime.Now.ToShortDateString()" />
+                  <input class="form-control" id="todate" name="todate" type="text" value="@DateTime.Now.AddDays(+1).ToShortDateString()" />
                   <span class="input-group-addon" id="toIcon"> <i class="fa fa-calendar" aria-hidden="true"></i></span>
                 </div>
               </div>
