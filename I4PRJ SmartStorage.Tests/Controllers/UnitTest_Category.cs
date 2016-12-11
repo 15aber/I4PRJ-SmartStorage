@@ -1,95 +1,98 @@
-﻿using System;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity.Owin;
+﻿using AutoMapper;
 using NSubstitute;
-using SmartStorage.BLL.Interfaces.Services;
 using NUnit.Framework;
 using SmartStorage.BLL.Dtos;
-using SmartStorage.BLL.ViewModels;
-using SmartStorage.DAL.Interfaces;
-using SmartStorage.DAL.Interfaces.Repositories;
-using SmartStorage.DAL.Models;
-using SmartStorage.UI.Controllers;
-using AutoMapper;
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
+using SmartStorage.BLL.Interfaces.Services;
 using SmartStorage.BLL.Mapping;
-using SmartStorage.UI;
+using SmartStorage.BLL.ViewModels;
+using SmartStorage.UI.Controllers;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace I4PRJ_SmartStorage.UnitTests.Controllers
 {
-    [TestFixture]
-    class UnitTest_Category
+  [TestFixture]
+  class UnitTest_Category
+  {
+    private CategoriesController _controller;
+    private ICategoryService _service;
+    private HttpContextBase _contextBase;
+
+    [SetUp]
+    public void SetUp()
     {
-        private CategoriesController _controller;
-        private ICategoryService _service;
+      _service = Substitute.For<ICategoryService>();
+      _controller = new CategoriesController(_service);
+      _contextBase = Substitute.For<HttpContextBase>();
+      Mapper.Initialize(c => c.AddProfile<MappingProfile>());
 
-        [SetUp]
-        public void SetUp()
-        {
-            _service = Substitute.For<ICategoryService>();
-            _controller = new CategoriesController(_service);
-            Mapper.Initialize(c => c.AddProfile<MappingProfile>());
-        }
+      _contextBase.User.Identity.Name.Returns("JohnDoe");
+      _contextBase.Request.IsAuthenticated.Returns(true);
+      _contextBase.User.IsInRole("Admin").Returns(true);
+      _controller.ControllerContext = new ControllerContext(_contextBase, new RouteData(), _controller);
 
-        [Test]
-        public void Category_LoadCategoryIndex_ReturnsCategoryIndexView()
-        {
-            var result = _controller.Index() as ViewResult;
-            Assert.AreEqual("Index", result.ViewName);
-        }
-
-        [Test]
-        public void Category_CategoryCreate_ReturnsCategoryIndexView()
-        {
-            var viewModel = new CategoryEditModel
-            {
-                Category = new CategoryDto() { Name = "Test" }
-            };
-
-            var result = _controller.Create(viewModel) as RedirectToRouteResult;
-
-            
-            Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));          
-        }
-
-        [Test]
-        public void Category_CategoryCreate_ReturnsCategoryServiceAdd()
-        {
-            var viewModel = new CategoryEditModel
-            {
-                Category = new CategoryDto() { Name = "Test" }
-            };
-
-            var result = _controller.Create(viewModel) as RedirectToRouteResult;
-
-            _service.Received().Add(viewModel.Category);
-        }
-
-        [Test]
-        public void Category_CategoryEdit_ReturnsCategoryServiceUpdate()
-        {
-            var viewModel = new CategoryEditModel
-            {
-                Category = new CategoryDto() { Name = "Test" }
-            };
-
-            var result = _controller.Edit(viewModel) as RedirectToRouteResult;
-
-            _service.Received().Update(viewModel.Category);
-        }
-
-        [Test]
-        public void Category_CategoryEdit_ReturnsCategoryIndexView()
-        {
-            var viewModel = new CategoryEditModel
-            {
-                Category = new CategoryDto() { Name = "Test" }
-            };
-
-            var result = _controller.Edit(viewModel) as RedirectToRouteResult;
-
-            Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
-        }
     }
+
+    [Test]
+    public void Category_LoadCategoryIndex_ReturnsCategoryIndexView()
+    {
+
+      var result = _controller.Index() as ViewResult;
+      Assert.AreEqual("Index", result.ViewName);
+    }
+
+    [Test]
+    public void Category_CategoryCreate_ReturnsCategoryIndexView()
+    {
+      var viewModel = new CategoryEditModel
+      {
+        Category = new CategoryDto() { Name = "Test" }
+      };
+
+      var result = _controller.Create(viewModel) as RedirectToRouteResult;
+
+
+      Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
+    }
+
+    [Test]
+    public void Category_CategoryCreate_ReturnsCategoryServiceAdd()
+    {
+      var viewModel = new CategoryEditModel
+      {
+        Category = new CategoryDto() { Name = "Test" }
+      };
+
+      var result = _controller.Create(viewModel) as RedirectToRouteResult;
+
+      _service.Received().Add(viewModel.Category);
+    }
+
+    [Test]
+    public void Category_CategoryEdit_ReturnsCategoryServiceUpdate()
+    {
+      var viewModel = new CategoryEditModel
+      {
+        Category = new CategoryDto() { Name = "Test" }
+      };
+
+      var result = _controller.Edit(viewModel) as RedirectToRouteResult;
+
+      _service.Received().Update(viewModel.Category);
+    }
+
+    [Test]
+    public void Category_CategoryEdit_ReturnsCategoryIndexView()
+    {
+      var viewModel = new CategoryEditModel
+      {
+        Category = new CategoryDto() { Name = "Test" }
+      };
+
+      var result = _controller.Edit(viewModel) as RedirectToRouteResult;
+
+      Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
+    }
+  }
 }
