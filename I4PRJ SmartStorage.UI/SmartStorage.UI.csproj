@@ -234,6 +234,34 @@
     <Compile Include="Helpers\HMTLHelperExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CategoryEditModel.cs" />
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\Identity\AddPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Identity\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModels\Identity\ForgotPasswordViewModel.cs" />
+    <Compile Include="ViewModels\Identity\ForgotViewModel.cs" />
+    <Compile Include="ViewModels\Identity\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Identity\ManageViewModel.cs" />
+    <Compile Include="ViewModels\Identity\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\Identity\ResetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\Identity\SetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\Identity\UserRolesName.cs" />
+    <Compile Include="ViewModels\Identity\UserViewModel.cs" />
+    <Compile Include="ViewModels\Identity\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\InventoryEditModel.cs" />
+    <Compile Include="ViewModels\InventoryViewModel.cs" />
+    <Compile Include="ViewModels\ProductEditModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\StatusApiModel.cs" />
+    <Compile Include="ViewModels\StatusViewModel.cs" />
+    <Compile Include="ViewModels\StockViewModel.cs" />
+    <Compile Include="ViewModels\SupplierEditModel.cs" />
+    <Compile Include="ViewModels\SupplierViewModel.cs" />
+    <Compile Include="ViewModels\TransactionEditModel.cs" />
+    <Compile Include="ViewModels\TransactionViewModel.cs" />
+    <Compile Include="ViewModels\WholesalerEditModel.cs" />
+    <Compile Include="ViewModels\WholesalerRepportModel.cs" />
+    <Compile Include="ViewModels\WholesalerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.css" />

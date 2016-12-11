@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using SmartStorage.BLL.ViewModels.Identity;
 using SmartStorage.DAL.Context;
 using SmartStorage.DAL.Models;
 using System.Data.Entity;
@@ -9,6 +8,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using SmartStorage.UI.ViewModels.Identity;
 
 namespace SmartStorage.UI.Controllers
 {

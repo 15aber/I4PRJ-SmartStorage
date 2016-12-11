@@ -1,6 +1,6 @@
 ﻿using SmartStorage.BLL.Dtos;
 
-namespace SmartStorage.BLL.ViewModels
+namespace SmartStorage.UI.ViewModels
 {
   public class WholesalerViewModel : WholesalerDto
   {

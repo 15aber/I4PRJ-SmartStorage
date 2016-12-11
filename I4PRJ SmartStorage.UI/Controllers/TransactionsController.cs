@@ -1,8 +1,8 @@
 ﻿using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
-using SmartStorage.BLL.ViewModels;
 using System;
 using System.Web.Mvc;
+using SmartStorage.UI.ViewModels;
 
 // TODO Merage Add og Create
 

@@ -1,4 +1,4 @@
-﻿namespace SmartStorage.BLL.ViewModels.Identity
+﻿namespace SmartStorage.UI.ViewModels.Identity
 {
   public static class UserRolesName
   {

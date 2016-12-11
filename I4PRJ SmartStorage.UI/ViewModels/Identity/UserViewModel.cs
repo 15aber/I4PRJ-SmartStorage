@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SmartStorage.BLL.ViewModels.Identity
+namespace SmartStorage.UI.ViewModels.Identity
 {
   public class UserViewModel
   {

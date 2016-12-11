@@ -13,7 +13,6 @@ using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
 using SmartStorage.BLL.Mapping;
 using SmartStorage.BLL.Services;
-using SmartStorage.BLL.ViewModels;
 using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Models;
 using SmartStorage.DAL.UnitOfWork;

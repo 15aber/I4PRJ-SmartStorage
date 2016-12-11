@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SmartStorage.BLL.ViewModels
+namespace SmartStorage.UI.ViewModels
 {
   public class StatusApiModel
   {

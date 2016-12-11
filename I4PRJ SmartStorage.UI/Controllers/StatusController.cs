@@ -1,9 +1,9 @@
 ﻿using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
-using SmartStorage.BLL.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using SmartStorage.UI.ViewModels;
 
 namespace SmartStorage.UI.Controllers
 {

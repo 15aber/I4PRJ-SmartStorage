@@ -1,7 +1,7 @@
-﻿using SmartStorage.BLL.Dtos;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using SmartStorage.BLL.Dtos;
 
-namespace SmartStorage.BLL.ViewModels
+namespace SmartStorage.UI.ViewModels
 {
   public class TransactionEditModel
   {
