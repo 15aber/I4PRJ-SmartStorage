@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using AutoMapper;
 using NSubstitute;
 using NUnit.Framework;
@@ -20,10 +22,18 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
     {
         private WholesalersController _wholesalersController;
         private IWholesalerService _wholesalerService;
+        private HttpContextBase _contextBase;
+
 
         [SetUp]
         public void SetUp()
         {
+            _contextBase = Substitute.For<HttpContextBase>();
+            _contextBase.User.Identity.Name.Returns("JohnDoe");
+            _contextBase.Request.IsAuthenticated.Returns(true);
+            _contextBase.User.IsInRole("Admin").Returns(true);
+            _wholesalersController.ControllerContext = new ControllerContext(_contextBase, new RouteData(), _wholesalersController);
+
             _wholesalerService = Substitute.For<IWholesalerService>();
             _wholesalersController = new WholesalersController(_wholesalerService);
             Mapper.Initialize(c => c.AddProfile<MappingProfile>());
