@@ -1,6 +1,6 @@
-﻿using System;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using AutoMapper;
 using NSubstitute;
 using NUnit.Framework;
@@ -8,9 +8,6 @@ using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
 using SmartStorage.BLL.Mapping;
 using SmartStorage.BLL.ViewModels;
-using SmartStorage.DAL.Interfaces;
-using SmartStorage.DAL.Interfaces.Repositories;
-using SmartStorage.DAL.Models;
 using SmartStorage.UI.Controllers;
 
 namespace I4PRJ_SmartStorage.UnitTests.Controllers
@@ -22,10 +19,18 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         private IWholesalerService _wholesalerService;
         private ISupplierService _supplierService;
         private ProductsController _controller;
+        private HttpContextBase _contextBase;
+
 
         [SetUp]
         public void SetUp()
         {
+            _contextBase = Substitute.For<HttpContextBase>();
+            _contextBase.User.Identity.Name.Returns("JohnDoe");
+            _contextBase.Request.IsAuthenticated.Returns(true);
+            _contextBase.User.IsInRole("Admin").Returns(true);
+            _controller.ControllerContext = new ControllerContext(_contextBase, new RouteData(), _controller);
+
             _productService = Substitute.For<IProductService>();
             _categoryService = Substitute.For<ICategoryService>();
             _wholesalerService = Substitute.For<IWholesalerService>();

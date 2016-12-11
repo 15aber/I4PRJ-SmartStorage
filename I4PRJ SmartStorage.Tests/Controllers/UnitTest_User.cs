@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace I4PRJ_SmartStorage.UnitTests.Controllers
 {
     [TestFixture]
-    class UnitTestUser
+    class UnitTest_User
     {
 
         [Test]

@@ -136,7 +136,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\UnitTest_Account.cs" />
-    <Compile Include="Controllers\UnitTestUser.cs" />
+    <Compile Include="Controllers\UnitTest_Home.cs" />
+    <Compile Include="Controllers\UnitTest_Manage.cs" />
+    <Compile Include="Controllers\UnitTest_Status.cs" />
+    <Compile Include="Controllers\UnitTest_Stocks.cs" />
+    <Compile Include="Controllers\UnitTest_User.cs" />
     <Compile Include="Controllers\UnitTest_Category.cs" />
     <Compile Include="Controllers\UnitTest_Inventory.cs" />
     <Compile Include="Controllers\UnitTest_Products.cs" />
