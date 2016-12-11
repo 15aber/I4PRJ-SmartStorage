@@ -59,10 +59,8 @@ namespace SmartStorage.UI.Controllers
         return HttpNotFound();
       }
 
-      var viewModel = new StatusViewModel
+      var viewModel = new StatusApiModel()
       {
-        Products = _productService.GetAllActive(),
-        Stocks = _stockService.GetAllOfInventory(id),
         IsStarted = false
       };
 
@@ -77,10 +75,8 @@ namespace SmartStorage.UI.Controllers
         return HttpNotFound();
       }
 
-      var viewModel = new StatusViewModel
+      var viewModel = new StatusApiModel
       {
-        Products = _productService.GetAllActive(),
-        Stocks = _stockService.GetAllOfInventory(id),
         IsStarted = true
       };
 
@@ -116,8 +112,6 @@ namespace SmartStorage.UI.Controllers
 
       var viewModel = new StatusViewModel
       {
-        //Products = db.Products.Include(p => p.Category).Where(p => p.IsDeleted != true).ToList(),
-        //Stocks = db.Stocks.Where(s => s.InventoryId == id).ToList(),
         Statuses = _statusService.GetAll()
       };
 

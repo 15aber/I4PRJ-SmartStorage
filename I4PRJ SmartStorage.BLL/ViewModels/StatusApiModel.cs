@@ -2,7 +2,7 @@
 
 namespace SmartStorage.BLL.ViewModels
 {
-  public class StatusEditModel
+  public class StatusApiModel
   {
     public List<double> ExpQuantities { get; set; }
     public List<double> CurQuantities { get; set; }

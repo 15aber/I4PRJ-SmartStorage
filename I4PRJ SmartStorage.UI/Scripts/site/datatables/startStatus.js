@@ -30,13 +30,13 @@ $(document)
                 ],
                 columns: [
                     {
-                        data: "productName"
+                        data: "product.name"
                     },
                     {
-                        data: "categoryName"
+                        data: "product.categoryId"
                     },
                     {
-                      data: "quantity",
+                      data: "expQuantity",
                         render: function(data, type, row, meta) {
                           return "<div id='expected" + meta.row + "' value='" + data + "'>" + data + "</div>";
                         }

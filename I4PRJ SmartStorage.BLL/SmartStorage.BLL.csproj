@@ -83,7 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\Services\IService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
-    <Compile Include="ViewModels\StatusEditModel.cs" />
+    <Compile Include="ViewModels\StatusApiModel.cs" />
     <Compile Include="ViewModels\StatusViewModel.cs" />
     <Compile Include="ViewModels\SupplierEditModel.cs" />
     <Compile Include="ViewModels\StockViewModel.cs" />
