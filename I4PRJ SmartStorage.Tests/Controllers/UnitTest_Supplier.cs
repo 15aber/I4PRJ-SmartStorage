@@ -23,15 +23,15 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         [SetUp]
         public void SetUp()
         {
+            _supplierService = Substitute.For<ISupplierService>();          
+            _suppliersController = new SuppliersController(_supplierService);
+            Mapper.Initialize(c => c.AddProfile<MappingProfile>());
+
             _contextBase = Substitute.For<HttpContextBase>();
             _contextBase.User.Identity.Name.Returns("JohnDoe");
             _contextBase.Request.IsAuthenticated.Returns(true);
             _contextBase.User.IsInRole("Admin").Returns(true);
             _suppliersController.ControllerContext = new ControllerContext(_contextBase, new RouteData(), _suppliersController);
-
-            _supplierService = Substitute.For<ISupplierService>();          
-            _suppliersController = new SuppliersController(_supplierService);
-            Mapper.Initialize(c => c.AddProfile<MappingProfile>());
 
         }
 

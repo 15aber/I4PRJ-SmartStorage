@@ -23,16 +23,16 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         [SetUp]
         public void SetUp()
         {
+            _service = Substitute.For<IInventoryService>();
+            _controller = new InventoriesController(_service);
+            Mapper.Initialize(c => c.AddProfile<MappingProfile>());
+
+
             _contextBase = Substitute.For<HttpContextBase>();
             _contextBase.User.Identity.Name.Returns("JohnDoe");
             _contextBase.Request.IsAuthenticated.Returns(true);
             _contextBase.User.IsInRole("Admin").Returns(true);
             _controller.ControllerContext = new ControllerContext(_contextBase, new RouteData(), _controller);
-
-            _service = Substitute.For<IInventoryService>();
-            _controller = new InventoriesController(_service);
-            Mapper.Initialize(c => c.AddProfile<MappingProfile>());
-
         }
 
         [Test]

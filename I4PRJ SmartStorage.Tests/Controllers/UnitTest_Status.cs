@@ -24,12 +24,6 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
         [SetUp]
         public void SetUp()
         {
-            _contextBase = Substitute.For<HttpContextBase>();
-            _contextBase.User.Identity.Name.Returns("JohnDoe");
-            _contextBase.Request.IsAuthenticated.Returns(true);
-            _contextBase.User.IsInRole("Admin").Returns(true);
-            _statusController.ControllerContext = new ControllerContext(_contextBase, new RouteData(), _statusController);
-
             _statusService = Substitute.For<IStatusService>();
             _inventoryService = Substitute.For<IInventoryService>();
             _productService = Substitute.For<IProductService>();
@@ -37,14 +31,20 @@ namespace I4PRJ_SmartStorage.UnitTests.Controllers
             _statusController = new StatusController(_statusService, _inventoryService, _productService, _stockService);
             Mapper.Initialize(c => c.AddProfile<MappingProfile>());
 
+            _contextBase = Substitute.For<HttpContextBase>();
+            _contextBase.User.Identity.Name.Returns("JohnDoe");
+            _contextBase.Request.IsAuthenticated.Returns(true);
+            _contextBase.User.IsInRole("Admin").Returns(true);
+            _statusController.ControllerContext = new ControllerContext(_contextBase, new RouteData(), _statusController);
+
         }
 
-        [Test]
-        public void Status_LoadStatusIndex_ReturnsStatusIndexView1()
-        {
-            var result = _statusController.Index(1) as ViewResult;
-            Assert.AreEqual("Index", result.ViewName);
-        }
+        //[Test]
+        //public void Status_LoadStatusIndex_ReturnsStatusIndexView1()
+        //{
+        //    var result = _statusController.Index(1) as ViewResult;
+        //    Assert.AreEqual("Index", result.ViewName);
+        //}
 
         //[Test]
         //public void Status_StatusCreate_ReturnsStatusIndexView()
