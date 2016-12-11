@@ -256,11 +256,12 @@
     <Compile Include="ViewModels\StatusViewModel.cs" />
     <Compile Include="ViewModels\StockViewModel.cs" />
     <Compile Include="ViewModels\SupplierEditModel.cs" />
+    <Compile Include="ViewModels\WholesalerRapportModel.cs" />
+    <Compile Include="ViewModels\SupplierRapportModel.cs" />
     <Compile Include="ViewModels\SupplierViewModel.cs" />
     <Compile Include="ViewModels\TransactionEditModel.cs" />
     <Compile Include="ViewModels\TransactionViewModel.cs" />
     <Compile Include="ViewModels\WholesalerEditModel.cs" />
-    <Compile Include="ViewModels\WholesalerRepportModel.cs" />
     <Compile Include="ViewModels\WholesalerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -452,11 +453,12 @@
     <Content Include="Scripts\site\datatables\settingsDataTables.js" />
     <Content Include="Scripts\site\datatables\startStatus.js" />
     <Content Include="Scripts\site\datatables\statusReportDetails.js" />
+    <Content Include="Scripts\site\datatables\wholesalerForm.js" />
     <Content Include="Scripts\site\datatables\supplierForm.js" />
     <Content Include="Scripts\site\datatables\suppliersIndex.js" />
     <Content Include="Scripts\site\datatables\transactionForm.js" />
     <Content Include="Scripts\site\datatables\transactionIndex.js" />
-    <Content Include="Scripts\site\datatables\wholesalerForm.js" />
+    <Content Include="Scripts\site\datatables\wholesalerForm1.js" />
     <Content Include="Scripts\site\datatables\wholesalersIndex.js" />
     <Content Include="Scripts\slimScroll\jquery.slimscroll.js" />
     <Content Include="Scripts\slimScroll\jquery.slimscroll.min.js" />

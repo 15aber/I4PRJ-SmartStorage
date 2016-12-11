@@ -1,9 +1,9 @@
 ﻿using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
-using System;
-using System.Web.Mvc;
 using SmartStorage.UI.ViewModels;
 using SmartStorage.UI.ViewModels.Identity;
+using System;
+using System.Web.Mvc;
 
 namespace SmartStorage.UI.Controllers
 {
@@ -73,6 +73,16 @@ namespace SmartStorage.UI.Controllers
       _service.Update(model.Supplier);
 
       return RedirectToAction("Index");
+    }
+
+    public ActionResult Report()
+    {
+      var viewModel = new SupplierRapportModel
+      {
+        Suppliers = _service.GetAllActive()
+      };
+
+      return View("SupplierForm", viewModel);
     }
   }
 }

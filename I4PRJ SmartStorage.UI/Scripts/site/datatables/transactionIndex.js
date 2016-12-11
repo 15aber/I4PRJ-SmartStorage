@@ -5,8 +5,6 @@
         var updatedDate = data[6]; // use data for the hidden "updated" column
         if (fromDate.getTime() === null || toDate.getTime() === null)
             return true;
-        console.log("from: " + fromDate);
-        console.log("to: " + toDate);
         
         if (isNaN(fromDate.getTime()) && isNaN(toDate.getTime()) ||
              isNaN(fromDate.getTime()) &&  updatedDate <= toDate.getTime() ||
