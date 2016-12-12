@@ -5,12 +5,12 @@ using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
 using SmartStorage.BLL.Mapping;
 using SmartStorage.UI.Controllers;
+using SmartStorage.UI.ViewModels;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using SmartStorage.UI.ViewModels;
 
-namespace I4PRJ_SmartStorage.UnitTests.Controllers
+namespace SmartStorage.UnitTests.Controllers
 {
   [TestFixture]
   class UnitTest_Category

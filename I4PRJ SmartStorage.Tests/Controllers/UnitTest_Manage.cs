@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace I4PRJ_SmartStorage.UnitTests.Controllers
+﻿namespace SmartStorage.UnitTests.Controllers
 {
-    class UnitTest_Manage
-    {
-    }
+  class UnitTest_Manage
+  {
+  }
 }

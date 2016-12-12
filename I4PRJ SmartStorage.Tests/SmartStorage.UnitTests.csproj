@@ -9,8 +9,8 @@
     <ProjectGuid>{C3E30CBB-2567-437D-A6D0-660DA4B9996B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>I4PRJ_SmartStorage.UnitTests</RootNamespace>
-    <AssemblyName>I4PRJ SmartStorage.UnitTests</AssemblyName>
+    <RootNamespace>SmartStorage.UnitTests</RootNamespace>
+    <AssemblyName>SmartStorage.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -175,7 +175,7 @@
     </ProjectReference>
     <ProjectReference Include="..\I4PRJ SmartStorage.UI\SmartStorage.UI.csproj">
       <Project>{5ba405f6-d7a0-46cb-bbad-4a315ff582b2}</Project>
-      <Name>I4PRJ SmartStorage.UI</Name>
+      <Name>SmartStorage.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

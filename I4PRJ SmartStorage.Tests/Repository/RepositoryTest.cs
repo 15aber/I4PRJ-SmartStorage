@@ -1,32 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using NSubstitute;
+﻿using NSubstitute;
 using NUnit.Framework;
 using SmartStorage.DAL.Interfaces.Repositories;
 using SmartStorage.DAL.Models;
+using System;
+using System.Collections.Generic;
 
-namespace I4PRJ_SmartStorage.UnitTests.Repository
+namespace SmartStorage.UnitTests.Repository
 {
-    [TestFixture]
-    class RepositoryTest
+  [TestFixture]
+  class RepositoryTest
+  {
+    private IRepository<Category> _categoryRepository;
+
+    [SetUp]
+    public void SetUp()
     {
-        private IRepository<Category> _categoryRepository;
+      _categoryRepository = Substitute.For<IRepository<Category>>();
 
-        [SetUp]
-        public void SetUp()
-        {
-            _categoryRepository = Substitute.For<IRepository<Category>>();
+      _categoryRepository.Get(3).Returns(new Category
+      {
+        Name = "Vodka",
+        ByUser = "Admin",
+        CategoryId = 3,
+        IsDeleted = false,
+        Updated = DateTime.Today
+      });
 
-            _categoryRepository.Get(3).Returns(new Category
-            {
-                Name = "Vodka",
-                ByUser = "Admin",
-                CategoryId = 3,
-                IsDeleted = false,
-                Updated = DateTime.Today
-            });
-
-            _categoryRepository.GetAll().Returns(new List<Category>
+      _categoryRepository.GetAll().Returns(new List<Category>
             {
                 new Category()
                 {
@@ -46,18 +46,18 @@ namespace I4PRJ_SmartStorage.UnitTests.Repository
                     Updated = DateTime.Today
                 }
             });
-        }
-
-        [Test]
-        public void GetAll_Returns_TwoCategories()
-        {
-            Assert.That(_categoryRepository.GetAll().Count, Is.EqualTo(2));
-        }
-
-        [Test]
-        public void GetCertainCategory_Returns_CategoryWithMatchingId()
-        {
-            Assert.That(_categoryRepository.Get(3).Name, Is.EqualTo("Vodka"));
-        }
     }
+
+    [Test]
+    public void GetAll_Returns_TwoCategories()
+    {
+      Assert.That(_categoryRepository.GetAll().Count, Is.EqualTo(2));
+    }
+
+    [Test]
+    public void GetCertainCategory_Returns_CategoryWithMatchingId()
+    {
+      Assert.That(_categoryRepository.Get(3).Name, Is.EqualTo("Vodka"));
+    }
+  }
 }

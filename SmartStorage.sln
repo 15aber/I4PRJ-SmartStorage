@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStorage.DAL", "I4PRJ S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStorage.UI", "I4PRJ SmartStorage.UI\SmartStorage.UI.csproj", "{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I4PRJ SmartStorage.UnitTests", "I4PRJ SmartStorage.Tests\I4PRJ SmartStorage.UnitTests.csproj", "{C3E30CBB-2567-437D-A6D0-660DA4B9996B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStorage.UnitTests", "I4PRJ SmartStorage.Tests\SmartStorage.UnitTests.csproj", "{C3E30CBB-2567-437D-A6D0-660DA4B9996B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

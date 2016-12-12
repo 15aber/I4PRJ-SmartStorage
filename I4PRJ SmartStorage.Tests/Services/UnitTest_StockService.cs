@@ -12,7 +12,7 @@
 //using SmartStorage.DAL.Interfaces;
 //using SmartStorage.DAL.Models;
 
-//namespace I4PRJ_SmartStorage.UnitTests.Services
+//namespace SmartStorage.UnitTests.Services
 //{
 //    [TestFixture]
 //    class UnitTest_StockService
