@@ -18,37 +18,37 @@ namespace I4PRJ_SmartStorage.UnitTests.Services
     class UnitTest_WholesalerService
     {
         private IUnitOfWork _uow;
-        private CategoryService _categoryService;
+        private WholesalerService _wholesalerService;
 
         [SetUp]
         public void SetUp()
         {
             _uow = Substitute.For<IUnitOfWork>();
             Mapper.Initialize(c => c.AddProfile<MappingProfile>());
-            _categoryService = new CategoryService(_uow);
+            _wholesalerService = new WholesalerService(_uow);
         }
 
         [Test]
-        public void CategoryServiceAdd_UnitOfWorkAddAndComplete_ReturnsUnitOfWorkAddAndComplete()
+        public void WholesalerServiceAdd_UnitOfWorkAddAndComplete_ReturnsUnitOfWorkAddAndComplete()
         {
-            var categoryDto = new CategoryDto() { Name = "Test" };
-            var entity = Mapper.Map<CategoryDto, Category>(categoryDto);
+            var wholesalerDto = new WholesalerDto() { Name = "Test" };
+            var entity = Mapper.Map<WholesalerDto, Wholesaler>(wholesalerDto);
 
-            _categoryService.Add(categoryDto);
+            _wholesalerService.Add(wholesalerDto);
 
-            _uow.Received().Categories.Add(entity);
+            _uow.Received().Wholesalers.Add(entity);
             _uow.Received().Complete();
         }
 
         [Test]
-        public void CategoryServiceUpdate_UnitOfWorkUpdateAndComplete_ReturnsUnitOfWorkUpdateAndComplete()
+        public void WholesalerServiceUpdate_UnitOfWorkUpdateAndComplete_ReturnsUnitOfWorkUpdateAndComplete()
         {
-            var categoryDto = new CategoryDto() { Name = "Test" };
-            var entity = Mapper.Map<CategoryDto, Category>(categoryDto);
+            var wholesalerDto = new WholesalerDto() { Name = "Test" };
+            var entity = Mapper.Map<WholesalerDto, Wholesaler>(wholesalerDto);
 
-            _categoryService.Update(categoryDto);
+            _wholesalerService.Update(wholesalerDto);
 
-            _uow.Received().Categories.Update(entity);
+            _uow.Received().Wholesalers.Update(entity);
             _uow.Received().Complete();
         }
     }

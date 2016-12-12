@@ -18,37 +18,37 @@ namespace I4PRJ_SmartStorage.UnitTests.Services
     class UnitTest_ProductService
     {
         private IUnitOfWork _uow;
-        private CategoryService _categoryService;
+        private ProductService _productService;
 
         [SetUp]
         public void SetUp()
         {
             _uow = Substitute.For<IUnitOfWork>();
             Mapper.Initialize(c => c.AddProfile<MappingProfile>());
-            _categoryService = new CategoryService(_uow);
+            _productService = new ProductService(_uow);
         }
 
         [Test]
-        public void CategoryServiceAdd_UnitOfWorkAddAndComplete_ReturnsUnitOfWorkAddAndComplete()
+        public void ProductServiceAdd_UnitOfWorkAddAndComplete_ReturnsUnitOfWorkAddAndComplete()
         {
-            var categoryDto = new CategoryDto() { Name = "Test" };
-            var entity = Mapper.Map<CategoryDto, Category>(categoryDto);
+            var productDto = new ProductDto() { Name = "Test" };
+            var entity = Mapper.Map<ProductDto, Product>(productDto);
 
-            _categoryService.Add(categoryDto);
+            _productService.Add(productDto);
 
-            _uow.Received().Categories.Add(entity);
+            _uow.Received().Products.Add(entity);
             _uow.Received().Complete();
         }
 
         [Test]
-        public void CategoryServiceUpdate_UnitOfWorkUpdateAndComplete_ReturnsUnitOfWorkUpdateAndComplete()
+        public void ProductServiceUpdate_UnitOfWorkUpdateAndComplete_ReturnsUnitOfWorkUpdateAndComplete()
         {
-            var categoryDto = new CategoryDto() { Name = "Test" };
-            var entity = Mapper.Map<CategoryDto, Category>(categoryDto);
+            var productDto = new ProductDto() { Name = "Test" };
+            var entity = Mapper.Map<ProductDto, Product>(productDto);
 
-            _categoryService.Update(categoryDto);
+            _productService.Update(productDto);
 
-            _uow.Received().Categories.Update(entity);
+            _uow.Received().Products.Update(entity);
             _uow.Received().Complete();
         }
     }

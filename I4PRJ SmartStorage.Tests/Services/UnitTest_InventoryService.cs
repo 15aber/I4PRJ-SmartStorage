@@ -18,37 +18,37 @@ namespace I4PRJ_SmartStorage.UnitTests.Services
     class UnitTest_InventoryService
     {
         private IUnitOfWork _uow;
-        private CategoryService _categoryService;
+        private InventoryService _inventoryService;
 
         [SetUp]
         public void SetUp()
         {
             _uow = Substitute.For<IUnitOfWork>();
             Mapper.Initialize(c => c.AddProfile<MappingProfile>());
-            _categoryService = new CategoryService(_uow);
+            _inventoryService = new InventoryService(_uow);
         }
 
         [Test]
-        public void CategoryServiceAdd_UnitOfWorkAddAndComplete_ReturnsUnitOfWorkAddAndComplete()
+        public void InventoryServiceAdd_UnitOfWorkAddAndComplete_ReturnsUnitOfWorkAddAndComplete()
         {
-            var categoryDto = new CategoryDto() { Name = "Test" };
-            var entity = Mapper.Map<CategoryDto, Category>(categoryDto);
+            var inventoryDto = new InventoryDto() { Name = "Test" };
+            var entity = Mapper.Map<InventoryDto, Inventory>(inventoryDto);
 
-            _categoryService.Add(categoryDto);
+            _inventoryService.Add(inventoryDto);
 
-            _uow.Received().Categories.Add(entity);
+            _uow.Received().Inventories.Add(entity);
             _uow.Received().Complete();
         }
 
         [Test]
-        public void CategoryServiceUpdate_UnitOfWorkUpdateAndComplete_ReturnsUnitOfWorkUpdateAndComplete()
+        public void InventoryServiceUpdate_UnitOfWorkUpdateAndComplete_ReturnsUnitOfWorkUpdateAndComplete()
         {
-            var categoryDto = new CategoryDto() { Name = "Test" };
-            var entity = Mapper.Map<CategoryDto, Category>(categoryDto);
+            var inventoryDto = new InventoryDto() { Name = "Test" };
+            var entity = Mapper.Map<InventoryDto, Inventory>(inventoryDto);
 
-            _categoryService.Update(categoryDto);
+            _inventoryService.Update(inventoryDto);
 
-            _uow.Received().Categories.Update(entity);
+            _uow.Received().Inventories.Update(entity);
             _uow.Received().Complete();
         }
     }
