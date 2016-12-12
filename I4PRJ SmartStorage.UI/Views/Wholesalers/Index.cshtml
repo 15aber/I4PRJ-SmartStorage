@@ -1,4 +1,4 @@
-﻿@model SmartStorage.BLL.ViewModels.WholesalerViewModel
+﻿@model SmartStorage.UI.ViewModels.WholesalerViewModel
 
 @{
   ViewBag.Title = "Wholesalers";
@@ -13,6 +13,7 @@
         </div>
         <div class="ibox-content">
           @Html.ActionLink("Create Wholesaler", "Create", null, new { @class = "btn btn-primary btn-sm" })
+          @Html.ActionLink("Report", "Report", null, new { @class = "btn btn-primary btn-sm" })
           <table id="wholesalers" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>

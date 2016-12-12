@@ -5,12 +5,6 @@
         var updatedDate = data[6]; // use data for the hidden "updated" column
         if (fromDate.getTime() === null || toDate.getTime() === null)
             return true;
-        //console.log(updatedDate);
-        //console.log(fromDate);
-        //console.log("updatedDate: " + updatedDate + " " + updatedDate);
-        //console.log("fromdate: " + fromDate.toLocaleDateString('da-DK') + " " + fromDate.getTime());
-        //console.log("todate: " + toDate.toLocaleDateString('da-DK') + " " + toDate.getTime());
-
         
         if (isNaN(fromDate.getTime()) && isNaN(toDate.getTime()) ||
              isNaN(fromDate.getTime()) &&  updatedDate <= toDate.getTime() ||
@@ -74,26 +68,21 @@ $(document).ready(function () {
 
     
     $('#fromdate').datepicker({
-        dataFormat: "dd-mm-yy",
-        defaultDate: '-1m+1d',
+      dateFormat: "dd-mm-yy",
+        defaultDate: -30,
         changeMonth: true,  
         changeYear: true,
         showOtherMonths: true,
-        selectOtherMonths: true,
-        onSelect: function(selectedDate) {
-            $("#todate").datepicker("option", "minDate", selectedDate);
-        }
+        selectOtherMonths: true
     });
     $('#todate').datepicker({
-        dataFormat: "dd-mm-yy",
+      dateFormat: "dd-mm-yy",
+      defaultDate: +1,
         maxDate: +1,
         changeMonth: true,
         changeYear: true,
         showOtherMonths: true,
-        selectOtherMonths: true,
-        onSelect: function (selectedDate) {
-            $("#fromdate").datepicker("option", "maxDate", selectedDate);
-        }
+        selectOtherMonths: true
     });
 
     $('#fromIcon').click(function() { $('#fromdate').datepicker('show'); });

@@ -149,6 +149,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\RepositoryTest.cs" />
     <Compile Include="Services\UnitTest_CategoryService.cs" />
+    <Compile Include="Services\UnitTest_InventoryService.cs" />
+    <Compile Include="Services\UnitTest_ProductService.cs" />
+    <Compile Include="Services\UnitTest_ServiceBase.cs" />
+    <Compile Include="Services\UnitTest_StatusService.cs" />
+    <Compile Include="Services\UnitTest_StockService.cs" />
+    <Compile Include="Services\UnitTest_SupplierService.cs" />
+    <Compile Include="Services\UnitTest_TransactionService.cs" />
+    <Compile Include="Services\UnitTest_WholesalerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

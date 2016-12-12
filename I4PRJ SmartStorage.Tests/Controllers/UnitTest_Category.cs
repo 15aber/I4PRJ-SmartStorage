@@ -4,11 +4,11 @@ using NUnit.Framework;
 using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
 using SmartStorage.BLL.Mapping;
-using SmartStorage.BLL.ViewModels;
 using SmartStorage.UI.Controllers;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using SmartStorage.UI.ViewModels;
 
 namespace I4PRJ_SmartStorage.UnitTests.Controllers
 {

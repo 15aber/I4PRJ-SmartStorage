@@ -1,5 +1,5 @@
 ﻿@using System.Web.UI.WebControls
-@model SmartStorage.BLL.ViewModels.TransactionEditModel
+@model SmartStorage.UI.ViewModels.TransactionEditModel
 
 @{
   ViewBag.Title = "Transaction";
@@ -14,7 +14,7 @@
         </div>
         <div class="ibox-content">
 
-          @using (Html.BeginForm("Save", "Transactions"))
+          @using (Html.BeginForm())
           {
             @Html.AntiForgeryToken()
 

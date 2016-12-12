@@ -21,5 +21,10 @@ namespace SmartStorage.DAL.Repositories
     {
       return base.Context.Set<Transaction>().Include("FromInventory").Include("ToInventory").Include("Product").ToList();
     }
+
+    public List<Transaction> GetAllRestock()
+    {
+      return base.Context.Set<Transaction>().Include("Product").Include("ToInventory").Where(t => t.FromInventoryId == null).ToList();
+    }
   }
 }

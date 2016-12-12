@@ -105,5 +105,75 @@ namespace SmartStorage.BLL.Services
         throw;
       }
     }
+
+    public IList<StatusDto> GetUpdated(int id)
+    {
+      try
+      {
+        var stocksDtos = _unitOfWork.Stocks.GetAllOfInventory(id);
+
+        var statusDtos = new List<StatusDto>();
+        foreach (var stocksDto in stocksDtos)
+        {
+          var statusDto = new StatusDto
+          {
+            InventoryId = stocksDto.InventoryId,
+            ProductId = stocksDto.ProductId,
+            Product = stocksDto.Product,
+            ExpQuantity = stocksDto.Quantity
+          };
+          statusDtos.Add(statusDto);
+
+        }
+
+        return statusDtos;
+
+      }
+      catch (Exception)
+      {
+        // TODO lav exception
+
+        throw;
+      }
+    }
+
+    public void Create(IList<StatusDto> entities)
+    {
+      try
+      {
+        foreach (var statusDto in entities)
+        {
+          var status = Mapper.Map<StatusDto, Status>(statusDto);
+          _unitOfWork.Statuses.Add(status);
+
+          if (Math.Abs(status.Difference) > 0)
+          {
+            var transaction = new Transaction
+            {
+              ToInventoryId = statusDto.InventoryId,
+              ProductId = statusDto.ProductId,
+              Quantity = statusDto.Difference,
+              Updated = statusDto.Updated,
+              ByUser = statusDto.ByUser + " [status]"
+            };
+            _unitOfWork.Transactions.Add(transaction);
+
+            var stock = _unitOfWork.Stocks.GetSingle(s => s.InventoryId == status.InventoryId,
+              s => s.ProductId == status.ProductId);
+            stock.Quantity += status.Difference;
+            _unitOfWork.Stocks.Update(stock);
+          }
+        }
+
+        _unitOfWork.Complete();
+
+      }
+      catch (Exception)
+      {
+        // TODO lav exception
+
+        throw;
+      }
+    }
   }
 }

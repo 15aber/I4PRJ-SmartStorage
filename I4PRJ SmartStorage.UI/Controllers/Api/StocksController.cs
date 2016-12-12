@@ -12,7 +12,6 @@ namespace SmartStorage.UI.Controllers.Api
       _service = service;
     }
 
-    [ActionName("DefaultAction")]
     public IHttpActionResult GetStocksOfInventory(int id)
     {
       var entityDto = _service.GetAllOfInventory(id);

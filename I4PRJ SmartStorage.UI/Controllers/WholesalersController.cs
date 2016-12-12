@@ -1,7 +1,7 @@
 ﻿using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
-using SmartStorage.BLL.ViewModels;
-using SmartStorage.BLL.ViewModels.Identity;
+using SmartStorage.UI.ViewModels;
+using SmartStorage.UI.ViewModels.Identity;
 using System;
 using System.Web.Mvc;
 
@@ -73,6 +73,16 @@ namespace SmartStorage.UI.Controllers
       _service.Update(model.Wholesaler);
 
       return RedirectToAction("Index");
+    }
+
+    public ActionResult Report()
+    {
+      var viewModel = new WholesalerRapportModel()
+      {
+        Wholesalers = _service.GetAllActive()
+      };
+
+      return View("WholesalersForm", viewModel);
     }
   }
 }

@@ -12,11 +12,11 @@ using NUnit.Framework;
 using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
 using SmartStorage.BLL.Mapping;
-using SmartStorage.BLL.ViewModels;
 using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Interfaces.Repositories;
 using SmartStorage.DAL.Models;
 using SmartStorage.UI.Controllers;
+using SmartStorage.UI.ViewModels;
 
 namespace I4PRJ_SmartStorage.UnitTests.Controllers
 {
