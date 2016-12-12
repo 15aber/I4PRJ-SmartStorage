@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Diagnostics.CodeAnalysis;
 using System.Web.Http;
 
 namespace SmartStorage.UI
 {
+  [ExcludeFromCodeCoverage]
   public static class WebApiConfig
   {
     public static void Register(HttpConfiguration config)

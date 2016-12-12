@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using SmartStorage.BLL.Dtos;
 using SmartStorage.DAL.Models;
+using System.Diagnostics.CodeAnalysis;
 
 namespace SmartStorage.BLL.Mapping
 {
+  [ExcludeFromCodeCoverage]
   public class MappingProfile : Profile
   {
     public MappingProfile()

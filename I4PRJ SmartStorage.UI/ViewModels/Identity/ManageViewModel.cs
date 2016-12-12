@@ -1,5 +1,8 @@
-﻿namespace SmartStorage.UI.ViewModels.Identity
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace SmartStorage.UI.ViewModels.Identity
 {
+  [ExcludeFromCodeCoverage]
   public class ManageViewModel
   {
     public bool HasPassword { get; set; }

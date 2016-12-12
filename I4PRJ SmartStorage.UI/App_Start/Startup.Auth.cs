@@ -1,7 +1,4 @@
-﻿using System;
-using System.Configuration;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
@@ -9,9 +6,14 @@ using Microsoft.Owin.Security.Facebook;
 using Owin;
 using SmartStorage.DAL.Context;
 using SmartStorage.DAL.Models;
+using System;
+using System.Configuration;
+using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 
 namespace SmartStorage.UI
 {
+  [ExcludeFromCodeCoverage]
   public partial class Startup
   {
     // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864

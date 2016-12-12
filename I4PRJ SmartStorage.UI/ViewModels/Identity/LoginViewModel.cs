@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace SmartStorage.UI.ViewModels.Identity
 {
+  [ExcludeFromCodeCoverage]
   public class LoginViewModel
   {
     [Required]

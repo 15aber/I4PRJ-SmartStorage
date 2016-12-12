@@ -10,6 +10,7 @@ using Sms.ApiClient.V2.SendMessages;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
@@ -17,6 +18,7 @@ using System.Threading.Tasks;
 
 namespace SmartStorage.UI
 {
+  [ExcludeFromCodeCoverage]
   public class EmailService : IIdentityMessageService
   {
     public async Task SendAsync(IdentityMessage message)
@@ -47,6 +49,7 @@ namespace SmartStorage.UI
     }
   }
 
+  [ExcludeFromCodeCoverage]
   public class SmsService : IIdentityMessageService
   {
     public async Task SendAsync(IdentityMessage message)
@@ -77,6 +80,7 @@ namespace SmartStorage.UI
   }
 
   // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
+  [ExcludeFromCodeCoverage]
   public class ApplicationUserManager : UserManager<ApplicationUser>
   {
     public ApplicationUserManager(IUserStore<ApplicationUser> store)
@@ -137,6 +141,7 @@ namespace SmartStorage.UI
   }
 
   // Configure the application sign-in manager which is used in this application.
+  [ExcludeFromCodeCoverage]
   public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
   {
     public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)

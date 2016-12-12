@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SmartStorage.BLL.Mapping;
+using System.Diagnostics.CodeAnalysis;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -7,6 +8,7 @@ using System.Web.Routing;
 
 namespace SmartStorage.UI
 {
+  [ExcludeFromCodeCoverage]
   public class MvcApplication : System.Web.HttpApplication
   {
     protected void Application_Start()

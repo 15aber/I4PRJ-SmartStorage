@@ -1,7 +1,9 @@
-﻿using System.Web.Optimization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Web.Optimization;
 
 namespace SmartStorage.UI
 {
+  [ExcludeFromCodeCoverage]
   public class BundleConfig
   {
     public static void RegisterBundles(BundleCollection bundles)

@@ -6,12 +6,14 @@ using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.UnitOfWork;
 using SmartStorage.UI.Controllers;
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace SmartStorage.UI
 {
   /// <summary>
   /// Specifies the Unity configuration for the main container.
   /// </summary>
+  [ExcludeFromCodeCoverage]
   public class UnityConfig
   {
     #region Unity Container

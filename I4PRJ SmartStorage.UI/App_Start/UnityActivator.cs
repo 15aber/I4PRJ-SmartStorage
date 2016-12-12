@@ -1,4 +1,5 @@
 using SmartStorage.UI;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 namespace SmartStorage.UI
 {
   /// <summary>Provides the bootstrapping for integrating Unity with ASP.NET MVC.</summary>
+  [ExcludeFromCodeCoverage]
   public static class UnityWebActivator
   {
     /// <summary>Integrates Unity when the application starts.</summary>

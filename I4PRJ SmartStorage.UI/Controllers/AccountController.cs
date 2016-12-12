@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SmartStorage.DAL.Context;
 using System.Data.Entity;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -13,6 +14,7 @@ using SmartStorage.UI.ViewModels.Identity;
 namespace SmartStorage.UI.Controllers
 {
   [Authorize]
+  [ExcludeFromCodeCoverage]
   public class AccountController : Controller
   {
     private ApplicationSignInManager _signInManager;

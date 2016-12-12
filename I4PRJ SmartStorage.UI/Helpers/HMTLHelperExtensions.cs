@@ -4,10 +4,12 @@ using SmartStorage.DAL.Context;
 using SmartStorage.DAL.UnitOfWork;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Web.Mvc;
 
 namespace SmartStorage.UI.Helpers
 {
+  [ExcludeFromCodeCoverage]
   public static class HMTLHelperExtensions
   {
     public static string IsSelected(this HtmlHelper html, string controller = null, string action = null,
