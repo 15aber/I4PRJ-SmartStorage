@@ -18,37 +18,37 @@ namespace I4PRJ_SmartStorage.UnitTests.Services
     class UnitTest_SupplierService
     {
         private IUnitOfWork _uow;
-        private CategoryService _categoryService;
+        private SupplierService _supplierService;
 
         [SetUp]
         public void SetUp()
         {
             _uow = Substitute.For<IUnitOfWork>();
             Mapper.Initialize(c => c.AddProfile<MappingProfile>());
-            _categoryService = new CategoryService(_uow);
+            _supplierService = new SupplierService(_uow);
         }
 
         [Test]
-        public void CategoryServiceAdd_UnitOfWorkAddAndComplete_ReturnsUnitOfWorkAddAndComplete()
+        public void SupplierServiceAdd_UnitOfWorkAddAndComplete_ReturnsUnitOfWorkAddAndComplete()
         {
-            var categoryDto = new CategoryDto() { Name = "Test" };
-            var entity = Mapper.Map<CategoryDto, Category>(categoryDto);
+            var supplierDto = new SupplierDto() { Name = "Test" };
+            var entity = Mapper.Map<SupplierDto, Supplier>(supplierDto);
 
-            _categoryService.Add(categoryDto);
+            _supplierService.Add(supplierDto);
 
-            _uow.Received().Categories.Add(entity);
+            _uow.Received().Suppliers.Add(entity);
             _uow.Received().Complete();
         }
 
         [Test]
-        public void CategoryServiceUpdate_UnitOfWorkUpdateAndComplete_ReturnsUnitOfWorkUpdateAndComplete()
+        public void SupplierServiceUpdate_UnitOfWorkUpdateAndComplete_ReturnsUnitOfWorkUpdateAndComplete()
         {
-            var categoryDto = new CategoryDto() { Name = "Test" };
-            var entity = Mapper.Map<CategoryDto, Category>(categoryDto);
+            var supplierDto = new SupplierDto() { Name = "Test" };
+            var entity = Mapper.Map<SupplierDto, Supplier>(supplierDto);
 
-            _categoryService.Update(categoryDto);
+            _supplierService.Update(supplierDto);
 
-            _uow.Received().Categories.Update(entity);
+            _uow.Received().Suppliers.Update(entity);
             _uow.Received().Complete();
         }
     }
