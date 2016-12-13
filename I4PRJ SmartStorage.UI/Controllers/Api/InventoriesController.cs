@@ -22,6 +22,9 @@ namespace SmartStorage.UI.Controllers.Api
       return Ok(entityDto);
     }
 
+    // lav GetOtherInventories(int id) - returnerer alle undtagen id 
+
+
     [HttpDelete]
     [Authorize(Roles = "Admin")]
     public IHttpActionResult DeleteInventory(int id)
