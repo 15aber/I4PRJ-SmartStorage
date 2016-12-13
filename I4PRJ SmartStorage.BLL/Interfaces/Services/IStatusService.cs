@@ -7,6 +7,7 @@ namespace SmartStorage.BLL.Interfaces.Services
   {
     IList<StatusDto> GetAllOfInventory(int id);
     IList<StatusDto> GetUpdated(int id);
+    IList<int> GetStartedStatusInventories();
     void Create(IList<StatusDto> entities);
   }
 }

@@ -15,7 +15,7 @@ namespace SmartStorage.UI.ViewModels
 
     public IList<StatusDto> Statuses { get; set; }
 
-    public List<int> StatusStartedInventories { get; set; }
+    public IList<int> StatusStartedInventories { get; set; }
 
     public string Name { get; set; }
 
