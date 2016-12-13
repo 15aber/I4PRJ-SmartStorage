@@ -87,5 +87,14 @@ namespace SmartStorage.UnitTests.Services
 
         Assert.That(_supplierService.GetAllActive().Count, Is.EqualTo(1));
     }
+
+    [Test]
+    public void SupplierService_GetSingle_ReturnsSupplier1()
+    {
+      var entityDto = Mapper.Map<Supplier, SupplierDto>(supplierList[0]);
+      _uow.Suppliers.Get(1).Returns(supplierList[0]);
+
+      Assert.That(_supplierService.GetSingle(1).SupplierId, Is.EqualTo(entityDto.SupplierId));
+    }
   }
 }

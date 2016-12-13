@@ -87,5 +87,14 @@ namespace SmartStorage.UnitTests.Services
 
       Assert.That(_inventoryService.GetAllActive().Count, Is.EqualTo(1));
     }
+
+    [Test]
+    public void InventoryService_GetSingle_ReturnsInventory1()
+    {
+      var entityDto = Mapper.Map<Inventory, InventoryDto>(inventoryList[0]);
+      _uow.Inventories.Get(1).Returns(inventoryList[0]);
+
+      Assert.That(_inventoryService.GetSingle(1).InventoryId, Is.EqualTo(entityDto.InventoryId));
+    }
   }
 }

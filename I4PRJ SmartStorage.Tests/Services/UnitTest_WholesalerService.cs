@@ -88,5 +88,14 @@ namespace SmartStorage.UnitTests.Services
 
             Assert.That(_wholesalerService.GetAllActive().Count, Is.EqualTo(1));
         }
-    }
+
+        [Test]
+        public void WholesalerService_GetSingle_ReturnsWholesaler1()
+        {
+          var entityDto = Mapper.Map<Wholesaler, WholesalerDto>(wholesalerList[0]);
+          _uow.Wholesalers.Get(1).Returns(wholesalerList[0]);
+
+          Assert.That(_wholesalerService.GetSingle(1).WholesalerId, Is.EqualTo(entityDto.WholesalerId));
+        }
+  }
 }

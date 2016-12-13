@@ -87,5 +87,14 @@ namespace SmartStorage.UnitTests.Services
 
         Assert.That(_productService.GetAllActive().Count, Is.EqualTo(1));
     }
+
+    [Test]
+    public void ProductService_GetSingle_ReturnsProduct1()
+    {
+      var entityDto = Mapper.Map<Product, ProductDto>(productList[0]);
+      _uow.Products.Get(1).Returns(productList[0]);
+
+      Assert.That(_productService.GetSingle(1).ProductId, Is.EqualTo(entityDto.ProductId));
+    }
   }
 }
