@@ -20,6 +20,7 @@ namespace SmartStorage.UnitTests.Services
     private IUnitOfWork _uow;
     private CategoryService _categoryService;
     private List<Category> categoryList;
+    private CategoryDto singleCategoryDto;
 
     [SetUp]
     public void SetUp()
@@ -104,7 +105,13 @@ namespace SmartStorage.UnitTests.Services
       Assert.That(_categoryService.GetAllActive().Count, Is.EqualTo(1));
     }
 
+    [Test]
+    public void CategoryService_GetSingle_ReturnsCategory1()
+    {
+      var entityDto = Mapper.Map<Category, CategoryDto>(categoryList[0]);
+      _uow.Categories.Get(1).Returns(categoryList[0]);
 
-
+      Assert.That(_categoryService.GetSingle(1).CategoryId, Is.EqualTo(entityDto.CategoryId));
+    }
   }
 }
