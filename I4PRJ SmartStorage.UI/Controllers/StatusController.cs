@@ -1,9 +1,9 @@
 ﻿using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
+using SmartStorage.UI.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using SmartStorage.UI.ViewModels;
 
 namespace SmartStorage.UI.Controllers
 {
@@ -103,19 +103,19 @@ namespace SmartStorage.UI.Controllers
 
     public ActionResult StatusReportDetails(int id)
     {
-      var status = _statusService.GetSingle(id);
+      //var status = _statusService.GetSingle(id);
 
-      if (status == null)
-      {
-        return HttpNotFound();
-      }
+      //if (status == null)
+      //{
+      //  return HttpNotFound();
+      //}
 
-      var viewModel = new StatusViewModel
-      {
-        Statuses = _statusService.GetAll()
-      };
+      //var viewModel = new StatusViewModel
+      //{
+      //  Statuses = _statusService.GetAll()
+      //};
 
-      return View("StatusReportDetails", viewModel);
+      return View("StatusReportDetails");
     }
   }
 }

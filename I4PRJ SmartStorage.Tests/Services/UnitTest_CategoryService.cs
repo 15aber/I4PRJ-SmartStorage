@@ -9,6 +9,8 @@ using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace SmartStorage.UnitTests.Services
 {
@@ -97,7 +99,7 @@ namespace SmartStorage.UnitTests.Services
     [Test]
     public void CategoryService_GetAllActive_CountEqualTo1()
     {
-      _uow.Categories.GetAll().Returns(categoryList);
+      _uow.Categories.GetAll(Arg.Any<Expression<Func<Category, bool>>>()).Returns(categoryList.Where(e => e.IsDeleted == false).ToList());
 
       Assert.That(_categoryService.GetAllActive().Count, Is.EqualTo(1));
     }
