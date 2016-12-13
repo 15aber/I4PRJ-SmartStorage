@@ -2,20 +2,21 @@
     .ready(function () {
 
         // apply changes if modelstate fails
-        if ($('#FromInventoryId').val() !== null) {
+        if ($('#Transaction_FromInventoryId').val()) {
             setDropDownLists();
         };
 
         // add eventlistener for 
-        $('#FromInventoryId')
+        $('#Transaction_FromInventoryId')
             .on('change', setDropDownLists);
 
         function setDropDownLists() {
+            alert("yo");
             // ajax get products of inventory
-            $.get('/api/Inventories/GetOtherInventories/' + $('#FromInventoryId').val(),
+            $.get('/api/Inventories/GetOtherInventories/' + $('#Transaction_FromInventoryId').val(),
                 function (data) {
                     // populate with options
-                    var inventoriesWithoutFromInventorySelect = $('#ToInventoryId');
+                    var inventoriesWithoutFromInventorySelect = $('#Transaction_ToInventoryId');
 
                     // remove selected from select
                     inventoriesWithoutFromInventorySelect.empty();
@@ -33,7 +34,7 @@
             $.get('/api/Products/GetProductsOfInventory/' + $('#FromInventoryId').val(),
                 function (data) {
                     // populate with options
-                    var productsOfInventorySelect = $('#ProductId');
+                    var productsOfInventorySelect = $('#Transaction_ProductId');
 
                     // remove selected from select
                     productsOfInventorySelect.empty();
