@@ -157,6 +157,7 @@
     <Compile Include="Services\UnitTest_SupplierService.cs" />
     <Compile Include="Services\UnitTest_TransactionService.cs" />
     <Compile Include="Services\UnitTest_WholesalerService.cs" />
+    <Compile Include="UnitOfWork\UnitTest_UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
