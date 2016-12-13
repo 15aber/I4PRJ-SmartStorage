@@ -27,10 +27,8 @@ namespace SmartStorage.UI.Controllers
             var viewModel = new StatusViewModel
             {
                 Inventories = _inventoryService.GetAllActive(),
-                StatusStartedInventories = new List<int>()
+                StatusStartedInventories = _statusService.GetStartedStatusInventories()
             };
-
-            viewModel.StatusStartedInventories = _statusService.GetStartedStatusInventories();
 
             if (id == 1)
                 viewModel.ShowNotification = true;
