@@ -106,7 +106,7 @@ namespace SmartStorage.BLL.Services
             }
         }
 
-        public IList<int> GetStartedStatusInventories()
+        public List<int> GetStartedStatusInventories()
         {
             try
             {
