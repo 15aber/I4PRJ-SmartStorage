@@ -148,6 +148,8 @@
     <Compile Include="Controllers\UnitTest_Wholesaler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\RepositoryTest.cs" />
+    <Compile Include="Repository\UnitTest_CategoryRepository.cs" />
+    <Compile Include="Repository\UnitTest_InventoryRepository.cs" />
     <Compile Include="Services\UnitTest_CategoryService.cs" />
     <Compile Include="Services\UnitTest_InventoryService.cs" />
     <Compile Include="Services\UnitTest_ProductService.cs" />

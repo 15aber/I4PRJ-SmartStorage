@@ -4,60 +4,31 @@ using SmartStorage.DAL.Interfaces.Repositories;
 using SmartStorage.DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using SmartStorage.DAL.Repositories;
 
 namespace SmartStorage.UnitTests.Repository
 {
   [TestFixture]
   class RepositoryTest
   {
-    private IRepository<Category> _categoryRepository;
 
+    private Repository<CategoriesRepository> repository;
+    private DbSet<CategoriesRepository> _dbSet;
+    private DbContext _context;
+            
     [SetUp]
     public void SetUp()
     {
-      _categoryRepository = Substitute.For<IRepository<Category>>();
-
-      _categoryRepository.Get(3).Returns(new Category
-      {
-        Name = "Vodka",
-        ByUser = "Admin",
-        CategoryId = 3,
-        IsDeleted = false,
-        Updated = DateTime.Today
-      });
-
-      _categoryRepository.GetAll().Returns(new List<Category>
-            {
-                new Category()
-                {
-                    Name = "Beer",
-                    ByUser = "Admin",
-                    CategoryId = 1,
-                    IsDeleted = false,
-                    Updated = DateTime.Today
-                },
-
-                new Category()
-                {
-                    Name = "Soft drinks",
-                    ByUser = "Admin",
-                    CategoryId = 2,
-                    IsDeleted = false,
-                    Updated = DateTime.Today
-                }
-            });
+      repository = new Repository<CategoriesRepository>(_context);
+      _dbSet = _context.Set<CategoriesRepository>();
     }
 
-    [Test]
-    public void GetAll_Returns_TwoCategories()
-    {
-      Assert.That(_categoryRepository.GetAll().Count, Is.EqualTo(2));
-    }
-
-    [Test]
-    public void GetCertainCategory_Returns_CategoryWithMatchingId()
-    {
-      Assert.That(_categoryRepository.Get(3).Name, Is.EqualTo("Vodka"));
-    }
+    //[Test]
+    //public void Get_Returns_TwoCategories()
+    //{
+    //    repository.Get(1);
+    //    _dbSet.ReceivedWithAnyArgs().Find(1);
+    //}
   }
 }
