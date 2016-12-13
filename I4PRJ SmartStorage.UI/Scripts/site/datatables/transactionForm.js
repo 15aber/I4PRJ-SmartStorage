@@ -11,7 +11,6 @@
             .on('change', setDropDownLists);
 
         function setDropDownLists() {
-            alert("yo");
             // ajax get products of inventory
             $.get('/api/Inventories/GetOtherInventories/' + $('#Transaction_FromInventoryId').val(),
                 function (data) {
