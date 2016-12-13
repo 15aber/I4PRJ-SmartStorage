@@ -1,4 +1,8 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using AutoMapper;
 using NSubstitute;
 using NUnit.Framework;
 using SmartStorage.BLL.Dtos;
@@ -14,6 +18,7 @@ namespace SmartStorage.UnitTests.Services
   {
     private IUnitOfWork _uow;
     private SupplierService _supplierService;
+    private List<Supplier> supplierList;
 
     [SetUp]
     public void SetUp()
@@ -21,6 +26,26 @@ namespace SmartStorage.UnitTests.Services
       _uow = Substitute.For<IUnitOfWork>();
       Mapper.Initialize(c => c.AddProfile<MappingProfile>());
       _supplierService = new SupplierService(_uow);
+
+      supplierList = new List<Supplier>
+      {
+          new Supplier()
+          {
+              ByUser = "Test",
+              IsDeleted = false,
+              SupplierId = 1,
+              Name = "Test",
+              Updated = DateTime.Now
+          },
+           new Supplier()
+          {
+              ByUser = "Test",
+              IsDeleted = true,
+              SupplierId = 1,
+              Name = "Test",
+              Updated = DateTime.Now
+          }
+      };
     }
 
     [Test]
@@ -45,6 +70,22 @@ namespace SmartStorage.UnitTests.Services
 
       _uow.Received().Suppliers.Update(entity);
       _uow.Received().Complete();
+    }
+
+    [Test]
+    public void SuppllierService_GetAll_CountEqualTo2()
+    {
+        _uow.Suppliers.GetAll().Returns(supplierList);
+
+        Assert.That(_supplierService.GetAll().Count, Is.EqualTo(2));
+    }
+
+    [Test]
+    public void supplierService_GetAllActive_CountEqualTo1()
+    {
+        _uow.Suppliers.GetAll(Arg.Any<Expression<Func<Supplier, bool>>>()).Returns(supplierList.Where(e => e.IsDeleted == false).ToList());
+
+        Assert.That(_supplierService.GetAllActive().Count, Is.EqualTo(1));
     }
   }
 }

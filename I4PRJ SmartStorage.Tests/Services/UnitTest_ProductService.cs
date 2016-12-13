@@ -1,4 +1,8 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using AutoMapper;
 using NSubstitute;
 using NUnit.Framework;
 using SmartStorage.BLL.Dtos;
@@ -14,6 +18,7 @@ namespace SmartStorage.UnitTests.Services
   {
     private IUnitOfWork _uow;
     private ProductService _productService;
+    private List<Product> productList;
 
     [SetUp]
     public void SetUp()
@@ -21,6 +26,26 @@ namespace SmartStorage.UnitTests.Services
       _uow = Substitute.For<IUnitOfWork>();
       Mapper.Initialize(c => c.AddProfile<MappingProfile>());
       _productService = new ProductService(_uow);
+
+      productList = new List<Product>
+      {
+          new Product()
+          {
+              ByUser = "Test",
+              IsDeleted = false,
+              ProductId = 1,
+              Name = "Test",
+              Updated = DateTime.Now
+          },
+           new Product()
+          {
+              ByUser = "Test",
+              IsDeleted = true,
+              ProductId = 1,
+              Name = "Test",
+              Updated = DateTime.Now
+          }
+      };
     }
 
     [Test]
@@ -45,6 +70,22 @@ namespace SmartStorage.UnitTests.Services
 
       _uow.Received().Products.Update(entity);
       _uow.Received().Complete();
+    }
+
+    [Test]
+    public void productService_GetAll_CountEqualTo2()
+    {
+        _uow.Products.GetAll().Returns(productList);
+
+        Assert.That(_productService.GetAll().Count, Is.EqualTo(2));
+    }
+
+    [Test]
+    public void productService_GetAllActive_CountEqualTo1()
+    {
+        _uow.Products.GetAll(Arg.Any<Expression<Func<Product, bool>>>()).Returns(productList.Where(e => e.IsDeleted == false).ToList());
+
+        Assert.That(_productService.GetAllActive().Count, Is.EqualTo(1));
     }
   }
 }

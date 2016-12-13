@@ -1,4 +1,8 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using AutoMapper;
 using NSubstitute;
 using NUnit.Framework;
 using SmartStorage.BLL.Dtos;
@@ -14,6 +18,7 @@ namespace SmartStorage.UnitTests.Services
   {
     private IUnitOfWork _uow;
     private InventoryService _inventoryService;
+    private List<Inventory> inventoryList;
 
     [SetUp]
     public void SetUp()
@@ -21,6 +26,26 @@ namespace SmartStorage.UnitTests.Services
       _uow = Substitute.For<IUnitOfWork>();
       Mapper.Initialize(c => c.AddProfile<MappingProfile>());
       _inventoryService = new InventoryService(_uow);
+
+      inventoryList = new List<Inventory>
+      {
+          new Inventory()
+          {
+              ByUser = "Test",
+              IsDeleted = false,
+              InventoryId = 1,
+              Name = "Test",
+              Updated = DateTime.Now
+          },
+           new Inventory()
+          {
+              ByUser = "Test",
+              IsDeleted = true,
+              InventoryId = 1,
+              Name = "Test",
+              Updated = DateTime.Now
+          }
+      };
     }
 
     [Test]
@@ -45,6 +70,22 @@ namespace SmartStorage.UnitTests.Services
 
       _uow.Received().Inventories.Update(entity);
       _uow.Received().Complete();
+    }
+
+    [Test]
+    public void InventoryService_GetAll_CountEqualTo2()
+    {
+        _uow.Inventories.GetAll().Returns(inventoryList);
+
+        Assert.That(_inventoryService.GetAll().Count, Is.EqualTo(2));
+    }
+
+    [Test]
+    public void InventoryService_GetAllActive_CountEqualTo1()
+    {
+      _uow.Inventories.GetAll(Arg.Any<Expression<Func<Inventory, bool>>>()).Returns(inventoryList.Where(e => e.IsDeleted == false).ToList());
+
+      Assert.That(_inventoryService.GetAllActive().Count, Is.EqualTo(1));
     }
   }
 }
