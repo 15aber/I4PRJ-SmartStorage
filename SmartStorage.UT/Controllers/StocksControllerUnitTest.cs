@@ -6,11 +6,11 @@ using NUnit.Framework;
 using SmartStorage.BLL.Interfaces.Services;
 using SmartStorage.UI.Controllers;
 
-namespace SmartStorage.UT.Controllers
+namespace UnitTests.Controllers
 {
     [TestFixture]
-    class UnitTest_Stocks
-    {
+    class StocksControllerUnitTest
+  {
         private StocksController _controller;
         private IStockService _stockService;
 

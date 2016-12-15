@@ -10,9 +10,9 @@ using SmartStorage.BLL.Mapping;
 using SmartStorage.UI.Controllers;
 using SmartStorage.UI.ViewModels;
 
-namespace SmartStorage.UT.Controllers
+namespace UnitTests.Controllers
 {
-  class UnitTest_Products
+  class ProductsControllerUnitTest
   {
     private IProductService _productService;
     private ICategoryService _categoryService;

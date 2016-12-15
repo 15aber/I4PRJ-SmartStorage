@@ -10,11 +10,11 @@ using SmartStorage.BLL.Mapping;
 using SmartStorage.DAL.Models;
 using SmartStorage.UI.Controllers;
 
-namespace SmartStorage.UT.Controllers
+namespace UnitTests.Controllers
 {
     [TestFixture]
-    class UnitTest_Status
-    {
+    class StatusControllerUnitTest
+  {
         private StatusController _controller;
         private IStatusService _statusService;
         private IInventoryService _inventoryService;

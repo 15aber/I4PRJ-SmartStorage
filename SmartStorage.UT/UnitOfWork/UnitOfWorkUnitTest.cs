@@ -2,19 +2,19 @@
 using NUnit.Framework;
 using SmartStorage.DAL.Context;
 
-namespace SmartStorage.UT.UnitOfWork
+namespace UnitTests.UnitOfWork
 {
   [TestFixture]
-  class UnitTest_UnitOfWork
+  class UnitOfWorkUnitTest
   {
     private ApplicationDbContext _context;
-    private DAL.UnitOfWork.UnitOfWork _uow;
+    private SmartStorage.DAL.UnitOfWork.UnitOfWork _uow;
 
     [SetUp]
     public void SetUp()
     {
       _context = Substitute.For<ApplicationDbContext>();
-      _uow = new DAL.UnitOfWork.UnitOfWork(_context);
+      _uow = new SmartStorage.DAL.UnitOfWork.UnitOfWork(_context);
     }
 
     [Test]

@@ -11,10 +11,10 @@ using SmartStorage.BLL.Services;
 using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Models;
 
-namespace SmartStorage.UT.Services
+namespace UnitTests.Services
 {
   [TestFixture]
-  class UnitTest_SupplierService
+  class SupplierServiceUnitTest
   {
     private IUnitOfWork _uow;
     private SupplierService _supplierService;

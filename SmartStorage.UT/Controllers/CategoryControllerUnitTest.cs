@@ -10,83 +10,84 @@ using SmartStorage.BLL.Mapping;
 using SmartStorage.UI.Controllers;
 using SmartStorage.UI.ViewModels;
 
-namespace SmartStorage.UT.Controllers
+namespace UnitTests.Controllers
 {
   [TestFixture]
-  class UnitTest_Inventory
+  class CategoryControllerUnitTest
   {
-    private InventoriesController _controller;
-    private IInventoryService _service;
+    private CategoriesController _controller;
+    private ICategoryService _service;
     private HttpContextBase _contextBase;
-
 
     [SetUp]
     public void SetUp()
     {
-      _service = Substitute.For<IInventoryService>();
-      _controller = new InventoriesController(_service);
+      _service = Substitute.For<ICategoryService>();
+      _controller = new CategoriesController(_service);
+      _contextBase = Substitute.For<HttpContextBase>();
       Mapper.Initialize(c => c.AddProfile<MappingProfile>());
 
-
-      _contextBase = Substitute.For<HttpContextBase>();
       _contextBase.User.Identity.Name.Returns("JohnDoe");
       _contextBase.Request.IsAuthenticated.Returns(true);
       _contextBase.User.IsInRole("Admin").Returns(true);
       _controller.ControllerContext = new ControllerContext(_contextBase, new RouteData(), _controller);
+
     }
 
     [Test]
-    public void InventoryIndex_LoadInventoryIndex_ReturnsInventoryIndexView()
+    public void Category_LoadCategoryIndex_ReturnsCategoryIndexView()
     {
+
       var result = _controller.Index() as ViewResult;
       Assert.AreEqual("Index", result.ViewName);
     }
 
     [Test]
-    public void Inventory_InventoryCreate_ReturnsInventoryIndexView()
+    public void Category_CategoryCreate_ReturnsCategoryIndexView()
     {
-      var viewModel = new InventoryEditModel()
+      var viewModel = new CategoryEditModel
       {
-        Inventory = new InventoryDto() { Name = "Test" }
+        Category = new CategoryDto() { Name = "Test" }
       };
 
       var result = _controller.Create(viewModel) as RedirectToRouteResult;
+
 
       Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
     }
 
     [Test]
-    public void Inventory_InventoryCreate_ReturnsInventoryServiceAdd()
+    public void Category_CategoryCreate_ReturnsCategoryServiceAdd()
     {
-      var viewModel = new InventoryEditModel()
+      var viewModel = new CategoryEditModel
       {
-        Inventory = new InventoryDto() { Name = "Test" }
+        Category = new CategoryDto() { Name = "Test" }
       };
 
       var result = _controller.Create(viewModel) as RedirectToRouteResult;
 
-      _service.Received().Add(viewModel.Inventory);
+      _service.Received().Add(viewModel.Category);
     }
 
     [Test]
-    public void Inventory_InventoryEdit_ReturnsInventoryServiceUpdate()
+    public void Category_CategoryEdit_ReturnsCategoryServiceUpdate()
     {
-      var viewModel = new InventoryEditModel()
+      var viewModel = new CategoryEditModel
       {
-        Inventory = new InventoryDto() { Name = "Test" }
+        Category = new CategoryDto() { Name = "Test" }
       };
 
       var result = _controller.Edit(viewModel) as RedirectToRouteResult;
 
-      _service.Received().Update(viewModel.Inventory);
+      _service.Received().Update(viewModel.Category);
     }
 
     [Test]
-    public void Inventory_InventoryEdit_ReturnsInventoryIndexView()
+    public void Category_CategoryEdit_ReturnsCategoryIndexView()
     {
-      var viewModel = new InventoryEditModel()
+      var viewModel = new CategoryEditModel
       {
-        Inventory = new InventoryDto() { Name = "Test" }
+        Category = new CategoryDto() { Name = "Test" }
       };
 
       var result = _controller.Edit(viewModel) as RedirectToRouteResult;

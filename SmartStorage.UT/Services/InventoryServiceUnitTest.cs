@@ -11,14 +11,14 @@ using SmartStorage.BLL.Services;
 using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Models;
 
-namespace SmartStorage.UT.Services
+namespace UnitTests.Services
 {
   [TestFixture]
-  class UnitTest_InventoryService
+  class InventoryServiceUnitTest
   {
     private IUnitOfWork _uow;
     private InventoryService _inventoryService;
-    private List<Inventory> inventoryList;
+    private List<Inventory> _inventoryList;
 
     [SetUp]
     public void SetUp()
@@ -27,7 +27,7 @@ namespace SmartStorage.UT.Services
       Mapper.Initialize(c => c.AddProfile<MappingProfile>());
       _inventoryService = new InventoryService(_uow);
 
-      inventoryList = new List<Inventory>
+      _inventoryList = new List<Inventory>
       {
           new Inventory()
           {
@@ -75,7 +75,7 @@ namespace SmartStorage.UT.Services
     [Test]
     public void InventoryService_GetAll_CountEqualTo2()
     {
-        _uow.Inventories.GetAll().Returns(inventoryList);
+        _uow.Inventories.GetAll().Returns(_inventoryList);
 
         Assert.That(_inventoryService.GetAll().Count, Is.EqualTo(2));
     }
@@ -83,7 +83,7 @@ namespace SmartStorage.UT.Services
     [Test]
     public void InventoryService_GetAllActive_CountEqualTo1()
     {
-      _uow.Inventories.GetAll(Arg.Any<Expression<Func<Inventory, bool>>>()).Returns(inventoryList.Where(e => e.IsDeleted == false).ToList());
+      _uow.Inventories.GetAll(Arg.Any<Expression<Func<Inventory, bool>>>()).Returns(_inventoryList.Where(e => e.IsDeleted == false).ToList());
 
       Assert.That(_inventoryService.GetAllActive().Count, Is.EqualTo(1));
     }
@@ -91,8 +91,8 @@ namespace SmartStorage.UT.Services
     [Test]
     public void InventoryService_GetSingle_ReturnsInventory1()
     {
-      var entityDto = Mapper.Map<Inventory, InventoryDto>(inventoryList[0]);
-      _uow.Inventories.Get(1).Returns(inventoryList[0]);
+      var entityDto = Mapper.Map<Inventory, InventoryDto>(_inventoryList[0]);
+      _uow.Inventories.Get(1).Returns(_inventoryList[0]);
 
       Assert.That(_inventoryService.GetSingle(1).InventoryId, Is.EqualTo(entityDto.InventoryId));
     }

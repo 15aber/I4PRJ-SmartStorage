@@ -10,16 +10,15 @@ using SmartStorage.BLL.Services;
 using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Models;
 
-namespace SmartStorage.UT.Services
+namespace UnitTests.Services
 {
     [TestFixture]
-    class UnitTest_TransactionService
-    {
+    class TransactionServiceUnitTest
+  {
         private IUnitOfWork _uow;
         private TransactionService _transactionService;
-        private List<Transaction> transactionList;
-        private List<TransactionDto> transactionDtoList;
-        private Inventory inventory;
+        private List<Transaction> _transactionList;
+        private Inventory _inventory;
 
         [SetUp]
         public void SetUp()
@@ -27,7 +26,7 @@ namespace SmartStorage.UT.Services
             _uow = Substitute.For<IUnitOfWork>();
             Mapper.Initialize(c => c.AddProfile<MappingProfile>());
             _transactionService = new TransactionService(_uow);
-            inventory = new Inventory()
+            _inventory = new Inventory()
             {
                 ByUser = "Test",
                 InventoryId = 1,
@@ -36,7 +35,7 @@ namespace SmartStorage.UT.Services
                 Updated = DateTime.Now
             };
 
-            transactionList = new List<Transaction>
+            _transactionList = new List<Transaction>
             {
                 new Transaction()
                 {
@@ -44,7 +43,7 @@ namespace SmartStorage.UT.Services
                     FromInventoryId = 1,
                     ToInventoryId = 2,
                     TransactionId = 1,
-                    FromInventory = inventory
+                    FromInventory = _inventory
                 },
 
                 new Transaction()
@@ -84,7 +83,7 @@ namespace SmartStorage.UT.Services
         [Test]
         public void TransactionService_GetAllRestock_CountEqualTo1()
         {
-            _uow.Transactions.GetAllRestock().Returns(transactionList.Where(e => e.FromInventory == null).ToList());
+            _uow.Transactions.GetAllRestock().Returns(_transactionList.Where(e => e.FromInventory == null).ToList());
 
             Assert.That(_transactionService.GetAllRestock().Count, Is.EqualTo(1));
         }
@@ -92,7 +91,7 @@ namespace SmartStorage.UT.Services
         [Test]
         public void TransactionService_GetAll_CountEqualTo2()
         {
-            _uow.Transactions.GetAll().Returns(transactionList);
+            _uow.Transactions.GetAll().Returns(_transactionList);
 
             Assert.That(_transactionService.GetAll().Count, Is.EqualTo(2));
         }
@@ -100,8 +99,8 @@ namespace SmartStorage.UT.Services
         [Test]
         public void TransactionService_GetSingle_ReturnsTransaction1()
         {
-            var entityDto = Mapper.Map<Transaction, TransactionDto>(transactionList[0]);
-            _uow.Transactions.Get(1).Returns(transactionList[0]);
+            var entityDto = Mapper.Map<Transaction, TransactionDto>(_transactionList[0]);
+            _uow.Transactions.Get(1).Returns(_transactionList[0]);
 
             Assert.That(_transactionService.GetSingle(1).TransactionId, Is.EqualTo(entityDto.TransactionId));
         }

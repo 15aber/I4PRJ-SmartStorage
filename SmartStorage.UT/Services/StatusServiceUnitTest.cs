@@ -11,16 +11,15 @@ using SmartStorage.BLL.Services;
 using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Models;
 
-namespace SmartStorage.UT.Services
+namespace UnitTests.Services
 {
   [TestFixture]
-  class UnitTest_StatusService
+  class StatusServiceUnitTest
   {
     private IUnitOfWork _uow;
     private StatusService _statusService;
-    private List<Status> statusList;
-    private List<Stock> stockList;
-    private List<StatusDto> statusDtoList;
+    private List<Status> _statusList;
+    private List<Stock> _stockList;
 
     [SetUp]
     public void SetUp()
@@ -29,7 +28,7 @@ namespace SmartStorage.UT.Services
       Mapper.Initialize(c => c.AddProfile<MappingProfile>());
       _statusService = new StatusService(_uow);
 
-      statusList = new List<Status>
+      _statusList = new List<Status>
             {
                 new Status()
                 {
@@ -76,7 +75,7 @@ namespace SmartStorage.UT.Services
     [Test]
     public void StatusService_GetAll_CountEqualTo2()
     {
-      _uow.Statuses.GetAll().Returns(statusList);
+      _uow.Statuses.GetAll().Returns(_statusList);
 
       Assert.That(_statusService.GetAll().Count, Is.EqualTo(2));
     }
@@ -84,8 +83,8 @@ namespace SmartStorage.UT.Services
     [Test]
     public void StatusService_GetSingle_ReturnsStatus1()
     {
-      var entityDto = Mapper.Map<Status, StatusDto>(statusList[0]);
-      _uow.Statuses.Get(1).Returns(statusList[0]);
+      var entityDto = Mapper.Map<Status, StatusDto>(_statusList[0]);
+      _uow.Statuses.Get(1).Returns(_statusList[0]);
 
       Assert.That(_statusService.GetSingle(1).StatusId, Is.EqualTo(entityDto.StatusId));
     }
@@ -93,7 +92,7 @@ namespace SmartStorage.UT.Services
     [Test]
     public void StatusService_GetAllOfInventories1_CountEqualTo1()
     {
-      _uow.Statuses.GetAll(Arg.Any<Expression<Func<Status, bool>>>()).Returns(statusList.Where(e => e.InventoryId == 1).ToList());
+      _uow.Statuses.GetAll(Arg.Any<Expression<Func<Status, bool>>>()).Returns(_statusList.Where(e => e.InventoryId == 1).ToList());
 
       Assert.That(_statusService.GetAllOfInventory(1).Count, Is.EqualTo(1));
     }
@@ -101,12 +100,12 @@ namespace SmartStorage.UT.Services
     [Test]
     public void StatusService_GetUpdated_AddsAndReturnsStatusDto()
     {
-      stockList = new List<Stock>
+      _stockList = new List<Stock>
       {
         new Stock()
         {InventoryId = 1} 
       };
-      _uow.Stocks.GetAllOfInventory(1).Returns(stockList);
+      _uow.Stocks.GetAllOfInventory(1).Returns(_stockList);
 
       Assert.That(_statusService.GetUpdated(1).Count, Is.EqualTo(1));
     }
