@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Context\DbConfiguration.txt" />
+    <Compile Include="Interfaces\IApplicationDbContext.cs" />
     <Compile Include="Interfaces\Repositories\ICategoriesRepository.cs" />
     <Compile Include="Interfaces\Repositories\IInventoriesRepository.cs" />
     <Compile Include="Interfaces\Repositories\IProductsRepository.cs" />

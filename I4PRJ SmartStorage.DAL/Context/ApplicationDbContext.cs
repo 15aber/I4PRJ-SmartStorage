@@ -1,4 +1,5 @@
 using Microsoft.AspNet.Identity.EntityFramework;
+using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Models;
 using System.Data.Entity;
 using System.Diagnostics.CodeAnalysis;
@@ -6,7 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace SmartStorage.DAL.Context
 {
   [ExcludeFromCodeCoverage]
-  public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+  public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
   {
     public DbSet<Product> Products { get; set; }
 

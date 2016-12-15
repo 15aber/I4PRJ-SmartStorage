@@ -1,7 +1,6 @@
-﻿using SmartStorage.BLL.Dtos;
-using SmartStorage.BLL.Services;
-using SmartStorage.DAL.Context;
-using SmartStorage.DAL.UnitOfWork;
+﻿using Microsoft.Practices.Unity;
+using SmartStorage.BLL.Dtos;
+using SmartStorage.BLL.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -40,15 +39,13 @@ namespace SmartStorage.UI.Helpers
 
     public static IList<CategoryDto> GetCategories()
     {
-      var service = new CategoryService(new UnitOfWork(new ApplicationDbContext()));
-
+      var service = UnityConfig.GetConfiguredContainer().Resolve<ICategoryService>();
       return service.GetAllActive();
     }
 
     public static IList<InventoryDto> GetInventories()
     {
-      var service = new InventoryService(new UnitOfWork(new ApplicationDbContext()));
-
+      var service = UnityConfig.GetConfiguredContainer().Resolve<IInventoryService>();
       return service.GetAllActive();
     }
   }

@@ -1,6 +1,9 @@
-﻿using NSubstitute;
+﻿using Microsoft.Practices.Unity;
+using NSubstitute;
 using NUnit.Framework;
 using SmartStorage.DAL.Context;
+using SmartStorage.DAL.Interfaces;
+using SmartStorage.UI;
 
 namespace UnitTests.UnitOfWork
 {
@@ -8,13 +11,13 @@ namespace UnitTests.UnitOfWork
   class UnitOfWorkUnitTest
   {
     private ApplicationDbContext _context;
-    private SmartStorage.DAL.UnitOfWork.UnitOfWork _uow;
+    private IUnitOfWork _uow;
 
     [SetUp]
     public void SetUp()
     {
       _context = Substitute.For<ApplicationDbContext>();
-      _uow = new SmartStorage.DAL.UnitOfWork.UnitOfWork(_context);
+      _uow = UnityConfig.GetConfiguredContainer().Resolve<IUnitOfWork>(new DependencyOverride<ApplicationDbContext>(_context));
     }
 
     [Test]

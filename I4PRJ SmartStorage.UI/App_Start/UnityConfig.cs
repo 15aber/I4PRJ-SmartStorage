@@ -3,6 +3,8 @@ using SmartStorage.BLL.Interfaces.Services;
 using SmartStorage.BLL.Services;
 using SmartStorage.DAL.Context;
 using SmartStorage.DAL.Interfaces;
+using SmartStorage.DAL.Interfaces.Repositories;
+using SmartStorage.DAL.Repositories;
 using SmartStorage.DAL.UnitOfWork;
 using SmartStorage.UI.Controllers;
 using System;
@@ -46,6 +48,16 @@ namespace SmartStorage.UI
       // container.RegisterType<IProductRepository, ProductRepository>();
 
       container.RegisterType<ApplicationDbContext>();
+
+      container.RegisterType<ICategoriesRepository, CategoriesRepository>();
+      container.RegisterType<IInventoriesRepository, InventoriesRepository>();
+      container.RegisterType<IProductsRepository, ProductsRepository>();
+      container.RegisterType<IStatusesRepository, StatusesRepository>();
+      container.RegisterType<IStocksRepository, StocksRepository>();
+      container.RegisterType<ISuppliersRepository, SuppliersRepository>();
+      container.RegisterType<ITransactionsRepository, TransactionsRepository>();
+      container.RegisterType<IWholesalersRepository, WholesalersRepository>();
+
       container.RegisterType<IUnitOfWork, UnitOfWork>();
 
       container.RegisterType<ICategoryService, CategoryService>();
