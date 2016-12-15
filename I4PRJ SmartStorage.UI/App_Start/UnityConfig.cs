@@ -9,6 +9,7 @@ using SmartStorage.DAL.UnitOfWork;
 using SmartStorage.UI.Controllers;
 using System;
 using System.Diagnostics.CodeAnalysis;
+using SmartStorage.DAL.Context.Application;
 
 namespace SmartStorage.UI
 {
@@ -68,6 +69,15 @@ namespace SmartStorage.UI
       container.RegisterType<ISupplierService, SupplierService>();
       container.RegisterType<ITransactionService, TransactionService>();
       container.RegisterType<IWholesalerService, WholesalerService>();
+
+      container.RegisterType<CategoriesController>();
+      container.RegisterType<InventoriesController>();
+      container.RegisterType<ProductsController>();
+      container.RegisterType<StatusController>();
+      container.RegisterType<StocksController>();
+      container.RegisterType<SuppliersController>();
+      container.RegisterType<TransactionsController>();
+      container.RegisterType<WholesalersController>();
 
       container.RegisterType<ManageController>(new InjectionConstructor());
       container.RegisterType<AccountController>(new InjectionConstructor());

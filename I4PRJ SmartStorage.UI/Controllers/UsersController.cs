@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using SmartStorage.DAL.Context;
 using SmartStorage.DAL.Models;
 using SmartStorage.UI.ViewModels.Identity;
 using System.Data.Entity;
@@ -8,14 +9,14 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using SmartStorage.DAL.Context;
+using SmartStorage.DAL.Context.Identity;
 
 namespace SmartStorage.UI.Controllers
 {
   [Authorize]
   public class UsersController : Controller
   {
-    private ApplicationDbContext db = new ApplicationDbContext();
+    private AspNetIdentityDbContext db = new AspNetIdentityDbContext();
 
     public ApplicationSignInManager SignInManager
     {

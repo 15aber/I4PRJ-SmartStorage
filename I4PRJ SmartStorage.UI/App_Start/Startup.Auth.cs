@@ -4,12 +4,13 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Facebook;
 using Owin;
+using SmartStorage.DAL.Context;
 using SmartStorage.DAL.Models;
 using System;
 using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
-using SmartStorage.DAL.Context;
+using SmartStorage.DAL.Context.Identity;
 
 namespace SmartStorage.UI
 {
@@ -20,7 +21,7 @@ namespace SmartStorage.UI
     public void ConfigureAuth(IAppBuilder app)
     {
       // Configure the db context, user manager and signin manager to use a single instance per request
-      app.CreatePerOwinContext(ApplicationDbContext.Create);
+      app.CreatePerOwinContext(AspNetIdentityDbContext.Create);
       app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
       app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 

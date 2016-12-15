@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using SmartStorage.DAL.Context;
 using SmartStorage.UI.ViewModels.Identity;
 using System.Data.Entity;
 using System.Diagnostics.CodeAnalysis;
@@ -9,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using SmartStorage.DAL.Context;
+using SmartStorage.DAL.Context.Identity;
 
 namespace SmartStorage.UI.Controllers
 {
@@ -105,7 +106,7 @@ namespace SmartStorage.UI.Controllers
     public ActionResult Edit(RegisterViewModel model)
     {
 
-      var db = new ApplicationDbContext();
+      var db = new AspNetIdentityDbContext();
       var userInDb = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
       if (userInDb == null)
       {
@@ -273,7 +274,7 @@ namespace SmartStorage.UI.Controllers
         return RedirectToAction("Login", "Account");
       }
 
-      using (var db = new ApplicationDbContext())
+      using (var db = new AspNetIdentityDbContext())
       {
         var userInDb = db.Users.FirstOrDefault(u => u.Id == user.Id);
         if (userInDb != null)
@@ -305,7 +306,7 @@ namespace SmartStorage.UI.Controllers
 
     public ActionResult GetProfilePicture(string userId)
     {
-      var db = new ApplicationDbContext();
+      var db = new AspNetIdentityDbContext();
 
       var user = db.Users.FirstOrDefault(u => u.UserName == userId);
 
@@ -314,7 +315,7 @@ namespace SmartStorage.UI.Controllers
 
     public ActionResult GetFirstName(string userId)
     {
-      var db = new ApplicationDbContext();
+      var db = new AspNetIdentityDbContext();
 
       var user = db.Users.FirstOrDefault(u => u.UserName == userId);
 
@@ -330,7 +331,7 @@ namespace SmartStorage.UI.Controllers
 
     public ActionResult GetFullName(string userId)
     {
-      var db = new ApplicationDbContext();
+      var db = new AspNetIdentityDbContext();
 
       var user = db.Users.FirstOrDefault(u => u.UserName == userId);
 

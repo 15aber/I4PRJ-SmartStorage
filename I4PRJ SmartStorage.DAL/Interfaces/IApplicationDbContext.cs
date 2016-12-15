@@ -5,14 +5,14 @@ namespace SmartStorage.DAL.Interfaces
 {
   public interface IApplicationDbContext
   {
-    IDbSet<Category> Categories { get; set; }
-    IDbSet<Inventory> Inventories { get; set; }
-    IDbSet<Product> Products { get; set; }
-    IDbSet<Status> Statuses { get; set; }
-    IDbSet<Stock> Stocks { get; set; }
-    IDbSet<Supplier> Suppliers { get; set; }
-    IDbSet<Transaction> Transactions { get; set; }
-    IDbSet<Wholesaler> Wholesalers { get; set; }
+    DbSet<Category> Categories { get; set; }
+    DbSet<Inventory> Inventories { get; set; }
+    DbSet<Product> Products { get; set; }
+    DbSet<Status> Statuses { get; set; }
+    DbSet<Stock> Stocks { get; set; }
+    DbSet<Supplier> Suppliers { get; set; }
+    DbSet<Transaction> Transactions { get; set; }
+    DbSet<Wholesaler> Wholesalers { get; set; }
     int SaveChanges();
     void Dispose();
   }

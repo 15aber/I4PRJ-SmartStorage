@@ -1,4 +1,5 @@
 ﻿using SmartStorage.DAL.Context;
+using SmartStorage.DAL.Context.Application;
 using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Interfaces.Repositories;
 using SmartStorage.DAL.Models;

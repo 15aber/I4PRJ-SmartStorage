@@ -15,7 +15,7 @@ namespace SmartStorage.DAL.Repositories
 
     public Repository(IApplicationDbContext context)
     {
-      Context = (DbContext)context;
+      Context = context as DbContext;
       _dbSet = Context.Set<T>();
     }
 
