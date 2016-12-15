@@ -9,15 +9,14 @@ using SmartStorage.BLL.Services;
 using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Models;
 
-namespace SmartStorage.UT.Services
+namespace UnitTests.Services
 {
     [TestFixture]
-    class UnitTest_StockService
-    {
+    class StockServiceUnitTest
+  {
         private IUnitOfWork _uow;
         private StockService _stockService;
-        private List<Stock> stockList;
-        private List<StockDto> stockDtoList;
+        private List<Stock> _stockList;
 
         [SetUp]
         public void SetUp()
@@ -26,7 +25,7 @@ namespace SmartStorage.UT.Services
             Mapper.Initialize(c => c.AddProfile<MappingProfile>());
             _stockService = new StockService(_uow);
 
-            stockList = new List<Stock>
+            _stockList = new List<Stock>
             {
                 new Stock()
                 {
@@ -69,7 +68,7 @@ namespace SmartStorage.UT.Services
         [Test]
         public void StockService_GetAllOfInventories1_CountEqualTo1()
         {
-            _uow.Stocks.GetAllOfInventory(1).Returns(stockList.Where(e => e.InventoryId == 1).ToList());
+            _uow.Stocks.GetAllOfInventory(1).Returns(_stockList.Where(e => e.InventoryId == 1).ToList());
 
             Assert.That(_stockService.GetAllOfInventory(1).Count, Is.EqualTo(1));
         }
@@ -77,7 +76,7 @@ namespace SmartStorage.UT.Services
         [Test]
         public void StockService_GetAll_CountEqualTo2()
         {
-            _uow.Stocks.GetAll().Returns(stockList);
+            _uow.Stocks.GetAll().Returns(_stockList);
 
             Assert.That(_stockService.GetAll().Count, Is.EqualTo(2));
         }
@@ -85,8 +84,8 @@ namespace SmartStorage.UT.Services
         [Test]
         public void StockService_GetSingle_ReturnsStock1()
         {
-            var entityDto = Mapper.Map<Stock, StockDto>(stockList[0]);
-            _uow.Stocks.Get(1).Returns(stockList[0]);
+            var entityDto = Mapper.Map<Stock, StockDto>(_stockList[0]);
+            _uow.Stocks.Get(1).Returns(_stockList[0]);
 
             Assert.That(_stockService.GetSingle(1).InventoryId, Is.EqualTo(entityDto.InventoryId));
         }

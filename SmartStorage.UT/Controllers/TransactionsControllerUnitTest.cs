@@ -10,10 +10,10 @@ using SmartStorage.BLL.Mapping;
 using SmartStorage.UI.Controllers;
 using SmartStorage.UI.ViewModels;
 
-namespace SmartStorage.UT.Controllers
+namespace UnitTests.Controllers
 {
   [TestFixture]
-  class UnitTest_Transactions
+  class TransactionsControllerUnitTest
   {
     private IInventoryService _inventoryService;
     private IProductService _productService;

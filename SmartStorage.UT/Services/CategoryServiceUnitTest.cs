@@ -11,15 +11,14 @@ using SmartStorage.BLL.Services;
 using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Models;
 
-namespace SmartStorage.UT.Services
+namespace UnitTests.Services
 {
   [TestFixture]
-  class UnitTest_CategoryService
+  class CategoryServiceUnitTest
   {
     private IUnitOfWork _uow;
     private CategoryService _categoryService;
-    private List<Category> categoryList;
-    private CategoryDto singleCategoryDto;
+    private List<Category> _categoryList;
 
     [SetUp]
     public void SetUp()
@@ -28,7 +27,7 @@ namespace SmartStorage.UT.Services
       Mapper.Initialize(c => c.AddProfile<MappingProfile>());
       _categoryService = new CategoryService(_uow);
 
-      categoryList = new List<Category>
+      _categoryList = new List<Category>
             {
                 new Category()
                 {
@@ -91,7 +90,7 @@ namespace SmartStorage.UT.Services
     [Test]
     public void CategoryService_GetAll_CountEqualTo2()
     {
-      _uow.Categories.GetAll().Returns(categoryList);
+      _uow.Categories.GetAll().Returns(_categoryList);
 
       Assert.That(_categoryService.GetAll().Count, Is.EqualTo(2));
     }
@@ -99,7 +98,7 @@ namespace SmartStorage.UT.Services
     [Test]
     public void CategoryService_GetAllActive_CountEqualTo1()
     {
-      _uow.Categories.GetAll(Arg.Any<Expression<Func<Category, bool>>>()).Returns(categoryList.Where(e => e.IsDeleted == false).ToList());
+      _uow.Categories.GetAll(Arg.Any<Expression<Func<Category, bool>>>()).Returns(_categoryList.Where(e => e.IsDeleted == false).ToList());
 
       Assert.That(_categoryService.GetAllActive().Count, Is.EqualTo(1));
     }
@@ -107,8 +106,8 @@ namespace SmartStorage.UT.Services
     [Test]
     public void CategoryService_GetSingle_ReturnsCategory1()
     {
-      var entityDto = Mapper.Map<Category, CategoryDto>(categoryList[0]);
-      _uow.Categories.Get(1).Returns(categoryList[0]);
+      var entityDto = Mapper.Map<Category, CategoryDto>(_categoryList[0]);
+      _uow.Categories.Get(1).Returns(_categoryList[0]);
 
       Assert.That(_categoryService.GetSingle(1).CategoryId, Is.EqualTo(entityDto.CategoryId));
     }

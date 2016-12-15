@@ -13,9 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReverseEngineered", "Revers
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F0ADC960-6C2D-4C49-BBD0-8CEE3A013A56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStorage.UT", "SmartStorage.UT\SmartStorage.UT.csproj", "{5C2753D2-EB46-47A6-97FE-851145157E61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "SmartStorage.UT\UnitTests.csproj", "{5C2753D2-EB46-47A6-97FE-851145157E61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStorage.IT", "SmartStorage.IT\SmartStorage.IT.csproj", "{64F23B21-C0C3-4C6A-9059-2FBF1CF2F6AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "SmartStorage.IT\IntegrationTests.csproj", "{64F23B21-C0C3-4C6A-9059-2FBF1CF2F6AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Util", "Util", "{7C89D34F-F652-4897-AC4E-946EFBA43886}"
 EndProject

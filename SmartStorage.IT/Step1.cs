@@ -1,24 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 using AutoMapper;
 using NSubstitute;
-using NUnit.Framework.Internal;
 using NUnit.Framework;
 using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Mapping;
 using SmartStorage.BLL.Services;
 using SmartStorage.DAL.Context;
-using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Models;
 using SmartStorage.DAL.UnitOfWork;
 using SmartStorage.UI.Controllers;
 using SmartStorage.UI.ViewModels;
 
-namespace SmartStorage.IT
+namespace IntegrationTests
 {
   [TestFixture()]
   class Step1

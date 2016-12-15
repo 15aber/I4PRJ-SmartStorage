@@ -2,10 +2,10 @@
 using NUnit.Framework;
 using SmartStorage.UI.Controllers;
 
-namespace SmartStorage.UT.Controllers
+namespace UnitTests.Controllers
 {
   [TestFixture]
-  class UnitTest_Home
+  class HomeControllerUnitTest
   {
     private HomeController _homeController;
 

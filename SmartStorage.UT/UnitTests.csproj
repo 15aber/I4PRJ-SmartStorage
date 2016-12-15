@@ -7,8 +7,8 @@
     <ProjectGuid>{5C2753D2-EB46-47A6-97FE-851145157E61}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SmartStorage.UT</RootNamespace>
-    <AssemblyName>SmartStorage.UT</AssemblyName>
+    <RootNamespace>UnitTests</RootNamespace>
+    <AssemblyName>UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -98,30 +98,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\UnitTest_Category.cs" />
-    <Compile Include="Controllers\UnitTest_Home.cs" />
-    <Compile Include="Controllers\UnitTest_Inventory.cs" />
-    <Compile Include="Controllers\UnitTest_Manage.cs" />
-    <Compile Include="Controllers\UnitTest_Products.cs" />
-    <Compile Include="Controllers\UnitTest_Status.cs" />
-    <Compile Include="Controllers\UnitTest_Stocks.cs" />
-    <Compile Include="Controllers\UnitTest_Supplier.cs" />
-    <Compile Include="Controllers\UnitTest_Transactions.cs" />
-    <Compile Include="Controllers\UnitTest_User.cs" />
-    <Compile Include="Controllers\UnitTest_Wholesaler.cs" />
+    <Compile Include="Controllers\CategoryControllerUnitTest.cs" />
+    <Compile Include="Controllers\HomeControllerUnitTest.cs" />
+    <Compile Include="Controllers\InventoryControllerUnitTest.cs" />
+    <Compile Include="Controllers\ManageControllerUnitTest.cs" />
+    <Compile Include="Controllers\ProductsControllerUnitTest.cs" />
+    <Compile Include="Controllers\StatusControllerUnitTest.cs" />
+    <Compile Include="Controllers\StocksControllerUnitTest.cs" />
+    <Compile Include="Controllers\SupplierControllerUnitTest.cs" />
+    <Compile Include="Controllers\TransactionsControllerUnitTest.cs" />
+    <Compile Include="Controllers\UserControllerUnitTest.cs" />
+    <Compile Include="Controllers\WholesalerControllerUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\RepositoryTest.cs" />
-    <Compile Include="Repository\UnitTest_CategoryRepository.cs" />
-    <Compile Include="Repository\UnitTest_InventoryRepository.cs" />
-    <Compile Include="Services\UnitTest_CategoryService.cs" />
-    <Compile Include="Services\UnitTest_InventoryService.cs" />
-    <Compile Include="Services\UnitTest_ProductService.cs" />
-    <Compile Include="Services\UnitTest_StatusService.cs" />
-    <Compile Include="Services\UnitTest_StockService.cs" />
-    <Compile Include="Services\UnitTest_SupplierService.cs" />
-    <Compile Include="Services\UnitTest_TransactionService.cs" />
-    <Compile Include="Services\UnitTest_WholesalerService.cs" />
-    <Compile Include="UnitOfWork\UnitTest_UnitOfWork.cs" />
+    <Compile Include="Repository\RepositoryUnitTest.cs" />
+    <Compile Include="Repository\CategoryRepositoryUnitTest.cs" />
+    <Compile Include="Repository\InventoryRepositoryUnitTest.cs" />
+    <Compile Include="Services\CategoryServiceUnitTest.cs" />
+    <Compile Include="Services\InventoryServiceUnitTest.cs" />
+    <Compile Include="Services\ProductServiceUnitTest.cs" />
+    <Compile Include="Services\StatusServiceUnitTest.cs" />
+    <Compile Include="Services\StockServiceUnitTest.cs" />
+    <Compile Include="Services\SupplierServiceUnitTest.cs" />
+    <Compile Include="Services\TransactionServiceUnitTest.cs" />
+    <Compile Include="Services\WholesalerServiceUnitTest.cs" />
+    <Compile Include="UnitOfWork\UnitOfWorkUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

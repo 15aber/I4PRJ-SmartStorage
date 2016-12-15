@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 
-namespace SmartStorage.UT.Controllers
+namespace UnitTests.Controllers
 {
   [TestFixture]
-  class UnitTest_User
+  class UserControllerUnitTest
   {
 
     [Test]
