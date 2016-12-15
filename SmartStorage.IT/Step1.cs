@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Runtime.Remoting.Contexts;
+using System.Web.Mvc;
 using AutoMapper;
 using NSubstitute;
+using NUnit.Framework.Internal;
 using NUnit.Framework;
 using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Mapping;
@@ -11,8 +15,12 @@ using SmartStorage.DAL.Models;
 using SmartStorage.DAL.UnitOfWork;
 using SmartStorage.UI.Controllers;
 using SmartStorage.UI.ViewModels;
+using System.Web;
+using System.Web.Routing;
+using SmartStorage.DAL.Interfaces.Repositories;
+using SmartStorage.DAL.Repositories;
 
-namespace IntegrationTests
+namespace SmartStorage.IT
 {
   [TestFixture()]
   class Step1
@@ -22,15 +30,32 @@ namespace IntegrationTests
     private List<Category> categoryList;
     private CategoryDto singleCategoryDto;
     private CategoriesController _categoriesController;
-    private ApplicationDbContext _dbContext;
+    private HttpContextBase _contextBase;
+    private ApplicationDbContext _context;
+    private Repository<Category> _repository;
+    private DbSet<Category> _dbSet;
+    protected DbContext _dbContext;
+
 
     [SetUp]
     public void SetUp()
     {
-      _dbContext = Substitute.For<ApplicationDbContext>();
-      _uow = new UnitOfWork(_dbContext);
+      _dbSet = Substitute.For<DbSet<Category>>();
+      _context = Substitute.For<ApplicationDbContext>();
+      _dbContext = _context;
+      _uow = new UnitOfWork(_context);
+      _repository = new Repository<Category>(_dbContext);
       Mapper.Initialize(c => c.AddProfile<MappingProfile>());
       _categoryService = new CategoryService(_uow);
+      _categoriesController = new CategoriesController(_categoryService);
+
+      _contextBase = Substitute.For<HttpContextBase>();
+      Mapper.Initialize(c => c.AddProfile<MappingProfile>());
+
+      _contextBase.User.Identity.Name.Returns("JohnDoe");
+      _contextBase.Request.IsAuthenticated.Returns(true);
+      _contextBase.User.IsInRole("Admin").Returns(true);
+      _categoriesController.ControllerContext = new ControllerContext(_contextBase, new RouteData(), _categoriesController);
 
       categoryList = new List<Category>
             {
@@ -66,7 +91,15 @@ namespace IntegrationTests
         Category = categoryDto
       };
 
+      _repository = new CategoriesRepository(_context);
+
+      var entity = Mapper.Map<CategoryDto, Category>(categoryDto);
+
+      _dbSet.Add(entity).Returns(entity);
+
       _categoriesController.Create(viewModel);
+
+      _uow.Categories.Add(entity);
 
       _categoryService.Received().Add(viewModel.Category);
 
