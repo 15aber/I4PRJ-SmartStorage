@@ -96,5 +96,18 @@ namespace SmartStorage.UnitTests.Services
 
       Assert.That(_productService.GetSingle(1).ProductId, Is.EqualTo(entityDto.ProductId));
     }
+
+    [Test]
+    public void ProductServiceDelete_UnitOfWorkDeleteAndComplete_ReturnsUnitOfWorkDeleteAndComplete()
+    {
+      var product = new Product() { Name = "Test" };
+      _uow.Products.Get(1).Returns(product);
+
+      _productService.Delete(1);
+
+      _uow.Received().Products.Update(product);
+      _uow.Received().Complete();
+      Assert.That(product.IsDeleted, Is.EqualTo(true));
+    }
   }
 }

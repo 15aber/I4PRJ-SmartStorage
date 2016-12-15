@@ -93,5 +93,13 @@ namespace SmartStorage.UnitTests.Controllers
 
       Assert.That(result.RouteValues["Action"], Is.EqualTo("Index"));
     }
+
+    [Test]
+    public void Supplier_SupplierReport_ReturnsSupplierFormView()
+    {
+      var result = _suppliersController.Report() as ViewResult;
+
+      Assert.AreEqual("SupplierForm", result.ViewName);
+    }
   }
 }

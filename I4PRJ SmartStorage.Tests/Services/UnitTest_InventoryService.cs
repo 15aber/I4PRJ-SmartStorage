@@ -96,5 +96,18 @@ namespace SmartStorage.UnitTests.Services
 
       Assert.That(_inventoryService.GetSingle(1).InventoryId, Is.EqualTo(entityDto.InventoryId));
     }
+
+    [Test]
+    public void InventoryServiceDelete_UnitOfWorkDeleteAndComplete_ReturnsUnitOfWorkDeleteAndComplete()
+    {
+      var inventory = new Inventory() { Name = "Test" };
+      _uow.Inventories.Get(1).Returns(inventory);
+
+      _inventoryService.Delete(1);
+
+      _uow.Received().Inventories.Update(inventory);
+      _uow.Received().Complete();
+      Assert.That(inventory.IsDeleted, Is.EqualTo(true));
+    }
   }
 }
