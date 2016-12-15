@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C52A3AEA-1C91-408C-AB7F-3665AE3362FF}</ProjectGuid>
+    <ProjectGuid>{5C2753D2-EB46-47A6-97FE-851145157E61}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SmartStorage.Integrationstest</RootNamespace>
-    <AssemblyName>SmartStorage.Integrationstest</AssemblyName>
+    <RootNamespace>SmartStorage.UT</RootNamespace>
+    <AssemblyName>SmartStorage.UT</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -66,6 +65,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -98,24 +98,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Step1.cs" />
+    <Compile Include="Controllers\UnitTest_Category.cs" />
+    <Compile Include="Controllers\UnitTest_Home.cs" />
+    <Compile Include="Controllers\UnitTest_Inventory.cs" />
+    <Compile Include="Controllers\UnitTest_Manage.cs" />
+    <Compile Include="Controllers\UnitTest_Products.cs" />
+    <Compile Include="Controllers\UnitTest_Status.cs" />
+    <Compile Include="Controllers\UnitTest_Stocks.cs" />
+    <Compile Include="Controllers\UnitTest_Supplier.cs" />
+    <Compile Include="Controllers\UnitTest_Transactions.cs" />
+    <Compile Include="Controllers\UnitTest_User.cs" />
+    <Compile Include="Controllers\UnitTest_Wholesaler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\RepositoryTest.cs" />
+    <Compile Include="Repository\UnitTest_CategoryRepository.cs" />
+    <Compile Include="Repository\UnitTest_InventoryRepository.cs" />
+    <Compile Include="Services\UnitTest_CategoryService.cs" />
+    <Compile Include="Services\UnitTest_InventoryService.cs" />
+    <Compile Include="Services\UnitTest_ProductService.cs" />
+    <Compile Include="Services\UnitTest_StatusService.cs" />
+    <Compile Include="Services\UnitTest_StockService.cs" />
+    <Compile Include="Services\UnitTest_SupplierService.cs" />
+    <Compile Include="Services\UnitTest_TransactionService.cs" />
+    <Compile Include="Services\UnitTest_WholesalerService.cs" />
+    <Compile Include="UnitOfWork\UnitTest_UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\I4PRJ SmartStorage.BLL\SmartStorage.BLL.csproj">
-      <Project>{0a0e6ba3-c63e-4c08-bd63-3a0bb2919bee}</Project>
+      <Project>{0A0E6BA3-C63E-4C08-BD63-3A0BB2919BEE}</Project>
       <Name>SmartStorage.BLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\I4PRJ SmartStorage.DAL\SmartStorage.DAL.csproj">
-      <Project>{9d0d44a3-3e5f-4736-9bb1-07ed89df8c2f}</Project>
+      <Project>{9D0D44A3-3E5F-4736-9BB1-07ED89DF8C2F}</Project>
       <Name>SmartStorage.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\I4PRJ SmartStorage.UI\SmartStorage.UI.csproj">
-      <Project>{5ba405f6-d7a0-46cb-bbad-4a315ff582b2}</Project>
+      <Project>{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}</Project>
       <Name>SmartStorage.UI</Name>
     </ProjectReference>
   </ItemGroup>

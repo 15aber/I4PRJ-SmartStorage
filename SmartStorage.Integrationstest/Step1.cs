@@ -21,7 +21,7 @@ using SmartStorage.UI.ViewModels;
 namespace SmartStorage.Integrationstest
 {
   [TestFixture()]
-  class Integrationsstep_1
+  class Step1
   {
     private UnitOfWork _uow;
     private CategoryService _categoryService;

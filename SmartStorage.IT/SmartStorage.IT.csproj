@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C52A3AEA-1C91-408C-AB7F-3665AE3362FF}</ProjectGuid>
+    <ProjectGuid>{64F23B21-C0C3-4C6A-9059-2FBF1CF2F6AF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SmartStorage.Integrationstest</RootNamespace>
-    <AssemblyName>SmartStorage.Integrationstest</AssemblyName>
+    <RootNamespace>SmartStorage.IT</RootNamespace>
+    <AssemblyName>SmartStorage.IT</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -102,22 +101,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\I4PRJ SmartStorage.BLL\SmartStorage.BLL.csproj">
-      <Project>{0a0e6ba3-c63e-4c08-bd63-3a0bb2919bee}</Project>
+      <Project>{0A0E6BA3-C63E-4C08-BD63-3A0BB2919BEE}</Project>
       <Name>SmartStorage.BLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\I4PRJ SmartStorage.DAL\SmartStorage.DAL.csproj">
-      <Project>{9d0d44a3-3e5f-4736-9bb1-07ed89df8c2f}</Project>
+      <Project>{9D0D44A3-3E5F-4736-9BB1-07ED89DF8C2F}</Project>
       <Name>SmartStorage.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\I4PRJ SmartStorage.UI\SmartStorage.UI.csproj">
-      <Project>{5ba405f6-d7a0-46cb-bbad-4a315ff582b2}</Project>
+      <Project>{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}</Project>
       <Name>SmartStorage.UI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
