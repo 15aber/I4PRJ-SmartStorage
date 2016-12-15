@@ -47,7 +47,7 @@ namespace SmartStorage.UI
       // Register your types here
       // container.RegisterType<IProductRepository, ProductRepository>();
 
-      container.RegisterType<ApplicationDbContext>();
+      container.RegisterType<IApplicationDbContext, ApplicationDbContext>();
 
       container.RegisterType<ICategoriesRepository, CategoriesRepository>();
       container.RegisterType<IInventoriesRepository, InventoriesRepository>();

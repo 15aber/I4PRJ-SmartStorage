@@ -1,14 +1,13 @@
-﻿using SmartStorage.DAL.Context;
-using SmartStorage.DAL.Interfaces;
+﻿using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Interfaces.Repositories;
 
 namespace SmartStorage.DAL.UnitOfWork
 {
   public class UnitOfWork : IUnitOfWork
   {
-    private readonly ApplicationDbContext _context;
+    private readonly IApplicationDbContext _context;
 
-    public UnitOfWork(ApplicationDbContext context, ICategoriesRepository categories, IInventoriesRepository inventories, IProductsRepository products, IStatusesRepository statuses, IStocksRepository stocks, ISuppliersRepository suppliers, ITransactionsRepository transactions, IWholesalersRepository wholesalers)
+    public UnitOfWork(IApplicationDbContext context, ICategoriesRepository categories, IInventoriesRepository inventories, IProductsRepository products, IStatusesRepository statuses, IStocksRepository stocks, ISuppliersRepository suppliers, ITransactionsRepository transactions, IWholesalersRepository wholesalers)
     {
       _context = context;
       Categories = categories;

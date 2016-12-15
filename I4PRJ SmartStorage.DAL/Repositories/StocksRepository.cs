@@ -1,4 +1,5 @@
 ﻿using SmartStorage.DAL.Context;
+using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Interfaces.Repositories;
 using SmartStorage.DAL.Models;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ namespace SmartStorage.DAL.Repositories
 {
   public class StocksRepository : Repository<Stock>, IStocksRepository
   {
-    public StocksRepository(ApplicationDbContext context) : base(context)
+    public StocksRepository(IApplicationDbContext context) : base(context)
     {
     }
 

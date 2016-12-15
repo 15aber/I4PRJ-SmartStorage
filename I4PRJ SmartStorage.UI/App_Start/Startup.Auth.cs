@@ -4,12 +4,12 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Facebook;
 using Owin;
-using SmartStorage.DAL.Context;
 using SmartStorage.DAL.Models;
 using System;
 using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
+using SmartStorage.DAL.Context;
 
 namespace SmartStorage.UI
 {

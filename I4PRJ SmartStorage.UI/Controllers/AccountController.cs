@@ -2,14 +2,14 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using SmartStorage.DAL.Context;
+using SmartStorage.UI.ViewModels.Identity;
 using System.Data.Entity;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using SmartStorage.UI.ViewModels.Identity;
+using SmartStorage.DAL.Context;
 
 namespace SmartStorage.UI.Controllers
 {

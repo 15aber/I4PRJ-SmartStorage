@@ -1,4 +1,5 @@
 ﻿using SmartStorage.DAL.Context;
+using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Interfaces.Repositories;
 using SmartStorage.DAL.Models;
 
@@ -6,7 +7,7 @@ namespace SmartStorage.DAL.Repositories
 {
   public class CategoriesRepository : Repository<Category>, ICategoriesRepository
   {
-    public CategoriesRepository(ApplicationDbContext context) : base(context)
+    public CategoriesRepository(IApplicationDbContext context) : base(context)
     {
     }
 

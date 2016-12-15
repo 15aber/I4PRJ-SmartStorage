@@ -3,7 +3,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using SmartStorage.DAL.Context;
 using SmartStorage.DAL.Models;
 using Sms.ApiClient.V2;
 using Sms.ApiClient.V2.SendMessages;
@@ -15,6 +14,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using SmartStorage.DAL.Context;
 
 namespace SmartStorage.UI
 {

@@ -1,31 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Runtime.Remoting.Contexts;
-using System.Web.Mvc;
-using AutoMapper;
+﻿using AutoMapper;
+using Microsoft.Practices.Unity;
 using NSubstitute;
-using NUnit.Framework.Internal;
 using NUnit.Framework;
+using NUnit.Framework.Internal;
 using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Mapping;
 using SmartStorage.BLL.Services;
 using SmartStorage.DAL.Context;
+using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Models;
-using SmartStorage.DAL.UnitOfWork;
+using SmartStorage.DAL.Repositories;
+using SmartStorage.UI;
 using SmartStorage.UI.Controllers;
 using SmartStorage.UI.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Routing;
-using SmartStorage.DAL.Interfaces.Repositories;
-using SmartStorage.DAL.Repositories;
 
 namespace SmartStorage.IT
 {
   [TestFixture()]
   class Step1
   {
-    private UnitOfWork _uow;
+    private IUnitOfWork _uow;
     private CategoryService _categoryService;
     private List<Category> categoryList;
     private CategoryDto singleCategoryDto;
@@ -43,8 +43,8 @@ namespace SmartStorage.IT
       _dbSet = Substitute.For<DbSet<Category>>();
       _context = Substitute.For<ApplicationDbContext>();
       _dbContext = _context;
-      _uow = new UnitOfWork(_context);
-      _repository = new Repository<Category>(_dbContext);
+      _uow = UnityConfig.GetConfiguredContainer().Resolve<IUnitOfWork>(new DependencyOverride<ApplicationDbContext>(_context));
+      //_repository = new Repository<Category>(_dbContext);
       Mapper.Initialize(c => c.AddProfile<MappingProfile>());
       _categoryService = new CategoryService(_uow);
       _categoriesController = new CategoriesController(_categoryService);
