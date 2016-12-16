@@ -114,6 +114,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IntegrationsTest2.cs" />
+    <Compile Include="IntegrationsTest3.cs" />
+    <Compile Include="IntegrationsTest4.cs" />
+    <Compile Include="IntegrationsTest5.cs" />
+    <Compile Include="IntegrationsTest6.cs" />
+    <Compile Include="IntegrationsTest7.cs" />
     <Compile Include="IntegrationTests1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
