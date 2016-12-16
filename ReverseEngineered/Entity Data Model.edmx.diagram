@@ -5,21 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d1675be9439c479685f829438b9156ea" Name="Diagram1" ZoomLevel="68">
-        <EntityTypeShape EntityType="SmartStorageModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="false" />
-        <EntityTypeShape EntityType="SmartStorageModel.AspNetRoles" Width="1.5" PointX="20.875" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartStorageModel.AspNetUserClaims" Width="1.5" PointX="26.75" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartStorageModel.AspNetUserLogins" Width="1.5" PointX="26.75" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartStorageModel.AspNetUsers" Width="1.5" PointX="23.875" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartStorageModel.Categories" Width="1.5" PointX="4.375" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartStorageModel.Inventories" Width="1.5" PointX="12" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartStorageModel.Categories" Width="1.5" PointX="5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartStorageModel.Inventories" Width="1.5" PointX="12" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="SmartStorageModel.Products" Width="1.5" PointX="7.25" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartStorageModel.Status" Width="1.5" PointX="9.625" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartStorageModel.Stocks" Width="1.5" PointX="12" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartStorageModel.Suppliers" Width="1.5" PointX="7.125" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartStorageModel.Transactions" Width="1.5" PointX="10" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartStorageModel.Wholesalers" Width="1.5" PointX="4.5" PointY="8.625" IsExpanded="true" />
-        <AssociationConnector Association="SmartStorageModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="SmartStorageModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SmartStorageModel.Status" Width="1.5" PointX="9.625" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartStorageModel.Stocks" Width="1.5" PointX="11.625" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartStorageModel.Suppliers" Width="1.5" PointX="7" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartStorageModel.Transactions" Width="1.5" PointX="10" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartStorageModel.Wholesalers" Width="1.5" PointX="5" PointY="8.375" IsExpanded="true" />
         <AssociationConnector Association="SmartStorageModel.FK_dbo_Products_dbo_Categories_CategoryId" ManuallyRouted="false" />
         <AssociationConnector Association="SmartStorageModel.FK_dbo_Status_dbo_Inventories_InventoryId" ManuallyRouted="false" />
         <AssociationConnector Association="SmartStorageModel.FK_dbo_Stocks_dbo_Inventories_InventoryId" ManuallyRouted="false" />
@@ -30,7 +23,6 @@
         <AssociationConnector Association="SmartStorageModel.FK_dbo_Status_dbo_Products_ProductId" ManuallyRouted="false" />
         <AssociationConnector Association="SmartStorageModel.FK_dbo_Stocks_dbo_Products_ProductId" ManuallyRouted="false" />
         <AssociationConnector Association="SmartStorageModel.FK_dbo_Transactions_dbo_Products_ProductId" ManuallyRouted="false" />
-        <AssociationConnector Association="SmartStorageModel.AspNetUserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
