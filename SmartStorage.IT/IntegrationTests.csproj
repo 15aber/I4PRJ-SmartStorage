@@ -114,13 +114,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IntegrationsTest2.cs" />
-    <Compile Include="IntegrationsTest3.cs" />
-    <Compile Include="IntegrationsTest4.cs" />
-    <Compile Include="IntegrationsTest5.cs" />
-    <Compile Include="IntegrationsTest6.cs" />
-    <Compile Include="IntegrationsTest7.cs" />
-    <Compile Include="IntegrationTests1.cs" />
+    <Compile Include="IntegrationsTests2.cs" />
+    <Compile Include="IntegrationsTests3.cs" />
+    <Compile Include="IntegrationsTests4.cs" />
+    <Compile Include="IntegrationsTests5.cs" />
+    <Compile Include="IntegrationsTests6.cs" />
+    <Compile Include="IntegrationsTests7.cs" />
+    <Compile Include="IntegrationsTests1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

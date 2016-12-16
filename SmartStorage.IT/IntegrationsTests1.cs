@@ -18,7 +18,7 @@ using System.Web.Routing;
 namespace IntegrationTests
 {
   [TestFixture()]
-  class IntegrationTests1
+  class IntegrationsTests1
   {
     // DAL
     private DbSet<Category> _dbSet;
