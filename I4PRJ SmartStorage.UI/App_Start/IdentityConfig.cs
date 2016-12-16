@@ -15,6 +15,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using SmartStorage.DAL.Context.Identity;
 
 namespace SmartStorage.UI
 {
@@ -91,7 +92,7 @@ namespace SmartStorage.UI
     public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options,
         IOwinContext context)
     {
-      var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
+      var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<AspNetIdentityDbContext>()));
       // Configure validation logic for usernames
       manager.UserValidator = new UserValidator<ApplicationUser>(manager)
       {

@@ -1,14 +1,16 @@
 ﻿using SmartStorage.DAL.Context;
+using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Interfaces.Repositories;
 using SmartStorage.DAL.Models;
 using System.Collections.Generic;
 using System.Linq;
+using SmartStorage.DAL.Context.Application;
 
 namespace SmartStorage.DAL.Repositories
 {
   public class StatusesRepository : Repository<Status>, IStatusesRepository
   {
-    public StatusesRepository(ApplicationDbContext context) : base(context)
+    public StatusesRepository(IApplicationDbContext context) : base(context)
     {
     }
 

@@ -1,4 +1,5 @@
-﻿using SmartStorage.DAL.Interfaces.Repositories;
+﻿using SmartStorage.DAL.Interfaces;
+using SmartStorage.DAL.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,9 +13,9 @@ namespace SmartStorage.DAL.Repositories
     protected readonly DbContext Context;
     private readonly DbSet<T> _dbSet;
 
-    public Repository(DbContext context)
+    public Repository(IApplicationDbContext context)
     {
-      Context = context;
+      Context = context as DbContext;
       _dbSet = Context.Set<T>();
     }
 

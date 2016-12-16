@@ -1,14 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using SmartStorage.DAL.Context;
+﻿using SmartStorage.DAL.Context;
+using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Interfaces.Repositories;
 using SmartStorage.DAL.Models;
+using System.Collections.Generic;
+using System.Linq;
+using SmartStorage.DAL.Context.Application;
 
 namespace SmartStorage.DAL.Repositories
 {
   public class ProductsRepository : Repository<Product>, IProductsRepository
   {
-    public ProductsRepository(ApplicationDbContext context) : base(context)
+    public ProductsRepository(IApplicationDbContext context) : base(context)
     {
     }
 

@@ -1,25 +1,31 @@
-﻿using SmartStorage.DAL.Context;
-using SmartStorage.DAL.Interfaces;
+﻿using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Interfaces.Repositories;
-using SmartStorage.DAL.Repositories;
 
 namespace SmartStorage.DAL.UnitOfWork
 {
   public class UnitOfWork : IUnitOfWork
   {
-    private readonly ApplicationDbContext _context;
+    private readonly IApplicationDbContext _context;
 
-    public UnitOfWork(ApplicationDbContext context)
+    public UnitOfWork(IApplicationDbContext context, ICategoriesRepository categories, IInventoriesRepository inventories, IProductsRepository products, IStatusesRepository statuses, IStocksRepository stocks, ISuppliersRepository suppliers, ITransactionsRepository transactions, IWholesalersRepository wholesalers)
     {
       _context = context;
-      Categories = new CategoriesRepository(_context);
-      Inventories = new InventoriesRepository(_context);
-      Products = new ProductsRepository(_context);
-      Statuses = new StatusesRepository(_context);
-      Stocks = new StocksRepository(_context);
-      Suppliers = new SuppliersRepository(_context);
-      Transactions = new TransactionsRepository(_context);
-      Wholesalers = new WholesalersRepository(_context);
+      Categories = categories;
+      Inventories = inventories;
+      Products = products;
+      Statuses = statuses;
+      Stocks = stocks;
+      Suppliers = suppliers;
+      Transactions = transactions;
+      Wholesalers = wholesalers;
+      //Categories = new CategoriesRepository(_context);
+      //Inventories = new InventoriesRepository(_context);
+      //Products = new ProductsRepository(_context);
+      //Statuses = new StatusesRepository(_context);
+      //Stocks = new StocksRepository(_context);
+      //Suppliers = new SuppliersRepository(_context);
+      //Transactions = new TransactionsRepository(_context);
+      //Wholesalers = new WholesalersRepository(_context);
     }
 
     public ICategoriesRepository Categories { get; private set; }

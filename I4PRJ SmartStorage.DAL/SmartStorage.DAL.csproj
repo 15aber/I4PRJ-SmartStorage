@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Context\DbConfiguration.txt" />
+    <Compile Include="Context\Application\ApplicationDbContext.cs" />
+    <Compile Include="Interfaces\IApplicationDbContext.cs" />
     <Compile Include="Interfaces\Repositories\ICategoriesRepository.cs" />
     <Compile Include="Interfaces\Repositories\IInventoriesRepository.cs" />
     <Compile Include="Interfaces\Repositories\IProductsRepository.cs" />
@@ -69,11 +71,16 @@
     <Compile Include="Interfaces\Repositories\ITransactionsRepository.cs" />
     <Compile Include="Interfaces\Repositories\IWholesalersRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Migrations\201612060333262_InitDb.cs" />
-    <Compile Include="Migrations\201612060333262_InitDb.Designer.cs">
-      <DependentUpon>201612060333262_InitDb.cs</DependentUpon>
+    <Compile Include="Migrations\Application\201612151632305_InitDb.cs" />
+    <Compile Include="Migrations\Application\201612151632305_InitDb.Designer.cs">
+      <DependentUpon>201612151632305_InitDb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\Application\Configuration.cs" />
+    <Compile Include="Migrations\Identity\201612151633101_InitDb.cs" />
+    <Compile Include="Migrations\Identity\201612151633101_InitDb.Designer.cs">
+      <DependentUpon>201612151633101_InitDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Identity\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Inventory.cs" />
@@ -93,7 +100,7 @@
     <Compile Include="Repositories\SuppliersRepository.cs" />
     <Compile Include="Repositories\TransactionsRepository.cs" />
     <Compile Include="Repositories\WholesalersRepository.cs" />
-    <Compile Include="Context\ApplicationDbContext.cs" />
+    <Compile Include="Context\Identity\AspNetIdentityDbContext.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -101,12 +108,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201612060333262_InitDb.resx">
-      <DependentUpon>201612060333262_InitDb.cs</DependentUpon>
-    </EmbeddedResource>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <EmbeddedResource Include="Migrations\Application\201612151632305_InitDb.resx">
+      <DependentUpon>201612151632305_InitDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Identity\201612151633101_InitDb.resx">
+      <DependentUpon>201612151633101_InitDb.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

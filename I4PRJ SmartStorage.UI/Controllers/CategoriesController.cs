@@ -1,23 +1,19 @@
 ﻿using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
-using System;
-using System.Web.Mvc;
-using SmartStorage.BLL.Services;
-using SmartStorage.DAL.Context;
-using SmartStorage.DAL.Interfaces;
-using SmartStorage.DAL.UnitOfWork;
 using SmartStorage.UI.ViewModels;
 using SmartStorage.UI.ViewModels.Identity;
+using System;
+using System.Web.Mvc;
 
 namespace SmartStorage.UI.Controllers
 {
   public class CategoriesController : Controller
   {
     private ICategoryService _service;
-   
+
     public CategoriesController(ICategoryService service)
     {
-        _service = service ?? new CategoryService(new UnitOfWork(new ApplicationDbContext()));
+      _service = service;
     }
 
     public ActionResult Index()
