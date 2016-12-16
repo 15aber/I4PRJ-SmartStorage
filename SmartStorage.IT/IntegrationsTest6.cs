@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.Practices.Unity;
 using NSubstitute;
@@ -12,6 +13,7 @@ using SmartStorage.UI;
 using SmartStorage.UI.Controllers;
 using SmartStorage.UI.ViewModels;
 using System.Data.Entity;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -22,7 +24,7 @@ namespace IntegrationTests
   class IntegrationTests6
   {
     // DAL
-    private DbSet<Transaction> _dbSet;
+    private DbSet<Transaction> _dbSetTransactions;
     private DbSet<Stock> _dbSetStocks;
     private ApplicationDbContext _context;
 
@@ -37,16 +39,39 @@ namespace IntegrationTests
     // Dummy data
     private Inventory _inventory;
     private Stock _stock;
+    private IQueryable<Stock> _data;
 
 
     [SetUp]
     public void SetUp()
     {
+      _data = new List<Stock>
+      {
+        new Stock
+        {
+          Inventory = new Inventory
+      {
+        ByUser = "Test",
+        InventoryId = 1,
+        IsDeleted = false,
+        Name = "Test",
+        Updated = DateTime.Now
+      },
+          InventoryId = 1,
+          ProductId = 1,
+          Quantity = 1
+        }
+      }.AsQueryable();
+
       // DAL
-      _dbSet = Substitute.For<DbSet<Transaction>>();
-      _dbSetStocks = Substitute.For<DbSet<Stock>>();
+      _dbSetTransactions = Substitute.For<DbSet<Transaction>>();
+      _dbSetStocks = Substitute.For<DbSet<Stock>, IQueryable<Stock>>();
+      ((IQueryable<Stock>)_dbSetStocks).Provider.Returns(_data.Provider);
+      ((IQueryable<Stock>)_dbSetStocks).Expression.Returns(_data.Expression);
+      ((IQueryable<Stock>)_dbSetStocks).ElementType.Returns(_data.ElementType);
+      ((IQueryable<Stock>)_dbSetStocks).GetEnumerator().Returns(_data.GetEnumerator());
       _context = Substitute.For<ApplicationDbContext>();
-      _context.Set<Transaction>().Returns(_dbSet);
+      _context.Set<Transaction>().Returns(_dbSetTransactions);
       _context.Set<Stock>().Returns(_dbSetStocks);
       UnityConfig.GetConfiguredContainer().RegisterInstance<IApplicationDbContext>(_context);
 
@@ -62,21 +87,6 @@ namespace IntegrationTests
       _contextBase.Request.IsAuthenticated.Returns(true);
       _contextBase.User.IsInRole("Admin").Returns(true);
       _transactionsController.ControllerContext = new ControllerContext(_contextBase, new RouteData(), _transactionsController);
-
-      _inventory = new Inventory()
-      {
-        ByUser = "Test",
-        InventoryId = 1,
-        IsDeleted = false,
-        Name = "Test",
-        Updated = DateTime.Now
-      };
-
-      _stock = new Stock()
-      { Inventory = _inventory,
-        InventoryId = 1,
-        ProductId = 1
-      };
     }
 
     [Test]
@@ -84,13 +94,19 @@ namespace IntegrationTests
     {
       var viewModel = new TransactionEditModel
       {
-        Transaction = new TransactionDto() { ProductId = 1, FromInventoryId = 1, ToInventoryId = 2, TransactionId = 1, FromInventory = _inventory 
+        Transaction = new TransactionDto()
+        {
+          ProductId = 1,
+          FromInventoryId = 1,
+          ToInventoryId = 2,
+          TransactionId = 1,
+          FromInventory = _inventory
         }
       };
 
       _transactionsController.Create(viewModel);
 
-      _dbSet.Received(1).Add(Arg.Any<Transaction>());
+      _dbSetTransactions.Received(1).Add(Arg.Any<Transaction>());
       _context.Received(1).SaveChanges();
     }
   }
