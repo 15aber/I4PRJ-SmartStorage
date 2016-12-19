@@ -89,7 +89,7 @@ namespace IntegrationTests
       _categoriesController.Edit(viewModel);
 
       _dbSet.Received(1).Attach(Arg.Any<Category>());
-      _context.Received(1).SaveChanges();
+      _context.Received().SaveChanges();
     }
   }
 }

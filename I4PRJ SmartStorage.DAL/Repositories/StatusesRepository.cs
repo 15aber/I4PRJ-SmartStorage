@@ -21,7 +21,7 @@ namespace SmartStorage.DAL.Repositories
 
     public new List<Status> GetAll()
     {
-      return base.Context.Set<Status>().Include("Inventory").Include("Product").ToList();
+      return Context.Set<Status>().Include("Inventory").Include("Product").ToList();
     }
   }
 }
