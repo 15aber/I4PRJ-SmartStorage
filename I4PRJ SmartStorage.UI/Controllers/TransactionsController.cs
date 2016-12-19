@@ -1,10 +1,8 @@
 ﻿using SmartStorage.BLL.Dtos;
 using SmartStorage.BLL.Interfaces.Services;
+using SmartStorage.UI.ViewModels;
 using System;
 using System.Web.Mvc;
-using SmartStorage.UI.ViewModels;
-
-// TODO Merage Add og Create
 
 namespace SmartStorage.UI.Controllers
 {
@@ -25,7 +23,7 @@ namespace SmartStorage.UI.Controllers
       return View("Index");
     }
 
-   public ActionResult Create()
+    public ActionResult Create()
     {
       var viewModel = new TransactionEditModel
       {

@@ -69,6 +69,51 @@ namespace SmartStorage.DAL.Migrations.Application
         new Product { Name = "Brut 0,75 L", CategoryId = context.Categories.First(c => c.Name == "Champange").CategoryId, SupplierId = context.Suppliers.First(c => c.Name == "Champange supplier").SupplierId, WholesalerId = context.Wholesalers.First(w => w.Name == "Main wholesaler").WholesalerId, PurchasePrice = 249.80, ByUser = "Dummy", Updated = DateTime.Now, IsDeleted = false },
         new Product { Name = "Demi-Sec 0,75 L", CategoryId = context.Categories.First(c => c.Name == "Champange").CategoryId, SupplierId = context.Suppliers.First(c => c.Name == "Champange supplier").SupplierId, WholesalerId = context.Wholesalers.First(w => w.Name == "Main wholesaler").WholesalerId, PurchasePrice = 269.99, ByUser = "Dummy", Updated = DateTime.Now, IsDeleted = false }
       );
+
+      context.SaveChanges();
+
+      // Transaction
+      context.Transactions.AddOrUpdate(t => t.ProductId,
+        new Transaction { ToInventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Vodka 0,70 L").ProductId, Quantity = 300, ByUser = "Dummy", Updated = DateTime.Now },
+        new Transaction { ToInventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Rom 0,70 L").ProductId, Quantity = 300, ByUser = "Dummy", Updated = DateTime.Now },
+        new Transaction { ToInventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Gin 0,70 L").ProductId, Quantity = 300, ByUser = "Dummy", Updated = DateTime.Now },
+        new Transaction { ToInventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Tequila 0,70 L").ProductId, Quantity = 150, ByUser = "Dummy", Updated = DateTime.Now },
+        new Transaction { ToInventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Royal 33,0 CL").ProductId, Quantity = 240, ByUser = "Dummy", Updated = DateTime.Now },
+        new Transaction { ToInventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Classic 33,0 CL").ProductId, Quantity = 120, ByUser = "Dummy", Updated = DateTime.Now },
+        new Transaction { ToInventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "X-Mas 33,0 CL").ProductId, Quantity = 120, ByUser = "Dummy", Updated = DateTime.Now },
+        new Transaction { ToInventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Spring water 0,50 L").ProductId, Quantity = 96, ByUser = "Dummy", Updated = DateTime.Now },
+        new Transaction { ToInventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Energy 25,0 CL").ProductId, Quantity = 240, ByUser = "Dummy", Updated = DateTime.Now },
+        new Transaction { ToInventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Juice 1,00 L").ProductId, Quantity = 60, ByUser = "Dummy", Updated = DateTime.Now },
+        new Transaction { ToInventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Soda 25,0 CL").ProductId, Quantity = 90, ByUser = "Dummy", Updated = DateTime.Now },
+        new Transaction { ToInventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Pineapple Alko-Soda 27,5 CL").ProductId, Quantity = 240, ByUser = "Dummy", Updated = DateTime.Now },
+        new Transaction { ToInventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Orange Alko-Soda 27,5 CL").ProductId, Quantity = 240, ByUser = "Dummy", Updated = DateTime.Now },
+        new Transaction { ToInventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Brut 0,75 L").ProductId, Quantity = 60, ByUser = "Dummy", Updated = DateTime.Now },
+        new Transaction { ToInventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Demi-Sec 0,75 L").ProductId, Quantity = 60, ByUser = "Dummy", Updated = DateTime.Now }
+      );
+
+      context.SaveChanges();
+
+      // Stock
+      context.Stocks.AddOrUpdate(s => s.ProductId,
+        new Stock { InventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Vodka 0,70 L").ProductId, Quantity = 300 },
+        new Stock { InventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Rom 0,70 L").ProductId, Quantity = 300 },
+        new Stock { InventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Gin 0,70 L").ProductId, Quantity = 300 },
+        new Stock { InventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Tequila 0,70 L").ProductId, Quantity = 150 },
+        new Stock { InventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Royal 33,0 CL").ProductId, Quantity = 240 },
+        new Stock { InventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Classic 33,0 CL").ProductId, Quantity = 120 },
+        new Stock { InventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "X-Mas 33,0 CL").ProductId, Quantity = 120 },
+        new Stock { InventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Spring water 0,50 L").ProductId, Quantity = 96 },
+        new Stock { InventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Energy 25,0 CL").ProductId, Quantity = 240 },
+        new Stock { InventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Juice 1,00 L").ProductId, Quantity = 60 },
+        new Stock { InventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Soda 25,0 CL").ProductId, Quantity = 90 },
+        new Stock { InventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Pineapple Alko-Soda 27,5 CL").ProductId, Quantity = 240 },
+        new Stock { InventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Orange Alko-Soda 27,5 CL").ProductId, Quantity = 240 },
+        new Stock { InventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Brut 0,75 L").ProductId, Quantity = 60 },
+        new Stock { InventoryId = context.Inventories.First(i => i.Name == "Main storage").InventoryId, ProductId = context.Products.First(p => p.Name == "Demi-Sec 0,75 L").ProductId, Quantity = 60 }
+      );
+
+      context.SaveChanges();
+
     }
   }
 }

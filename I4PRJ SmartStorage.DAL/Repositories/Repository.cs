@@ -74,5 +74,11 @@ namespace SmartStorage.DAL.Repositories
       return _dbSet.AsQueryable();
     }
 
+    public void Dispose()
+    {
+      Context.Dispose();
+      GC.SuppressFinalize(this);
+    }
+
   }
 }

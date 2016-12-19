@@ -1,5 +1,6 @@
 ﻿using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Interfaces.Repositories;
+using System;
 
 namespace SmartStorage.DAL.UnitOfWork
 {
@@ -18,14 +19,6 @@ namespace SmartStorage.DAL.UnitOfWork
       Suppliers = suppliers;
       Transactions = transactions;
       Wholesalers = wholesalers;
-      //Categories = new CategoriesRepository(_context);
-      //Inventories = new InventoriesRepository(_context);
-      //Products = new ProductsRepository(_context);
-      //Statuses = new StatusesRepository(_context);
-      //Stocks = new StocksRepository(_context);
-      //Suppliers = new SuppliersRepository(_context);
-      //Transactions = new TransactionsRepository(_context);
-      //Wholesalers = new WholesalersRepository(_context);
     }
 
     public ICategoriesRepository Categories { get; private set; }
@@ -45,6 +38,7 @@ namespace SmartStorage.DAL.UnitOfWork
     public void Dispose()
     {
       _context.Dispose();
+      GC.SuppressFinalize(this);
     }
   }
 }

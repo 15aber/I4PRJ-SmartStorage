@@ -102,6 +102,7 @@
     <Compile Include="Repositories\WholesalersRepository.cs" />
     <Compile Include="Context\Identity\AspNetIdentityDbContext.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
+    <Content Include="Context\EFCommands.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

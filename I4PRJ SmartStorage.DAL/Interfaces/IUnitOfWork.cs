@@ -1,8 +1,9 @@
 ﻿using SmartStorage.DAL.Interfaces.Repositories;
+using System;
 
 namespace SmartStorage.DAL.Interfaces
 {
-  public interface IUnitOfWork
+  public interface IUnitOfWork : IDisposable
   {
     ICategoriesRepository Categories { get; }
     IInventoriesRepository Inventories { get; }

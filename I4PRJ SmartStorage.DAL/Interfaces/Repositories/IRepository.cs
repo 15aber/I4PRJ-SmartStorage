@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace SmartStorage.DAL.Interfaces.Repositories
 {
-  public interface IRepository<T> where T : class
+  public interface IRepository<T> : IDisposable where T : class
   {
     void Add(T entity);
     T Get(int id);

@@ -1,3 +1,4 @@
+using Microsoft.Practices.Unity.Mvc;
 using SmartStorage.UI;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace SmartStorage.UI
       GlobalConfiguration.Configuration.DependencyResolver = new Microsoft.Practices.Unity.WebApi.UnityDependencyResolver(UnityConfig.GetConfiguredContainer());
 
       // Uncomment if you want to use PerRequestLifetimeManager
-      // Microsoft.Web.Infrastructure.DynamicModuleHelper.DynamicModuleUtility.RegisterModule(typeof(UnityPerRequestHttpModule));
+      Microsoft.Web.Infrastructure.DynamicModuleHelper.DynamicModuleUtility.RegisterModule(typeof(UnityPerRequestHttpModule));
     }
 
     /// <summary>Disposes the Unity container when the application is shut down.</summary>

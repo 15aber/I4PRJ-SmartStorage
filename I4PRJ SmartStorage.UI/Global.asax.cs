@@ -13,7 +13,7 @@ namespace SmartStorage.UI
   {
     protected void Application_Start()
     {
-      UnityWebActivator.Start();
+      //UnityWebActivator.Start();
       AreaRegistration.RegisterAllAreas();
       GlobalConfiguration.Configure(WebApiConfig.Register);
       FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

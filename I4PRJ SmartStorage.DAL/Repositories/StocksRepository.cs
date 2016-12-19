@@ -1,10 +1,9 @@
-﻿using SmartStorage.DAL.Context;
+﻿using SmartStorage.DAL.Context.Application;
 using SmartStorage.DAL.Interfaces;
 using SmartStorage.DAL.Interfaces.Repositories;
 using SmartStorage.DAL.Models;
 using System.Collections.Generic;
 using System.Linq;
-using SmartStorage.DAL.Context.Application;
 
 namespace SmartStorage.DAL.Repositories
 {
