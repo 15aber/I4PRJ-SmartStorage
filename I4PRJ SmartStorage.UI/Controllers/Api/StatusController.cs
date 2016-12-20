@@ -3,6 +3,7 @@ using SmartStorage.BLL.Interfaces.Services;
 using SmartStorage.UI.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 
 namespace SmartStorage.UI.Controllers.Api
@@ -27,7 +28,8 @@ namespace SmartStorage.UI.Controllers.Api
 
     public IHttpActionResult GetStatus(int id)
     {
-      var entityDto = _statusService.GetSingle(id);
+      var status = _statusService.GetSingle(id);
+      var entityDto = _statusService.GetAllOfStatus(status.InventoryId).Where(s => s.StatusId >= id);
 
       return Ok(entityDto);
     }

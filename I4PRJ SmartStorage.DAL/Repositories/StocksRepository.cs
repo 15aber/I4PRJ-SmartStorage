@@ -25,7 +25,7 @@ namespace SmartStorage.DAL.Repositories
 
     public List<Stock> GetAllOfInventory(int id)
     {
-      return base.Context.Set<Stock>().Include("Inventory").Include("Product").Where(i => i.InventoryId == id).ToList();
+      return base.Context.Set<Stock>().Include("Inventory").Include("Product").Include("Product.Category").Where(i => i.InventoryId == id).ToList();
     }
   }
 }

@@ -33,8 +33,7 @@ $(document)
                         data: "product.name"
                     },
                     {
-                        data: "product.categoryId",
-                        "visible": false
+                      data: "product.category.name"
                     },
                     {
                       data: "expQuantity",
@@ -70,8 +69,8 @@ $(document)
             var rows = $('#status').dataTable().fnGetNodes();
 
             for (var i = 0; i < rows.length; i++) {
-              var expected = $(rows[i]).find("td:eq(1)").find('div').val();
-                var current = $(rows[i]).find("td:eq(2)").find('input').val();
+              var expected = document.getElementById('expected' + i).textContent;
+                var current = $(rows[i]).find("td:eq(3)").find('input').val();
                 var diff = current - expected;
                 var productId = table.cell(i, 5).data();
 
