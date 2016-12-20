@@ -7,5 +7,6 @@ namespace SmartStorage.BLL.Interfaces.Services
   {
     void Delete(int id);
     IList<InventoryDto> GetAllActive();
+    IList<InventoryDto> GetOtherInventories(int id);
   }
 }

@@ -25,12 +25,12 @@
                         return; }*/
 
                     for (var i = 0; i < data.length; i++) {
-                        inventoriesWithoutFromInventorySelect.append(new Option(data[i].Name, data[i].InventoryId));
+                        inventoriesWithoutFromInventorySelect.append(new Option(data[i].name, data[i].InventoryId));
                     }
                 });
 
             // ajax get products of inventory
-            $.get('/api/Products/GetProductsOfInventory/' + $('#FromInventoryId').val(),
+            $.get('/api/Products/GetProductsOfInventory/' + $('#Transaction_FromInventoryId').val(),
                 function (data) {
                     // populate with options
                     var productsOfInventorySelect = $('#Transaction_ProductId');
@@ -43,7 +43,7 @@
                         return; }*/
 
                     for (var i = 0; i < data.length; i++) {
-                        productsOfInventorySelect.append(new Option(data[i].Name, data[i].ProductId));
+                        productsOfInventorySelect.append(new Option(data[i].name, data[i].ProductId));
                     }
                 });
         };

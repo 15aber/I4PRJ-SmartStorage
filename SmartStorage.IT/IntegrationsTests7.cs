@@ -141,13 +141,13 @@ namespace IntegrationTests
       _dbSetInventory.Received(1).Find(1);
     }
 
-    [Test]
-    public void StatusesController_StatusReportsGetAll_DbSetReceivedFindWithId()
-    {
-      //_statusesController.StatusReports();
+    //[Test]
+    //public void StatusesController_StatusReportsGetAll_DbSetReceivedFindWithId()
+    //{
+    //        _statusesController.StatusReports();
 
-      //_dbSetStatus.Received(1);
-    }
+    //        _dbSetStatus.Received(1);
+    //}
 
   }
 }
