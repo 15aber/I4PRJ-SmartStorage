@@ -90,7 +90,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\I4PRJ SmartStorage.DAL\SmartStorage.DAL.csproj">
+    <ProjectReference Include="..\SmartStorage.DAL\SmartStorage.DAL.csproj">
       <Project>{9d0d44a3-3e5f-4736-9bb1-07ed89df8c2f}</Project>
       <Name>SmartStorage.DAL</Name>
     </ProjectReference>

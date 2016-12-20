@@ -144,15 +144,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\I4PRJ SmartStorage.BLL\SmartStorage.BLL.csproj">
+    <ProjectReference Include="..\SmartStorage.BLL\SmartStorage.BLL.csproj">
       <Project>{0A0E6BA3-C63E-4C08-BD63-3A0BB2919BEE}</Project>
       <Name>SmartStorage.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\I4PRJ SmartStorage.DAL\SmartStorage.DAL.csproj">
+    <ProjectReference Include="..\SmartStorage.DAL\SmartStorage.DAL.csproj">
       <Project>{9D0D44A3-3E5F-4736-9BB1-07ED89DF8C2F}</Project>
       <Name>SmartStorage.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\I4PRJ SmartStorage.UI\SmartStorage.UI.csproj">
+    <ProjectReference Include="..\SmartStorage.UI\SmartStorage.UI.csproj">
       <Project>{5BA405F6-D7A0-46CB-BBAD-4A315FF582B2}</Project>
       <Name>SmartStorage.UI</Name>
     </ProjectReference>

@@ -555,11 +555,11 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\I4PRJ SmartStorage.BLL\SmartStorage.BLL.csproj">
+    <ProjectReference Include="..\SmartStorage.BLL\SmartStorage.BLL.csproj">
       <Project>{0a0e6ba3-c63e-4c08-bd63-3a0bb2919bee}</Project>
       <Name>SmartStorage.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\I4PRJ SmartStorage.DAL\SmartStorage.DAL.csproj">
+    <ProjectReference Include="..\SmartStorage.DAL\SmartStorage.DAL.csproj">
       <Project>{9D0D44A3-3E5F-4736-9BB1-07ED89DF8C2F}</Project>
       <Name>SmartStorage.DAL</Name>
     </ProjectReference>
