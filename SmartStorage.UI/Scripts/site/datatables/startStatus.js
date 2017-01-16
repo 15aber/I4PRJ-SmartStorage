@@ -70,7 +70,8 @@ $(document)
 
             for (var i = 0; i < rows.length; i++) {
               var expected = document.getElementById('expected' + i).textContent;
-                var current = $(rows[i]).find("td:eq(3)").find('input').val();
+              var current = document.getElementById('curQuantity' + i).value;
+              //var current = $(rows[i]).find("td:eq(3)").find('input').val();
                 var diff = current - expected;
                 var productId = table.cell(i, 5).data();
 
